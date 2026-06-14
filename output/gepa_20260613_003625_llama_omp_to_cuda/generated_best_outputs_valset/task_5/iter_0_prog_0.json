@@ -1,0 +1,19 @@
+[
+    0.0,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "kernel": "car",
+        "from_api": "omp",
+        "to_api": "cuda",
+        "compiled": false,
+        "fix_needed": true,
+        "initial_compile_error": "main.cu(30): error: identifier \"params\" is undefined\n  __attribute__((global)) void car_kernel(float *img, float *kernels, float *offsets_h, float *offsets_v, float *output, params p, int offset_unit, int padding) {\n                                                                                                                         ^\n\nmain.cu(34): error: class \"uint3\" has no member \"w\"\n      int idx = blockIdx.w * blockDim.w + threadIdx.w;\n                         ^\n\nmain.cu(34): error: class \"dim3\" has no member \"w\"\n      int idx = blockIdx.w * blockDim.w + threadIdx.w;\n                   ",
+        "post_fix_error": "main.cu(45): error: class \"uint3\" has no member \"w\"\n      int idx = blockIdx.w * blockDim.w + threadIdx.w;\n                         ^\n\nmain.cu(45): error: class \"dim3\" has no member \"w\"\n      int idx = blockIdx.w * blockDim.w + threadIdx.w;\n                                      ^\n\nmain.cu(45): error: class \"uint3\" has no member \"w\"\n      int idx = blockIdx.w * blockDim.w + threadIdx.w;\n           ",
+        "source_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <chrono>\n#include <omp.h>\n#include \"utils.h\"\n#include \"reference.h\"\n\n#define max(a,b) (a) > (b) ? (a) : (b)\n#define min(a,b) (a) < (b) ? (a) : (b)\n\nvoid car (\n    const float *__restrict img,\n    const float *__restrict kernels,\n    const float *__restrict offsets_h,\n    const float *__restrict offsets_v,\n          float *__restrict",
+        "translated_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <cuda_runtime.h>\n#include <time.h>\n\n#define max(a,b) (a) > (b) ? (a) : (b)\n#define min(a,b) (a) < (b) ? (a) : (b)\n\n#define CUDA_CHECK(ans) { cudaCheck(ans, __FILE__, __LINE__); }\ninline void cudaCheck(cudaError_t code, char *file, int line) {\n    if (code != cudaSuccess) {\n        fprintf(stderr, \"CUDA error in %s at line %d: %s.\\n\"",
+        "log": "[car] Compile failed, trying model fix...\n[car] Compile error:\nmain.cu(30): error: identifier \"params\" is undefined\n  __attribute__((global)) void car_kernel(float *img, float *kernels, float *offsets_h, float *offsets_v, float *output, params p, int offset_unit, int padding) {\n                                                                                                                         ^\n\nmain.cu(34): error: class \"uint3\" has no member \"w\"\n      int idx = blockIdx.w * blockDim.w + threadIdx.w;\n                         ^\n\nmain.cu(34): error: class \"dim3\" has no member \"w\"\n      int idx = blockIdx.w * blockDim.w + threadIdx.w;\n                   \n[car] Still failed after model fix \u2717\n[car] Second error:\nmain.cu(45): error: class \"uint3\" has no member \"w\"\n      int idx = blockIdx.w * blockDim.w + threadIdx.w;\n                         ^\n\nmain.cu(45): error: class \"dim3\" has no member \"w\"\n      int idx = blockIdx.w * blockDim.w + threadIdx.w;\n                                      ^\n\nmain.cu(45): error: class \"uint3\" has no member \"w\"\n      int idx = blockIdx.w * blockDim.w + threadIdx.w;\n           \n"
+    }
+]

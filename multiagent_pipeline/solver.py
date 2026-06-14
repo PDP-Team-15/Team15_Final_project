@@ -241,7 +241,7 @@ class ExecutionAgent:
                 logging.info(f"Output directory: {output_dir}")
 
                 try:
-                    subprocess.run(['make', 'clean'], check=True, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                    subprocess.run(['make', 'clean'], check=True, cwd=build_dir, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
                 except subprocess.CalledProcessError as e:
                     print(f"Make clean failed for {e.stderr}")
                 

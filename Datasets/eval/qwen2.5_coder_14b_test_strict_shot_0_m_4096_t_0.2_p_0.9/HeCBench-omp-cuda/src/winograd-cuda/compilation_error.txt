@@ -1,0 +1,6 @@
+main.cu(73): error: identifier "rtclock" is undefined
+    double start = rtclock();
+                   ^
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:53: main.o] Error 2

@@ -1,0 +1,35 @@
+{
+    "run_name": "llama3.1_8b_lora_eval_strict_shot_0_m_2048_t_0.2_p_0.9",
+    "target": [
+        "cuda",
+        "omp"
+    ],
+    "per_pair": {
+        "omp-cuda": {
+            "compile": "6/19",
+            "compile_rate": 0.316,
+            "correct": "2/19",
+            "correct_rate": 0.105
+        },
+        "cuda-omp": {
+            "compile": "1/18",
+            "compile_rate": 0.056,
+            "correct": "1/18",
+            "correct_rate": 0.056
+        }
+    },
+    "aggregate": {
+        "cuda": {
+            "compile": "6/19",
+            "compile_rate": 0.316,
+            "correct": "2/19",
+            "correct_rate": 0.105
+        },
+        "omp": {
+            "compile": "1/18",
+            "compile_rate": 0.056,
+            "correct": "1/18",
+            "correct_rate": 0.056
+        }
+    }
+}

@@ -1,0 +1,19 @@
+[
+    0.0,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "kernel": "vanGenuchten",
+        "from_api": "omp",
+        "to_api": "cuda",
+        "compiled": false,
+        "fix_needed": true,
+        "initial_compile_error": "make: *** No rule to make target 'reference.h', needed by 'main.o'.  Stop.\n",
+        "post_fix_error": "make: *** No rule to make target 'reference.h', needed by 'main.o'.  Stop.\n",
+        "source_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <chrono>\n#include <omp.h>\n#include \"reference.h\"\n\nvoid vanGenuchten(\n  const double *__restrict Ksat,\n  const double *__restrict psi,\n        double *__restrict C,\n        double *__restrict theta,\n        double *__restrict K,\n  const int size)\n{\n  #pragma omp target teams distribute parallel for thread_limit(256)\n  for (int i = 0;",
+        "translated_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <chrono>\n#include <cuda_runtime.h>\n#include <device_launch_parameters.h>\n#include \"reference.h\"\n\n__global__ void vanGenuchten(\n  const double *__restrict Ksat,\n  const double *__restrict psi,\n        double *__restrict C,\n        double *__restrict theta,\n        double *__restrict K,\n  const int size)\n{\n  int i = blockIdx.x * block",
+        "log": "[vanGenuchten] Compile failed, trying model fix...\n[vanGenuchten] Compile error:\nmake: *** No rule to make target 'reference.h', needed by 'main.o'.  Stop.\n\n[vanGenuchten] Still failed after model fix \u2717\n[vanGenuchten] Second error:\nmake: *** No rule to make target 'reference.h', needed by 'main.o'.  Stop.\n\n"
+    }
+]

@@ -1,0 +1,35 @@
+{
+    "run_name": "qwen2.5_coder_14b_test_user_prompt_strict_shot_0_m_4096_t_0.2_p_0.9",
+    "target": [
+        "cuda",
+        "omp"
+    ],
+    "per_pair": {
+        "omp-cuda": {
+            "compile": "6/18",
+            "compile_rate": 0.333,
+            "correct": "2/18",
+            "correct_rate": 0.111
+        },
+        "cuda-omp": {
+            "compile": "4/17",
+            "compile_rate": 0.235,
+            "correct": "0/17",
+            "correct_rate": 0.0
+        }
+    },
+    "aggregate": {
+        "cuda": {
+            "compile": "6/18",
+            "compile_rate": 0.333,
+            "correct": "2/18",
+            "correct_rate": 0.111
+        },
+        "omp": {
+            "compile": "4/17",
+            "compile_rate": 0.235,
+            "correct": "0/17",
+            "correct_rate": 0.0
+        }
+    }
+}

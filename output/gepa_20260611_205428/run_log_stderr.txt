@@ -1,0 +1,12 @@
+[92m21:10:53 - LiteLLM:INFO[0m: utils.py:4083 - 
+LiteLLM completion() model= Valdemardi/DeepSeek-R1-Distill-Qwen-32B-AWQ; provider = openai
+[92m21:11:59 - LiteLLM:INFO[0m: utils.py:1656 - Wrapper: Completed Call, calling success_handler
+[92m21:18:41 - LiteLLM:INFO[0m: utils.py:4083 - 
+LiteLLM completion() model= Valdemardi/DeepSeek-R1-Distill-Qwen-32B-AWQ; provider = openai
+[92m21:19:41 - LiteLLM:INFO[0m: utils.py:1656 - Wrapper: Completed Call, calling success_handler
+[92m21:30:38 - LiteLLM:INFO[0m: utils.py:4083 - 
+LiteLLM completion() model= Valdemardi/DeepSeek-R1-Distill-Qwen-32B-AWQ; provider = openai
+[92m21:32:14 - LiteLLM:INFO[0m: utils.py:1656 - Wrapper: Completed Call, calling success_handler
+[92m21:32:14 - LiteLLM:INFO[0m: utils.py:4083 - 
+LiteLLM completion() model= Valdemardi/DeepSeek-R1-Distill-Qwen-32B-AWQ; provider = openai
+[92m21:33:34 - LiteLLM:INFO[0m: utils.py:1656 - Wrapper: Completed Call, calling success_handler

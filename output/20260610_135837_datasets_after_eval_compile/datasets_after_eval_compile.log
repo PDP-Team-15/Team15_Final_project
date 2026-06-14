@@ -1,0 +1,52 @@
+2026-06-10 13:58:37,035 - root - INFO - Log file created at /home/pdp15/UniPar_AI/output/20260610_135837_datasets_after_eval_compile/datasets_after_eval_compile.log
+2026-06-10 13:58:37,036 - root - INFO - Running eval_compile to create a clean dataset...
+2026-06-10 13:58:37,039 - root - INFO - Original model name extracted: gpt
+2026-06-10 13:58:37,039 - root - INFO - Using clean dataset at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9 for main processing
+2026-06-10 13:58:37,207 - root - INFO - ModelAgent initialized: translator=Valdemardi/DeepSeek-R1-Distill-Qwen-32B-AWQ@http://localhost:8006/v1, fixer=Valdemardi/DeepSeek-R1-Distill-Qwen-32B-AWQ@http://localhost:8006/v1
+2026-06-10 13:58:37,219 - root - INFO - Processing source API: cuda to omp
+2026-06-10 13:58:37,219 - root - INFO - Found 17 kernels to process for cuda to omp
+2026-06-10 13:58:37,226 - root - INFO - Processing kernel: stddev-omp
+2026-06-10 13:58:37,226 - root - INFO - Skipping kernel stddev-omp as it already has prediction files.
+2026-06-10 13:58:37,227 - root - INFO - Processing kernel: ace-omp
+2026-06-10 13:58:37,227 - root - INFO - Skipping kernel ace-omp as it already has prediction files.
+2026-06-10 13:58:37,227 - root - INFO - Processing kernel: pnpoly-omp
+2026-06-10 13:58:37,227 - root - INFO - Skipping kernel pnpoly-omp as it already has prediction files.
+2026-06-10 13:58:37,227 - root - INFO - Processing kernel: winograd-omp
+2026-06-10 13:58:37,227 - root - INFO - Skipping kernel winograd-omp as it already has prediction files.
+2026-06-10 13:58:37,228 - root - INFO - Processing kernel: keogh-omp
+2026-06-10 13:58:37,228 - root - INFO - Skipping kernel keogh-omp as it already has prediction files.
+2026-06-10 13:58:37,228 - root - INFO - Processing kernel: stencil1d-omp
+2026-06-10 13:58:37,229 - root - INFO - Skipping kernel stencil1d-omp as it already has prediction files.
+2026-06-10 13:58:37,229 - root - INFO - Processing kernel: particlefilter-omp
+2026-06-10 13:58:37,229 - root - INFO - Skipping kernel particlefilter-omp as it already has prediction files.
+2026-06-10 13:58:37,229 - root - INFO - Processing kernel: meanshift-omp
+2026-06-10 13:58:37,230 - root - INFO - Skipping kernel meanshift-omp as it already has prediction files.
+2026-06-10 13:58:37,230 - root - INFO - Processing kernel: pool-omp
+2026-06-10 13:58:37,230 - root - INFO - Skipping kernel pool-omp as it already has prediction files.
+2026-06-10 13:58:37,231 - root - INFO - Processing kernel: convolution1D-omp
+2026-06-10 13:58:37,231 - root - INFO - Skipping kernel convolution1D-omp as it already has prediction files.
+2026-06-10 13:58:37,231 - root - INFO - Processing kernel: heat-omp
+2026-06-10 13:58:37,231 - root - INFO - Skipping kernel heat-omp as it already has prediction files.
+2026-06-10 13:58:37,232 - root - INFO - Processing kernel: su3-omp
+2026-06-10 13:58:37,232 - root - INFO - Skipping kernel su3-omp as it already has prediction files.
+2026-06-10 13:58:37,232 - root - INFO - Processing kernel: michalewicz-omp
+2026-06-10 13:58:37,233 - root - INFO - Skipping kernel michalewicz-omp as it already has prediction files.
+2026-06-10 13:58:37,233 - root - INFO - Processing kernel: vanGenuchten-omp
+2026-06-10 13:58:37,233 - root - INFO - Skipping kernel vanGenuchten-omp as it already has prediction files.
+2026-06-10 13:58:37,234 - root - INFO - Processing kernel: wsm5-omp
+2026-06-10 13:58:37,234 - root - INFO - Skipping kernel wsm5-omp as it already has prediction files.
+2026-06-10 13:58:37,234 - root - INFO - Processing kernel: geodesic-omp
+2026-06-10 13:58:37,235 - root - INFO - Skipping kernel geodesic-omp as it already has prediction files.
+2026-06-10 13:58:37,235 - root - INFO - Processing kernel: mixbench-omp
+2026-06-10 13:58:37,235 - root - INFO - Skipping kernel mixbench-omp as it already has prediction files.
+2026-06-10 13:58:37,236 - root - INFO - Processing complete. Output directory: /home/pdp15/UniPar_AI/output/20260610_135837_datasets_after_eval_compile
+2026-06-10 13:58:37,237 - root - INFO - 
+==================================================
+SUMMARY  (cuda -> omp)
+==================================================
+  Total kernels   : 0
+  Compile pass    : 0/0
+  Compile fail    : 0/0
+  Run pass        : 0/0
+  Run fail        : 0/0
+==================================================

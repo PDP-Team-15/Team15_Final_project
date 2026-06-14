@@ -1,0 +1,5 @@
+./main 134217728 1000
+Average kernel execution time: 0.000355 (s)
+Error at 0: 28 (host) != 0 (device)
+Error at 14: 210 (host) != 0 (device)
+FAIL

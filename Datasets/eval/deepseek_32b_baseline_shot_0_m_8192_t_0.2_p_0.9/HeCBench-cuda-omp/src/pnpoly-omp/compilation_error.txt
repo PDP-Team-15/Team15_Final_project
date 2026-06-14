@@ -1,0 +1,67 @@
+In file included from main.cpp:8:
+./kernel.h:29:11: error: unknown type name 'float2'; did you mean 'float'?
+   29 |     const float2*__restrict point,
+      |           ^~~~~~
+      |           float
+./kernel.h:30:11: error: unknown type name 'float2'; did you mean 'float'?
+   30 |     const float2*__restrict vertex,
+      |           ^~~~~~
+      |           float
+./kernel.h:36:5: error: use of undeclared identifier 'float2'; did you mean 'float'?
+   36 |     float2 lpoint[tile_size];
+      |     ^~~~~~
+      |     float
+./kernel.h:40:13: error: use of undeclared identifier 'BLOCK_SIZE_X'
+   40 |       if (i+BLOCK_SIZE_X*ti < n) {
+      |             ^
+./kernel.h:41:30: error: use of undeclared identifier 'BLOCK_SIZE_X'
+   41 |         lpoint[ti] = point[i+BLOCK_SIZE_X*ti];
+      |                              ^
+./kernel.h:45:13: error: use of undeclared identifier 'VERTICES'
+   45 |     int k = VERTICES-1;
+      |             ^
+./kernel.h:47:21: error: use of undeclared identifier 'VERTICES'
+   47 |     for (int j=0; j<VERTICES; k = j++) {    // edge from vj to vk
+      |                     ^
+./kernel.h:48:7: error: use of undeclared identifier 'float2'; did you mean 'float'?
+   48 |       float2 vj = vertex[j]; 
+      |       ^~~~~~
+      |       float
+./kernel.h:49:7: error: use of undeclared identifier 'float2'; did you mean 'float'?
+   49 |       float2 vk = vertex[k]; 
+      |       ^~~~~~
+      |       float
+./kernel.h:51:24: error: member reference base type 'float' is not a structure or union
+   51 |       float slope = (vk.x-vj.x) / (vk.y-vj.y);
+      |                      ~~^~
+./kernel.h:51:29: error: member reference base type 'float' is not a structure or union
+   51 |       float slope = (vk.x-vj.x) / (vk.y-vj.y);
+      |                           ~~^~
+./kernel.h:51:38: error: member reference base type 'float' is not a structure or union
+   51 |       float slope = (vk.x-vj.x) / (vk.y-vj.y);
+      |                                    ~~^~
+./kernel.h:51:43: error: member reference base type 'float' is not a structure or union
+   51 |       float slope = (vk.x-vj.x) / (vk.y-vj.y);
+      |                                         ~~^~
+./kernel.h:56:9: error: use of undeclared identifier 'float2'; did you mean 'float'?
+   56 |         float2 p = lpoint[ti];
+      |         ^~~~~~
+      |         float
+./kernel.h:58:25: error: member reference base type 'float' is not a structure or union
+   58 |         if (is_between(p.y, vj.y, vk.y) &&         //if p is between vj and vk vertically
+      |                        ~^~
+./kernel.h:58:31: error: member reference base type 'float' is not a structure or union
+   58 |         if (is_between(p.y, vj.y, vk.y) &&         //if p is between vj and vk vertically
+      |                             ~~^~
+./kernel.h:58:37: error: member reference base type 'float' is not a structure or union
+   58 |         if (is_between(p.y, vj.y, vk.y) &&         //if p is between vj and vk vertically
+      |                                   ~~^~
+./kernel.h:59:15: error: member reference base type 'float' is not a structure or union
+   59 |             (p.x < slope * (p.y-vj.y) + vj.x)
+      |              ~^~
+./kernel.h:59:30: error: member reference base type 'float' is not a structure or union
+   59 |             (p.x < slope * (p.y-vj.y) + vj.x)
+      |                             ~^~
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+make: *** [Makefile.aomp:60: main.o] Error 1

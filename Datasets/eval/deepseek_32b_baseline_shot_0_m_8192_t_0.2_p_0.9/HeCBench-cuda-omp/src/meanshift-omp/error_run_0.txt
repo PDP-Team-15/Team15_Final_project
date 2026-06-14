@@ -1,0 +1,2 @@
+clang++: error: cannot find ROCm device library; provide its path via '--rocm-path' or '--rocm-device-lib-path', or pass '-nogpulib' to build without ROCm device library
+make: *** [Makefile.aomp:60: main.o] Error 1

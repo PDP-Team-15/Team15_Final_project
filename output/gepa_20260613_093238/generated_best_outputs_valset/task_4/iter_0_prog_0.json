@@ -1,0 +1,17 @@
+[
+    1.0,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "kernel": "aligned-types",
+        "from_api": "omp",
+        "to_api": "cuda",
+        "compiled": true,
+        "fix_needed": false,
+        "source_snippet": "\n\n\n\n\n\n\n#include <stdlib.h>\n#include <stdio.h>\n#include <string.h>\n#include <chrono>\n#include <omp.h>\n\n\n\n\n\n\n\ntypedef unsigned char uchar_misaligned;\n\ntypedef unsigned short int ushort_misaligned;\n\ntypedef struct\n{\n  unsigned char r, g, b, a;\n} uchar4_misaligned;\n\ntypedef struct\n{\n  unsigned int l, a;\n} uint2_misaligned;\n\ntypedef struct\n{\n  unsigned int r, g, b;\n} uint3_misaligned;\n\ntypedef struct\n{",
+        "translated_snippet": "#include <stdlib.h>\n#include <stdio.h>\n#include <string.h>\n#include <chrono>\n\n// Define misaligned types\ntypedef unsigned char uchar_misaligned;\ntypedef unsigned short int ushort_misaligned;\ntypedef struct\n{\n  unsigned char r, g, b, a;\n} uchar4_misaligned;\ntypedef struct\n{\n  unsigned int l, a;\n} uint2_misaligned;\ntypedef struct\n{\n  unsigned int r, g, b;\n} uint3_misaligned;\ntypedef struct\n{\n  unsig",
+        "log": "[aligned-types] Compiled on first attempt \u2713\n"
+    }
+]

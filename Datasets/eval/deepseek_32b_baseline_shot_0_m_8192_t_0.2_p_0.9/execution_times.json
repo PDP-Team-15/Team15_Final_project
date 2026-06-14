@@ -1,0 +1,13 @@
+{
+    "omp-cuda": {
+        "keogh-cuda": 32.47517800331116,
+        "stencil1d-cuda": 4.098047256469727,
+        "vanGenuchten-cuda": 69.85413312911987,
+        "convolution1D-cuda": 204.67326307296753
+    },
+    "cuda-omp": {
+        "keogh-omp": 60.51571989059448,
+        "pool-omp": 98.14868426322937,
+        "vanGenuchten-omp": 66.28592324256897
+    }
+}

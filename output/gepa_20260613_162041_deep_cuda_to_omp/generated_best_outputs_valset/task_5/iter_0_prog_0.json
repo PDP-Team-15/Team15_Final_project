@@ -1,0 +1,19 @@
+[
+    0.0,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "kernel": "car",
+        "from_api": "cuda",
+        "to_api": "omp",
+        "compiled": false,
+        "fix_needed": true,
+        "initial_compile_error": "main.cpp:6:10: fatal error: utils.h: No such file or directory\n    6 | #include \"utils.h\"\n      |          ^~~~~~~~~\ncompilation terminated.\nmake: *** [<builtin>: main.o] Error 1\n",
+        "post_fix_error": "main.cpp:6:10: fatal error: reference.h: No such file or directory\n    6 | #include \"reference.h\"\n      |          ^~~~~~~~~~~~~\ncompilation terminated.\nmake: *** [<builtin>: main.o] Error 1\n",
+        "source_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <chrono>\n#include <cuda.h>\n#include \"utils.h\"\n#include \"reference.h\"\n\n__global__ void car (\n    const float *__restrict__ img,\n    const float *__restrict__ kernels,\n    const float *__restrict__ offsets_h,\n    const float *__restrict__ offsets_v,\n          float *__restrict__ output,\n    const params p,\n    const int offset_unit,\n ",
+        "translated_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <chrono>\n#include <omp.h>\n#include \"utils.h\"\n#include \"reference.h\"\n\nvoid car(\n    const float *__restrict__ img,\n    const float *__restrict__ kernels,\n    const float *__restrict__ offsets_h,\n    const float *__restrict__ offsets_v,\n          float *__restrict__ output,\n    const params p,\n    const int offset_unit,\n    const int ",
+        "log": "[car] Compile failed, trying model fix...\n[car] Compile error:\nmain.cpp:6:10: fatal error: utils.h: No such file or directory\n    6 | #include \"utils.h\"\n      |          ^~~~~~~~~\ncompilation terminated.\nmake: *** [<builtin>: main.o] Error 1\n\n[car] Still failed after model fix \u2717\n[car] Second error:\nmain.cpp:6:10: fatal error: reference.h: No such file or directory\n    6 | #include \"reference.h\"\n      |          ^~~~~~~~~~~~~\ncompilation terminated.\nmake: *** [<builtin>: main.o] Error 1\n\n"
+    }
+]

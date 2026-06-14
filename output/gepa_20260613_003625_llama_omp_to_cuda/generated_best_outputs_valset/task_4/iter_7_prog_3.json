@@ -1,0 +1,17 @@
+[
+    1.0,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely, preserving all function qualifiers (e.g., const, inline), template parameters, and macro definitions. Output only the translated code inside a code block. No explanations, no comments, no omissions.\n\nWhen translating to CUDA:\n1. Always useproper __host__, __device__, or __global__ qualifiers based on function scope\n2. Preserve const qualifiers in function parameters\n3. Ensure all #define directives are correctly translated\n4. Validate CUDA-specific constructs like memory operations, kernel launches, and stream usage\n5. Default to compile-time safety when converting run-time parameters\n```\n\n```user_instruction\nTranslate the provided OpenMP code to CUDA, ensuring correct function qualifiers, const correctness, and CUDA-specific syntax. Include necessary CUDA runtime headers and preserve all #define directives.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Ensure the translated code is complete, correct, and compiles without errors. Follow these guidelines:\n\n1. Preserve all original functionality and algorithmic logic\n2. Replace {from_api} with {to_api} functions and constructs\n3. Correctly declare and initialize all variables\n4. Use proper CUDA syntax for kernel launches and memory management\n5. Ensure all code is properly terminated with semicolons\n6. Include necessary headers\n7. Validate code structure and syntax before providing output"
+    },
+    {
+        "kernel": "affine",
+        "from_api": "omp",
+        "to_api": "cuda",
+        "compiled": true,
+        "fix_needed": false,
+        "source_snippet": "\n\n#include <sys/types.h>\n#include <sys/stat.h>\n#include <fcntl.h>\n#include <unistd.h>\n#include <stdlib.h>\n#include <stdio.h>\n#include <math.h>\n#include <cstring>\n#include <cmath>\n#include <chrono>\n#include <iostream>\n#include \"reference.h\"\n\nint main(int argc, char** argv)\n{\n  if (argc != 4)\n  {\n    printf(\"Usage: %s <input image> <output image> <iterations>\\n\", argv[0]) ;\n    return -1 ;\n  }\n\n  un",
+        "translated_snippet": "#include <sys/types.h>\n#include <sys/stat.h>\n#include <fcntl.h>\n#include <unistd.h>\n#include <stdlib.h>\n#include <stdio.h>\n#include <math.h>\n#include <cstring>\n#include <cmath>\n#include <chrono>\n#include <iostream>\n#include \"reference.h\"\n\n#define WHITE 65535\n\n#define PI 3.14159265358979323846f\n\n#define X_SIZE 1024\n#define Y_SIZE 1024\n\n__global__ void kernel_affine_transform(unsigned short* input_i",
+        "log": "[affine] Compiled on first attempt \u2713\n"
+    }
+]

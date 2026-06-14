@@ -1,0 +1,19 @@
+[
+    0.0,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "kernel": "car",
+        "from_api": "cuda",
+        "to_api": "omp",
+        "compiled": false,
+        "fix_needed": true,
+        "initial_compile_error": "main.cpp: In function 'int main(int, char**)':\nmain.cpp:46:74: error: 'LCG_random_double' was not declared in this scope\n   46 |     for (size_t i = 0; i < image_size; i++) img[i] = (unsigned char)(256*LCG_random_double(&seed));\n      |                                                                          ^~~~~~~~~~~~~~~~~\nmain.cpp:47:78: error: 'LCG_random_double' was not declared in this scope\n   47 |     for (size_t i = 0; i < kernel_size; i++) kernel[i] = (unsigned char)(256*LCG_random_double(&seed));\n      |                                                                              ^",
+        "post_fix_error": "main.cpp: In function 'float LCG_random_double(long long unsigned int*)':\nmain.cpp:28:46: error: invalid type argument of unary '*' (have 'int')\n   28 |     *seed = (*seed * 1103515245 + 12345) % 2**31;\n      |                                              ^~~\nmain.cpp:29:31: error: invalid type argument of unary '*' (have 'int')\n   29 |     return (*seed) / (float)2**31;\n      |                   ",
+        "source_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <chrono>\n#include <cuda.h>\n#include \"utils.h\"\n#include \"reference.h\"\n\n__global__ void car (\n    const float *__restrict__ img,\n    const float *__restrict__ kernels,\n    const float *__restrict__ offsets_h,\n    const float *__restrict__ offsets_v,\n          float *__restrict__ output,\n    const params p,\n    const int offset_unit,\n ",
+        "translated_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <omp.h>\n\n#define N 128\n#define C 3\n#define H 480\n#define W 640\n#define K 9\n#define P 1\n#define REPEAT 1\n\ntypedef struct {\n    int output_dim_b;\n    int output_dim_c;\n    int output_dim_h;\n    int output_dim_w;\n    int kernel_size;\n    int image_w;\n    int image_h;\n} params;\n\nparams p = {N, C, H, W, K, W, H};\n\nint main(int argc, char",
+        "log": "[car] Compile failed, trying model fix...\n[car] Compile error:\nmain.cpp: In function 'int main(int, char**)':\nmain.cpp:46:74: error: 'LCG_random_double' was not declared in this scope\n   46 |     for (size_t i = 0; i < image_size; i++) img[i] = (unsigned char)(256*LCG_random_double(&seed));\n      |                                                                          ^~~~~~~~~~~~~~~~~\nmain.cpp:47:78: error: 'LCG_random_double' was not declared in this scope\n   47 |     for (size_t i = 0; i < kernel_size; i++) kernel[i] = (unsigned char)(256*LCG_random_double(&seed));\n      |                                                                              ^\n[car] Still failed after model fix \u2717\n[car] Second error:\nmain.cpp: In function 'float LCG_random_double(long long unsigned int*)':\nmain.cpp:28:46: error: invalid type argument of unary '*' (have 'int')\n   28 |     *seed = (*seed * 1103515245 + 12345) % 2**31;\n      |                                              ^~~\nmain.cpp:29:31: error: invalid type argument of unary '*' (have 'int')\n   29 |     return (*seed) / (float)2**31;\n      |                   \n"
+    }
+]

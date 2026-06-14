@@ -1,0 +1,6 @@
+heat.cu(57): error: calling a __host__ function("solution(double, double, double, double, double)") from a __global__ function("computeL2Norm") is not allowed
+
+heat.cu(57): error: identifier "solution" is undefined in device code
+
+2 errors detected in the compilation of "heat.cu".
+make: *** [Makefile:52: heat.o] Error 1

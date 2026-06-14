@@ -1,0 +1,22 @@
+heat.cu(80): error: identifier "initialize" is undefined
+    initialize<<<numBlocks, threadsPerBlock>>>(n, u, dx, length);
+    ^
+
+heat.cu(88): error: identifier "update" is undefined
+      update<<<numBlocks, threadsPerBlock>>>(n, u, u_tmp, r, r2);
+      ^
+
+heat.cu(97): error: too many arguments in function call
+    l2norm<<<numBlocks, threadsPerBlock>>>(n, u, nsteps, dt, alpha, dx, length, &norm);
+                                                                                ^
+
+heat.cu(97): error: calling a __device__ function("_Z6l2norm1?1?1?1?1?1?1?") from a __host__ function("main") is not allowed
+    l2norm<<<numBlocks, threadsPerBlock>>>(n, u, nsteps, dt, alpha, dx, length, &norm);
+    ^
+
+heat.cu(97): error: a __device__ function call cannot be configured
+    l2norm<<<numBlocks, threadsPerBlock>>>(n, u, nsteps, dt, alpha, dx, length, &norm);
+    ^
+
+5 errors detected in the compilation of "heat.cu".
+make: *** [Makefile:52: heat.o] Error 2

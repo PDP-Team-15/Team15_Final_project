@@ -1,0 +1,5 @@
+./main 256 20000000 100
+Query length = 256
+Subject length = 20000000
+Average kernel execution time: 0.009207 (s)
+PASS

@@ -1,0 +1,17 @@
+[
+    1.0,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "kernel": "ne",
+        "from_api": "cuda",
+        "to_api": "omp",
+        "compiled": true,
+        "fix_needed": false,
+        "source_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <chrono>\n#include <cuda.h>\n\ninline __device__ float3 operator*(const float3 &a, const float b)\n{\n  return make_float3(a.x * b, a.y * b, a.z * b);\n}\n\ninline __device__ float3 operator-(const float3 &a, const float3 &b)\n{\n  return make_float3(a.x - b.x, a.y - b.y, a.z - b.z);\n}\n\ninline __device__ float dot(const float3 &a, const float3 &b)\n{\n  return a",
+        "translated_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <omp.h>\n#include <math.h>\n\nstruct float3 {\n  float x, y, z;\n};\n\nstruct float4 {\n  float x, y, z, w;\n};\n\ninline float3 operator*(const float3 &a, const float b) {\n  return (float3) {a.x * b, a.y * b, a.z * b};\n}\n\ninline float3 operator-(const float3 &a, const float3 &b) {\n  return (float3) {a.x - b.x, a.y - b.y, a.z - b.z};\n}\n\ninline float dot(const f",
+        "log": "[ne] Compiled on first attempt \u2713\n"
+    }
+]

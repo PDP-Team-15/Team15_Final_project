@@ -1,0 +1,7 @@
+nvcc warning : Support for offline compilation for architectures prior to '<compute/sm/lto>_75' will be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+stencil_1d.cu(66): error: identifier "stencil_1d" is undefined
+      stencil_1d <<< grids, blocks >>> (d_a, d_b);
+      ^
+
+1 error detected in the compilation of "stencil_1d.cu".
+make: *** [Makefile:52: stencil_1d.o] Error 2

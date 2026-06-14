@@ -1,0 +1,19 @@
+[
+    0.5,
+    {
+        "system_prompt": "{\n  \"system_prompt\": \"You are an HPC expert specializing in translating CUDA code to OpenMP. Your goal is to produce syntactically correct OpenMP code that compiles on the first attempt without any errors. Follow these guidelines:\\n1. Remove all CUDA-specific constructs and qualifiers such as `__global__`, `__device__`, `__host__`, `__forceinline__`, and any CUDA-specific type qualifiers.\\n2. Replace CUDA memory management functions (`cudaMalloc`, `cudaFree`, `cudaMemcpy`) with standard C functions (`malloc`, `free`).\\n3. Replace CUDA kernel launches with direct function calls or OpenMP parallel regions using `#pragma omp parallel for`.\\n4. Replace CUDA-specific variables (`blockIdx`, `blockDim`, `threadIdx`) with OpenMP thread management functions like `omp_get_num_threads()` and `omp_get_thread_num()`.\\n5. Remove any CUDA-specific includes like `#include <cuda.h>` and ensure only necessary OpenMP includes like `#include <omp.h>` are present.\\n6. Ensure all function parameters and return types are compatible with OpenMP and remove any unused parameters.\\n7. Check and ensure all variables and function signatures match exactly between CUDA source and OpenMP implementation.\\n8. Use standard C functions for any mathematical or utility operations that do not require OpenMP-specific handling.\\n9. Output only the translated code without any comments, explanations, or debugging statements.\",\n  \"user_instruction\": \"Translate the following CUDA code snippet to OpenMP, ensuring all directives, function calls, and memory management are correct and complete for compilation.\"\n}",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "kernel": "affine",
+        "from_api": "cuda",
+        "to_api": "omp",
+        "compiled": true,
+        "fix_needed": true,
+        "initial_compile_error": "main.cpp:12:10: fatal error: 'reference.h' file not found\n   12 | #include \"reference.h\"\n      |          ^~~~~~~~~~~~~\n1 error generated.\nmake: *** [Makefile.aomp:61: main.o] Error 1\n",
+        "post_fix_error": "",
+        "source_snippet": "\n\n#include <sys/types.h>\n#include <sys/stat.h>\n#include <fcntl.h>\n#include <unistd.h>\n#include <stdlib.h>\n#include <stdio.h>\n#include <cstring>\n#include <cmath>\n#include <iostream>\n#include <chrono>\n#include <cuda.h>\n#include \"reference.h\"\n#include \"kernel.h\"\n\nint main(int argc, char** argv)\n{\n  if (argc != 4)\n  {\n    printf(\"Usage: %s <input image> <output image> <iterations>\\n\", argv[0]) ;\n    r",
+        "translated_snippet": "#include <sys/types.h>\n#include <sys/stat.h>\n#include <fcntl.h>\n#include <unistd.h>\n#include <stdlib.h>\n#include <stdio.h>\n#include <cstring>\n#include <cmath>\n#include <iostream>\n#include <chrono>\n#include <omp.h>\n#include \"reference.h\"\n#include \"kernel.h\"\n\nint main(int argc, char** argv)\n{\n  if (argc != 4)\n  {\n    printf(\"Usage: %s <input image> <output image> <iterations>\\n\", argv[0]);\n    retur",
+        "log": "[affine] Compile failed, trying model fix...\n[affine] Compile error:\nmain.cpp:12:10: fatal error: 'reference.h' file not found\n   12 | #include \"reference.h\"\n      |          ^~~~~~~~~~~~~\n1 error generated.\nmake: *** [Makefile.aomp:61: main.o] Error 1\n\n[affine] Compiled after model fix \u2713\n"
+    }
+]

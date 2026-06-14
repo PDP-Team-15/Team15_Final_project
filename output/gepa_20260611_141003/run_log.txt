@@ -1,0 +1,61 @@
+Iteration 0: Base program full valset score: 0.0 over 6 / 6 examples
+Iteration 1: Selected program 0 score: 0.0
+Iteration 1: Proposed new text for system_prompt: You are an HPC expert translating OMP to CUDA precisely. Output only translated code inside a code block. No explanations, comments, or omissions.
+
+Translate this OMP code into CUDA. Ensure all memory access patterns, parallelism, and API calls are correctly converted. Include required headers and manage memory correctly.
+Iteration 1: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 2: Selected program 0 score: 0.0
+Iteration 2: Proposed new text for user_instruction: System prompt for translation from OMP to CUDA:
+
+"Translate the provided OMP kernel code to CUDA. Follow these rules:
+
+1. Include necessary CUDA headers (e.g., <cuda_runtime.h>)
+
+2. Replace OMP pragmas with equivalent CUDA kernel launches:
+   - Determine thread-block hierarchy
+   - Use dim3 for grid and block dimensions
+   - Properly handle thread indices with blockIdx and threadIdx
+
+3. Convert memory operations:
+   - Replace shared memory with __shared__ qualifier
+   - Use proper CUDA memory spaces (global, shared, local)
+
+4. Keep code flow intact but adjust control structures as needed
+
+User instruction template for each code snippet:
+
+"Translate the following OMP code section to CUDA. Ensure:
+- Correct CUDA syntax
+- Proper kernel launch configuration
+- All memory operations are valid
+- No commented placeholders
+- Include necessary CUDA-specific features
+- Remove any OMP-specific pragmas or directives
+
+Code section: {code_snippet}"
+Iteration 2: Exception during optimization: 'code_snippet'
+Traceback (most recent call last):
+  File "/home/pdp/gepa/src/gepa/core/engine.py", line 746, in run
+    output = self.reflective_proposer.propose_output(state)
+  File "/home/pdp/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 488, in propose_output
+    return self.execute_proposal(ctx, state)
+  File "/home/pdp/gepa/src/gepa/proposer/reflective_mutation/reflective_mutation.py", line 420, in execute_proposal
+    eval_after = self.adapter.evaluate(ctx.minibatch, new_candidate, capture_traces=True)
+  File "/home/pdp/gepa/src/gepa/adapters/optimize_anything_adapter/optimize_anything_adapter.py", line 237, in evaluate
+    raw_results = [self._call_evaluator(candidate, example) for example in batch]
+  File "/home/pdp/gepa/src/gepa/adapters/optimize_anything_adapter/optimize_anything_adapter.py", line 237, in <listcomp>
+    raw_results = [self._call_evaluator(candidate, example) for example in batch]
+  File "/home/pdp/gepa/src/gepa/adapters/optimize_anything_adapter/optimize_anything_adapter.py", line 189, in _call_evaluator
+    return self.evaluator(
+  File "/home/pdp/gepa/src/gepa/optimize_anything.py", line 1105, in __call__
+    return self._wrapped(candidate, example=example, **kwargs)
+  File "/home/pdp/gepa/src/gepa/optimize_anything.py", line 1052, in wrapped_evaluator
+    raise result
+  File "/home/pdp/gepa/src/gepa/optimize_anything.py", line 1038, in wrapped_evaluator
+    result = evaluator_fn(eval_candidate, **filtered)
+  File "/home/pdp/UniPar_AI/multiagent_pipeline/gepa_optimize_prompts.py", line 235, in evaluate
+    messages = _build_messages(candidate, from_api, to_api, source_code)
+  File "/home/pdp/UniPar_AI/multiagent_pipeline/gepa_optimize_prompts.py", line 78, in _build_messages
+    user_instruction = candidate["user_instruction"].format(from_api=from_api, to_api=to_api)
+KeyError: 'code_snippet'
+

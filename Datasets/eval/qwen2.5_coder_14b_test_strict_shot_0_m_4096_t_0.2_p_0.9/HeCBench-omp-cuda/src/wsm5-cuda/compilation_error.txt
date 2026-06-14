@@ -1,0 +1,78 @@
+kernel.h(4): error: function "wsm" has already been defined
+  void wsm (
+       ^
+
+main.cu(54): error: identifier "ALLOC3" is undefined
+      ALLOC3(th) ;
+      ^
+
+main.cu(64): error: identifier "ALLOC2" is undefined
+      ALLOC2(rain) ;
+      ^
+
+main.cu(124): error: too many arguments in function call
+                                                djps+1, djpe,
+                                                ^
+
+main.cu(158): error: identifier "th_d" is undefined
+      free(th); cudaFree(th_d) ;
+                         ^
+
+main.cu(159): error: identifier "pii_d" is undefined
+      free(pii); cudaFree(pii_d) ;
+                          ^
+
+main.cu(160): error: identifier "q_d" is undefined
+      free(q); cudaFree(q_d) ;
+                        ^
+
+main.cu(161): error: identifier "qc_d" is undefined
+      free(qc); cudaFree(qc_d) ;
+                         ^
+
+main.cu(162): error: identifier "qi_d" is undefined
+      free(qi); cudaFree(qi_d) ;
+                         ^
+
+main.cu(163): error: identifier "qr_d" is undefined
+      free(qr); cudaFree(qr_d) ;
+                         ^
+
+main.cu(164): error: identifier "qs_d" is undefined
+      free(qs); cudaFree(qs_d) ;
+                         ^
+
+main.cu(165): error: identifier "den_d" is undefined
+      free(den); cudaFree(den_d) ;
+                          ^
+
+main.cu(166): error: identifier "p_d" is undefined
+      free(p); cudaFree(p_d) ;
+                        ^
+
+main.cu(167): error: identifier "delz_d" is undefined
+      free(delz); cudaFree(delz_d) ;
+                           ^
+
+main.cu(168): error: identifier "rain_d" is undefined
+      free(rain); cudaFree(rain_d) ;
+                           ^
+
+main.cu(169): error: identifier "rainncv_d" is undefined
+      free(rainncv); cudaFree(rainncv_d) ;
+                              ^
+
+main.cu(170): error: identifier "sr_d" is undefined
+      free(sr); cudaFree(sr_d) ;
+                         ^
+
+main.cu(171): error: identifier "snow_d" is undefined
+      free(snow); cudaFree(snow_d) ;
+                           ^
+
+main.cu(172): error: identifier "snowncv_d" is undefined
+      free(snowncv); cudaFree(snowncv_d) ;
+                              ^
+
+19 errors detected in the compilation of "main.cu".
+make: *** [Makefile:50: main.o] Error 2

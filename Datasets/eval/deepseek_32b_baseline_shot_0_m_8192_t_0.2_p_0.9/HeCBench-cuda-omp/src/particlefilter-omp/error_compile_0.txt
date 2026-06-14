@@ -1,0 +1,5 @@
+main.cpp:37:10: fatal error: 'kernel_find_index.h' file not found
+   37 | #include "kernel_find_index.h"
+      |          ^~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+make: *** [Makefile.aomp:63: main.o] Error 1

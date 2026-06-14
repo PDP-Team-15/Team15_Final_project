@@ -1,0 +1,3 @@
+2026-06-12 10:35:29,828 - root - INFO - Log file created at /home/pdp15/UniPar_AI/output/20260612_103529_datasets_after_eval_compile/datasets_after_eval_compile.log
+2026-06-12 10:35:29,828 - root - INFO - Running eval_compile to create a clean dataset...
+2026-06-12 10:35:29,854 - root - ERROR - Existing dataset directory /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9 does not exist

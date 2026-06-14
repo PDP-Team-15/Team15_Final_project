@@ -1,0 +1,19 @@
+[
+    0.0,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "kernel": "mr",
+        "from_api": "omp",
+        "to_api": "cuda",
+        "compiled": false,
+        "fix_needed": true,
+        "initial_compile_error": "main.cu:11: warning: \"BENCHMARK_ITERATIONS\" redefined\n   11 | #define BENCHMARK_ITERATIONS 1000000\n      | \nIn file included from main.cu:8:\nbenchmark.h:18: note: this is the location of the previous definition\n   18 | #define BENCHMARK_ITERATIONS 100000\n      | \nmain.cu:12: warning: \"SIZES_CNT32\" redefined\n   12 | #define SIZES_CNT32 10\n      | \nbenchmark.h:36: note: this is the location of the previous definition\n   36 | #define SIZES_CNT32 4\n      | \nmain.cu:13: warning: \"BASES_CNT32\" redefined\n   13 | #define BASES_CNT32 32\n      | \nbenchmark.h:23: note: this is the location of the previou",
+        "post_fix_error": "main.cu(51): error: argument of type \"const uint32_t *\" is incompatible with parameter of type \"void *\"\n    cudaMemcpy(d_bases32, bases32, sizeof(uint32_t) * bases32_size, cudaMemcpyHostToDevice);\n               ^\n\nmain.cu(65): error: identifier \"val_dev\" is undefined\n      cudaMemcpy(&val_dev, d_val, sizeof(int), cudaMemcpyDeviceToHost);\n                  ^\n\nmain.cu(66): error: too few arguments ",
+        "source_snippet": "#include <stdio.h>\n#include <stdint.h>\n#include <stdlib.h>\n#include <string.h>\n#include <time.h>\n#include <omp.h>\n#include <chrono>\n#include \"benchmark.h\"\n#include \"kernels.h\"\n\nvoid run_benchmark()\n{\n  int i, j, cnt, val_ref, val_eff;\n  uint64_t time_vals[SIZES_CNT_MAX][BASES_CNT_MAX][2];\n\n  int bases32_size = sizeof(bases32) / sizeof(bases32[0]);\n\n  const uint32_t *d_bases32 = bases32;\n  uint32_t",
+        "translated_snippet": "#include <stdio.h>\n#include <stdint.h>\n#include <stdlib.h>\n#include <string.h>\n#include <time.h>\n#include <cuda_runtime.h>\n#include <chrono>\n#include \"benchmark.h\"\n#include \"kernels.h\"\n\n#define BENCHMARK_ITERATIONS 1000000\n#define SIZES_CNT32 10\n#define BASES_CNT32 32\n\n__global__ void mr32_sf_kernel(const uint32_t *d_bases32, uint32_t *d_n32, int *d_val, int iterations) {\n  int idx = blockIdx.x * ",
+        "log": "[mr] Compile failed, trying model fix...\n[mr] Compile error:\nmain.cu:11: warning: \"BENCHMARK_ITERATIONS\" redefined\n   11 | #define BENCHMARK_ITERATIONS 1000000\n      | \nIn file included from main.cu:8:\nbenchmark.h:18: note: this is the location of the previous definition\n   18 | #define BENCHMARK_ITERATIONS 100000\n      | \nmain.cu:12: warning: \"SIZES_CNT32\" redefined\n   12 | #define SIZES_CNT32 10\n      | \nbenchmark.h:36: note: this is the location of the previous definition\n   36 | #define SIZES_CNT32 4\n      | \nmain.cu:13: warning: \"BASES_CNT32\" redefined\n   13 | #define BASES_CNT32 32\n      | \nbenchmark.h:23: note: this is the location of the previou\n[mr] Still failed after model fix \u2717\n[mr] Second error:\nmain.cu(51): error: argument of type \"const uint32_t *\" is incompatible with parameter of type \"void *\"\n    cudaMemcpy(d_bases32, bases32, sizeof(uint32_t) * bases32_size, cudaMemcpyHostToDevice);\n               ^\n\nmain.cu(65): error: identifier \"val_dev\" is undefined\n      cudaMemcpy(&val_dev, d_val, sizeof(int), cudaMemcpyDeviceToHost);\n                  ^\n\nmain.cu(66): error: too few arguments \n"
+    }
+]

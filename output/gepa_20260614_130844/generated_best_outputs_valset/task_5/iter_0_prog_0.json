@@ -1,0 +1,20 @@
+[
+    0.0,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations.",
+        "compile_fix_system": "You are an expert {to_api} programmer specializing in HPC code. Fix compilation errors. Provide only the complete corrected code inside a proper code block. No explanations, no omissions, no placeholders."
+    },
+    {
+        "kernel": "car",
+        "from_api": "omp",
+        "to_api": "cuda",
+        "compiled": false,
+        "fix_needed": true,
+        "initial_compile_error": "main.cu(33): error: class \"uint3\" has no member \"w\"\n    const int idx = blockIdx.w * blockDim.w + threadIdx.w;\n                             ^\n\nmain.cu(33): error: class \"dim3\" has no member \"w\"\n    const int idx = blockIdx.w * blockDim.w + threadIdx.w;\n                                          ^\n\nmain.cu(33): error: class \"uint3\" has no member \"w\"\n    const int idx = blockIdx.w * blockDim.w + threadIdx.w;\n                                                        ^\n\nmain.cu(88): error: no instance of constructor \"dim3::dim3\" matches the argument list\n            argument types are: (int, int, int",
+        "post_fix_error": "main.cu(91): error: argument of type \"const float *\" is incompatible with parameter of type \"float *\"\n    car_kernel<<<gridSize, blockSize>>>(img, kernels, offsets_h, offsets_v, output, p, offset_unit, padding);\n                                        ^\n\nmain.cu(91): error: argument of type \"const float *\" is incompatible with parameter of type \"float *\"\n    car_kernel<<<gridSize, blockSize>>>(img",
+        "source_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <chrono>\n#include <omp.h>\n#include \"utils.h\"\n#include \"reference.h\"\n\n#define max(a,b) (a) > (b) ? (a) : (b)\n#define min(a,b) (a) < (b) ? (a) : (b)\n\nvoid car (\n    const float *__restrict img,\n    const float *__restrict kernels,\n    const float *__restrict offsets_h,\n    const float *__restrict offsets_v,\n          float *__restrict",
+        "translated_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <cuda_runtime.h>\n#include <time.h>\n\n#define max(a,b) (a) > (b) ? (a) : (b)\n#define min(a,b) (a) < (b) ? (a) : (b)\n\n#define CUDA_CHECK_ERROR(error) \\\n  do { \\\n    cudaError_t _cuda_error = (error); \\\n    if (_cuda_error != cudaSuccess) { \\\n      printf(\"CUDA error %s:%d: %s\\n\", __FILE__, __LINE__, cudaGetErrorString(_cuda_error)); \\\n",
+        "log": "[car] Compile failed, trying model fix...\n[car] Compile error:\nmain.cu(33): error: class \"uint3\" has no member \"w\"\n    const int idx = blockIdx.w * blockDim.w + threadIdx.w;\n                             ^\n\nmain.cu(33): error: class \"dim3\" has no member \"w\"\n    const int idx = blockIdx.w * blockDim.w + threadIdx.w;\n                                          ^\n\nmain.cu(33): error: class \"uint3\" has no member \"w\"\n    const int idx = blockIdx.w * blockDim.w + threadIdx.w;\n                                                        ^\n\nmain.cu(88): error: no instance of constructor \"dim3::dim3\" matches the argument list\n            argument types are: (int, int, int\n[car] Still failed after model fix \u2717\n[car] Second error:\nmain.cu(91): error: argument of type \"const float *\" is incompatible with parameter of type \"float *\"\n    car_kernel<<<gridSize, blockSize>>>(img, kernels, offsets_h, offsets_v, output, p, offset_unit, padding);\n                                        ^\n\nmain.cu(91): error: argument of type \"const float *\" is incompatible with parameter of type \"float *\"\n    car_kernel<<<gridSize, blockSize>>>(img\n"
+    }
+]

@@ -1,0 +1,23 @@
+main.cu(22): error: expression must have a constant value
+        float new_position[D] = {0.f};
+                           ^
+main.cu(22): note #2689-D: the value of parameter "D" (declared at line 18) cannot be used as a constant
+        float new_position[D] = {0.f};
+                           ^
+
+main.cu(48): error: expression must have a constant value
+      float valid_data[TILE_WIDTH];
+                       ^
+main.cu(48): note #2689-D: the value of parameter "TILE_WIDTH" (declared at line 45) cannot be used as a constant
+      float valid_data[TILE_WIDTH];
+                       ^
+
+main.cu(54): error: expression must have a constant value
+      float new_position[D] = {0.f};
+                         ^
+main.cu(54): note #2689-D: the value of parameter "D" (declared at line 45) cannot be used as a constant
+      float new_position[D] = {0.f};
+                         ^
+
+3 errors detected in the compilation of "main.cu".
+make: *** [Makefile:50: main.o] Error 1

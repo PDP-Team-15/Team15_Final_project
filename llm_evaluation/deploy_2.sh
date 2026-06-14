@@ -1,11 +1,8 @@
 #!/bin/bash
-AVAILABLE_GPUS=$(nvidia-smi --query-gpu=index,memory.free --format=csv,noheader,nounits | awk -F, '{print $1}' | paste -sd "," -)
-export CUDA_VISIBLE_DEVICES=$AVAILABLE_GPUS
-#0,1,2,3
-# $AVAILABLE_GPUS
-GPU_COUNT=$(echo $AVAILABLE_GPUS | tr ',' '\n' | wc -l)
-#0,1
-#,2,3
+if [[ -z "${CUDA_VISIBLE_DEVICES}" ]]; then
+    AVAILABLE_GPUS=$(nvidia-smi --query-gpu=index,memory.free --format=csv,noheader,nounits | awk -F, '{print $1}' | paste -sd "," -)
+    export CUDA_VISIBLE_DEVICES=$AVAILABLE_GPUS
+fi
 echo '################################ deploy_2 ##########################################' > nohup.out
 
 echo "running vllm server" > ./vllm_server_status.txt
@@ -15,16 +12,21 @@ echo "running vllm server" > ./vllm_server_status.txt
     # --uvicorn-log-level debug \
     # --disable_custom_all_reduce \
 # nohup vllm serve meta-llama/Meta-Llama-3.1-70B-Instruct \
-nohup vllm serve meta-llama/Llama-3.3-70B-Instruct \
-    --enable-chunked-prefill False \
-    --tensor-parallel-size $GPU_COUNT \
-    --max-model-len 80000 \
-    --quantization="fp8" \
-    --gpu-memory-utilization 0.8 \
-    --swap-space 8 \
-    --api-key token123 \
-    --port 8001
+# port 8002 for GPU:0
+# port 8001 for GPU:1
 
+
+export CUDA_VISIBLE_DEVICES=1
+nohup vllm serve meta-llama/Meta-Llama-3.1-8B-Instruct \
+    --tensor-parallel-size 1 \
+    --max-model-len 16384 \
+    --host 0.0.0.0 \
+    --port 8009 \
+    --gpu-memory-utilization 0.85 \
+    --swap-space 8 \
+    --api-key token123 &
+
+# --quantization="fp8" \
 EXIT_CODE=$?
 if [ $EXIT_CODE -ne 0 ]; then
     echo "crashed:$EXIT_CODE" >> ../vllm_server_status.txt

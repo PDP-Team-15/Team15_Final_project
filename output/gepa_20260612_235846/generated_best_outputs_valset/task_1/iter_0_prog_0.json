@@ -1,0 +1,19 @@
+[
+    0.0,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "kernel": "cbsfil",
+        "from_api": "omp",
+        "to_api": "cuda",
+        "compiled": false,
+        "fix_needed": true,
+        "initial_compile_error": "main.cu(73): error: calling a __device__ function(\"PowTwoDivider(int)\") from a __host__ function(\"main\") is not allowed\n    int numThreadsX = std::min(PowTwoDivider(height), 64);\n                               ^\n\nmain.cu(74): error: calling a __device__ function(\"_Z13PowTwoDivider1?\") from a __host__ function(\"main\") is not allowed\n    int numThreadsY = std::min(PowTwoDivider(width), 64);\n                               ^\n\nmain.cu(92): error: identifier \"uchar\" is undefined\n      const uchar *t = (const uchar*)(&image[i]);\n            ^\n\nmain.cu(92): error: identifier \"uchar\" is undefined\n     ",
+        "post_fix_error": "main.cu(73): error: calling a __device__ function(\"PowTwoDivider(int)\") from a __host__ function(\"main\") is not allowed\n    int numThreadsX = std::min(PowTwoDivider(height), 64);\n                               ^\n\nmain.cu(74): error: calling a __device__ function(\"_Z13PowTwoDivider1?\") from a __host__ function(\"main\") is not allowed\n    int numThreadsY = std::min(PowTwoDivider(width), 64);\n        ",
+        "source_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <algorithm>\n#include <chrono>\n#include <omp.h>\n#include \"kernels.h\"\n\nint PowTwoDivider(int n)\n{\n  if (n == 0) return 0;\n  int divider = 1;\n  while ((n & divider) == 0) divider <<= 1;\n  return divider;\n}\n\nint main(int argc, char* argv[]) {\n  if (argc != 4) {\n    printf(\"Usage: %s <width> <height> <repeat>\\n\", argv[0]);\n    return 1;\n",
+        "translated_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <cuda_runtime.h>\n#include <time.h>\n\n__device__ __inline__ int PowTwoDivider(int n) {\n  if (n == 0) return 0;\n  int divider = 1;\n  while ((n & divider) == 0) divider <<= 1;\n  return divider;\n}\n\n__global__ void toCoef2DX(float *image, int numThreadsX, int image_pitch, int width, int height) {\n  int x = blockIdx.x * blockDim.x + thread",
+        "log": "[cbsfil] Compile failed, trying model fix...\n[cbsfil] Compile error:\nmain.cu(73): error: calling a __device__ function(\"PowTwoDivider(int)\") from a __host__ function(\"main\") is not allowed\n    int numThreadsX = std::min(PowTwoDivider(height), 64);\n                               ^\n\nmain.cu(74): error: calling a __device__ function(\"_Z13PowTwoDivider1?\") from a __host__ function(\"main\") is not allowed\n    int numThreadsY = std::min(PowTwoDivider(width), 64);\n                               ^\n\nmain.cu(92): error: identifier \"uchar\" is undefined\n      const uchar *t = (const uchar*)(&image[i]);\n            ^\n\nmain.cu(92): error: identifier \"uchar\" is undefined\n     \n[cbsfil] Still failed after model fix \u2717\n[cbsfil] Second error:\nmain.cu(73): error: calling a __device__ function(\"PowTwoDivider(int)\") from a __host__ function(\"main\") is not allowed\n    int numThreadsX = std::min(PowTwoDivider(height), 64);\n                               ^\n\nmain.cu(74): error: calling a __device__ function(\"_Z13PowTwoDivider1?\") from a __host__ function(\"main\") is not allowed\n    int numThreadsY = std::min(PowTwoDivider(width), 64);\n        \n"
+    }
+]

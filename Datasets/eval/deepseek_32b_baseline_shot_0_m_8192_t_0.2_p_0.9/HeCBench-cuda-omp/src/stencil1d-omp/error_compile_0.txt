@@ -1,0 +1,8 @@
+stencil_1d.cpp:15:41: error: no matching function for call to 'omp_get_team_size'
+   15 |     int gindex = omp_get_thread_num() + omp_get_team_size() * omp_get_thread_num();
+      |                                         ^~~~~~~~~~~~~~~~~
+/home/pdp15/.conda/envs/unipar/lib/clang/20/include/omp.h:76:42: note: candidate function not viable: requires 1 argument, but 0 were provided
+   76 |     extern int    __KAI_KMPC_CONVENTION  omp_get_team_size           (int);
+      |                                          ^                            ~~~
+1 error generated.
+make: *** [Makefile.aomp:60: stencil_1d.o] Error 1

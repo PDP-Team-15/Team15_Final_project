@@ -1,21 +1,21 @@
 import os
 import logging
 import torch
-from transformers import LlamaForCausalLM, AutoTokenizer, get_scheduler
+from transformers import LlamaForCausalLM, AutoTokenizer, get_scheduler, BitsAndBytesConfig
 from transformers import Trainer, TrainingArguments
 from peft import LoraConfig, get_peft_model
 from accelerate import Accelerator
 from torch.utils.data import DataLoader
-from torchtitan import ContextParallel
 
 import sys
 sys.path.append('../data')
 from kernel_dataset import KernelDataset
+from tqdm import tqdm
 
 
 HOME_PATH = os.path.expanduser('~')
-PROJECT_PATH = os.path.join(HOME_PATH, 'SC-lab', 'UniPar')
-MAX_LENGTH = 16_384
+PROJECT_PATH = os.path.join(HOME_PATH, 'UniPar_AI')
+MAX_LENGTH = 4096
 PRECISION = 2
 
 model_name = "meta-llama/Meta-Llama-3.1-8B-Instruct"  
@@ -73,9 +73,18 @@ if __name__ == '__main__':
 
     logging.basicConfig(filename=f'peft_llama8.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
+    # Set up QLoRA 4-bit quantization config
+    quantization_config = BitsAndBytesConfig(
+        load_in_4bit=True,
+        bnb_4bit_quant_type="nf4",
+        bnb_4bit_compute_dtype=torch.float16,
+        bnb_4bit_use_double_quant=True,
+    )
+
     model = LlamaForCausalLM.from_pretrained(
         model_name,
-        attn_implementation="flash_attention_2",
+        quantization_config=quantization_config,
+        attn_implementation="sdpa",
         torch_dtype=torch.float16,
         device_map = 'auto'
     )
@@ -94,8 +103,18 @@ if __name__ == '__main__':
     # Integrating LoRA into the LLaMA model
     model = get_peft_model(model, lora_config)
 
-    context_parallel = ContextParallel(model, num_gpus=num_gpus)
-    model = context_parallel.wrap_model(model)
+    model.config.use_cache = False
+    
+    # Enable gradient checkpointing to save memory
+    model.gradient_checkpointing_enable()
+
+    # For PEFT backwards compatibility with gradient checkpointing
+    def make_inputs_require_grad(module, input, output):
+        output.requires_grad_(True)
+    model.get_input_embeddings().register_forward_hook(make_inputs_require_grad)
+
+    # context_parallel = ContextParallel(model, num_gpus=num_gpus)
+    # model = context_parallel.wrap_model(model)
 
 
     total_params = sum(p.numel() for p in model.parameters())
@@ -125,7 +144,7 @@ if __name__ == '__main__':
 
     # Set up optimizer and learning rate scheduler
     optimizer = torch.optim.AdamW(model.parameters(), lr=5e-5)
-    num_train_epochs = 10
+    num_train_epochs = 4
     num_training_steps = num_train_epochs * len(train_dataloader)
     lr_scheduler = get_scheduler(
         name="linear",
@@ -144,7 +163,8 @@ if __name__ == '__main__':
     global_step = 0
     for epoch in range(num_train_epochs):
         model.train()
-        for batch in train_dataloader:
+        train_pbar = tqdm(train_dataloader, desc=f"Epoch {epoch} Training")
+        for batch in train_pbar:
             outputs = model(
                 input_ids=batch['input_ids'],
                 attention_mask=batch['attention_mask'],
@@ -157,13 +177,15 @@ if __name__ == '__main__':
             optimizer.zero_grad()
             global_step += 1
 
+            train_pbar.set_postfix({'loss': loss.item()})
             if global_step % 10 == 0:
                 logging.info(f"Epoch {epoch}, step {global_step}, loss: {loss.item()}")
 
         # Evaluation after each epoch
         model.eval()
         total_eval_loss = 0.0
-        for batch in eval_dataloader:
+        eval_pbar = tqdm(eval_dataloader, desc=f"Epoch {epoch} Evaluation")
+        for batch in eval_pbar:
             with torch.no_grad():
                 outputs = model(
                     input_ids=batch['input_ids'],
@@ -171,8 +193,11 @@ if __name__ == '__main__':
                     labels=batch['labels']
                 )
             total_eval_loss += outputs.loss.item()
+            eval_pbar.set_postfix({'loss': outputs.loss.item()})
+            
         avg_eval_loss = total_eval_loss / len(eval_dataloader)
         logging.info(f"Epoch {epoch} evaluation loss: {avg_eval_loss}")
+        print(f"Epoch {epoch} evaluation loss: {avg_eval_loss}")
 
     # Save the fine-tuned model
     accelerator.wait_for_everyone()

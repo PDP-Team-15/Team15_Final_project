@@ -1,0 +1,17 @@
+[
+    1.0,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "kernel": "adam",
+        "from_api": "omp",
+        "to_api": "cuda",
+        "compiled": true,
+        "fix_needed": false,
+        "source_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <omp.h>\n#include <chrono>\n#include <random>\n#include \"reference.h\"\n\ntemplate <typename T, typename G>\ninline void adam (\n        T* __restrict p,\n        T* __restrict m,\n        T* __restrict v,\n  const G* __restrict g,\n  const float b1,\n  const float b2,\n  const float eps,\n  const float grad_scale,\n  const float step_size,\n  const",
+        "translated_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <cuda_runtime.h>\n#include <chrono>\n#include <random>\n#include \"reference.h\"\n\ntemplate <typename T, typename G>\n__global__ void adam_kernel(\n        T* __restrict p,\n        T* __restrict m,\n        T* __restrict v,\n        const G* __restrict g,\n        const float b1,\n        const float b2,\n        const float eps,\n        const f",
+        "log": "[adam] Compiled on first attempt \u2713\n"
+    }
+]

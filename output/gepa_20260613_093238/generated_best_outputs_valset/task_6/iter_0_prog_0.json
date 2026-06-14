@@ -1,0 +1,19 @@
+[
+    0.5,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "kernel": "libor",
+        "from_api": "omp",
+        "to_api": "cuda",
+        "compiled": true,
+        "fix_needed": true,
+        "initial_compile_error": "main.cu(225): error: identifier \"maturities\" is undefined\n    cudaMemcpy(h_maturities, maturities, sizeof(int) * 15, cudaMemcpyHostToDevice);\n                             ^\n\nmain.cu(226): error: identifier \"swaprates\" is undefined\n    cudaMemcpy(h_swaprates, swaprates, sizeof(float) * 15, cudaMemcpyHostToDevice);\n                            ^\n\nmain.cu(227): error: identifier \"lambda\" is undefined\n    cudaMemcpy(h_lambda, lambda, sizeof(float) * 80, cudaMemcpyHostToDevice);\n                         ^\n\n3 errors detected in the compilation of \"main.cu\".\nmake: *** [Makefile:52: main.o] Error 2\n",
+        "post_fix_error": "",
+        "source_snippet": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <chrono>\n#include <omp.h>\n\n\n\n\n#define BLOCK_SIZE 64\n#define GRID_SIZE 1500\n\n\n\n\n#define NN 80\n#define NMAT 40\n#define L2_SIZE 3280 \n\n#define NOPT 15\n#define NPATH 96000\n\n\n\n\n#pragma omp declare target\nvoid path_calc(float *L, \n               const float *z, \n               const float *lambda, \n   ",
+        "translated_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <cuda_runtime.h>\n\n#define BLOCK_SIZE 64\n#define GRID_SIZE 1500\n\n#define NN 80\n#define NMAT 40\n#define L2_SIZE 3280\n\n#define NOPT 15\n#define NPATH 96000\n\n__global__ void path_calc(float *L, \n                          const float *z, \n                          const float *lambda, \n                          const float delta,\n        ",
+        "log": "[libor] Compile failed, trying model fix...\n[libor] Compile error:\nmain.cu(225): error: identifier \"maturities\" is undefined\n    cudaMemcpy(h_maturities, maturities, sizeof(int) * 15, cudaMemcpyHostToDevice);\n                             ^\n\nmain.cu(226): error: identifier \"swaprates\" is undefined\n    cudaMemcpy(h_swaprates, swaprates, sizeof(float) * 15, cudaMemcpyHostToDevice);\n                            ^\n\nmain.cu(227): error: identifier \"lambda\" is undefined\n    cudaMemcpy(h_lambda, lambda, sizeof(float) * 80, cudaMemcpyHostToDevice);\n                         ^\n\n3 errors detected in the compilation of \"main.cu\".\nmake: *** [Makefile:52: main.o] Error 2\n\n[libor] Compiled after model fix \u2713\n"
+    }
+]

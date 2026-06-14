@@ -1,0 +1,17 @@
+[
+    1.0,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely, preserving all function qualifiers (e.g., const, inline), template parameters, and macro definitions. Output only the translated code inside a code block. No explanations, no comments, no omissions.\n\nWhen translating to CUDA:\n1. Always useproper __host__, __device__, or __global__ qualifiers based on function scope\n2. Preserve const qualifiers in function parameters\n3. Ensure all #define directives are correctly translated\n4. Validate CUDA-specific constructs like memory operations, kernel launches, and stream usage\n5. Default to compile-time safety when converting run-time parameters\n```\n\n```user_instruction\nTranslate the provided OpenMP code to CUDA, ensuring correct function qualifiers, const correctness, and CUDA-specific syntax. Include necessary CUDA runtime headers and preserve all #define directives.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Ensure the translated code is complete, correct, and compiles without errors. Follow these guidelines:\n\n1. Preserve all original functionality and algorithmic logic\n2. Replace {from_api} with {to_api} functions and constructs\n3. Correctly declare and initialize all variables\n4. Use proper CUDA syntax for kernel launches and memory management\n5. Ensure all code is properly terminated with semicolons\n6. Include necessary headers\n7. Validate code structure and syntax before providing output"
+    },
+    {
+        "kernel": "log2",
+        "from_api": "omp",
+        "to_api": "cuda",
+        "compiled": true,
+        "fix_needed": false,
+        "source_snippet": "#include <iostream>\n#include <fstream>\n#include <iomanip>\n#include <vector>\n#include <cmath>\n#include \"kernel.h\"\n\nint main(int argc, char* argv[]) {\n\n  if (argc != 2) {\n    std::cout << \"Usage: ./main <config filename>\\n\";\n    return 1;\n  }\n\n  std::ifstream message_file (argv[1]);\n\n  std::string placeholder;\n  message_file >> placeholder;\n  long ceilingVal;\n  message_file >> ceilingVal;\n\n  message",
+        "translated_snippet": "#include <iostream>\n#include <fstream>\n#include <iomanip>\n#include <vector>\n#include <cmath>\n#include <cuda_runtime.h>\n#include \"kernel.h\"\n\n#define HOST 1\n\n__global__ void log2_approx_kernel(float* inputs, float* d_output_vals, int* precision, int inputs_size, int precision_count, int repeat) {\n  int idx = blockIdx.x * blockDim.x + threadIdx.x;\n  if (idx < inputs_size * precision_count) {\n    int ",
+        "log": "[log2] Compiled on first attempt \u2713\n"
+    }
+]

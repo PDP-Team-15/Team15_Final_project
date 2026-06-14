@@ -1,0 +1,30 @@
+main.cu(22): warning #177-D: variable "Teams" was declared but never referenced
+    static const int Teams = TeamX * TeamY;
+                     ^
+          detected during instantiation of "void stddev(Type *, const Type *, IdxType, IdxType, __nv_bool) [with Type=float, IdxType=int]" at line 107
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+main.cu(20): error: dynamic initialization is not supported for a function-scope static __device__ variable within a __device__/__global__ function
+    static const int TeamX = (N + (IdxType)RowsPerBlk - 1) / (IdxType)RowsPerBlk;
+                     ^
+          detected during:
+            instantiation of "void stddev_kernel(Type *, const Type *, IdxType, IdxType, __nv_bool) [with Type=float, IdxType=int]" at line 67
+            instantiation of "void stddev(Type *, const Type *, IdxType, IdxType, __nv_bool) [with Type=float, IdxType=int]" at line 107
+
+main.cu(21): error: dynamic initialization is not supported for a function-scope static __device__ variable within a __device__/__global__ function
+    static const int TeamY = (D + (IdxType)ColsPerBlk - 1) / (IdxType)ColsPerBlk;
+                     ^
+          detected during:
+            instantiation of "void stddev_kernel(Type *, const Type *, IdxType, IdxType, __nv_bool) [with Type=float, IdxType=int]" at line 67
+            instantiation of "void stddev(Type *, const Type *, IdxType, IdxType, __nv_bool) [with Type=float, IdxType=int]" at line 107
+
+main.cu(22): error: dynamic initialization is not supported for a function-scope static __device__ variable within a __device__/__global__ function
+    static const int Teams = TeamX * TeamY;
+                     ^
+          detected during:
+            instantiation of "void stddev_kernel(Type *, const Type *, IdxType, IdxType, __nv_bool) [with Type=float, IdxType=int]" at line 67
+            instantiation of "void stddev(Type *, const Type *, IdxType, IdxType, __nv_bool) [with Type=float, IdxType=int]" at line 107
+
+3 errors detected in the compilation of "main.cu".
+make: *** [Makefile:51: main.o] Error 1

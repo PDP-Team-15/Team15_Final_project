@@ -1,0 +1,6 @@
+main.cu(16): error: invalid redeclaration of type name "float2" (declared at line 396 of /home/pdp15/.conda/envs/unipar/bin/../include/vector_types.h)
+  } float2;
+    ^
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:50: main.o] Error 2

@@ -1,0 +1,2 @@
+running vllm server (deepseek)
+stopped:0

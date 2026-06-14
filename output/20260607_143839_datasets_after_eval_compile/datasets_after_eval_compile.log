@@ -1,0 +1,49 @@
+2026-06-07 14:38:39,468 - root - INFO - Log file created at /home/pdp15/UniPar_AI/output/20260607_143839_datasets_after_eval_compile/datasets_after_eval_compile.log
+2026-06-07 14:38:39,469 - root - INFO - Running eval_compile to create a clean dataset...
+2026-06-07 14:38:39,469 - root - INFO - Original model name extracted: gpt
+2026-06-07 14:38:39,469 - root - INFO - Using clean dataset at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9 for main processing
+2026-06-07 14:38:39,505 - root - INFO - ModelAgent initialized: translator=Qwen/Qwen2.5-Coder-14B-Instruct-AWQ@http://localhost:8004/v1, fixer=Qwen/Qwen2.5-Coder-14B-Instruct-AWQ@http://localhost:8004/v1
+2026-06-07 14:38:39,505 - root - INFO - Processing source API: omp to cuda
+2026-06-07 14:38:39,505 - root - INFO - Found 18 kernels to process for omp to cuda
+2026-06-07 14:38:39,505 - root - INFO - Processing kernel: ace-cuda
+2026-06-07 14:38:39,505 - root - INFO - Compiling ace-cuda
+2026-06-07 14:38:39,505 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-07 14:38:39,505 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-07 14:38:39,505 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/pred_compile_0.cu
+2026-06-07 14:38:39,505 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/main.cu
+2026-06-07 14:38:39,505 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda
+2026-06-07 14:38:39,505 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda
+2026-06-07 14:38:39,509 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/Makefile
+2026-06-07 14:38:39,858 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-07 14:38:39,858 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-07 14:38:48,768 - httpx - INFO - HTTP Request: POST http://localhost:8004/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-07 14:38:48,774 - root - INFO - Saved compilation fix model response for kernel ace (attempt 0) to /home/pdp15/UniPar_AI/output/kernel_logs/ace_omp_to_cuda
+2026-06-07 14:38:48,775 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/pred_compile_1.cu
+2026-06-07 14:38:48,776 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/error_compile_0.txt
+2026-06-07 14:38:48,776 - root - INFO - Attempting to compile main.cu (Attempt 2)
+2026-06-07 14:38:48,776 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/main.cu
+2026-06-07 14:38:48,776 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda
+2026-06-07 14:38:48,776 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda
+2026-06-07 14:38:48,780 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/Makefile
+2026-06-07 14:38:49,798 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/result.txt
+2026-06-07 14:38:49,798 - root - INFO - Generated partial result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda
+2026-06-07 14:38:49,798 - root - INFO - Running ace-cuda
+2026-06-07 14:38:49,799 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-07 14:38:49,799 - root - INFO - Attempting to run pred_compile_0.cu (Attempt 1)
+2026-06-07 14:38:49,800 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/pred_compile_0.cu at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/pred_run_0.cu
+2026-06-07 14:38:49,805 - root - WARNING - Program results do not match expected results: Did not find 'pass' in result.txt
+2026-06-07 14:38:49,806 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/result.txt
+2026-06-07 14:38:49,806 - root - INFO - Generated/updated result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda
+2026-06-07 14:38:49,806 - root - ERROR - Execution failed for ace-cuda: local variable 'run_attempt_dir' referenced before assignment
+2026-06-07 14:38:49,807 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/result.txt
+2026-06-07 14:38:49,807 - root - INFO - Processing kernel: pnpoly-cuda
+2026-06-07 14:38:49,807 - root - INFO - Compiling pnpoly-cuda
+2026-06-07 14:38:49,807 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-07 14:38:49,807 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-07 14:38:49,808 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/pred_compile_0.cu
+2026-06-07 14:38:49,808 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/main.cu
+2026-06-07 14:38:49,808 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda
+2026-06-07 14:38:49,808 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda
+2026-06-07 14:38:49,812 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/Makefile
+2026-06-07 14:38:50,275 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-07 14:38:50,275 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000

@@ -1,0 +1,7 @@
+nvcc warning : Support for offline compilation for architectures prior to '<compute/sm/lto>_75' will be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+main.cu(86): error: identifier "lb_keogh" is undefined
+      lb_keogh<<<grids, blocks, smem_size>>>
+      ^
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:52: main.o] Error 2

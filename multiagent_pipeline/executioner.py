@@ -3,9 +3,9 @@ from utils import *
 from solver import ExecutionAgent as SolverExecutionAgent
 from backup_utils import check_for_pass, create_code_backup, create_error_backup, generate_result_file
 import sys
-sys.path.append('/home/tomerbitan/unipar/UniPar/')
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from replace_main import replace_with_original
-hec_bench_loc = '/home/tomerbitan/unipar/HeCBench/src/'
+hec_bench_loc = '/home/pdp15/HeCBench/src/'
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
@@ -63,6 +63,7 @@ class RunnerAgent:
         errors = []
         code = ""  # Initialize code with a default empty string
         runtime_attempts_base_dir = build_dir
+        run_attempt_dir = None
         if to_api == 'omp':
             makefile_path = os.path.join(build_dir, "Makefile.aomp")
         elif to_api == 'cuda':
@@ -155,7 +156,7 @@ class RunnerAgent:
                             }
                         with open(main_cpp, "w") as f:
                             f.write(code)
-                        loc_in_hec_bench = main_cpp.split('/')[-2:]
+                        loc_in_hec_bench = '/'.join(main_cpp.split('/')[-2:])
                         replace_with_original(hec_bench_loc+loc_in_hec_bench, main_cpp, fix_attempt=False)
                         attempt += 1
                         logging.info(f"Attempting to run {exec_name} (Attempt {attempt + 1})")
@@ -232,7 +233,7 @@ class RunnerAgent:
                     # Update the main file with the fixed code
                     with open(os.path.join(build_dir, run_filename), "w") as f:
                         f.write(code)
-                    loc_in_hec_bench = os.path.join(build_dir, run_filename).split('/')[-2:]
+                    loc_in_hec_bench = '/'.join(os.path.join(build_dir, run_filename).split('/')[-2:])
                     replace_with_original(hec_bench_loc+loc_in_hec_bench, main_cpp, fix_attempt=False)
 
                     attempt += 1

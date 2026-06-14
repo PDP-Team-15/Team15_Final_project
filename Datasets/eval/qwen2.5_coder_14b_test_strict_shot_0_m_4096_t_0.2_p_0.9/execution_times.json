@@ -1,0 +1,9 @@
+{
+    "omp-cuda": {
+        "keogh-cuda": 31.36117672920227,
+        "vanGenuchten-cuda": 43.40869879722595
+    },
+    "cuda-omp": {
+        "stddev-omp": 71.05516338348389
+    }
+}

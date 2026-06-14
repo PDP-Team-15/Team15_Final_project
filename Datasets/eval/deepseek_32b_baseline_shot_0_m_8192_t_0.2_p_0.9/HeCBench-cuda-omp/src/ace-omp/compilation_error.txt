@@ -1,0 +1,8 @@
+main.cpp:292:13: error: cannot initialize a variable of type 'double *' with an lvalue of type 'nRarray *' (aka 'double (*)[400][400]')
+  292 |     double *d_phiold = phi_host;
+      |             ^          ~~~~~~~~
+main.cpp:294:13: error: cannot initialize a variable of type 'double *' with an lvalue of type 'nRarray *' (aka 'double (*)[400][400]')
+  294 |     double *d_uold = u_host;
+      |             ^        ~~~~~~
+2 errors generated.
+make: *** [Makefile.aomp:66: main.o] Error 1

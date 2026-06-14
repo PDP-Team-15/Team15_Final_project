@@ -1,0 +1,32 @@
+main.cu(48): warning #1835-D: attribute "__global__" does not apply here
+  __attribute__((global)) void atomicKernel1(T* gpuData, int len) {
+                 ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+main.cu(48): error: incomplete type is not allowed
+  __attribute__((global)) void atomicKernel1(T* gpuData, int len) {
+                               ^
+
+main.cu(48): error: identifier "T" is undefined
+  __attribute__((global)) void atomicKernel1(T* gpuData, int len) {
+                                             ^
+
+main.cu(48): error: identifier "gpuData" is undefined
+  __attribute__((global)) void atomicKernel1(T* gpuData, int len) {
+                                                ^
+
+main.cu(48): error: type name is not allowed
+  __attribute__((global)) void atomicKernel1(T* gpuData, int len) {
+                                                         ^
+
+main.cu(48): error: expected a ")"
+  __attribute__((global)) void atomicKernel1(T* gpuData, int len) {
+                                                             ^
+
+main.cu(48): error: expected a ";"
+  __attribute__((global)) void atomicKernel1(T* gpuData, int len) {
+                                                                  ^
+
+6 errors detected in the compilation of "main.cu".
+make: *** [Makefile:52: main.o] Error 2

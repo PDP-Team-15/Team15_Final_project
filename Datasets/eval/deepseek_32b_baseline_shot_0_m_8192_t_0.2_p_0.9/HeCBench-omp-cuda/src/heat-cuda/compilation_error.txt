@@ -1,0 +1,6 @@
+heat.cu(177): error: calling a __device__ function("solution(double, double, double, double, double)") from a __host__ function("l2norm") is not allowed
+              double answer = solution(time, x, y, alpha, length);
+                              ^
+
+1 error detected in the compilation of "heat.cu".
+make: *** [Makefile:52: heat.o] Error 2

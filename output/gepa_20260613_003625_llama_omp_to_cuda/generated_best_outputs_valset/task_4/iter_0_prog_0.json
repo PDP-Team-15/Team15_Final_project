@@ -1,0 +1,19 @@
+[
+    0.5,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "kernel": "affine",
+        "from_api": "omp",
+        "to_api": "cuda",
+        "compiled": true,
+        "fix_needed": true,
+        "initial_compile_error": "main.cu(125): error: identifier \"affine_reference\" is undefined\n    affine_reference(input_image, output_image_ref);\n    ^\n\n1 error detected in the compilation of \"main.cu\".\nmake: *** [Makefile:52: main.o] Error 2\n",
+        "post_fix_error": "",
+        "source_snippet": "\n\n#include <sys/types.h>\n#include <sys/stat.h>\n#include <fcntl.h>\n#include <unistd.h>\n#include <stdlib.h>\n#include <stdio.h>\n#include <math.h>\n#include <cstring>\n#include <cmath>\n#include <chrono>\n#include <iostream>\n#include \"reference.h\"\n\nint main(int argc, char** argv)\n{\n  if (argc != 4)\n  {\n    printf(\"Usage: %s <input image> <output image> <iterations>\\n\", argv[0]) ;\n    return -1 ;\n  }\n\n  un",
+        "translated_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <string.h>\n#include <cuda_runtime.h>\n\n#define X_SIZE 1024\n#define Y_SIZE 1024\n#define WHITE 65535\n\n__global__ void affine_transform_kernel(unsigned short *input_image, unsigned short *output_image, int iterations, float lx_rot, float ly_rot, float lx_expan, float ly_expan, int lx_move, int ly_move) {\n  int x = blockIdx.x * blockDim.",
+        "log": "[affine] Compile failed, trying model fix...\n[affine] Compile error:\nmain.cu(125): error: identifier \"affine_reference\" is undefined\n    affine_reference(input_image, output_image_ref);\n    ^\n\n1 error detected in the compilation of \"main.cu\".\nmake: *** [Makefile:52: main.o] Error 2\n\n[affine] Compiled after model fix \u2713\n"
+    }
+]

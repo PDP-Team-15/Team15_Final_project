@@ -1,0 +1,19 @@
+[
+    0.0,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "kernel": "affine",
+        "from_api": "omp",
+        "to_api": "cuda",
+        "compiled": false,
+        "fix_needed": true,
+        "initial_compile_error": "main.cu:16: warning: \"WHITE\" redefined\n   16 | #define WHITE 65535\n      | \nIn file included from main.cu:11:\nreference.h:4: note: this is the location of the previous definition\n    4 | #define WHITE  (short)(1)\n      | \nmain.cu(93): error: identifier \"process_image\" is undefined\n          process_image<<<gridSize, blockSize>>>(d_input_image, d_output_image, 512, 512, i_affine, i_beta);\n          ^\n\nmain.cu(132): error: expected a \")\"\n  __attribute__((global)) void process_image(unsigned short *input_image, unsigned short *output_image, int 512, int 512, float i_affine[2][2], float i_beta[2])",
+        "post_fix_error": "main.cu(18): error: expected a \")\"\n      __attribute__((global)) void process_image(unsigned short *input_image, unsigned short *output_image, int 512, int 512, float i_affine[2][2], float i_beta[2]);\n                                                                                                                ^\n\nmain.cu(96): error: too many arguments in function call\n          process_image<<<gr",
+        "source_snippet": "\n\n#include <sys/types.h>\n#include <sys/stat.h>\n#include <fcntl.h>\n#include <unistd.h>\n#include <stdlib.h>\n#include <stdio.h>\n#include <math.h>\n#include <cstring>\n#include <cmath>\n#include <chrono>\n#include <iostream>\n#include \"reference.h\"\n\nint main(int argc, char** argv)\n{\n  if (argc != 4)\n  {\n    printf(\"Usage: %s <input image> <output image> <iterations>\\n\", argv[0]) ;\n    return -1 ;\n  }\n\n  un",
+        "translated_snippet": "#include <sys/types.h>\n#include <sys/stat.h>\n#include <fcntl.h>\n#include <unistd.h>\n#include <stdlib.h>\n#include <stdio.h>\n#include <math.h>\n#include <cstring>\n#include <chrono>\n#include <iostream>\n#include \"reference.h\"\n#include <cuda_runtime.h>\n\n#define X_SIZE 512\n#define Y_SIZE 512\n#define WHITE 65535\n\nint main(int argc, char** argv)\n{\n    if (argc != 4)\n    {\n        printf(\"Usage: %s <input i",
+        "log": "[affine] Compile failed, trying model fix...\n[affine] Compile error:\nmain.cu:16: warning: \"WHITE\" redefined\n   16 | #define WHITE 65535\n      | \nIn file included from main.cu:11:\nreference.h:4: note: this is the location of the previous definition\n    4 | #define WHITE  (short)(1)\n      | \nmain.cu(93): error: identifier \"process_image\" is undefined\n          process_image<<<gridSize, blockSize>>>(d_input_image, d_output_image, 512, 512, i_affine, i_beta);\n          ^\n\nmain.cu(132): error: expected a \")\"\n  __attribute__((global)) void process_image(unsigned short *input_image, unsigned short *output_image, int 512, int 512, float i_affine[2][2], float i_beta[2])\n[affine] Still failed after model fix \u2717\n[affine] Second error:\nmain.cu(18): error: expected a \")\"\n      __attribute__((global)) void process_image(unsigned short *input_image, unsigned short *output_image, int 512, int 512, float i_affine[2][2], float i_beta[2]);\n                                                                                                                ^\n\nmain.cu(96): error: too many arguments in function call\n          process_image<<<gr\n"
+    }
+]

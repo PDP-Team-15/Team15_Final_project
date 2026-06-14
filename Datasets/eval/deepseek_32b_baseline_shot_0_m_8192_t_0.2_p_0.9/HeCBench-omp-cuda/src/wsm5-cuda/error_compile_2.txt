@@ -1,0 +1,6 @@
+main.cu(107): error: too few arguments in function call
+          ips, ipe, jps, jpe, kms, kme);
+                                      ^
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:50: main.o] Error 2

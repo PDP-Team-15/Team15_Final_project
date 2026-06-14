@@ -1,0 +1,10 @@
+main.cu(19): error: invalid redeclaration of type name "float4" (declared at line 398 of /home/pdp15/.conda/envs/unipar/bin/../include/vector_types.h)
+  } float4;
+    ^
+
+main.cu(243): error: identifier "distance_host" is undefined
+      expected_output[i] = distance_host(i, lat1, lon1, lat2, lon2);
+                           ^
+
+2 errors detected in the compilation of "main.cu".
+make: *** [Makefile:52: main.o] Error 2

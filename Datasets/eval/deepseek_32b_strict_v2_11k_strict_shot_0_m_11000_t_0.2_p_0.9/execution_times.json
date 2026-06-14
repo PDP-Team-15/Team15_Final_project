@@ -1,0 +1,6 @@
+{
+    "omp-cuda": {
+        "vanGenuchten-cuda": 42.64574670791626
+    },
+    "cuda-omp": {}
+}

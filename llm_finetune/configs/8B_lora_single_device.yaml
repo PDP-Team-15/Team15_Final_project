@@ -54,7 +54,7 @@ dataset:
   _component_: torchtune.datasets.instruct_dataset
   packed: True  # True increases speed
   source: json
-  data_files: /home/ubuntu/UniPar/data/Datasets/HeCBench/llama_datasets/train.jsonl
+  data_files: /home/pdp15/UniPar_AI/data/Datasets/HeCBench/llama_datasets/train.jsonl
   column_map:
     input: instruction
     output: response
@@ -126,3 +126,4 @@ profiler:
   warmup_steps: 3
   active_steps: 2
   num_cycles: 1
+

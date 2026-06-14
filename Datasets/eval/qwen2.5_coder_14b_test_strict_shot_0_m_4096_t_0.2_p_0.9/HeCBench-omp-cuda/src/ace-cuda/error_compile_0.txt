@@ -1,0 +1,6 @@
+main.cu(8): error: expected a declaration
+  - Incompilable Code -
+  ^
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:55: main.o] Error 2

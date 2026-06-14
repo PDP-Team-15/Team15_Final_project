@@ -35,6 +35,7 @@ def process_kernel(params):
             res = subprocess.run(['make','run', '-j'], check=True, text=True, #, 'VERIFY=yes'
                                 stdout=subprocess.PIPE, stderr=subprocess.PIPE, 
                                 timeout=timeout_time)
+            
     except subprocess.CalledProcessError as e:
         print(f"\n**Error running {kernel}: {benchmark_path}, {e.stderr}\n")
         return 0, 1, kernel, None  # Not run, but counted, no time
@@ -94,7 +95,11 @@ if __name__=='__main__':
     target_api = args.target
     print("Selected target API:", target_api)
     for run_name in run_names_to_process:
-        BASE = os.path.join(HOME_PATH, f'unipar/Datasets/eval/{run_name}')
+        base_candidates = [
+            os.path.join(HOME_PATH, f'UniPar_AI/Datasets/eval/{run_name}'),
+            os.path.join(HOME_PATH, f'unipar/Datasets/eval/{run_name}')
+        ]
+        BASE = next((path for path in base_candidates if os.path.isdir(path)), base_candidates[0])
         print(BASE)
         try:
             the_dir = os.listdir(BASE)
@@ -123,7 +128,10 @@ if __name__=='__main__':
             result = eval_run(os.path.join(BASE, translation), to_api)
             all_times[f"{from_api}-{to_api}"] = result[2]
             results.append(result)
-            print(from_api,"-",to_api,f" pass rate: {(result[0]/ result[1]):.3f}")#100*
+            if result[1] == 0:
+                print(from_api, "-", to_api, " pass rate: n/a")
+            else:
+                print(from_api, "-", to_api, f" pass rate: {(result[0] / result[1]):.3f}")#100*
             if to_api == 'cuda':
                 suc_cuda += result[0]
                 total_cuda += result[1]
@@ -141,6 +149,9 @@ if __name__=='__main__':
 
         
         for r in results:
-            print(f"=ROUND({r[0]}/{r[1]},3)", end="\t")
+            if r[1] == 0:
+                print("=ROUND(0/0,3)", end="\t")
+            else:
+                print(f"=ROUND({r[0]}/{r[1]},3)", end="\t")
         print()
         sys.stdout.flush()

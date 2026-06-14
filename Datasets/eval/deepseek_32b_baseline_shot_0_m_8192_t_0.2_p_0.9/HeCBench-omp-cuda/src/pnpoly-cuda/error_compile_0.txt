@@ -1,0 +1,18 @@
+kernel.h(32): error: identifier "BLOCK_SIZE_X" is undefined
+    int i = blockIdx.x * BLOCK_SIZE_X * tile_size + threadIdx.x;
+                         ^
+
+kernel.h(44): error: identifier "VERTICES" is undefined
+      int k = VERTICES-1;
+              ^
+
+kernel.h(90): error: identifier "VERTICES" is undefined
+      int k = VERTICES-1;
+              ^
+
+main.cu(22): error: invalid redeclaration of type name "float2" (declared at line 396 of /home/pdp15/.conda/envs/unipar/bin/../include/vector_types.h)
+  } float2;
+    ^
+
+4 errors detected in the compilation of "main.cu".
+make: *** [Makefile:50: main.o] Error 2

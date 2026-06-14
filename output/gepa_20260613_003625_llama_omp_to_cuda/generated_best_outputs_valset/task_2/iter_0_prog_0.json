@@ -1,0 +1,19 @@
+[
+    0.0,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "kernel": "ne",
+        "from_api": "omp",
+        "to_api": "cuda",
+        "compiled": false,
+        "fix_needed": true,
+        "initial_compile_error": "main.cu(10): error: invalid redeclaration of type name \"float3\" (declared at line 397 of /home/pdp/.conda/envs/unipar/bin/../include/vector_types.h)\n  float3;\n  ^\n\nmain.cu(16): error: invalid redeclaration of type name \"float4\" (declared at line 398 of /home/pdp/.conda/envs/unipar/bin/../include/vector_types.h)\n  float4;\n  ^\n\n2 errors detected in the compilation of \"main.cu\".\nmake: *** [Makefile:50: main.o] Error 2\n",
+        "post_fix_error": "main.cu(11): error: invalid redeclaration of type name \"float3\" (declared at line 397 of /home/pdp/.conda/envs/unipar/bin/../include/vector_types.h)\n  float3;\n  ^\n\nmain.cu(17): error: invalid redeclaration of type name \"float4\" (declared at line 398 of /home/pdp/.conda/envs/unipar/bin/../include/vector_types.h)\n  float4;\n  ^\n\n2 errors detected in the compilation of \"main.cu\".\nmake: *** [Makefile:5",
+        "source_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <chrono>\n#include <omp.h>\n\ntypedef struct __attribute__((__aligned__(16)))\n{\n  float x, y, z;\n}\nfloat3;\n\ntypedef struct __attribute__((__aligned__(16)))\n{\n  float x, y, z, w;\n}\nfloat4;\n\n#pragma omp declare target\ninline float3 operator*(const float3 &a, const float b)\n{\n  return {a.x * b, a.y * b, a.z * b};\n}\n\ninline float3 operator",
+        "translated_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <cuda_runtime.h>\n\ntypedef struct __attribute__((__aligned__(16)))\n{\n  float x, y, z;\n}\nfloat3;\n\ntypedef struct __attribute__((__aligned__(16)))\n{\n  float x, y, z, w;\n}\nfloat4;\n\n__device__ float3 operator*(const float3 &a, const float b)\n{\n  return {a.x * b, a.y * b, a.z * b};\n}\n\n__device__ float3 operator-(const float3 &a, const flo",
+        "log": "[ne] Compile failed, trying model fix...\n[ne] Compile error:\nmain.cu(10): error: invalid redeclaration of type name \"float3\" (declared at line 397 of /home/pdp/.conda/envs/unipar/bin/../include/vector_types.h)\n  float3;\n  ^\n\nmain.cu(16): error: invalid redeclaration of type name \"float4\" (declared at line 398 of /home/pdp/.conda/envs/unipar/bin/../include/vector_types.h)\n  float4;\n  ^\n\n2 errors detected in the compilation of \"main.cu\".\nmake: *** [Makefile:50: main.o] Error 2\n\n[ne] Still failed after model fix \u2717\n[ne] Second error:\nmain.cu(11): error: invalid redeclaration of type name \"float3\" (declared at line 397 of /home/pdp/.conda/envs/unipar/bin/../include/vector_types.h)\n  float3;\n  ^\n\nmain.cu(17): error: invalid redeclaration of type name \"float4\" (declared at line 398 of /home/pdp/.conda/envs/unipar/bin/../include/vector_types.h)\n  float4;\n  ^\n\n2 errors detected in the compilation of \"main.cu\".\nmake: *** [Makefile:5\n"
+    }
+]

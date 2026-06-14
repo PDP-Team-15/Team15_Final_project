@@ -1,0 +1,1857 @@
+Selected target APIs: ['cuda', 'omp']
+Selected from APIs: ['omp', 'cuda']
+/home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_v2_strict_shot_0_m_8192_t_0.2_p_0.9
+
+********Translate total for:  HeCBench-omp-cuda ********
+
+
+**Compile error keogh-cuda: main.cu:8:125: warning: missing terminating ' character
+    8 | The OpenMP code uses target data to offload data to the GPU. Inside the target data region, there's a loop that runs 'repeat' times. For each iteration, it uses target teams distribute to parallelize over the indices (idx) from 0 to N-M+1. For each idx, it calculates residues by iterating over M elements in parallel, using a parallel for loop with a reduction on residues. The result is stored in lb[idx].
+      |                                                                                                                             ^
+main.cu:14:9: warning: missing terminating ' character
+   14 | First, I'll need to include the necessary CUDA headers: cuda_runtime.h and helper_cuda.h for error checking.
+      |         ^
+main.cu:18:159: warning: missing terminating ' character
+   18 | I'll start by moving the computation into a CUDA kernel. The kernel will take all the necessary arrays as arguments. Since CUDA kernels can't return values, I'll have to manage the computation within the kernel.
+      |                                                                                                                                                               ^
+main.cu:20:99: warning: missing terminating ' character
+   20 | The original code has a loop over idx, and for each idx, a loop over i (from 0 to M-1). In CUDA, I'll map each thread to a specific i within a block, and each block will handle a specific idx.
+      |                                                                                                   ^
+main.cu:28:204: warning: missing terminating ' character
+   28 | But since residues is a sum across all i, each thread will compute its part and then the block will sum all the contributions. However, in CUDA, using shared memory for reduction is more efficient. So, I'll have each thread compute its part, store it in shared memory, and then perform a block-wide reduction to sum all the parts. Finally, the block will write the result to lb[idx].
+      |                                                                                                                                                                                                            ^
+main.cu:30:57: warning: missing terminating ' character
+   30 | Wait, but in the original code, residues is a float that's being added to by each thread. So, in CUDA, each thread can compute its part and accumulate it into a shared variable, then after all threads are done, the block can write the result.
+      |                                                         ^
+main.cu:44:230: warning: missing terminating ' character
+   44 | Wait, in the original code, M is the query length, which could be up to, say, 1024 or more. So, using a block size of M might not be feasible. Therefore, perhaps I should structure the kernel to have each thread handle multiple i's, or use a more efficient reduction method.
+      |                                                                                                                                                                                                                                      ^
+main.cu:46:83: warning: missing terminating ' character
+   46 | Alternatively, perhaps I can use a 2D grid where each block handles a range of idx's, but that might complicate things.
+      |                                                                                   ^
+main.cu:52:161: warning: missing terminating ' character
+   52 | Hmm, perhaps a better approach is to have each thread in the block handle one i, and if M is larger than the block size, then each block can handle multiple idx's. But that might complicate the indexing.
+      |                                                                                                                                                                 ^
+main.cu:54:83: warning: missing terminating ' character
+   54 | Alternatively, perhaps I can use a 2D grid where each block handles a range of idx's, and each thread in the block handles a specific i. But that might be overcomplicating things.
+      |                                                                                   ^
+main.cu:60:83: warning: missing terminating ' character
+   60 | Alternatively, perhaps I can use a 1D grid where each block handles a range of idx's, and each thread in the block handles a specific i. But that might not be efficient.
+      |                                                                                   ^
+main.cu:62:77: warning: missing terminating ' character
+   62 | Wait, perhaps I can structure the kernel to have each thread compute all M i's for a specific idx, but that would not be parallel and would defeat the purpose of using CUDA.
+      |                                                                             ^
+main.cu:64:15: warning: missing terminating ' character
+   64 | Hmm, perhaps I'm overcomplicating this. Let me think again.
+      |               ^
+main.cu:66:345: warning: missing terminating ' character
+   66 | In the original code, for each idx, the loop over i is parallel, with each i being processed by a separate thread. So, in CUDA, each idx can be handled by a separate block, and each thread in the block handles one i. So, the grid size is (N-M+1), and the block size is M. But if M is larger than the maximum threads per block, this approach won't work.
+      |                                                                                                                                                                                                                                                                                                                                                         ^
+main.cu:72:292: warning: missing terminating ' character
+   72 | Alternatively, perhaps I can structure the kernel to have each thread handle multiple i's, using a loop. For example, each thread can handle a range of i's, and then sum their contributions. This way, the block size can be kept within the maximum limit, and each thread can handle multiple i's.
+      |                                                                                                                                                                                                                                                                                                    ^
+main.cu:74:129: warning: missing terminating ' character
+   74 | So, the kernel would have a grid size of (N-M+1), and a block size of, say, 256. Each thread in the block would handle M / 256 i's. But if M is not a multiple of 256, this would require some adjustment.
+      |                                                                                                                                 ^
+main.cu:76:83: warning: missing terminating ' character
+   76 | Alternatively, perhaps I can use a 2D grid where each block handles a range of idx's, and each thread in the block handles a specific i. But that might complicate the indexing.
+      |                                                                                   ^
+main.cu:78:236: warning: missing terminating ' character
+   78 | Wait, perhaps the simplest approach is to have each block handle one idx, and each thread in the block handle one i. So, the block size is M, and the grid size is (N-M+1). But if M is larger than the maximum threads per block, this won't work. So, perhaps I need to limit M to the maximum threads per block, or find another way.
+      |                                                                                                                                                                                                                                            ^
+main.cu:80:83: warning: missing terminating ' character
+   80 | Alternatively, perhaps I can use a 1D grid where each block handles a range of idx's, and each thread in the block handles a specific i. But that might not be efficient.
+      |                                                                                   ^
+main.cu:82:74: warning: missing terminating ' character
+   82 | Wait, perhaps I can use a 2D grid where each block handles a range of idx's, and each thread in the block handles a specific i. But that might complicate the indexing.
+      |                                                                          ^
+main.cu:86:15: warning: missing terminating ' character
+   86 | Hmm, perhaps I'm overcomplicating this. Let me try to proceed with the initial approach, assuming that M is within the maximum threads per block limit.
+      |               ^
+main.cu:178:5: warning: missing terminating ' character
+  178 | Here's how that can be done:
+      |     ^
+main.cu:264:5: warning: missing terminating ' character
+  264 | Here's how that can be done:
+      |     ^
+main.cu:312:345: warning: missing terminating ' character
+  312 | In the original code, for each idx, the loop over i is parallel, with each i being processed by a separate thread. So, in CUDA, each idx can be handled by a separate block, and each thread in the block handles one i. So, the grid size is (N-M+1), and the block size is M. But if M is larger than the maximum threads per block, this approach won't work.
+      |                                                                                                                                                                                                                                                                                                                                                         ^
+main.cu:318:292: warning: missing terminating ' character
+  318 | Alternatively, perhaps I can structure the kernel to have each thread handle multiple i's, using a loop. For example, each thread can handle a range of i's, and then sum their contributions. This way, the block size can be kept within the maximum limit, and each thread can handle multiple i's.
+      |                                                                                                                                                                                                                                                                                                    ^
+main.cu:320:129: warning: missing terminating ' character
+  320 | So, the kernel would have a grid size of (N-M+1), and a block size of, say, 256. Each thread in the block would handle M / 256 i's. But if M is not a multiple of 256, this would require some adjustment.
+      |                                                                                                                                 ^
+main.cu:322:83: warning: missing terminating ' character
+  322 | Alternatively, perhaps I can use a 2D grid where each block handles a range of idx's, and each thread in the block handles a specific i. But that might complicate the indexing.
+      |                                                                                   ^
+main.cu:324:236: warning: missing terminating ' character
+  324 | Wait, perhaps the simplest approach is to have each block handle one idx, and each thread in the block handle one i. So, the block size is M, and the grid size is (N-M+1). But if M is larger than the maximum threads per block, this won't work. So, perhaps I need to limit M to the maximum threads per block, or find another way.
+      |                                                                                                                                                                                                                                            ^
+main.cu:326:83: warning: missing terminating ' character
+  326 | Alternatively, perhaps I can use a 1D grid where each block handles a range of idx's, and each thread in the block handles a specific i. But that might not be efficient.
+      |                                                                                   ^
+main.cu:328:74: warning: missing terminating ' character
+  328 | Wait, perhaps I can use a 2D grid where each block handles a range of idx's, and each thread in the block handles a specific i. But that might complicate the indexing.
+      |                                                                          ^
+main.cu:332:15: warning: missing terminating ' character
+  332 | Hmm, perhaps I'm overcomplicating this. Let me try to proceed with the initial approach, assuming that M is within the maximum threads per block limit.
+      |               ^
+main.cu:395:5: warning: missing terminating ' character
+  395 | Here's how that can be done:
+      |     ^
+main.cu:443:345: warning: missing terminating ' character
+  443 | In the original code, for each idx, the loop over i is parallel, with each i being processed by a separate thread. So, in CUDA, each idx can be handled by a separate block, and each thread in the block handles one i. So, the grid size is (N-M+1), and the block size is M. But if M is larger than the maximum threads per block, this approach won't work.
+      |                                                                                                                                                                                                                                                                                                                                                         ^
+main.cu:449:292: warning: missing terminating ' character
+  449 | Alternatively, perhaps I can structure the kernel to have each thread handle multiple i's, using a loop. For example, each thread can handle a range of i's, and then sum their contributions. This way, the block size can be kept within the maximum limit, and each thread can handle multiple i's.
+      |                                                                                                                                                                                                                                                                                                    ^
+main.cu:451:129: warning: missing terminating ' character
+  451 | So, the kernel would have a grid size of (N-M+1), and a block size of, say, 256. Each thread in the block would handle M / 256 i's. But if M is not a multiple of 256, this would require some adjustment.
+      |                                                                                                                                 ^
+main.cu:453:83: warning: missing terminating ' character
+  453 | Alternatively, perhaps I can use a 2D grid where each block handles a range of idx's, and each thread in the block handles a specific i. But that might complicate the indexing.
+      |                                                                                   ^
+main.cu:455:236: warning: missing terminating ' character
+  455 | Wait, perhaps the simplest approach is to have each block handle one idx, and each thread in the block handle one i. So, the block size is M, and the grid size is (N-M+1). But if M is larger than the maximum threads per block, this won't work. So, perhaps I need to limit M to the maximum threads per block, or find another way.
+      |                                                                                                                                                                                                                                            ^
+main.cu:457:83: warning: missing terminating ' character
+  457 | Alternatively, perhaps I can use a 1D grid where each block handles a range of idx's, and each thread in the block handles a specific i. But that might not be efficient.
+      |                                                                                   ^
+main.cu:459:74: warning: missing terminating ' character
+  459 | Wait, perhaps I can use a 2D grid where each block handles a range of idx's, and each thread in the block handles a specific i. But that might complicate the indexing.
+      |                                                                          ^
+main.cu:463:15: warning: missing terminating ' character
+  463 | Hmm, perhaps I'm overcomplicating this. Let me try to proceed with the initial approach, assuming that M is within the maximum threads per block limit.
+      |               ^
+main.cu:526:5: warning: missing terminating ' character
+  526 | Here's how that can be done:
+      |     ^
+main.cu:574:345: warning: missing terminating ' character
+  574 | In the original code, for each idx, the loop over i is parallel, with each i being processed by a separate thread. So, in CUDA, each idx can be handled by a separate block, and each thread in the block handles one i. So, the grid size is (N-M+1), and the block size is M. But if M is larger than the maximum threads per block, this approach won't work.
+      |                                                                                                                                                                                                                                                                                                                                                         ^
+main.cu:580:292: warning: missing terminating ' character
+  580 | Alternatively, perhaps I can structure the kernel to have each thread handle multiple i's, using a loop. For example, each thread can handle a range of i's, and then sum their contributions. This way, the block size can be kept within the maximum limit, and each thread can handle multiple i's.
+      |                                                                                                                                                                                                                                                                                                    ^
+main.cu:582:129: warning: missing terminating ' character
+  582 | So, the kernel would have a grid size of (N-M+1), and a block size of, say, 256. Each thread in the block would handle M / 256 i's. But if M is not a multiple of 256, this would require some adjustment.
+      |                                                                                                                                 ^
+main.cu:584:83: warning: missing terminating ' character
+  584 | Alternatively, perhaps I can use a 2D grid where each block handles a range of idx's, and each thread in the block handles a specific i. But that might complicate the indexing.
+      |                                                                                   ^
+main.cu:586:236: warning: missing terminating ' character
+  586 | Wait, perhaps the simplest approach is to have each block handle one idx, and each thread in the block handle one i. So, the block size is M, and the grid size is (N-M+1). But if M is larger than the maximum threads per block, this won't work. So, perhaps I need to limit M to the maximum threads per block, or find another way.
+      |                                                                                                                                                                                                                                            ^
+main.cu:588:83: warning: missing terminating ' character
+  588 | Alternatively, perhaps I can use a 1D grid where each block handles a range of idx's, and each thread in the block handles a specific i. But that might not be efficient.
+      |                                                                                   ^
+main.cu:590:74: warning: missing terminating ' character
+  590 | Wait, perhaps I can use a 2D grid where each block handles a range of idx's, and each thread in the block handles a specific i. But that might complicate the indexing.
+      |                                                                          ^
+main.cu(6): error: this declaration has no storage class or type specifier
+  subject, lower_bound, upper_bound, lb, lb_h, avgs, and stds. These arrays are filled with random values.
+  ^
+
+main.cu(6): error: this declaration has no storage class or type specifier
+  subject, lower_bound, upper_bound, lb, lb_h, avgs, and stds. These arrays are filled with random values.
+           ^
+
+main.cu(6): error: this declaration has no storage class or type specifier
+  subject, lower_bound, upper_bound, lb, lb_h, avgs, and stds. These arrays are filled with random values.
+                        ^
+
+main.cu(6): error: this declaration has no storage class or type specifier
+  subject, lower_bound, upper_bound, lb, lb_h, avgs, and stds. These arrays are filled with random values.
+                                     ^
+
+main.cu(6): error: this declaration has no storage class or type specifier
+  subject, lower_bound, upper_bound, lb, lb_h, avgs, and stds. These arrays are filled with random values.
+                                         ^
+
+main.cu(6): error: this declaration has no storage class or type specifier
+  subject, lower_bound, upper_bound, lb, lb_h, avgs, and stds. These arrays are filled with random values.
+                                               ^
+
+main.cu(6): error: this declaration has no storage class or type specifier
+  subject, lower_bound, upper_bound, lb, lb_h, avgs, and stds. These arrays are filled with random values.
+                                                     ^
+
+main.cu(6): error: reference variable "stds" requires an initializer
+  subject, lower_bound, upper_bound, lb, lb_h, avgs, and stds. These arrays are filled with random values.
+                                                             ^
+
+main.cu(6): error: expected a ";"
+  subject, lower_bound, upper_bound, lb, lb_h, avgs, and stds. These arrays are filled with random values.
+                                                             ^
+
+main.cu(8): warning #1654-D: too many characters in character literal -- extra leading characters ignored
+  The OpenMP code uses target data to offload data to the GPU. Inside the target data region, there's a loop that runs 'repeat' times. For each iteration, it uses target teams distribute to parallelize over the indices (idx) from 0 to N-M+1. For each idx, it calculates residues by iterating over M elements in parallel, using a parallel for loop with a reduction on residues. The result is stored in lb[idx].
+                                                                                                   ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+main.cu(8): error: a multicharacter literal cannot be part of a user-defined literal
+  The OpenMP code uses target data to offload data to the GPU. Inside the target data region, there's a loop that runs 'repeat' times. For each iteration, it uses target teams distribute to parallelize over the indices (idx) from 0 to N-M+1. For each idx, it calculates residues by iterating over M elements in parallel, using a parallel for loop with a reduction on residues. The result is stored in lb[idx].
+                                                                                                   ^
+
+main.cu(8): error: missing closing quote
+  The OpenMP code uses target data to offload data to the GPU. Inside the target data region, there's a loop that runs 'repeat' times. For each iteration, it uses target teams distribute to parallelize over the indices (idx) from 0 to N-M+1. For each idx, it calculates residues by iterating over M elements in parallel, using a parallel for loop with a reduction on residues. The result is stored in lb[idx].
+                                                                                                                              ^
+
+main.cu(14): error: missing closing quote
+  First, I'll need to include the necessary CUDA headers: cuda_runtime.h and helper_cuda.h for error checking. 
+          ^
+
+main.cu(16): warning #1654-D: too many characters in character literal -- extra leading characters ignored
+  The main changes will be in the kernel launches. The original code uses OMP's target teams distribute and parallel for. In CUDA, this translates to a kernel function that's launched with appropriate grid and block dimensions.
+                                                                             ^
+
+main.cu(16): error: a multicharacter literal cannot be part of a user-defined literal
+  The main changes will be in the kernel launches. The original code uses OMP's target teams distribute and parallel for. In CUDA, this translates to a kernel function that's launched with appropriate grid and block dimensions.
+                                                                             ^
+
+main.cu(18): warning #1654-D: too many characters in character literal -- extra leading characters ignored
+  I'll start by moving the computation into a CUDA kernel. The kernel will take all the necessary arrays as arguments. Since CUDA kernels can't return values, I'll have to manage the computation within the kernel.
+   ^
+
+main.cu(18): error: a multicharacter literal cannot be part of a user-defined literal
+  I'll start by moving the computation into a CUDA kernel. The kernel will take all the necessary arrays as arguments. Since CUDA kernels can't return values, I'll have to manage the computation within the kernel.
+   ^
+
+main.cu(18): error: missing closing quote
+  I'll start by moving the computation into a CUDA kernel. The kernel will take all the necessary arrays as arguments. Since CUDA kernels can't return values, I'll have to manage the computation within the kernel.
+                                                                                                                                                                ^
+
+main.cu(20): error: missing closing quote
+  The original code has a loop over idx, and for each idx, a loop over i (from 0 to M-1). In CUDA, I'll map each thread to a specific i within a block, and each block will handle a specific idx. 
+                                                                                                    ^
+
+main.cu(28): error: missing closing quote
+  But since residues is a sum across all i, each thread will compute its part and then the block will sum all the contributions. However, in CUDA, using shared memory for reduction is more efficient. So, I'll have each thread compute its part, store it in shared memory, and then perform a block-wide reduction to sum all the parts. Finally, the block will write the result to lb[idx].
+                                                                                                                                                                                                             ^
+
+main.cu(30): error: missing closing quote
+  Wait, but in the original code, residues is a float that's being added to by each thread. So, in CUDA, each thread can compute its part and accumulate it into a shared variable, then after all threads are done, the block can write the result.
+                                                          ^
+
+main.cu(40): warning #1654-D: too many characters in character literal -- extra leading characters ignored
+  But wait, if M is large, say 1024, then a block size of M would exceed the maximum threads per block in CUDA, which is typically 1024. So, perhaps I need to adjust the block size to a maximum of 256 or 512, and then have multiple threads per block handle multiple i's. Alternatively, I can structure the kernel to handle multiple i's per thread, but that might complicate things.
+                                                                                                                                                                                                                                                                           ^
+
+main.cu(40): error: a multicharacter literal cannot be part of a user-defined literal
+  But wait, if M is large, say 1024, then a block size of M would exceed the maximum threads per block in CUDA, which is typically 1024. So, perhaps I need to adjust the block size to a maximum of 256 or 512, and then have multiple threads per block handle multiple i's. Alternatively, I can structure the kernel to handle multiple i's per thread, but that might complicate things.
+                                                                                                                                                                                                                                                                           ^
+
+main.cu(42): warning #1654-D: too many characters in character literal -- extra leading characters ignored
+  Alternatively, perhaps it's better to have each block handle one idx, and each thread in the block handle one i. So, the block size would be M, but if M is larger than the maximum threads per block, this approach won't work. So, perhaps I need to find a way to handle this.
+                           ^
+
+main.cu(42): error: a multicharacter literal cannot be part of a user-defined literal
+  Alternatively, perhaps it's better to have each block handle one idx, and each thread in the block handle one i. So, the block size would be M, but if M is larger than the maximum threads per block, this approach won't work. So, perhaps I need to find a way to handle this.
+                           ^
+
+main.cu(44): error: missing closing quote
+  Wait, in the original code, M is the query length, which could be up to, say, 1024 or more. So, using a block size of M might not be feasible. Therefore, perhaps I should structure the kernel to have each thread handle multiple i's, or use a more efficient reduction method.
+                                                                                                                                                                                                                                       ^
+
+main.cu(46): warning #2506-D: a user-provided literal suffix must begin with "_"
+  Alternatively, perhaps I can use a 2D grid where each block handles a range of idx's, but that might complicate things.
+                                     ^
+
+main.cu(46): error: missing closing quote
+  Alternatively, perhaps I can use a 2D grid where each block handles a range of idx's, but that might complicate things.
+                                                                                    ^
+
+main.cu(48): warning #1654-D: too many characters in character literal -- extra leading characters ignored
+  Wait, perhaps I can structure the kernel as follows: each block handles one idx, and each thread in the block handles one i. So, the block size is M, but if M is larger than the maximum threads per block, this won't work. So, perhaps I need to limit the block size to a maximum of, say, 256, and then have each thread handle multiple i's.
+                                                                                                                                                                                                                       ^
+
+main.cu(48): error: a multicharacter literal cannot be part of a user-defined literal
+  Wait, perhaps I can structure the kernel as follows: each block handles one idx, and each thread in the block handles one i. So, the block size is M, but if M is larger than the maximum threads per block, this won't work. So, perhaps I need to limit the block size to a maximum of, say, 256, and then have each thread handle multiple i's.
+                                                                                                                                                                                                                       ^
+
+main.cu(50): warning #1654-D: too many characters in character literal -- extra leading characters ignored
+  Alternatively, perhaps I can use a 1D grid where each block handles one idx, and each thread in the block handles a subset of i's. For example, if the block size is 256, each thread can handle M / 256 i's. But that would require M to be a multiple of 256, which may not always be the case.
+                                                                                                                                 ^
+
+main.cu(50): error: a multicharacter literal cannot be part of a user-defined literal
+  Alternatively, perhaps I can use a 1D grid where each block handles one idx, and each thread in the block handles a subset of i's. For example, if the block size is 256, each thread can handle M / 256 i's. But that would require M to be a multiple of 256, which may not always be the case.
+                                                                                                                                 ^
+
+main.cu(52): error: missing closing quote
+  Hmm, perhaps a better approach is to have each thread in the block handle one i, and if M is larger than the block size, then each block can handle multiple idx's. But that might complicate the indexing.
+                                                                                                                                                                  ^
+
+main.cu(54): error: missing closing quote
+  Alternatively, perhaps I can use a 2D grid where each block handles a range of idx's, and each thread in the block handles a specific i. But that might be overcomplicating things.
+                                                                                    ^
+
+main.cu(56): warning #1654-D: too many characters in character literal -- extra leading characters ignored
+  Wait, perhaps the original code's structure is such that for each idx, the computation is independent, so each idx can be handled by a separate block. So, the grid size is (N-M+1), and each block handles one idx. Then, within each block, each thread handles one i. So, the block size is M. But if M is larger than the maximum threads per block, this won't work.
+                                 ^
+
+main.cu(56): error: a multicharacter literal cannot be part of a user-defined literal
+  Wait, perhaps the original code's structure is such that for each idx, the computation is independent, so each idx can be handled by a separate block. So, the grid size is (N-M+1), and each block handles one idx. Then, within each block, each thread handles one i. So, the block size is M. But if M is larger than the maximum threads per block, this won't work.
+                                 ^
+
+main.cu(58): warning #1654-D: too many characters in character literal -- extra leading characters ignored
+  So, perhaps I need to adjust the block size to a maximum of, say, 256, and then have each thread handle multiple i's. For example, if M is 512, each thread can handle two i's. But that would require M to be a multiple of the block size, which may not always be the case.
+                                                                                                                    ^
+
+main.cu(58): error: a multicharacter literal cannot be part of a user-defined literal
+  So, perhaps I need to adjust the block size to a maximum of, say, 256, and then have each thread handle multiple i's. For example, if M is 512, each thread can handle two i's. But that would require M to be a multiple of the block size, which may not always be the case.
+                                                                                                                    ^
+
+main.cu(60): error: missing closing quote
+  Alternatively, perhaps I can use a 1D grid where each block handles a range of idx's, and each thread in the block handles a specific i. But that might not be efficient.
+                                                                                    ^
+
+main.cu(62): error: missing closing quote
+  Wait, perhaps I can structure the kernel to have each thread compute all M i's for a specific idx, but that would not be parallel and would defeat the purpose of using CUDA.
+                                                                              ^
+
+main.cu(64): error: missing closing quote
+  Hmm, perhaps I'm overcomplicating this. Let me think again.
+                ^
+
+main.cu(66): error: missing closing quote
+  In the original code, for each idx, the loop over i is parallel, with each i being processed by a separate thread. So, in CUDA, each idx can be handled by a separate block, and each thread in the block handles one i. So, the grid size is (N-M+1), and the block size is M. But if M is larger than the maximum threads per block, this approach won't work.
+                                                                                                                                                                                                                                                                                                                                                          ^
+
+main.cu(68): warning #1654-D: too many characters in character literal -- extra leading characters ignored
+  So, perhaps I need to find a way to handle this. Let's assume that M is up to 1024, which is the maximum number of threads per block in many CUDA architectures. So, if M is 1024, then a block size of 1024 is acceptable. But if M is larger, say 2048, then this approach won't work.
+                                                      ^
+
+main.cu(68): error: a multicharacter literal cannot be part of a user-defined literal
+  So, perhaps I need to find a way to handle this. Let's assume that M is up to 1024, which is the maximum number of threads per block in many CUDA architectures. So, if M is 1024, then a block size of 1024 is acceptable. But if M is larger, say 2048, then this approach won't work.
+                                                      ^
+
+main.cu(72): warning #1654-D: too many characters in character literal -- extra leading characters ignored
+  Alternatively, perhaps I can structure the kernel to have each thread handle multiple i's, using a loop. For example, each thread can handle a range of i's, and then sum their contributions. This way, the block size can be kept within the maximum limit, and each thread can handle multiple i's.
+                                                                                         ^
+
+main.cu(72): error: a multicharacter literal cannot be part of a user-defined literal
+  Alternatively, perhaps I can structure the kernel to have each thread handle multiple i's, using a loop. For example, each thread can handle a range of i's, and then sum their contributions. This way, the block size can be kept within the maximum limit, and each thread can handle multiple i's.
+                                                                                         ^
+
+main.cu(72): error: missing closing quote
+  Alternatively, perhaps I can structure the kernel to have each thread handle multiple i's, using a loop. For example, each thread can handle a range of i's, and then sum their contributions. This way, the block size can be kept within the maximum limit, and each thread can handle multiple i's.
+                                                                                                                                                                                                                                                                                                     ^
+
+main.cu(74): error: missing closing quote
+  So, the kernel would have a grid size of (N-M+1), and a block size of, say, 256. Each thread in the block would handle M / 256 i's. But if M is not a multiple of 256, this would require some adjustment.
+                                                                                                                                  ^
+
+main.cu(76): error: missing closing quote
+  Alternatively, perhaps I can use a 2D grid where each block handles a range of idx's, and each thread in the block handles a specific i. But that might complicate the indexing.
+                                                                                    ^
+
+main.cu(78): error: missing closing quote
+  Wait, perhaps the simplest approach is to have each block handle one idx, and each thread in the block handle one i. So, the block size is M, and the grid size is (N-M+1). But if M is larger than the maximum threads per block, this won't work. So, perhaps I need to limit M to the maximum threads per block, or find another way.
+                                                                                                                                                                                                                                             ^
+
+main.cu(80): error: missing closing quote
+  Alternatively, perhaps I can use a 1D grid where each block handles a range of idx's, and each thread in the block handles a specific i. But that might not be efficient.
+                                                                                    ^
+
+main.cu(82): error: missing closing quote
+  Wait, perhaps I can use a 2D grid where each block handles a range of idx's, and each thread in the block handles a specific i. But that might complicate the indexing.
+                                                                           ^
+
+main.cu(84): warning #1654-D: too many characters in character literal -- extra leading characters ignored
+  Alternatively, perhaps I can use a 1D grid where each block handles a range of idx's, and each thread in the block handles a specific i. For example, if the block size is 256, each block can handle 256 idx's, and each thread in the block handles one i. But that would require the grid size to be (N-M+1) / 256, which might not be an integer.
+                                                                                    ^
+
+main.cu(84): error: a multicharacter literal cannot be part of a user-defined literal
+  Alternatively, perhaps I can use a 1D grid where each block handles a range of idx's, and each thread in the block handles a specific i. For example, if the block size is 256, each block can handle 256 idx's, and each thread in the block handles one i. But that would require the grid size to be (N-M+1) / 256, which might not be an integer.
+                                                                                    ^
+
+main.cu(86): error: missing closing quote
+  Hmm, perhaps I'm overcomplicating this. Let me try to proceed with the initial approach, assuming that M is within the maximum threads per block limit.
+                ^
+
+main.cu(132): warning #12-D: parsing restarts here after previous syntax error
+      __syncthreads();
+                     ^
+
+main.cu(134): error: expected a declaration
+      if (threadIdx.x == 0) {
+      ^
+
+main.cu(166): warning #12-D: parsing restarts here after previous syntax error
+      atomicAdd(&sharedResidues[0], contribution);
+                                                 ^
+
+main.cu(167): error: explicit type is missing ("int" assumed)
+      __syncthreads();
+      ^
+
+main.cu(167): error: cannot overload functions distinguished by return type alone
+      __syncthreads();
+      ^
+
+main.cu(169): error: expected a declaration
+      if (threadIdx.x == 0) {
+      ^
+
+main.cu(178): error: missing closing quote
+  Here's how that can be done:
+      ^
+
+main.cu(201): warning #12-D: parsing restarts here after previous syntax error
+      __attribute__((shared)) float sharedResidues[1];
+                                                     ^
+
+main.cu(202): error: expected a declaration
+      if (threadIdx.x == 0) {
+      ^
+
+main.cu(205): warning #12-D: parsing restarts here after previous syntax error
+      __syncthreads();
+                     ^
+
+main.cu(206): error: this declaration has no storage class or type specifier
+      atomicAdd(&sharedResidues[0], contribution);
+      ^
+
+main.cu(206): error: declaration is incompatible with overloaded function "atomicAdd" (declared at line 106 of /home/pdp15/.conda/envs/unipar/bin/../include/device_atomic_functions.h)
+      atomicAdd(&sharedResidues[0], contribution);
+      ^
+
+main.cu(206): error: identifier "sharedResidues" is undefined
+      atomicAdd(&sharedResidues[0], contribution);
+                 ^
+
+main.cu(206): error: identifier "contribution" is undefined
+      atomicAdd(&sharedResidues[0], contribution);
+                                    ^
+
+main.cu(206): error: too many initializer values
+      atomicAdd(&sharedResidues[0], contribution);
+                                    ^
+
+main.cu(207): error: explicit type is missing ("int" assumed)
+      __syncthreads();
+      ^
+
+main.cu(207): error: cannot overload functions distinguished by return type alone
+      __syncthreads();
+      ^
+
+main.cu(209): error: expected a declaration
+      if (threadIdx.x == 0) {
+      ^
+
+main.cu(241): warning #12-D: parsing restarts here after previous syntax error
+      __attribute__((shared)) float sharedResidues[1];
+                                                     ^
+
+main.cu(242): error: expected a declaration
+      if (threadIdx.x == 0) {
+      ^
+
+main.cu(245): warning #12-D: parsing restarts here after previous syntax error
+      __syncthreads();
+                     ^
+
+main.cu(246): error: "sharedResidues" is not a type name
+      sharedResidues[0] += contribution;
+      ^
+
+main.cu(246): error: invalid specifier for structured binding declaration
+      sharedResidues[0] += contribution;
+      ^
+
+main.cu(246): error: missing initializer
+      sharedResidues[0] += contribution;
+                        ^
+
+main.cu(246): error: expected an identifier
+      sharedResidues[0] += contribution;
+                     ^
+
+main.cu(246): error: expected a "]"
+      sharedResidues[0] += contribution;
+                        ^
+
+main.cu(246): error: expected a ";"
+      sharedResidues[0] += contribution;
+                        ^
+
+main.cu(247): error: explicit type is missing ("int" assumed)
+      __syncthreads();
+      ^
+
+main.cu(247): error: cannot overload functions distinguished by return type alone
+      __syncthreads();
+      ^
+
+main.cu(249): error: expected a declaration
+      if (threadIdx.x == 0) {
+      ^
+
+main.cu(264): error: missing closing quote
+  Here's how that can be done:
+      ^
+
+main.cu(287): warning #12-D: parsing restarts here after previous syntax error
+      __attribute__((shared)) float sharedResidues[256];
+                                                       ^
+
+main.cu(288): error: "sharedResidues" is not a type name
+      sharedResidues[threadIdx.x] = contribution;
+      ^
+
+main.cu(288): error: invalid specifier for structured binding declaration
+      sharedResidues[threadIdx.x] = contribution;
+      ^
+
+main.cu(288): error: declaration is incompatible with "const uint3 threadIdx" (declared at line 71 of /home/pdp15/.conda/envs/unipar/bin/../include/device_launch_parameters.h)
+      sharedResidues[threadIdx.x] = contribution;
+                     ^
+
+main.cu(288): error: expected a "]"
+      sharedResidues[threadIdx.x] = contribution;
+                              ^
+
+main.cu(289): error: explicit type is missing ("int" assumed)
+      __syncthreads();
+      ^
+
+main.cu(289): error: cannot overload functions distinguished by return type alone
+      __syncthreads();
+      ^
+
+main.cu(293): error: expected a declaration
+      while (stride < blockDim.x) {
+      ^
+
+main.cu(312): error: missing closing quote
+  In the original code, for each idx, the loop over i is parallel, with each i being processed by a separate thread. So, in CUDA, each idx can be handled by a separate block, and each thread in the block handles one i. So, the grid size is (N-M+1), and the block size is M. But if M is larger than the maximum threads per block, this approach won't work.
+                                                                                                                                                                                                                                                                                                                                                          ^
+
+main.cu(314): warning #1654-D: too many characters in character literal -- extra leading characters ignored
+  So, perhaps I need to find a way to handle this. Let's assume that M is up to 1024, which is the maximum number of threads per block in many CUDA architectures. So, if M is 1024, then a block size of 1024 is acceptable. But if M is larger, say 2048, then this approach won't work.
+                                                      ^
+
+main.cu(314): error: a multicharacter literal cannot be part of a user-defined literal
+  So, perhaps I need to find a way to handle this. Let's assume that M is up to 1024, which is the maximum number of threads per block in many CUDA architectures. So, if M is 1024, then a block size of 1024 is acceptable. But if M is larger, say 2048, then this approach won't work.
+                                                      ^
+
+main.cu(318): warning #1654-D: too many characters in character literal -- extra leading characters ignored
+  Alternatively, perhaps I can structure the kernel to have each thread handle multiple i's, using a loop. For example, each thread can handle a range of i's, and then sum their contributions. This way, the block size can be kept within the maximum limit, and each thread can handle multiple i's.
+                                                                                         ^
+
+main.cu(318): error: a multicharacter literal cannot be part of a user-defined literal
+  Alternatively, perhaps I can structure the kernel to have each thread handle multiple i's, using a loop. For example, each thread can handle a range of i's, and then sum their contributions. This way, the block size can be kept within the maximum limit, and each thread can handle multiple i's.
+                                                                                         ^
+
+main.cu(318): error: missing closing quote
+  Alternatively, perhaps I can structure the kernel to have each thread handle multiple i's, using a loop. For example, each thread can handle a range of i's, and then sum their contributions. This way, the block size can be kept within the maximum limit, and each thread can handle multiple i's.
+                                                                                                                                                                                                                                                                                                     ^
+
+main.cu(320): error: missing closing quote
+  So, the kernel would have a grid size of (N-M+1), and a block size of, say, 256. Each thread in the block would handle M / 256 i's. But if M is not a multiple of 256, this would require some adjustment.
+                                                                                                                                  ^
+
+main.cu(322): error: missing closing quote
+  Alternatively, perhaps I can use a 2D grid where each block handles a range of idx's, and each thread in the block handles a specific i. But that might complicate the indexing.
+                                                                                    ^
+
+main.cu(324): error: missing closing quote
+  Wait, perhaps the simplest approach is to have each block handle one idx, and each thread in the block handle one i. So, the block size is M, and the grid size is (N-M+1). But if M is larger than the maximum threads per block, this won't work. So, perhaps I need to limit M to the maximum threads per block, or find another way.
+                                                                                                                                                                                                                                             ^
+
+main.cu(326): error: missing closing quote
+  Alternatively, perhaps I can use a 1D grid where each block handles a range of idx's, and each thread in the block handles a specific i. But that might not be efficient.
+                                                                                    ^
+
+main.cu(328): error: missing closing quote
+  Wait, perhaps I can use a 2D grid where each block handles a range of idx's, and each thread in the block handles a specific i. But that might complicate the indexing.
+                                                                           ^
+
+main.cu(330): warning #1654-D: too many characters in character literal -- extra leading characters ignored
+  Alternatively, perhaps I can use a 1D grid where each block handles a range of idx's, and each thread in the block handles a specific i. For example, if the block size is 256, each block can handle 256 idx's, and each thread in the block handles one i. But that would require the grid size to be (N-M+1) / 256, which might not be an integer.
+                                                                                    ^
+
+main.cu(330): error: a multicharacter literal cannot be part of a user-defined literal
+  Alternatively, perhaps I can use a 1D grid where each block handles a range of idx's, and each thread in the block handles a specific i. For example, if the block size is 256, each block can handle 256 idx's, and each thread in the block handles one i. But that would require the grid size to be (N-M+1) / 256, which might not be an integer.
+                                                                                    ^
+
+main.cu(332): error: missing closing quote
+  Hmm, perhaps I'm overcomplicating this. Let me try to proceed with the initial approach, assuming that M is within the maximum threads per block limit.
+                ^
+
+main.cu(378): warning #12-D: parsing restarts here after previous syntax error
+      __attribute__((shared)) float sharedResidues[1];
+                                                     ^
+
+main.cu(379): error: expected a declaration
+      if (threadIdx.x == 0) {
+      ^
+
+main.cu(382): warning #12-D: parsing restarts here after previous syntax error
+      __syncthreads();
+                     ^
+
+main.cu(383): error: this declaration has no storage class or type specifier
+      atomicAdd(&sharedResidues[0], contribution);
+      ^
+
+main.cu(383): error: variable "atomicAdd" has already been defined
+      atomicAdd(&sharedResidues[0], contribution);
+      ^
+
+main.cu(383): error: too many initializer values
+      atomicAdd(&sharedResidues[0], contribution);
+                                    ^
+
+main.cu(384): error: explicit type is missing ("int" assumed)
+      __syncthreads();
+      ^
+
+main.cu(384): error: cannot overload functions distinguished by return type alone
+      __syncthreads();
+      ^
+
+main.cu(386): error: expected a declaration
+      if (threadIdx.x == 0) {
+      ^
+
+main.cu(395): error: missing closing quote
+  Here's how that can be done:
+      ^
+
+main.cu(418): warning #12-D: parsing restarts here after previous syntax error
+      __attribute__((shared)) float sharedResidues[256];
+                                                       ^
+
+main.cu(419): error: "sharedResidues" is not a type name
+      sharedResidues[threadIdx.x] = contribution;
+      ^
+
+main.cu(419): error: invalid specifier for structured binding declaration
+      sharedResidues[threadIdx.x] = contribution;
+      ^
+
+main.cu(419): error: declaration is incompatible with structured binding "threadIdx" (declared at line 288)
+      sharedResidues[threadIdx.x] = contribution;
+                     ^
+
+main.cu(419): error: expected a "]"
+      sharedResidues[threadIdx.x] = contribution;
+                              ^
+
+main.cu(420): error: explicit type is missing ("int" assumed)
+      __syncthreads();
+      ^
+
+main.cu(420): error: cannot overload functions distinguished by return type alone
+      __syncthreads();
+      ^
+
+main.cu(423): error: variable "stride" has already been defined
+      int stride = 1;
+          ^
+
+Error limit reached.
+100 errors detected in the compilation of "main.cu".
+Compilation terminated.
+make: *** [Makefile:52: main.o] Error 4
+
+
+**Compile error ace-cuda: main.cu:36:66: warning: missing terminating ' character
+   36 | Wait, but in the original code, phi is a 3D array, so in CUDA, it's a 1D array, and the index is calculated as x*DATAYSIZE*DATAXSIZE + y*DATAXSIZE + z.
+      |                                                                  ^
+main.cu:46:26: warning: missing terminating ' character
+   46 | Alternatively, perhaps it's better to pass the size parameters to the functions so that they can calculate the index.
+      |                          ^
+main.cu:48:22: warning: missing terminating ' character
+   48 | But for simplicity, I'll assume that the functions know the sizes.
+      |                      ^
+main.cu:82:26: warning: missing terminating ' character
+   82 | Alternatively, perhaps it's better to pass the size parameters to the functions so that they can calculate the index.
+      |                          ^
+main.cu:84:15: warning: missing terminating ' character
+   84 | But for now, I'll proceed with the assumption that the functions know the sizes.
+      |               ^
+main.cu:88:56: warning: missing terminating ' character
+   88 | In the main function, after allocating device memory, I'll launch each kernel.
+      |                                                        ^
+main.cu:102:101: warning: missing terminating ' character
+  102 | Now, considering the swapGrid function. In CUDA, instead of copying data, I can swap pointers. So, I'll have two sets of pointers for phi and u.
+      |                                                                                                     ^
+main.cu:109:27: warning: missing terminating ' character
+  109 | After computing phi_new, I'll swap them:
+      |                           ^
+main.cu:117:39: warning: missing terminating ' character
+  117 | Now, considering the error checking. I'll need a helper function to check CUDA errors:
+      |                                       ^
+main.cu:127:2: warning: missing terminating ' character
+  127 | I'll call this after each CUDA API call.
+      |  ^
+main.cu(16): error: this declaration has no storage class or type specifier
+  Then, define the necessary constants:
+  ^
+
+main.cu(16): error: this declaration has no storage class or type specifier
+  Then, define the necessary constants:
+        ^
+
+main.cu(16): error: expected a ";"
+  Then, define the necessary constants:
+               ^
+
+main.cu(23): warning #12-D: parsing restarts here after previous syntax error
+  typedef double nRarray[400][400];
+                                  ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+main.cu(25): error: this declaration has no storage class or type specifier
+  Then, declare the device functions:
+  ^
+
+main.cu(25): error: variable "Then" has already been defined
+  Then, declare the device functions:
+  ^
+
+main.cu(25): error: this declaration has no storage class or type specifier
+  Then, declare the device functions:
+        ^
+
+main.cu(25): error: expected a ";"
+  Then, declare the device functions:
+                ^
+
+main.cu(36): warning #2506-D: a user-provided literal suffix must begin with "_"
+  Wait, but in the original code, phi is a 3D array, so in CUDA, it's a 1D array, and the index is calculated as x*DATAYSIZE*DATAXSIZE + y*DATAXSIZE + z.
+                                           ^
+
+main.cu(36): error: missing closing quote
+  Wait, but in the original code, phi is a 3D array, so in CUDA, it's a 1D array, and the index is calculated as x*DATAYSIZE*DATAXSIZE + y*DATAXSIZE + z.
+                                                                   ^
+
+main.cu(46): error: missing closing quote
+  Alternatively, perhaps it's better to pass the size parameters to the functions so that they can calculate the index.
+                           ^
+
+main.cu(48): error: missing closing quote
+  But for simplicity, I'll assume that the functions know the sizes.
+                       ^
+
+main.cu(73): warning #12-D: parsing restarts here after previous syntax error
+              Fx[idx] = 0.0;
+                           ^
+
+main.cu(74): error: identifier "Fy" is undefined
+              Fy[idx] = 0.0;
+              ^
+
+main.cu(74): error: invalid specifier for structured binding declaration
+              Fy[idx] = 0.0;
+              ^
+
+main.cu(75): error: identifier "Fz" is undefined
+              Fz[idx] = 0.0;
+              ^
+
+main.cu(75): error: invalid specifier for structured binding declaration
+              Fz[idx] = 0.0;
+              ^
+
+main.cu(75): error: declaration is incompatible with structured binding "idx" (declared at line 74)
+              Fz[idx] = 0.0;
+                 ^
+
+main.cu(76): error: expected a declaration
+          }
+          ^
+
+main.cu(82): error: missing closing quote
+  Alternatively, perhaps it's better to pass the size parameters to the functions so that they can calculate the index.
+                           ^
+
+main.cu(84): error: missing closing quote
+  But for now, I'll proceed with the assumption that the functions know the sizes.
+                ^
+
+main.cu(88): error: missing closing quote
+  In the main function, after allocating device memory, I'll launch each kernel.
+                                                         ^
+
+main.cu(92): warning #12-D: parsing restarts here after previous syntax error
+  dim3 blockSize(8, 8, 8);
+                         ^
+
+main.cu(93): error: identifier "blockSize" is undefined
+  dim3 gridSize((400 + blockSize.x - 1)/blockSize.x,
+                       ^
+
+main.cu(97): error: this declaration has no storage class or type specifier
+  calculateForce<<<gridSize, blockSize>>>(d_phiold, d_Fx, d_Fy, d_Fz, dx, dy, dz, epsilon, W0, tau0);
+  ^
+
+main.cu(97): error: expected a ";"
+  calculateForce<<<gridSize, blockSize>>>(d_phiold, d_Fx, d_Fy, d_Fz, dx, dy, dz, epsilon, W0, tau0);
+                ^
+
+main.cu(98): error: explicit type is missing ("int" assumed)
+  cudaCheckError();
+  ^
+
+main.cu(100): error: identifier "But" is undefined
+  But I need to ensure that the grid size is correctly calculated to cover all points.
+  ^
+
+main.cu(100): error: expected a ";"
+  But I need to ensure that the grid size is correctly calculated to cover all points.
+        ^
+
+main.cu(102): error: missing closing quote
+  Now, considering the swapGrid function. In CUDA, instead of copying data, I can swap pointers. So, I'll have two sets of pointers for phi and u.
+                                                                                                      ^
+
+main.cu(106): warning #12-D: parsing restarts here after previous syntax error
+  double *phi_old = d_phiold;
+                            ^
+
+main.cu(107): error: identifier "d_phinew" is undefined
+  double *phi_new = d_phinew;
+                    ^
+
+main.cu(109): error: identifier "After" is undefined
+  After computing phi_new, I'll swap them:
+  ^
+
+main.cu(109): error: expected a ";"
+  After computing phi_new, I'll swap them:
+                  ^
+
+main.cu(109): error: missing closing quote
+  After computing phi_new, I'll swap them:
+                            ^
+
+main.cu(112): error: this declaration has no storage class or type specifier
+  phi_old = phi_new;
+  ^
+
+main.cu(112): error: a value of type "double *" cannot be used to initialize an entity of type "int"
+  phi_old = phi_new;
+            ^
+
+main.cu(113): error: this declaration has no storage class or type specifier
+  phi_new = temp;
+  ^
+
+main.cu(113): error: variable "phi_new" has already been defined
+  phi_new = temp;
+  ^
+
+main.cu(113): error: identifier "temp" is undefined
+  phi_new = temp;
+            ^
+
+main.cu(115): error: identifier "But" is undefined
+  But I need to ensure that the pointers are correctly managed.
+  ^
+
+main.cu(115): error: variable "I" has already been defined
+  But I need to ensure that the pointers are correctly managed.
+      ^
+
+main.cu(115): error: expected a ";"
+  But I need to ensure that the pointers are correctly managed.
+        ^
+
+main.cu(117): error: missing closing quote
+  Now, considering the error checking. I'll need a helper function to check CUDA errors:
+                                        ^
+
+main.cu(127): error: missing closing quote
+  I'll call this after each CUDA API call.
+   ^
+
+main.cu(282): warning #1654-D: too many characters in character literal -- extra leading characters ignored
+  Now, considering the main function's structure, I'll need to manage the data transfer and kernel launches correctly.
+                                    ^
+
+main.cu(282): error: a multicharacter literal cannot be part of a user-defined literal
+  Now, considering the main function's structure, I'll need to manage the data transfer and kernel launches correctly.
+                                    ^
+
+main.cu(284): warning #1654-D: too many characters in character literal -- extra leading characters ignored
+  Finally, after translating all functions, I'll ensure that the code compiles without errors and preserves the original algorithm's functionality.
+                                             ^
+
+main.cu(284): error: a multicharacter literal cannot be part of a user-defined literal
+  Finally, after translating all functions, I'll ensure that the code compiles without errors and preserves the original algorithm's functionality.
+                                             ^
+
+main.cu(287): error: unrecognized token
+  ```cpp
+  ^
+
+main.cu(287): error: unrecognized token
+  ```cpp
+   ^
+
+main.cu(287): error: unrecognized token
+  ```cpp
+    ^
+
+main.cu(301): warning #12-D: parsing restarts here after previous syntax error
+  typedef double nRarray[400][400];
+                                  ^
+
+main.cu(371): error: declaration is incompatible with "int calculateForce" (declared at line 97)
+  __attribute__((global)) void calculateForce(double *phi, double *Fx, double *Fy, double *Fz, double dx, double dy, double dz, double epsilon, double W0, double tau0) {
+                               ^
+
+At end of source: error: expected a ";"
+
+At end of source: error: expected a "}"
+main.cu(430): note #3196-D: to match this "{"
+  __attribute__((global)) void thermalEquation(double *unew, double *uold, double *phinew, double *phiold, double D, double dt, double dx, double dy, double dz) {
+                                                                                                                                                                 ^
+
+48 errors detected in the compilation of "main.cu".
+make: *** [Makefile:55: main.o] Error 2
+
+
+**Compile error vanGenuchten-cuda: main.cu:11:10: fatal error: helper_cuda.h: No such file or directory
+   11 | #include "helper_cuda.h"
+      |          ^~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Makefile:50: main.o] Error 1
+
+
+
+**Compile error wsm5-cuda: main.cu:16: warning: "XXX" redefined
+   16 | #define XXX 16
+      | 
+In file included from main.cu:13:
+utils.h:2: note: this is the location of the previous definition
+    2 | #define XXX 8
+      | 
+main.cu:17: warning: "YYY" redefined
+   17 | #define YYY 16
+      | 
+In file included from main.cu:13:
+utils.h:3: note: this is the location of the previous definition
+    3 | #define YYY 8
+      | 
+kernel.h(4): error: function "wsm" has already been defined
+  void wsm (
+       ^
+
+main.cu(89): error: too many arguments in function call
+          teamX , teamY );
+          ^
+
+2 errors detected in the compilation of "main.cu".
+make: *** [Makefile:50: main.o] Error 2
+
+
+
+**Compile error stddev-cuda: main.cu(27): error: identifier "initStdKernel" is undefined
+      initStdKernel<Type><<<initGrid, TPB>>>(std);
+      ^
+
+main.cu(27): error: type name is not allowed
+      initStdKernel<Type><<<initGrid, TPB>>>(std);
+                    ^
+
+main.cu(27): error: expected an expression
+      initStdKernel<Type><<<initGrid, TPB>>>(std);
+                         ^
+
+main.cu(28): error: identifier "checkCudaErrors" is undefined
+      checkCudaErrors(cudaGetLastError());
+      ^
+
+main.cu(33): error: identifier "computeSumKernel" is undefined
+      computeSumKernel<Type, IdxType><<<grid, block>>>(std, data, D, N, ColsPerBlk, RowsPerBlk, TeamX, TeamY);
+      ^
+
+main.cu(33): error: type name is not allowed
+      computeSumKernel<Type, IdxType><<<grid, block>>>(std, data, D, N, ColsPerBlk, RowsPerBlk, TeamX, TeamY);
+                       ^
+
+main.cu(33): error: type name is not allowed
+      computeSumKernel<Type, IdxType><<<grid, block>>>(std, data, D, N, ColsPerBlk, RowsPerBlk, TeamX, TeamY);
+                             ^
+
+main.cu(33): error: expected an expression
+      computeSumKernel<Type, IdxType><<<grid, block>>>(std, data, D, N, ColsPerBlk, RowsPerBlk, TeamX, TeamY);
+                                     ^
+
+main.cu(38): error: identifier "finalizeStdKernel" is undefined
+      finalizeStdKernel<Type><<<finalizeGrid, TPB>>>(std, D, N, sample);
+      ^
+
+main.cu(38): error: type name is not allowed
+      finalizeStdKernel<Type><<<finalizeGrid, TPB>>>(std, D, N, sample);
+                        ^
+
+main.cu(38): error: expected an expression
+      finalizeStdKernel<Type><<<finalizeGrid, TPB>>>(std, D, N, sample);
+                             ^
+
+main.cu(42): warning #1835-D: attribute "__global__" does not apply here
+  __attribute__((global)) void initStdKernel(Type *std) {
+                 ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+main.cu(42): error: incomplete type is not allowed
+  __attribute__((global)) void initStdKernel(Type *std) {
+                               ^
+
+main.cu(42): error: identifier "Type" is undefined
+  __attribute__((global)) void initStdKernel(Type *std) {
+                                             ^
+
+main.cu(42): error: a namespace name is not allowed
+  __attribute__((global)) void initStdKernel(Type *std) {
+                                                   ^
+
+main.cu(42): error: expected a ";"
+  __attribute__((global)) void initStdKernel(Type *std) {
+                                                        ^
+
+main.cu(104): warning #12-D: parsing restarts here after previous syntax error
+                                                     ;
+                                                     ^
+
+main.cu(107): error: this declaration has no storage class or type specifier
+      checkCudaErrors(cudaMalloc(&d_data, inputSizeByte));
+      ^
+
+main.cu(107): error: identifier "inputSizeByte" is undefined
+      checkCudaErrors(cudaMalloc(&d_data, inputSizeByte));
+                                          ^
+
+main.cu(108): error: this declaration has no storage class or type specifier
+      checkCudaErrors(cudaMalloc(&d_std, inputSizeByte));
+      ^
+
+main.cu(108): error: variable "checkCudaErrors" has already been defined
+      checkCudaErrors(cudaMalloc(&d_std, inputSizeByte));
+      ^
+
+main.cu(109): error: this declaration has no storage class or type specifier
+      checkCudaErrors(cudaMemcpy(d_data, data, inputSizeByte, cudaMemcpyHostToDevice));
+      ^
+
+main.cu(109): error: variable "checkCudaErrors" has already been defined
+      checkCudaErrors(cudaMemcpy(d_data, data, inputSizeByte, cudaMemcpyHostToDevice));
+      ^
+
+main.cu(109): error: identifier "data" is undefined
+      checkCudaErrors(cudaMemcpy(d_data, data, inputSizeByte, cudaMemcpyHostToDevice));
+                                         ^
+
+main.cu(112): error: expected a declaration
+      for (int i = 0; i < repeat; i++) {
+      ^
+
+main.cu(115): warning #12-D: parsing restarts here after previous syntax error
+      auto end = std::chrono::steady_clock::now();
+                                                 ^
+
+main.cu(116): error: declaration is incompatible with "time_t time(time_t *) throw()" (declared at line 75 of /usr/include/time.h)
+      auto time = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+           ^
+
+main.cu(116): error: identifier "end" is undefined
+      auto time = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+                                                                       ^
+
+main.cu(116): error: no instance of function template "std::chrono::duration_cast" matches the argument list
+            argument types are: (<error-type>)
+      auto time = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+                  ^
+/usr/include/c++/9/chrono(191): note #3327-D: candidate function template "std::chrono::duration_cast" failed deduction
+        duration_cast(const duration<_Rep, _Period>& __d)
+        ^
+
+main.cu(117): error: this declaration has no storage class or type specifier
+      printf("Average execution time of stddev kernels: %f (s)\n", (time * 1e-9f) / repeat);
+      ^
+
+main.cu(117): error: declaration is incompatible with "int printf(const char *, ...)" (declared at line 105 of /usr/include/x86_64-linux-gnu/bits/stdio2.h)
+      printf("Average execution time of stddev kernels: %f (s)\n", (time * 1e-9f) / repeat);
+      ^
+
+main.cu(117): error: identifier "repeat" is undefined
+      printf("Average execution time of stddev kernels: %f (s)\n", (time * 1e-9f) / repeat);
+                                                                                    ^
+
+main.cu(117): error: too many initializer values
+      printf("Average execution time of stddev kernels: %f (s)\n", (time * 1e-9f) / repeat);
+                                                                   ^
+
+main.cu(117): error: a value of type "const char *" cannot be used to initialize an entity of type "int"
+      printf("Average execution time of stddev kernels: %f (s)\n", (time * 1e-9f) / repeat);
+             ^
+
+main.cu(119): error: this declaration has no storage class or type specifier
+      checkCudaErrors(cudaMemcpy(std, d_std, inputSizeByte, cudaMemcpyDeviceToHost));
+      ^
+
+main.cu(119): error: variable "checkCudaErrors" has already been defined
+      checkCudaErrors(cudaMemcpy(std, d_std, inputSizeByte, cudaMemcpyDeviceToHost));
+      ^
+
+main.cu(119): error: a namespace name is not allowed
+      checkCudaErrors(cudaMemcpy(std, d_std, inputSizeByte, cudaMemcpyDeviceToHost));
+                                 ^
+
+main.cu(121): error: this declaration has no storage class or type specifier
+      stddev_ref(std_ref, data, D, N, sample);
+      ^
+
+main.cu(121): error: declaration is incompatible with function template "void stddev_ref(Type *, const Type *, IdxType, IdxType, bool)" (declared at line 2 of reference.h)
+      stddev_ref(std_ref, data, D, N, sample);
+      ^
+
+main.cu(121): error: identifier "std_ref" is undefined
+      stddev_ref(std_ref, data, D, N, sample);
+                 ^
+
+main.cu(121): error: identifier "D" is undefined
+      stddev_ref(std_ref, data, D, N, sample);
+                                ^
+
+main.cu(121): error: identifier "N" is undefined
+      stddev_ref(std_ref, data, D, N, sample);
+                                   ^
+
+main.cu(121): error: identifier "sample" is undefined
+      stddev_ref(std_ref, data, D, N, sample);
+                                      ^
+
+main.cu(121): error: too many initializer values
+      stddev_ref(std_ref, data, D, N, sample);
+                          ^
+
+main.cu(124): error: expected a declaration
+      for (int i = 0; i < D; i++) {
+      ^
+
+main.cu(131): warning #12-D: parsing restarts here after previous syntax error
+      printf("%s\n", ok ? "PASS" : "FAIL");
+                                          ^
+
+main.cu(132): error: this declaration has no storage class or type specifier
+      free(std_ref);
+      ^
+
+main.cu(132): error: declaration is incompatible with "void free(void *) throw()" (declared at line 565 of /usr/include/stdlib.h)
+      free(std_ref);
+      ^
+
+main.cu(133): error: this declaration has no storage class or type specifier
+      free(std);
+      ^
+
+main.cu(133): error: variable "free" has already been defined
+      free(std);
+      ^
+
+main.cu(133): error: a namespace name is not allowed
+      free(std);
+           ^
+
+main.cu(134): error: this declaration has no storage class or type specifier
+      free(data);
+      ^
+
+main.cu(134): error: variable "free" has already been defined
+      free(data);
+      ^
+
+main.cu(135): error: this declaration has no storage class or type specifier
+      checkCudaErrors(cudaFree(d_data));
+      ^
+
+main.cu(135): error: variable "checkCudaErrors" has already been defined
+      checkCudaErrors(cudaFree(d_data));
+      ^
+
+main.cu(136): error: this declaration has no storage class or type specifier
+      checkCudaErrors(cudaFree(d_std));
+      ^
+
+main.cu(136): error: variable "checkCudaErrors" has already been defined
+      checkCudaErrors(cudaFree(d_std));
+      ^
+
+main.cu(137): error: expected a declaration
+      return 0;
+      ^
+
+main.cu(138): error: expected a declaration
+  }
+  ^
+
+55 errors detected in the compilation of "main.cu".
+make: *** [Makefile:51: main.o] Error 2
+
+
+
+**Compile error geodesic-cuda: main.cu(19): error: invalid redeclaration of type name "float4" (declared at line 398 of /home/pdp15/.conda/envs/unipar/bin/../include/vector_types.h)
+  } float4;
+    ^
+
+main.cu(25): warning #940-D: missing return statement at end of non-void function "distance_host"
+  }
+  ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+main.cu(36): error: identifier "dist" is undefined
+        VC[wiID] = dist;
+                   ^
+
+main.cu(80): error: identifier "input" is undefined
+    distance_device(input, output, N, iteration);
+                    ^
+
+main.cu(80): error: identifier "output" is undefined
+    distance_device(input, output, N, iteration);
+                           ^
+
+main.cu(80): error: identifier "N" is undefined
+    distance_device(input, output, N, iteration);
+                                   ^
+
+main.cu(80): error: identifier "iteration" is undefined
+    distance_device(input, output, N, iteration);
+                                      ^
+
+main.cu(81): error: identifier "expected_output" is undefined
+    verify(N, output, expected_output);
+                      ^
+
+7 errors detected in the compilation of "main.cu".
+make: *** [Makefile:52: main.o] Error 2
+
+
+
+
+**Compile error heat-cuda: heat.cu(32): error: identifier "r2" is undefined
+          double val = r2 * u[idx + idy * n];
+                       ^
+
+1 error detected in the compilation of "heat.cu".
+make: *** [Makefile:52: heat.o] Error 2
+
+
+
+**Run error meanshift-cuda: main: utils.h:17: std::array<float, (N * D)> mean_shift::gpu::utils::load_csv(const string&, char) [with long unsigned int N = 3; long unsigned int D = 3; std::string = std::__cxx11::basic_string<char>]: Assertion `std::filesystem::exists(path)' failed.
+make: *** [Makefile:56: run] Aborted (core dumped)
+
+
+
+**Compile error mixbench-cuda: main.cu(27): error: identifier "kernel" is undefined
+      kernel<<<grid, block>>>(cd, stride, big_stride, compute_iterations);
+      ^
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:52: main.o] Error 2
+
+
+
+**Compile error su3-cuda: su3_nn_bench.cu:14:10: fatal error: mat_nn_openmp.hpp: No such file or directory
+   14 | #include "mat_nn_openmp.hpp"
+      |          ^~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Makefile:51: su3_nn_bench.o] Error 1
+
+
+
+**Compile error stencil1d-cuda: stencil_1d.cu(11): error: expected a ")"
+  __attribute__((global)) void stencilKernel(int* a, int* b, int length, int 7) {
+                                                                             ^
+
+1 error detected in the compilation of "stencil_1d.cu".
+make: *** [Makefile:52: stencil_1d.o] Error 2
+
+
+
+**Compile error pool-cuda: main.cu:13:10: fatal error: helper_cuda.h: No such file or directory
+   13 | #include "helper_cuda.h"
+      |          ^~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Makefile:51: main.o] Error 1
+
+
+
+**Compile error particlefilter-cuda: main.cu:23:10: fatal error: helper_cuda.h: No such file or directory
+   23 | #include "helper_cuda.h"
+      |          ^~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Makefile:51: main.o] Error 1
+
+
+
+**Compile error winograd-cuda: main.cu:10: warning: "DIM_LOCAL_WORK_GROUP_X" redefined
+   10 | #define DIM_LOCAL_WORK_GROUP_X 16
+      | 
+In file included from main.cu:3:
+utils.h:26: note: this is the location of the previous definition
+   26 | #define DIM_LOCAL_WORK_GROUP_X 32
+      | 
+main.cu:11: warning: "DIM_LOCAL_WORK_GROUP_Y" redefined
+   11 | #define DIM_LOCAL_WORK_GROUP_Y 16
+      | 
+In file included from main.cu:3:
+utils.h:27: note: this is the location of the previous definition
+   27 | #define DIM_LOCAL_WORK_GROUP_Y 8
+      | 
+main.cu(76): error: identifier "rtclock" is undefined
+      double start = rtclock();
+                     ^
+
+main.cu(88): error: calling a __device__ function("_Z40WinogradConv2D_2x2_filter_transformation1?") from a __host__ function("main") is not allowed
+      WinogradConv2D_2x2_filter_transformation(C);
+      ^
+
+2 errors detected in the compilation of "main.cu".
+make: *** [Makefile:53: main.o] Error 2
+make: *** Waiting for unfinished jobs....
+utils.cu:52: warning: ignoring #pragma omp parallel [-Wunknown-pragmas]
+   52 |   #pragma omp parallel
+      | 
+utils.cu:54: warning: ignoring #pragma omp for [-Wunknown-pragmas]
+   54 |     #pragma omp for
+      | 
+utils.cu: In function ‘void WinogradConv2D_2x2_omp(float*, float*, float*, size_t*)’:
+utils.cu:53:29: warning: comparison of integer expressions of different signedness: ‘int’ and ‘size_t’ {aka ‘long unsigned int’} [-Wsign-compare]
+   53 |   for (int tile_i = 0; tile_i < cpu_global_size[0]; tile_i++) {
+      |                      ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~
+
+
+
+**Execution out michalewicz-cuda: ./main 100000000 100
+Average execution time of kernel (dim = 2): 0.316820 (us)
+Global minima = 1.351155
+Error = 3.152455
+Average execution time of kernel (dim = 5): 0.000010 (us)
+Global minima = 1.036849
+Error = 5.724507
+Average execution time of kernel (dim = 10): 0.000010 (us)
+Global minima = 2.433696
+Error = 12.093845
+
+  [canonical] missing kernel counted as fail: zmddft
+omp - cuda compile rate: 3/18 (0.167) | correct rate: 0/18 (0.000)
+
+********Translate total for:  HeCBench-cuda-omp ********
+
+
+**Run error stddev-omp: ./main: error while loading shared libraries: libomp.so: cannot open shared object file: No such file or directory
+make: *** [Makefile.aomp:67: run] Error 127
+
+
+
+**Compile error ace-omp: main.cpp:350:11: error: cannot initialize a variable of type 'double *' with an lvalue of type 'nRarray *' (aka 'double (*)[400][400]')
+  350 |   double *d_phiold = phi_host;
+      |           ^          ~~~~~~~~
+main.cpp:352:11: error: cannot initialize a variable of type 'double *' with an lvalue of type 'nRarray *' (aka 'double (*)[400][400]')
+  352 |   double *d_uold = u_host;
+      |           ^        ~~~~~~
+main.cpp:361:5: error: no matching function for call to 'calculateForce'
+  361 |     calculateForce(d_phiold, d_Fx, d_Fy, d_Fz, dx, dy, dz, epsilon, W0, tau0);
+      |     ^~~~~~~~~~~~~~
+main.cpp:103:6: note: candidate function not viable: no known conversion from 'double *' to 'double (*)[400][400]' for 1st argument
+  103 | void calculateForce(double phi[][DATAYSIZE][DATAXSIZE], 
+      |      ^              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.cpp:362:5: error: no matching function for call to 'allenCahn'
+  362 |     allenCahn(d_phinew, d_phiold, d_uold, d_Fx, d_Fy, d_Fz, epsilon, W0, tau0, lambda, dt, dx, dy, dz);
+      |     ^~~~~~~~~
+main.cpp:141:6: note: candidate function not viable: no known conversion from 'double *' to 'double (*)[400][400]' for 1st argument
+  141 | void allenCahn(double phinew[][DATAYSIZE][DATAXSIZE], 
+      |      ^         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.cpp:363:5: error: no matching function for call to 'boundaryConditionsPhi'
+  363 |     boundaryConditionsPhi(d_phinew);
+      |     ^~~~~~~~~~~~~~~~~~~~~
+main.cpp:172:6: note: candidate function not viable: no known conversion from 'double *' to 'double (*)[400][400]' for 1st argument
+  172 | void boundaryConditionsPhi(double phinew[][DATAYSIZE][DATAXSIZE])
+      |      ^                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.cpp:364:5: error: no matching function for call to 'thermalEquation'
+  364 |     thermalEquation(d_unew, d_uold, d_phinew, d_phiold, D, dt, dx, dy, dz);
+      |     ^~~~~~~~~~~~~~~
+main.cpp:201:6: note: candidate function not viable: no known conversion from 'double *' to 'double (*)[400][400]' for 1st argument
+  201 | void thermalEquation(double unew[][DATAYSIZE][DATAXSIZE],
+      |      ^               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.cpp:365:5: error: no matching function for call to 'boundaryConditionsU'
+  365 |     boundaryConditionsU(d_unew, delta);
+      |     ^~~~~~~~~~~~~~~~~~~
+main.cpp:223:6: note: candidate function not viable: no known conversion from 'double *' to 'double (*)[400][400]' for 1st argument
+  223 | void boundaryConditionsU(double unew[][DATAYSIZE][DATAXSIZE], double delta)
+      |      ^                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.cpp:366:5: error: no matching function for call to 'swapGrid'
+  366 |     swapGrid(d_phinew, d_phiold);
+      |     ^~~~~~~~
+main.cpp:252:6: note: candidate function not viable: no known conversion from 'double *' to 'double (*)[400][400]' for 1st argument
+  252 | void swapGrid(double cnew[][DATAYSIZE][DATAXSIZE],
+      |      ^        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.cpp:367:5: error: no matching function for call to 'swapGrid'
+  367 |     swapGrid(d_unew, d_uold);
+      |     ^~~~~~~~
+main.cpp:252:6: note: candidate function not viable: no known conversion from 'double *' to 'double (*)[400][400]' for 1st argument
+  252 | void swapGrid(double cnew[][DATAYSIZE][DATAXSIZE],
+      |      ^        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.cpp:371:48: error: use of undeclared identifier 'cudaMemcpyDeviceToHost'
+  371 |   cudaMemcpy(phi_host, d_phiold, vol_in_bytes, cudaMemcpyDeviceToHost);
+      |                                                ^
+main.cpp:372:44: error: use of undeclared identifier 'cudaMemcpyDeviceToHost'
+  372 |   cudaMemcpy(u_host, d_uold, vol_in_bytes, cudaMemcpyDeviceToHost);
+      |                                            ^
+11 errors generated.
+make: *** [Makefile.aomp:66: main.o] Error 1
+
+
+
+**Compile error pnpoly-omp: In file included from main.cpp:8:
+./kernel.h:29:11: error: unknown type name 'float2'; did you mean 'float'?
+   29 |     const float2*__restrict point,
+      |           ^~~~~~
+      |           float
+./kernel.h:30:11: error: unknown type name 'float2'; did you mean 'float'?
+   30 |     const float2*__restrict vertex,
+      |           ^~~~~~
+      |           float
+./kernel.h:36:5: error: use of undeclared identifier 'float2'; did you mean 'float'?
+   36 |     float2 lpoint[tile_size];
+      |     ^~~~~~
+      |     float
+./kernel.h:40:13: error: use of undeclared identifier 'BLOCK_SIZE_X'
+   40 |       if (i+BLOCK_SIZE_X*ti < n) {
+      |             ^
+./kernel.h:41:30: error: use of undeclared identifier 'BLOCK_SIZE_X'
+   41 |         lpoint[ti] = point[i+BLOCK_SIZE_X*ti];
+      |                              ^
+./kernel.h:45:13: error: use of undeclared identifier 'VERTICES'
+   45 |     int k = VERTICES-1;
+      |             ^
+./kernel.h:47:21: error: use of undeclared identifier 'VERTICES'
+   47 |     for (int j=0; j<VERTICES; k = j++) {    // edge from vj to vk
+      |                     ^
+./kernel.h:48:7: error: use of undeclared identifier 'float2'; did you mean 'float'?
+   48 |       float2 vj = vertex[j]; 
+      |       ^~~~~~
+      |       float
+./kernel.h:49:7: error: use of undeclared identifier 'float2'; did you mean 'float'?
+   49 |       float2 vk = vertex[k]; 
+      |       ^~~~~~
+      |       float
+./kernel.h:51:24: error: member reference base type 'float' is not a structure or union
+   51 |       float slope = (vk.x-vj.x) / (vk.y-vj.y);
+      |                      ~~^~
+./kernel.h:51:29: error: member reference base type 'float' is not a structure or union
+   51 |       float slope = (vk.x-vj.x) / (vk.y-vj.y);
+      |                           ~~^~
+./kernel.h:51:38: error: member reference base type 'float' is not a structure or union
+   51 |       float slope = (vk.x-vj.x) / (vk.y-vj.y);
+      |                                    ~~^~
+./kernel.h:51:43: error: member reference base type 'float' is not a structure or union
+   51 |       float slope = (vk.x-vj.x) / (vk.y-vj.y);
+      |                                         ~~^~
+./kernel.h:56:9: error: use of undeclared identifier 'float2'; did you mean 'float'?
+   56 |         float2 p = lpoint[ti];
+      |         ^~~~~~
+      |         float
+./kernel.h:58:25: error: member reference base type 'float' is not a structure or union
+   58 |         if (is_between(p.y, vj.y, vk.y) &&         //if p is between vj and vk vertically
+      |                        ~^~
+./kernel.h:58:31: error: member reference base type 'float' is not a structure or union
+   58 |         if (is_between(p.y, vj.y, vk.y) &&         //if p is between vj and vk vertically
+      |                             ~~^~
+./kernel.h:58:37: error: member reference base type 'float' is not a structure or union
+   58 |         if (is_between(p.y, vj.y, vk.y) &&         //if p is between vj and vk vertically
+      |                                   ~~^~
+./kernel.h:59:15: error: member reference base type 'float' is not a structure or union
+   59 |             (p.x < slope * (p.y-vj.y) + vj.x)
+      |              ~^~
+./kernel.h:59:30: error: member reference base type 'float' is not a structure or union
+   59 |             (p.x < slope * (p.y-vj.y) + vj.x)
+      |                             ~^~
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+make: *** [Makefile.aomp:60: main.o] Error 1
+
+
+
+**Compile error winograd-omp: main.cpp:77:18: error: use of undeclared identifier 'rtclock'; did you mean 'clock'?
+   77 |   double start = rtclock();
+      |                  ^~~~~~~
+      |                  clock
+/home/pdp15/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/include/time.h:189:16: note: 'clock' declared here
+  189 | extern clock_t clock (void) __THROW;
+      |                ^
+main.cpp:124:23: error: use of undeclared identifier 'rtclock'; did you mean 'clock'?
+  124 |     double co_start = rtclock();
+      |                       ^~~~~~~
+      |                       clock
+/home/pdp15/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/include/time.h:189:16: note: 'clock' declared here
+  189 | extern clock_t clock (void) __THROW;
+      |                ^
+main.cpp:135:16: error: use of undeclared identifier 'rtclock'; did you mean 'clock'?
+  135 |     co_time += rtclock() - co_start;
+      |                ^~~~~~~
+      |                clock
+/home/pdp15/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/include/time.h:189:16: note: 'clock' declared here
+  189 | extern clock_t clock (void) __THROW;
+      |                ^
+main.cpp:154:16: error: use of undeclared identifier 'rtclock'; did you mean 'clock'?
+  154 |   double end = rtclock();
+      |                ^~~~~~~
+      |                clock
+/home/pdp15/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/include/time.h:189:16: note: 'clock' declared here
+  189 | extern clock_t clock (void) __THROW;
+      |                ^
+4 errors generated.
+make: *** [Makefile.aomp:61: main.o] Error 1
+make: *** Waiting for unfinished jobs....
+
+
+
+**Run error keogh-omp: ./main: error while loading shared libraries: libomp.so: cannot open shared object file: No such file or directory
+make: *** [Makefile.aomp:66: run] Error 127
+
+
+
+**Run error stencil1d-omp: ./main: error while loading shared libraries: libomp.so: cannot open shared object file: No such file or directory
+make: *** [Makefile.aomp:66: run] Error 127
+
+
+
+**Compile error particlefilter-omp: main.cpp:36:10: fatal error: 'kernel_find_index.h' file not found
+   36 | #include "kernel_find_index.h"
+      |          ^~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+make: *** [Makefile.aomp:63: main.o] Error 1
+
+
+
+**Compile error meanshift-omp: main.cpp:22:26: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+   22 |       float new_position[D] = {0.f};
+      |                          ^
+main.cpp:22:26: note: read of non-const variable 'D' is not allowed in a constant expression
+main.cpp:18:12: note: declared here
+   18 |     size_t D = mean_shift::gpu::D;
+      |            ^
+main.cpp:22:26: error: variable-sized object may not be initialized
+   22 |       float new_position[D] = {0.f};
+      |                          ^
+main.cpp:52:26: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+   52 |       float new_position[D] = {0.f};
+      |                          ^
+main.cpp:52:26: note: read of non-const variable 'D' is not allowed in a constant expression
+main.cpp:46:12: note: declared here
+   46 |     size_t D = mean_shift::gpu::D;
+      |            ^
+main.cpp:52:26: error: variable-sized object may not be initialized
+   52 |       float new_position[D] = {0.f};
+      |                          ^
+main.cpp:54:24: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+   54 |       float local_data[TILE_WIDTH * D];
+      |                        ^~~~~~~~~~~~~~
+main.cpp:54:24: note: read of non-const variable 'TILE_WIDTH' is not allowed in a constant expression
+main.cpp:47:12: note: declared here
+   47 |     size_t TILE_WIDTH = mean_shift::gpu::TILE_WIDTH;
+      |            ^
+main.cpp:55:24: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+   55 |       float valid_data[TILE_WIDTH];
+      |                        ^~~~~~~~~~
+main.cpp:55:24: note: read of non-const variable 'TILE_WIDTH' is not allowed in a constant expression
+main.cpp:47:12: note: declared here
+   47 |     size_t TILE_WIDTH = mean_shift::gpu::TILE_WIDTH;
+      |            ^
+main.cpp:70:9: error: region cannot be closely nested inside 'parallel for' region
+   70 |         #pragma omp barrier
+      |         ^
+main.cpp:86:9: error: region cannot be closely nested inside 'parallel for' region
+   86 |         #pragma omp barrier
+      |         ^
+4 warnings and 4 errors generated.
+make: *** [Makefile.aomp:60: main.o] Error 1
+
+
+
+**Compile error pool-omp: main.cpp:99:37: error: use of undeclared identifier 'channels'
+   99 |                     offsetC = tmp % channels;
+      |                                     ^
+main.cpp:100:39: error: use of undeclared identifier 'channels'
+  100 |                     batch_idx = tmp / channels;
+      |                                       ^
+main.cpp:102:39: error: use of undeclared identifier 'channels'
+  102 |                     offsetC = index % channels;
+      |                                       ^
+main.cpp:103:35: error: use of undeclared identifier 'channels'
+  103 |                     tmp = index / channels;
+      |                                   ^
+main.cpp:117:17: error: unknown type name 'T'
+  117 |                 T gradient = static_cast<T>(0.0);
+      |                 ^
+main.cpp:117:42: error: unknown type name 'T'
+  117 |                 T gradient = static_cast<T>(0.0);
+      |                                          ^
+main.cpp:118:17: error: unknown type name 'T'
+  118 |                 T input_val = input[index];
+      |                 ^
+main.cpp:120:80: error: use of undeclared identifier 'channels'
+  120 |                 int output_stride = batch_idx * output_height * output_width * channels;
+      |                                                                                ^
+main.cpp:124:23: error: unknown type name 'T'
+  124 |                 const T *output_data_t = output + output_stride;
+      |                       ^
+main.cpp:125:23: error: unknown type name 'T'
+  125 |                 const T *output_grad_t = output_grad + output_stride;
+      |                       ^
+main.cpp:140:73: error: use of undeclared identifier 'channels'
+  140 |                                            ? (ph * output_width + pw) * channels + offsetC
+      |                                                                         ^
+main.cpp:144:57: error: unknown type name 'T'
+  144 |                                             static_cast<T>(1.f / pool_size), &gradient);
+      |                                                         ^
+12 errors generated.
+make: *** [Makefile.aomp:60: main.o] Error 1
+
+
+
+**Compile error convolution1D-omp: main.cpp:23:9: warning: unused variable 'num_threads' [-Wunused-variable]
+   23 |     int num_threads = omp_get_max_threads();
+      |         ^~~~~~~~~~~
+main.cpp:49:33: error: use of undeclared identifier 'blockDim'
+   49 |             tile[threadIdx.x - (blockDim.x - n)] = in[halo_left];
+      |                                 ^
+main.cpp:49:18: error: use of undeclared identifier 'threadIdx'
+   49 |             tile[threadIdx.x - (blockDim.x - n)] = in[halo_left];
+      |                  ^
+main.cpp:52:18: error: use of undeclared identifier 'threadIdx'
+   52 |         tile[n + threadIdx.x] = in[i];
+      |                  ^
+main.cpp:56:18: error: use of undeclared identifier 'threadIdx'
+   56 |             tile[threadIdx.x + blockDim.x + n] = in[halo_right];
+      |                  ^
+main.cpp:56:32: error: use of undeclared identifier 'blockDim'
+   56 |             tile[threadIdx.x + blockDim.x + n] = in[halo_right];
+      |                                ^
+main.cpp:61:23: error: use of undeclared identifier 'threadIdx'
+   61 |             s += tile[threadIdx.x + j] * mask<T>[j];
+      |                       ^
+main.cpp:78:14: error: use of undeclared identifier 'threadIdx'
+   78 |         tile[threadIdx.x] = in[global_idx];
+      |              ^
+main.cpp:86:31: error: use of undeclared identifier 'threadIdx'
+   86 |                     s += tile[threadIdx.x + j - n] * mask<T>[j];
+      |                               ^
+1 warning and 8 errors generated.
+make: *** [Makefile.aomp:60: main.o] Error 1
+
+
+
+**Run error heat-omp: ./main: error while loading shared libraries: libomp.so: cannot open shared object file: No such file or directory
+make: *** [Makefile.aomp:68: run] Error 127
+
+
+
+**Compile error su3-omp: In file included from su3_nn_bench.cpp:14:
+./mat_nn_openmp.hpp:29:7: error: use of undeclared identifier 'verbose'
+   29 |   if (verbose >= 1) {
+      |       ^
+./mat_nn_openmp.hpp:36:17: error: use of undeclared identifier 'Clock'
+   36 |   auto tstart = Clock::now();
+      |                 ^
+./mat_nn_openmp.hpp:37:38: error: use of undeclared identifier 'warmups'
+   37 |   for (int iters=0; iters<iterations+warmups; ++iters) {
+      |                                      ^
+./mat_nn_openmp.hpp:38:18: error: use of undeclared identifier 'warmups'
+   38 |     if (iters == warmups) {
+      |                  ^
+./mat_nn_openmp.hpp:39:16: error: use of undeclared identifier 'Clock'
+   39 |       tstart = Clock::now();
+      |                ^
+./mat_nn_openmp.hpp:66:66: error: use of undeclared identifier 'Clock'
+   66 |   ttotal = std::chrono::duration_cast<std::chrono::microseconds>(Clock::now()-tstart).count();
+      |                                                                  ^
+./mat_nn_openmp.hpp:92:7: error: use of undeclared identifier 'almost_equal'
+   92 |   if (almost_equal(sum, 4.0*sizeof(su3_matrix)/(sizeof(Complx)), 1E-6)) {
+      |       ^
+su3_nn_bench.cpp:152:20: warning: passing 8-byte aligned argument to 16-byte aligned parameter 1 of 'make_lattice' may result in an unaligned pointer access [-Walign-mismatch]
+  152 |     make_lattice(a.data(), ldim, Complx{1.0, 0.0});
+      |                    ^
+1 warning and 7 errors generated.
+make: *** [Makefile.aomp:60: su3_nn_bench.o] Error 1
+
+
+
+**Compile error michalewicz-omp: main.cpp:15:20: error: use of undeclared identifier '__float_as_uint'
+   15 |     unsigned ret = __float_as_uint(*addr);
+      |                    ^
+main.cpp:16:20: error: use of undeclared identifier '__uint_as_float'
+   16 |     while (value < __uint_as_float(ret)) {
+      |                    ^
+main.cpp:18:71: error: use of undeclared identifier '__float_as_uint'
+   18 |         if ((ret = __sync_val_compare_and_swap((unsigned *)addr, old, __float_as_uint(value))) == old)
+      |                                                                       ^
+main.cpp:21:12: error: use of undeclared identifier '__uint_as_float'
+   21 |     return __uint_as_float(ret);
+      |            ^
+4 errors generated.
+make: *** [Makefile.aomp:60: main.o] Error 1
+
+
+
+**Run error vanGenuchten-omp: ./main: error while loading shared libraries: libomp.so: cannot open shared object file: No such file or directory
+make: *** [Makefile.aomp:67: run] Error 127
+
+
+
+**Compile error wsm5-omp: In file included from main.cpp:14:
+./kernel.h:3:6: error: redefinition of 'wsm'
+    3 | void wsm (
+      |      ^
+./kernel.h:3:6: note: previous definition is here
+    3 | void wsm (
+      |      ^
+main.cpp:74:9: error: no matching function for call to 'wsm'
+   74 |         wsm(
+      |         ^~~
+./kernel.h:3:6: note: candidate function not viable: requires 36 arguments, but 30 were provided
+    3 | void wsm (
+      |      ^
+    4 |         float *__restrict th,
+      |         ~~~~~~~~~~~~~~~~~~~~~
+    5 |   const float *__restrict pii,
+      |   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    6 |         float *__restrict q,
+      |         ~~~~~~~~~~~~~~~~~~~~
+    7 |         float *__restrict qc,
+      |         ~~~~~~~~~~~~~~~~~~~~~
+    8 |         float *__restrict qi,
+      |         ~~~~~~~~~~~~~~~~~~~~~
+    9 |         float *__restrict qr,
+      |         ~~~~~~~~~~~~~~~~~~~~~
+   10 |         float *__restrict qs,
+      |         ~~~~~~~~~~~~~~~~~~~~~
+   11 |   const float *__restrict den,
+      |   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   12 |   const float *__restrict p,
+      |   ~~~~~~~~~~~~~~~~~~~~~~~~~~
+   13 |   const float *__restrict delz,
+      |   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   14 |         float *__restrict rain,
+      |         ~~~~~~~~~~~~~~~~~~~~~~~
+   15 |         float *__restrict rainncv,
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~
+   16 |         float *__restrict sr,
+      |         ~~~~~~~~~~~~~~~~~~~~~
+   17 |         float *__restrict snow,
+      |         ~~~~~~~~~~~~~~~~~~~~~~~
+   18 |         float *__restrict snowncv,
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.cpp:97:9: error: no matching function for call to 'wsm'
+   97 |         wsm(
+      |         ^~~
+./kernel.h:3:6: note: candidate function not viable: requires 36 arguments, but 30 were provided
+    3 | void wsm (
+      |      ^
+    4 |         float *__restrict th,
+      |         ~~~~~~~~~~~~~~~~~~~~~
+    5 |   const float *__restrict pii,
+      |   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    6 |         float *__restrict q,
+      |         ~~~~~~~~~~~~~~~~~~~~
+    7 |         float *__restrict qc,
+      |         ~~~~~~~~~~~~~~~~~~~~~
+    8 |         float *__restrict qi,
+      |         ~~~~~~~~~~~~~~~~~~~~~
+    9 |         float *__restrict qr,
+      |         ~~~~~~~~~~~~~~~~~~~~~
+   10 |         float *__restrict qs,
+      |         ~~~~~~~~~~~~~~~~~~~~~
+   11 |   const float *__restrict den,
+      |   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   12 |   const float *__restrict p,
+      |   ~~~~~~~~~~~~~~~~~~~~~~~~~~
+   13 |   const float *__restrict delz,
+      |   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   14 |         float *__restrict rain,
+      |         ~~~~~~~~~~~~~~~~~~~~~~~
+   15 |         float *__restrict rainncv,
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~
+   16 |         float *__restrict sr,
+      |         ~~~~~~~~~~~~~~~~~~~~~
+   17 |         float *__restrict snow,
+      |         ~~~~~~~~~~~~~~~~~~~~~~~
+   18 |         float *__restrict snowncv,
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~
+3 errors generated.
+make: *** [Makefile.aomp:60: main.o] Error 1
+
+
+
+**Compile error geodesic-omp: main.cpp:19:1: warning: non-void function does not return a value [-Wreturn-type]
+   19 | }
+      | ^
+main.cpp:25:24: error: cannot return from OpenMP region
+   25 |         if (wiID >= N) return;
+      |                        ^
+main.cpp:39:13: error: use of undeclared identifier 'memcpy'; did you mean 'wmemcpy'?
+   39 |             memcpy(d_VA, VA, N * sizeof(float4));
+      |             ^~~~~~
+      |             wmemcpy
+/home/pdp15/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/include/wchar.h:329:17: note: 'wmemcpy' declared here
+  329 | extern wchar_t *wmemcpy (wchar_t *__restrict __s1,
+      |                 ^
+main.cpp:39:20: error: cannot initialize a parameter of type 'wchar_t *' with an lvalue of type 'float4 *'
+   39 |             memcpy(d_VA, VA, N * sizeof(float4));
+      |                    ^~~~
+/home/pdp15/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/include/wchar.h:329:46: note: passing argument to parameter '__s1' here
+  329 | extern wchar_t *wmemcpy (wchar_t *__restrict __s1,
+      |                                              ^
+main.cpp:49:13: error: use of undeclared identifier 'memcpy'; did you mean 'wmemcpy'?
+   49 |             memcpy(VC, d_VC, N * sizeof(float));
+      |             ^~~~~~
+      |             wmemcpy
+/home/pdp15/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/include/wchar.h:329:17: note: 'wmemcpy' declared here
+  329 | extern wchar_t *wmemcpy (wchar_t *__restrict __s1,
+      |                 ^
+main.cpp:49:20: error: cannot initialize a parameter of type 'wchar_t *' with an lvalue of type 'float *'
+   49 |             memcpy(VC, d_VC, N * sizeof(float));
+      |                    ^~
+/home/pdp15/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/include/wchar.h:329:46: note: passing argument to parameter '__s1' here
+  329 | extern wchar_t *wmemcpy (wchar_t *__restrict __s1,
+      |                                              ^
+1 warning and 5 errors generated.
+make: *** [Makefile.aomp:61: main.o] Error 1
+
+
+
+**Compile error mixbench-omp: main.cpp:74:5: error: use of undeclared identifier 'cudaDeviceSynchronize'
+   74 |     cudaDeviceSynchronize();
+      |     ^
+1 error generated.
+make: *** [Makefile.aomp:60: main.o] Error 1
+
+
+  [canonical] missing kernel counted as fail: zmddft
+cuda - omp compile rate: 5/18 (0.278) | correct rate: 0/18 (0.000)
+skipping:  eval_run.log
+
+cuda compile rate: 3/18 (0.167)
+cuda correct rate: 0/18 (0.000)
+omp compile rate: 5/18 (0.278)
+omp correct rate: 0/18 (0.000)
+
+compile=3/18 correct=0/18	compile=5/18 correct=0/18	
+
+Results saved to: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_v2_strict_shot_0_m_8192_t_0.2_p_0.9/eval_results.json
+Log saved to: Datasets/eval/deepseek_32b_strict_v2_strict_shot_0_m_8192_t_0.2_p_0.9/eval_run.log

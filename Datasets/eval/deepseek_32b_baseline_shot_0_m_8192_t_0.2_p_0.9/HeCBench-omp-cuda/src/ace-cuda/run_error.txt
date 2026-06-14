@@ -1,0 +1,126 @@
+main.cu(256): error: argument of type "nRarray *" is incompatible with parameter of type "double *"
+    initializationPhi(phi_host,r0);
+                      ^
+
+main.cu(256): error: too few arguments in function call
+    initializationPhi(phi_host,r0);
+                                 ^
+
+main.cu(257): error: argument of type "nRarray *" is incompatible with parameter of type "double *"
+    initializationU(u_host,r0,delta);
+                    ^
+
+main.cu(257): error: too few arguments in function call
+    initializationU(u_host,r0,delta);
+                                   ^
+
+main.cu(292): error: argument of type "nRarray *" is incompatible with parameter of type "double *"
+      calculateForce<<<grid, block>>>(d_phiold,d_Fx,d_Fy,d_Fz,
+                                      ^
+
+main.cu(292): error: argument of type "nRarray *" is incompatible with parameter of type "double *"
+      calculateForce<<<grid, block>>>(d_phiold,d_Fx,d_Fy,d_Fz,
+                                               ^
+
+main.cu(292): error: argument of type "nRarray *" is incompatible with parameter of type "double *"
+      calculateForce<<<grid, block>>>(d_phiold,d_Fx,d_Fy,d_Fz,
+                                                    ^
+
+main.cu(292): error: argument of type "nRarray *" is incompatible with parameter of type "double *"
+      calculateForce<<<grid, block>>>(d_phiold,d_Fx,d_Fy,d_Fz,
+                                                         ^
+
+main.cu(293): error: too few arguments in function call
+                                      dx,dy,dz,epsilon,W0,tau0);
+                                                              ^
+
+main.cu(295): error: argument of type "nRarray *" is incompatible with parameter of type "double *"
+      allenCahn<<<grid, block>>>(d_phinew,d_phiold,d_uold,
+                                 ^
+
+main.cu(295): error: argument of type "nRarray *" is incompatible with parameter of type "double *"
+      allenCahn<<<grid, block>>>(d_phinew,d_phiold,d_uold,
+                                          ^
+
+main.cu(295): error: argument of type "nRarray *" is incompatible with parameter of type "double *"
+      allenCahn<<<grid, block>>>(d_phinew,d_phiold,d_uold,
+                                                   ^
+
+main.cu(296): error: argument of type "nRarray *" is incompatible with parameter of type "double *"
+                                 d_Fx,d_Fy,d_Fz,
+                                 ^
+
+main.cu(296): error: argument of type "nRarray *" is incompatible with parameter of type "double *"
+                                 d_Fx,d_Fy,d_Fz,
+                                      ^
+
+main.cu(296): error: argument of type "nRarray *" is incompatible with parameter of type "double *"
+                                 d_Fx,d_Fy,d_Fz,
+                                           ^
+
+main.cu(298): error: too few arguments in function call
+                                 dt,dx,dy,dz);
+                                            ^
+
+main.cu(300): error: argument of type "nRarray *" is incompatible with parameter of type "double *"
+      boundaryConditionsPhi<<<grid, block>>>(d_phinew);
+                                             ^
+
+main.cu(300): error: too few arguments in function call
+      boundaryConditionsPhi<<<grid, block>>>(d_phinew);
+                                                     ^
+
+main.cu(302): error: argument of type "nRarray *" is incompatible with parameter of type "double *"
+      thermalEquation<<<grid, block>>>(d_unew,d_uold,d_phinew,d_phiold,
+                                       ^
+
+main.cu(302): error: argument of type "nRarray *" is incompatible with parameter of type "double *"
+      thermalEquation<<<grid, block>>>(d_unew,d_uold,d_phinew,d_phiold,
+                                              ^
+
+main.cu(302): error: argument of type "nRarray *" is incompatible with parameter of type "double *"
+      thermalEquation<<<grid, block>>>(d_unew,d_uold,d_phinew,d_phiold,
+                                                     ^
+
+main.cu(302): error: argument of type "nRarray *" is incompatible with parameter of type "double *"
+      thermalEquation<<<grid, block>>>(d_unew,d_uold,d_phinew,d_phiold,
+                                                              ^
+
+main.cu(303): error: too few arguments in function call
+                                       D,dt,dx,dy,dz);
+                                                    ^
+
+main.cu(305): error: argument of type "nRarray *" is incompatible with parameter of type "double *"
+      boundaryConditionsU<<<grid, block>>>(d_unew,delta);
+                                           ^
+
+main.cu(305): error: too few arguments in function call
+      boundaryConditionsU<<<grid, block>>>(d_unew,delta);
+                                                       ^
+
+main.cu(307): error: argument of type "nRarray *" is incompatible with parameter of type "double *"
+      swapGrid<<<grid, block>>>(d_phinew, d_phiold);
+                                ^
+
+main.cu(307): error: argument of type "nRarray *" is incompatible with parameter of type "double *"
+      swapGrid<<<grid, block>>>(d_phinew, d_phiold);
+                                          ^
+
+main.cu(307): error: too few arguments in function call
+      swapGrid<<<grid, block>>>(d_phinew, d_phiold);
+                                                  ^
+
+main.cu(309): error: argument of type "nRarray *" is incompatible with parameter of type "double *"
+      swapGrid<<<grid, block>>>(d_unew, d_uold);
+                                ^
+
+main.cu(309): error: argument of type "nRarray *" is incompatible with parameter of type "double *"
+      swapGrid<<<grid, block>>>(d_unew, d_uold);
+                                        ^
+
+main.cu(309): error: too few arguments in function call
+      swapGrid<<<grid, block>>>(d_unew, d_uold);
+                                              ^
+
+31 errors detected in the compilation of "main.cu".
+make: *** [Makefile:55: main.o] Error 2

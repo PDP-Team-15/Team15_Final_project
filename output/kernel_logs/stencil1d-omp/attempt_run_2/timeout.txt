@@ -1,0 +1,8 @@
+=== TIMEOUT ERROR (Final Attempt) ===
+Kernel: stencil1d
+From API: cuda
+To API: omp
+Filename: stencil_1d.cpp
+
+=== ERROR MESSAGE ===
+Execution timed out on final attempt

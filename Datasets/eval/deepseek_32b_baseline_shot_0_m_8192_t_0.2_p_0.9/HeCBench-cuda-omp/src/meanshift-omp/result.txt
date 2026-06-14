@@ -1,0 +1,5 @@
+=== COMPILATION RESULT ===
+Initial code compiled successfully.
+
+=== EXECUTION RESULT ===
+Execution failed or was not attempted.

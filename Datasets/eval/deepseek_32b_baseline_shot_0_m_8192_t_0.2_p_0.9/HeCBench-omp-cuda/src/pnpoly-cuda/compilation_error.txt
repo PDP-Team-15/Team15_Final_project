@@ -1,0 +1,74 @@
+kernel.h(32): error: identifier "BLOCK_SIZE_X" is undefined
+    int i = blockIdx.x * BLOCK_SIZE_X * tile_size + threadIdx.x;
+                         ^
+
+kernel.h(44): error: identifier "VERTICES" is undefined
+      int k = VERTICES-1;
+              ^
+
+kernel.h(90): error: identifier "VERTICES" is undefined
+      int k = VERTICES-1;
+              ^
+
+main.cu(62): error: too many arguments in function call
+      pnpoly_base<<<gridSize, blockSize>>>(d_bitmap_ref, d_point, d_vertex, nPoints, vertices);
+                                                                                     ^
+
+main.cu(75): error: no instance of function template "pnpoly_opt" matches the argument list
+            argument types are: (int *, float2 *, float2 *, const int, const int)
+      pnpoly_opt<1><<<gridSize, blockSize>>>(d_bitmap_opt, d_point, d_vertex, nPoints, vertices);
+      ^
+kernel.h(26): note #3322-D: number of parameters of function template "pnpoly_opt" does not match the call
+  void pnpoly_opt(
+       ^
+
+main.cu(88): error: no instance of function template "pnpoly_opt" matches the argument list
+            argument types are: (int *, float2 *, float2 *, const int, const int)
+      pnpoly_opt<2><<<gridSize, blockSize>>>(d_bitmap_opt, d_point, d_vertex, nPoints, vertices);
+      ^
+kernel.h(26): note #3322-D: number of parameters of function template "pnpoly_opt" does not match the call
+  void pnpoly_opt(
+       ^
+
+main.cu(101): error: no instance of function template "pnpoly_opt" matches the argument list
+            argument types are: (int *, float2 *, float2 *, const int, const int)
+      pnpoly_opt<4><<<gridSize, blockSize>>>(d_bitmap_opt, d_point, d_vertex, nPoints, vertices);
+      ^
+kernel.h(26): note #3322-D: number of parameters of function template "pnpoly_opt" does not match the call
+  void pnpoly_opt(
+       ^
+
+main.cu(114): error: no instance of function template "pnpoly_opt" matches the argument list
+            argument types are: (int *, float2 *, float2 *, const int, const int)
+      pnpoly_opt<8><<<gridSize, blockSize>>>(d_bitmap_opt, d_point, d_vertex, nPoints, vertices);
+      ^
+kernel.h(26): note #3322-D: number of parameters of function template "pnpoly_opt" does not match the call
+  void pnpoly_opt(
+       ^
+
+main.cu(127): error: no instance of function template "pnpoly_opt" matches the argument list
+            argument types are: (int *, float2 *, float2 *, const int, const int)
+      pnpoly_opt<16><<<gridSize, blockSize>>>(d_bitmap_opt, d_point, d_vertex, nPoints, vertices);
+      ^
+kernel.h(26): note #3322-D: number of parameters of function template "pnpoly_opt" does not match the call
+  void pnpoly_opt(
+       ^
+
+main.cu(140): error: no instance of function template "pnpoly_opt" matches the argument list
+            argument types are: (int *, float2 *, float2 *, const int, const int)
+      pnpoly_opt<32><<<gridSize, blockSize>>>(d_bitmap_opt, d_point, d_vertex, nPoints, vertices);
+      ^
+kernel.h(26): note #3322-D: number of parameters of function template "pnpoly_opt" does not match the call
+  void pnpoly_opt(
+       ^
+
+main.cu(153): error: no instance of function template "pnpoly_opt" matches the argument list
+            argument types are: (int *, float2 *, float2 *, const int, const int)
+      pnpoly_opt<64><<<gridSize, blockSize>>>(d_bitmap_opt, d_point, d_vertex, nPoints, vertices);
+      ^
+kernel.h(26): note #3322-D: number of parameters of function template "pnpoly_opt" does not match the call
+  void pnpoly_opt(
+       ^
+
+11 errors detected in the compilation of "main.cu".
+make: *** [Makefile:50: main.o] Error 2

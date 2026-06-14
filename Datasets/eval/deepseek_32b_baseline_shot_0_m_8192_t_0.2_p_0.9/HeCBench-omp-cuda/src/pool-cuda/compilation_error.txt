@@ -1,0 +1,26 @@
+main.cu(80): error: calling a constexpr __host__ function("min") from a __global__ function("KernelPool2DGrad") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+      phend = std::min<int>(h_offset / stride_height + 1, output_height);
+              ^
+
+main.cu(81): error: calling a constexpr __host__ function("min") from a __global__ function("KernelPool2DGrad") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+      pwend = std::min<int>(w_offset / stride_width + 1, output_width);
+              ^
+
+main.cu(98): error: calling a constexpr __host__ function("min") from a __global__ function("KernelPool2DGrad") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+              int hend = std::min<int>(hstart + ksize_height, input_height);
+                         ^
+
+main.cu(99): error: calling a constexpr __host__ function("min") from a __global__ function("KernelPool2DGrad") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+              int wend = std::min<int>(wstart + ksize_width, input_width);
+                         ^
+
+main.cu(100): error: calling a constexpr __host__ function("max") from a __global__ function("KernelPool2DGrad") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+              hstart = std::max<int>(hstart, 0);
+                       ^
+
+main.cu(101): error: calling a constexpr __host__ function("max") from a __global__ function("KernelPool2DGrad") is not allowed. The experimental flag '--expt-relaxed-constexpr' can be used to allow this.
+              wstart = std::max<int>(wstart, 0);
+                       ^
+
+6 errors detected in the compilation of "main.cu".
+make: *** [Makefile:51: main.o] Error 1

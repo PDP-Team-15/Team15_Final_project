@@ -1,0 +1,19 @@
+[
+    0.5,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "kernel": "rfs",
+        "from_api": "cuda",
+        "to_api": "omp",
+        "compiled": true,
+        "fix_needed": true,
+        "initial_compile_error": "main.cpp:8:1: error: unknown type name '__host__'\n    8 | __host__ __device__ inline float\n      | ^\nmain.cpp:8:20: error: expected ';' after top level declarator\n    8 | __host__ __device__ inline float\n      |                    ^\n      |                    ;\nmain.cpp:16:1: error: unknown type name '__host__'\n   16 | __host__ __device__ inline float\n      | ^\nmain.cpp:16:20: error: expected ';' after top level declarator\n   16 | __host__ __device__ inline float\n      |                    ^\n      |                    ;\n4 errors generated.\nmake: *** [Makefile.aomp:60: main.o] Error 1\n",
+        "post_fix_error": "",
+        "source_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <float.h>\n#include <math.h>\n#include <chrono>\n#include <cuda.h>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n__host__ __device__ inline float\ncreateRoundingFactor(float max, int n) {\n  float delta = (max * (float)n) / (1.f - 2.f * (float)n * FLT_EPSILON);\n\n  \n\n  \n\n  \n\n  \n\n  int exp;\n  frexpf(delta, &exp);\n\n  \n\n  return ldexpf(1.f, exp);\n}\n  \n",
+        "translated_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <float.h>\n#include <math.h>\n#include <omp.h>\n\n__host__ __device__ inline float\ncreateRoundingFactor(float max, int n) {\n  float delta = (max * (float)n) / (1.f - 2.f * (float)n * FLT_EPSILON);\n  int exp;\n  frexpf(delta, &exp);\n  return ldexpf(1.f, exp);\n}\n\n__host__ __device__ inline float\ntruncateWithRoundingFactor(float roundingF",
+        "log": "[rfs] Compile failed, trying model fix...\n[rfs] Compile error:\nmain.cpp:8:1: error: unknown type name '__host__'\n    8 | __host__ __device__ inline float\n      | ^\nmain.cpp:8:20: error: expected ';' after top level declarator\n    8 | __host__ __device__ inline float\n      |                    ^\n      |                    ;\nmain.cpp:16:1: error: unknown type name '__host__'\n   16 | __host__ __device__ inline float\n      | ^\nmain.cpp:16:20: error: expected ';' after top level declarator\n   16 | __host__ __device__ inline float\n      |                    ^\n      |                    ;\n4 errors generated.\nmake: *** [Makefile.aomp:60: main.o] Error 1\n\n[rfs] Compiled after model fix \u2713\n"
+    }
+]

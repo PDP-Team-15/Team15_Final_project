@@ -1,0 +1,198 @@
+To translate the given OpenMP code to CUDA, we need to replace the OpenMP directives with CUDA-specific constructs and ensure that the data is correctly managed between the host and device. Below is the complete CUDA version of the code:
+
+```cpp
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <random>
+#include <chrono>
+#include <cuda_runtime.h>
+
+#define VERTICES 600
+#define BLOCK_SIZE_X 256
+
+typedef struct __attribute__((__aligned__(8)))
+{
+  float x, y;
+} float2;
+
+__global__ void pnpoly_base_kernel(int* bitmap, const float2* point, const float2* vertex, int nPoints, int vertices) {
+    int idx = blockIdx.x * blockDim.x + threadIdx.x;
+    if (idx >= nPoints) return;
+
+    int inside = 0;
+    for (int i = 0, j = vertices - 1; i < vertices; j = i++) {
+        if (((vertex[i].y > point[idx].y) != (vertex[j].y > point[idx].y)) &&
+            (point[idx].x < (vertex[j].x - vertex[i].x) * (point[idx].y - vertex[i].y) / (vertex[j].y - vertex[i].y) + vertex[i].x))
+            inside = !inside;
+    }
+    bitmap[idx] = inside;
+}
+
+template<int N>
+__global__ void pnpoly_opt_kernel(int* bitmap, const float2* point, const float2* vertex, int nPoints, int vertices) {
+    int idx = blockIdx.x * blockDim.x + threadIdx.x;
+    if (idx >= nPoints) return;
+
+    int inside = 0;
+    for (int i = 0, j = vertices - 1; i < vertices; j = i++) {
+        if (((vertex[i].y > point[idx].y) != (vertex[j].y > point[idx].y)) &&
+            (point[idx].x < (vertex[j].x - vertex[i].x) * (point[idx].y - vertex[i].y) / (vertex[j].y - vertex[i].y) + vertex[i].x))
+            inside = !inside;
+    }
+    bitmap[idx] = inside;
+}
+
+int main(int argc, char* argv[]) {
+    if (argc != 2) {
+        printf("Usage: ./%s <repeat>\n", argv[0]);
+        return 1;
+    }
+
+    const int repeat = atoi(argv[1]);
+    const int nPoints = 2e7;
+    const int vertices = VERTICES;
+
+    std::default_random_engine rng (123);
+    std::normal_distribution<float> distribution(0, 1);
+
+    float2 *point = (float2*) malloc (sizeof(float2) * nPoints);
+    for (int i = 0; i < nPoints; i++) {
+        point[i].x = distribution(rng);
+        point[i].y = distribution(rng);
+    }
+
+    float2 *vertex = (float2*) malloc (vertices * sizeof(float2));
+    for (int i = 0; i < vertices; i++) {
+        float t = distribution(rng) * 2.f * M_PI;
+        vertex[i].x = cosf(t);
+        vertex[i].y = sinf(t);
+    }
+
+    int *bitmap_ref = (int*) malloc (nPoints * sizeof(int));
+    int *bitmap_opt = (int*) malloc (nPoints * sizeof(int));
+
+    float2 *d_point, *d_vertex;
+    int *d_bitmap_ref, *d_bitmap_opt;
+
+    cudaMalloc(&d_point, sizeof(float2) * nPoints);
+    cudaMalloc(&d_vertex, sizeof(float2) * vertices);
+    cudaMalloc(&d_bitmap_ref, sizeof(int) * nPoints);
+    cudaMalloc(&d_bitmap_opt, sizeof(int) * nPoints);
+
+    cudaMemcpy(d_point, point, sizeof(float2) * nPoints, cudaMemcpyHostToDevice);
+    cudaMemcpy(d_vertex, vertex, sizeof(float2) * vertices, cudaMemcpyHostToDevice);
+
+    dim3 threadsPerBlock(BLOCK_SIZE_X);
+    dim3 numBlocks((nPoints + threadsPerBlock.x - 1) / threadsPerBlock.x);
+
+    auto start = std::chrono::steady_clock::now();
+
+    for (int i = 0; i < repeat; i++)
+        pnpoly_base_kernel<<<numBlocks, threadsPerBlock>>>(d_bitmap_ref, d_point, d_vertex, nPoints, vertices);
+
+    cudaDeviceSynchronize();
+    auto end = std::chrono::steady_clock::now();
+    auto time = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    printf("Average kernel execution time (pnpoly_base): %f (s)\n", (time * 1e-9f) / repeat);
+
+    start = std::chrono::steady_clock::now();
+
+    for (int i = 0; i < repeat; i++)
+        pnpoly_opt_kernel<1><<<numBlocks, threadsPerBlock>>>(d_bitmap_opt, d_point, d_vertex, nPoints, vertices);
+
+    cudaDeviceSynchronize();
+    end = std::chrono::steady_clock::now();
+    time = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    printf("Average kernel execution time (pnpoly_opt<1>): %f (s)\n", (time * 1e-9f) / repeat);
+
+    start = std::chrono::steady_clock::now();
+
+    for (int i = 0; i < repeat; i++)
+        pnpoly_opt_kernel<2><<<numBlocks, threadsPerBlock>>>(d_bitmap_opt, d_point, d_vertex, nPoints, vertices);
+
+    cudaDeviceSynchronize();
+    end = std::chrono::steady_clock::now();
+    time = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    printf("Average kernel execution time (pnpoly_opt<2>): %f (s)\n", (time * 1e-9f) / repeat);
+
+    start = std::chrono::steady_clock::now();
+
+    for (int i = 0; i < repeat; i++)
+        pnpoly_opt_kernel<4><<<numBlocks, threadsPerBlock>>>(d_bitmap_opt, d_point, d_vertex, nPoints, vertices);
+
+    cudaDeviceSynchronize();
+    end = std::chrono::steady_clock::now();
+    time = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    printf("Average kernel execution time (pnpoly_opt<4>): %f (s)\n", (time * 1e-9f) / repeat);
+
+    start = std::chrono::steady_clock::now();
+
+    for (int i = 0; i < repeat; i++)
+        pnpoly_opt_kernel<8><<<numBlocks, threadsPerBlock>>>(d_bitmap_opt, d_point, d_vertex, nPoints, vertices);
+
+    cudaDeviceSynchronize();
+    end = std::chrono::steady_clock::now();
+    time = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    printf("Average kernel execution time (pnpoly_opt<8>): %f (s)\n", (time * 1e-9f) / repeat);
+
+    start = std::chrono::steady_clock::now();
+
+    for (int i = 0; i < repeat; i++)
+        pnpoly_opt_kernel<16><<<numBlocks, threadsPerBlock>>>(d_bitmap_opt, d_point, d_vertex, nPoints, vertices);
+
+    cudaDeviceSynchronize();
+    end = std::chrono::steady_clock::now();
+    time = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    printf("Average kernel execution time (pnpoly_opt<16>): %f (s)\n", (time * 1e-9f) / repeat);
+
+    start = std::chrono::steady_clock::now();
+
+    for (int i = 0; i < repeat; i++)
+        pnpoly_opt_kernel<32><<<numBlocks, threadsPerBlock>>>(d_bitmap_opt, d_point, d_vertex, nPoints, vertices);
+
+    cudaDeviceSynchronize();
+    end = std::chrono::steady_clock::now();
+    time = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    printf("Average kernel execution time (pnpoly_opt<32>): %f (s)\n", (time * 1e-9f) / repeat);
+
+    start = std::chrono::steady_clock::now();
+
+    for (int i = 0; i < repeat; i++)
+        pnpoly_opt_kernel<64><<<numBlocks, threadsPerBlock>>>(d_bitmap_opt, d_point, d_vertex, nPoints, vertices);
+
+    cudaDeviceSynchronize();
+    end = std::chrono::steady_clock::now();
+    time = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    printf("Average kernel execution time (pnpoly_opt<64>): %f (s)\n", (time * 1e-9f) / repeat);
+
+    cudaMemcpy(bitmap_ref, d_bitmap_ref, sizeof(int) * nPoints, cudaMemcpyDeviceToHost);
+    cudaMemcpy(bitmap_opt, d_bitmap_opt, sizeof(int) * nPoints, cudaMemcpyDeviceToHost);
+
+    int error = memcmp(bitmap_opt, bitmap_ref, nPoints*sizeof(int)); 
+
+    int checksum = 0;
+    for (int i = 0; i < nPoints; i++) checksum += bitmap_opt[i];
+    printf("Checksum: %d\n", checksum);
+
+    printf("%s\n", error ? "FAIL" : "PASS");
+
+    free(vertex);
+    free(point);
+    free(bitmap_ref);
+    free(bitmap_opt);
+    cudaFree(d_point);
+    cudaFree(d_vertex);
+    cudaFree(d_bitmap_ref);
+    cudaFree(d_bitmap_opt);
+    return 0;
+}
+```
+
+### Explanation:
+1. **Kernel Functions**: The `pnpoly_base` and `pnpoly_opt` functions have been translated into CUDA kernels (`pnpoly_base_kernel` and `pnpoly_opt_kernel`). These kernels perform the same operations as their OpenMP counterparts but are executed on the GPU.
+2. **Memory Management**: Memory allocation and copying between the host and device are handled using `cudaMalloc` and `cudaMemcpy`.
+3. **Kernel Launch**: The kernels are launched using `<<<numBlocks, threadsPerBlock>>>`, where `numBlocks` and `threadsPerBlock` are calculated based on the number of points and the desired block size.
+4. **Synchronization**: `cudaDeviceSynchronize()` is used to ensure that the host waits for all device operations to complete before proceeding.
+5. **Error Checking**: The checksum and error checking remain the same as in the original code.

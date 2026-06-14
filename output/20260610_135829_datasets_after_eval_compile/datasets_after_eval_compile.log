@@ -1,0 +1,52 @@
+2026-06-10 13:58:29,206 - root - INFO - Log file created at /home/pdp15/UniPar_AI/output/20260610_135829_datasets_after_eval_compile/datasets_after_eval_compile.log
+2026-06-10 13:58:29,207 - root - INFO - Running eval_compile to create a clean dataset...
+2026-06-10 13:58:29,208 - root - INFO - Original model name extracted: gpt
+2026-06-10 13:58:29,208 - root - INFO - Using clean dataset at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9 for main processing
+2026-06-10 13:58:29,375 - root - INFO - ModelAgent initialized: translator=Valdemardi/DeepSeek-R1-Distill-Qwen-32B-AWQ@http://localhost:8006/v1, fixer=Valdemardi/DeepSeek-R1-Distill-Qwen-32B-AWQ@http://localhost:8006/v1
+2026-06-10 13:58:29,387 - root - INFO - Processing source API: omp to cuda
+2026-06-10 13:58:29,387 - root - INFO - Found 17 kernels to process for omp to cuda
+2026-06-10 13:58:29,394 - root - INFO - Processing kernel: ace-cuda
+2026-06-10 13:58:29,394 - root - INFO - Skipping kernel ace-cuda as it already has prediction files.
+2026-06-10 13:58:29,394 - root - INFO - Processing kernel: pnpoly-cuda
+2026-06-10 13:58:29,394 - root - INFO - Skipping kernel pnpoly-cuda as it already has prediction files.
+2026-06-10 13:58:29,395 - root - INFO - Processing kernel: keogh-cuda
+2026-06-10 13:58:29,395 - root - INFO - Skipping kernel keogh-cuda as it already has prediction files.
+2026-06-10 13:58:29,395 - root - INFO - Processing kernel: atomicIntrinsics-cuda
+2026-06-10 13:58:29,395 - root - INFO - Skipping kernel atomicIntrinsics-cuda as it already has prediction files.
+2026-06-10 13:58:29,396 - root - INFO - Processing kernel: heat-cuda
+2026-06-10 13:58:29,396 - root - INFO - Skipping kernel heat-cuda as it already has prediction files.
+2026-06-10 13:58:29,396 - root - INFO - Processing kernel: su3-cuda
+2026-06-10 13:58:29,397 - root - INFO - Skipping kernel su3-cuda as it already has prediction files.
+2026-06-10 13:58:29,397 - root - INFO - Processing kernel: stencil1d-cuda
+2026-06-10 13:58:29,397 - root - INFO - Skipping kernel stencil1d-cuda as it already has prediction files.
+2026-06-10 13:58:29,398 - root - INFO - Processing kernel: vanGenuchten-cuda
+2026-06-10 13:58:29,398 - root - INFO - Skipping kernel vanGenuchten-cuda as it already has prediction files.
+2026-06-10 13:58:29,398 - root - INFO - Processing kernel: wsm5-cuda
+2026-06-10 13:58:29,398 - root - INFO - Skipping kernel wsm5-cuda as it already has prediction files.
+2026-06-10 13:58:29,399 - root - INFO - Processing kernel: stddev-cuda
+2026-06-10 13:58:29,399 - root - INFO - Skipping kernel stddev-cuda as it already has prediction files.
+2026-06-10 13:58:29,399 - root - INFO - Processing kernel: geodesic-cuda
+2026-06-10 13:58:29,400 - root - INFO - Skipping kernel geodesic-cuda as it already has prediction files.
+2026-06-10 13:58:29,400 - root - INFO - Processing kernel: pool-cuda
+2026-06-10 13:58:29,400 - root - INFO - Skipping kernel pool-cuda as it already has prediction files.
+2026-06-10 13:58:29,400 - root - INFO - Processing kernel: particlefilter-cuda
+2026-06-10 13:58:29,401 - root - INFO - Skipping kernel particlefilter-cuda as it already has prediction files.
+2026-06-10 13:58:29,401 - root - INFO - Processing kernel: meanshift-cuda
+2026-06-10 13:58:29,401 - root - INFO - Skipping kernel meanshift-cuda as it already has prediction files.
+2026-06-10 13:58:29,402 - root - INFO - Processing kernel: mixbench-cuda
+2026-06-10 13:58:29,402 - root - INFO - Skipping kernel mixbench-cuda as it already has prediction files.
+2026-06-10 13:58:29,402 - root - INFO - Processing kernel: winograd-cuda
+2026-06-10 13:58:29,403 - root - INFO - Skipping kernel winograd-cuda as it already has prediction files.
+2026-06-10 13:58:29,403 - root - INFO - Processing kernel: convolution1D-cuda
+2026-06-10 13:58:29,403 - root - INFO - Skipping kernel convolution1D-cuda as it already has prediction files.
+2026-06-10 13:58:29,405 - root - INFO - Processing complete. Output directory: /home/pdp15/UniPar_AI/output/20260610_135829_datasets_after_eval_compile
+2026-06-10 13:58:29,405 - root - INFO - 
+==================================================
+SUMMARY  (omp -> cuda)
+==================================================
+  Total kernels   : 0
+  Compile pass    : 0/0
+  Compile fail    : 0/0
+  Run pass        : 0/0
+  Run fail        : 0/0
+==================================================

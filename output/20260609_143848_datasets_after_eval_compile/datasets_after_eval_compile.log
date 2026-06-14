@@ -1,0 +1,31 @@
+2026-06-09 14:38:48,568 - root - INFO - Log file created at /home/pdp15/UniPar_AI/output/20260609_143848_datasets_after_eval_compile/datasets_after_eval_compile.log
+2026-06-09 14:38:48,569 - root - INFO - Running eval_compile to create a clean dataset...
+2026-06-09 14:38:48,569 - root - INFO - Original model name extracted: gpt
+2026-06-09 14:38:48,569 - root - INFO - Using clean dataset at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9 for main processing
+2026-06-09 14:38:48,606 - root - INFO - ModelAgent initialized: translator=Valdemardi/DeepSeek-R1-Distill-Qwen-32B-AWQ@http://localhost:8006/v1, fixer=Valdemardi/DeepSeek-R1-Distill-Qwen-32B-AWQ@http://localhost:8006/v1
+2026-06-09 14:38:48,606 - root - INFO - Processing source API: cuda to omp
+2026-06-09 14:38:48,606 - root - INFO - Found 18 kernels to process for cuda to omp
+2026-06-09 14:38:48,608 - root - INFO - Processing kernel: src
+2026-06-09 14:38:48,608 - root - WARNING - Skipping src: no source files found
+2026-06-09 14:38:48,608 - root - INFO - Processing kernel: stddev-omp
+2026-06-09 14:38:48,608 - root - INFO - Compiling stddev-omp
+2026-06-09 14:38:48,608 - root - INFO - Extracted source filename from Makefile: main.cpp
+2026-06-09 14:38:48,608 - root - INFO - Attempting to compile pred_0.cpp (Attempt 1)
+2026-06-09 14:38:48,608 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-cuda-omp/src/stddev-omp/main.cpp at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-cuda-omp/src/stddev-omp/pred_compile_0.cpp
+2026-06-09 14:38:48,608 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-cuda-omp/src/stddev-omp/main.cpp
+2026-06-09 14:38:48,608 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-cuda-omp/src/stddev-omp
+2026-06-09 14:38:48,608 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-cuda-omp/src/stddev-omp
+2026-06-09 14:38:48,612 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-cuda-omp/src/stddev-omp/Makefile.aomp
+2026-06-09 14:38:48,612 - root - INFO - Attempting compilation with DEVICE=cpu
+2026-06-09 14:38:49,023 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-cuda-omp/src/stddev-omp/result.txt
+2026-06-09 14:38:49,023 - root - INFO - Generated partial result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-cuda-omp/src/stddev-omp
+2026-06-09 14:38:49,023 - root - INFO - Running stddev-omp
+2026-06-09 14:38:49,024 - root - INFO - Extracted source filename from Makefile: main.cpp
+2026-06-09 14:38:49,024 - root - INFO - Attempting to run main.cpp (Attempt 1)
+2026-06-09 14:38:49,843 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-cuda-omp/src/stddev-omp/main.cpp at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-cuda-omp/src/stddev-omp/pred_run_0.cpp
+2026-06-09 14:41:42,112 - root - WARNING - Program results do not match expected results: Did not find 'pass' in result.txt
+2026-06-09 14:41:42,112 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-cuda-omp/src/stddev-omp/result.txt
+2026-06-09 14:41:42,112 - root - INFO - Generated/updated result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-cuda-omp/src/stddev-omp
+2026-06-09 14:41:42,113 - root - INFO - Execution succeeded for stddev-omp
+2026-06-09 14:41:42,113 - root - WARNING - Results are not valid for stddev-omp: Did not find 'pass' in result.txt
+2026-06-09 14:41:42,122 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-cuda-omp/src/stddev-omp/result.txt

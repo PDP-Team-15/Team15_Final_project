@@ -1,0 +1,801 @@
+Selected target APIs: ['cuda', 'omp']
+Selected from APIs: ['omp', 'cuda']
+/home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_baseline_shot_0_m_4096_t_0.2_p_0.9
+
+********Translate total for:  HeCBench-omp-cuda ********
+
+
+**Compile error su3-cuda: su3_nn_bench.cu:14:10: fatal error: mat_nn_openmp.hpp: No such file or directory
+   14 | #include "mat_nn_openmp.hpp"
+      |          ^~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Makefile:51: su3_nn_bench.o] Error 1
+
+
+
+**Execution out stencil1d-cuda: ./main 134217728 1000
+Average kernel execution time: 0.000346 (s)
+Error at 0: 28 (host) != 0 (device)
+Error at 14: 210 (host) != 0 (device)
+FAIL
+
+
+**Compile error meanshift-cuda: main.cu(55): error: a variable length array cannot have static storage duration
+      __attribute__((shared)) float local_data[TILE_WIDTH * D];
+                                    ^
+
+main.cu(56): error: a variable length array cannot have static storage duration
+      __attribute__((shared)) float valid_data[TILE_WIDTH];
+                                    ^
+
+2 errors detected in the compilation of "main.cu".
+make: *** [Makefile:50: main.o] Error 2
+
+
+
+**Run error mixbench-cuda: make: *** [Makefile:58: run] Error 1
+
+
+
+**Compile error winograd-cuda: main.cu(73): error: identifier "rtclock" is undefined
+      double start = rtclock();
+                     ^
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:53: main.o] Error 2
+make: *** Waiting for unfinished jobs....
+utils.cu:52: warning: ignoring #pragma omp parallel [-Wunknown-pragmas]
+   52 |   #pragma omp parallel
+      | 
+utils.cu:54: warning: ignoring #pragma omp for [-Wunknown-pragmas]
+   54 |     #pragma omp for
+      | 
+utils.cu: In function ‘void WinogradConv2D_2x2_omp(float*, float*, float*, size_t*)’:
+utils.cu:53:29: warning: comparison of integer expressions of different signedness: ‘int’ and ‘size_t’ {aka ‘long unsigned int’} [-Wsign-compare]
+   53 |   for (int tile_i = 0; tile_i < cpu_global_size[0]; tile_i++) {
+      |                      ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~
+
+
+
+**Compile error michalewicz-cuda: main.cu(51): error: no instance of overloaded function "atomicMin" matches the argument list
+            argument types are: (float *, float)
+      atomicMin(minValue, shared_min[0]);
+      ^
+/home/pdp15/.conda/envs/unipar/bin/../include/sm_32_atomic_functions.h(110): note #3326-D: function "atomicMin(unsigned long long *, unsigned long long)" does not match because argument #1 does not match parameter
+  static __inline__ __attribute__((device)) unsigned long long atomicMin(unsigned long long *address, unsigned long long val) { }
+                                                               ^
+/home/pdp15/.conda/envs/unipar/bin/../include/sm_32_atomic_functions.h(100): note #3326-D: function "atomicMin(long long *, long long)" does not match because argument #1 does not match parameter
+  static __inline__ __attribute__((device)) long long atomicMin(long long *address, long long val) { }
+                                                      ^
+/home/pdp15/.conda/envs/unipar/bin/../include/device_atomic_functions.h(122): note #3326-D: function "atomicMin(unsigned int *, unsigned int)" does not match because argument #1 does not match parameter
+  static __inline__ __attribute__((device)) unsigned int atomicMin(unsigned int *address, unsigned int val) { }
+                                                         ^
+/home/pdp15/.conda/envs/unipar/bin/../include/device_atomic_functions.h(120): note #3326-D: function "atomicMin(int *, int)" does not match because argument #1 does not match parameter
+  static __inline__ __attribute__((device)) int atomicMin(int *address, int val) { }
+                                                ^
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:50: main.o] Error 2
+
+
+
+**Compile error convolution1D-cuda: main.cu(45): error: declaration is incompatible with previous "tile" (declared at line 45)
+    extern __attribute__((shared)) T tile[];
+                                     ^
+          detected during:
+            instantiation of "void conv1d_tiled_kernel(const T *, const T *, T *, int, int) [with T=float]" at line 169
+            instantiation of "void conv1D<T>(int, int, int) [with T=float]" at line 218
+
+main.cu(45): warning #20042-D: a host variable("tile") redeclared with __shared__
+    extern __attribute__((shared)) T tile[];
+                                     ^
+          detected during:
+            instantiation of "void conv1d_tiled_kernel(const T *, const T *, T *, int, int) [with T=float]" at line 169
+            instantiation of "void conv1D<T>(int, int, int) [with T=float]" at line 218
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+main.cu(79): warning #20042-D: a host variable("tile") redeclared with __shared__
+    extern __attribute__((shared)) T tile[];
+                                     ^
+          detected during:
+            instantiation of "void conv1d_tiled_caching_kernel(const T *, const T *, T *, int, int) [with T=float]" at line 181
+            instantiation of "void conv1D<T>(int, int, int) [with T=float]" at line 218
+
+main.cu(45): warning #20042-D: a host variable("tile") redeclared with __shared__
+    extern __attribute__((shared)) T tile[];
+                                     ^
+          detected during:
+            instantiation of "void conv1d_tiled_kernel(const T *, const T *, T *, int, int) [with T=int16_t]" at line 169
+            instantiation of "void conv1D<T>(int, int, int) [with T=int16_t]" at line 221
+
+main.cu(79): warning #20042-D: a host variable("tile") redeclared with __shared__
+    extern __attribute__((shared)) T tile[];
+                                     ^
+          detected during:
+            instantiation of "void conv1d_tiled_caching_kernel(const T *, const T *, T *, int, int) [with T=int16_t]" at line 181
+            instantiation of "void conv1D<T>(int, int, int) [with T=int16_t]" at line 221
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:52: main.o] Error 1
+
+
+
+**Compile error ace-cuda: main.cu(8): error: expected a declaration
+  - Incompilable Code -
+  ^
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:55: main.o] Error 2
+
+
+
+**Compile error pnpoly-cuda: kernel.h(32): error: identifier "BLOCK_SIZE_X" is undefined
+    int i = blockIdx.x * BLOCK_SIZE_X * tile_size + threadIdx.x;
+                         ^
+
+kernel.h(44): error: identifier "VERTICES" is undefined
+      int k = VERTICES-1;
+              ^
+
+kernel.h(90): error: identifier "VERTICES" is undefined
+      int k = VERTICES-1;
+              ^
+
+main.cu(23): error: invalid redeclaration of type name "float2" (declared at line 396 of /home/pdp15/.conda/envs/unipar/bin/../include/vector_types.h)
+  } float2;
+    ^
+
+4 errors detected in the compilation of "main.cu".
+make: *** [Makefile:50: main.o] Error 2
+
+
+
+**Run error pool-cuda: make: *** [Makefile:57: run] Error 1
+
+
+
+**Compile error particlefilter-cuda: main.cu(12): error: expected a declaration
+  - Incompilable Code -
+  ^
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:51: main.o] Error 2
+
+
+
+**Execution out keogh-cuda: ./main 256 20000000 100
+Query length = 256
+Subject length = 20000000
+Average kernel execution time: 0.009891 (s)
+PASS
+
+
+**Compile error heat-cuda: heat.cu(56): error: calling a __device__ function("solution(double, double, double, double, double)") from a __host__ function("l2norm") is not allowed
+              double answer = solution(time, x, y, alpha, length);
+                              ^
+
+heat.cu(66): error: too few arguments in function call
+                                                   );
+                                                   ^
+
+heat.cu(125): error: no instance of overloaded function "cudaEventCreate" matches the argument list
+            argument types are: (double *)
+      cudaEventCreate(&tic);
+      ^
+/home/pdp15/.conda/envs/unipar/bin/../include/cuda_runtime.h(383): note #3322-D: number of parameters of function "cudaEventCreate(cudaEvent_t *, unsigned int)" does not match the call
+  static __inline__   [canonical] missing kernel counted as fail: zmddft
+omp - cuda compile rate: 5/18 (0.278) | correct rate: 1/18 (0.056)
+
+********Translate total for:  HeCBench-cuda-omp ********
+
+
+**Compile error stddev-omp: main.cpp:50:20: warning: unused variable 'RowsPerBlk' [-Wunused-variable]
+   50 |   static const int RowsPerBlk = (TPB / ColsPerBlk) * RowsPerThread;
+      |                    ^~~~~~~~~~
+main.cpp:39:9: error: use of undeclared identifier 'atomicAdd'
+   39 |         atomicAdd(&std[colId], thread_data);
+      |         ^
+main.cpp:57:3: note: in instantiation of function template specialization 'sopKernel<float, int, 256, 32>' requested here
+   57 |   sopKernel<Type, IdxType, TPB, ColsPerBlk>(std, data, D, N);
+      |   ^
+main.cpp:89:3: note: in instantiation of function template specialization 'stddev<float, int>' requested here
+   89 |   stddev(std, data, D, N, sample);
+      |   ^
+1 warning and 1 error generated.
+make: *** [Makefile.aomp:61: main.o] Error 1
+
+
+
+**Execution out ace-omp: ./main 100
+Total kernel execution time: 319505.062 (ms)
+Offload time: 320717.125 (ms)
+
+
+**Compile error pnpoly-omp: In file included from main.cpp:8:
+./kernel.h:29:11: error: unknown type name 'float2'; did you mean 'float'?
+   29 |     const float2*__restrict point,
+      |           ^~~~~~
+      |           float
+./kernel.h:30:11: error: unknown type name 'float2'; did you mean 'float'?
+   30 |     const float2*__restrict vertex,
+      |           ^~~~~~
+      |           float
+./kernel.h:36:5: error: use of undeclared identifier 'float2'; did you mean 'float'?
+   36 |     float2 lpoint[tile_size];
+      |     ^~~~~~
+      |     float
+./kernel.h:40:13: error: use of undeclared identifier 'BLOCK_SIZE_X'
+   40 |       if (i+BLOCK_SIZE_X*ti < n) {
+      |             ^
+./kernel.h:41:30: error: use of undeclared identifier 'BLOCK_SIZE_X'
+   41 |         lpoint[ti] = point[i+BLOCK_SIZE_X*ti];
+      |                              ^
+./kernel.h:45:13: error: use of undeclared identifier 'VERTICES'
+   45 |     int k = VERTICES-1;
+      |             ^
+./kernel.h:47:21: error: use of undeclared identifier 'VERTICES'
+   47 |     for (int j=0; j<VERTICES; k = j++) {    // edge from vj to vk
+      |                     ^
+./kernel.h:48:7: error: use of undeclared identifier 'float2'; did you mean 'float'?
+   48 |       float2 vj = vertex[j]; 
+      |       ^~~~~~
+      |       float
+./kernel.h:49:7: error: use of undeclared identifier 'float2'; did you mean 'float'?
+   49 |       float2 vk = vertex[k]; 
+      |       ^~~~~~
+      |       float
+./kernel.h:51:24: error: member reference base type 'float' is not a structure or union
+   51 |       float slope = (vk.x-vj.x) / (vk.y-vj.y);
+      |                      ~~^~
+./kernel.h:51:29: error: member reference base type 'float' is not a structure or union
+   51 |       float slope = (vk.x-vj.x) / (vk.y-vj.y);
+      |                           ~~^~
+./kernel.h:51:38: error: member reference base type 'float' is not a structure or union
+   51 |       float slope = (vk.x-vj.x) / (vk.y-vj.y);
+      |                                    ~~^~
+./kernel.h:51:43: error: member reference base type 'float' is not a structure or union
+   51 |       float slope = (vk.x-vj.x) / (vk.y-vj.y);
+      |                                         ~~^~
+./kernel.h:56:9: error: use of undeclared identifier 'float2'; did you mean 'float'?
+   56 |         float2 p = lpoint[ti];
+      |         ^~~~~~
+      |         float
+./kernel.h:58:25: error: member reference base type 'float' is not a structure or union
+   58 |         if (is_between(p.y, vj.y, vk.y) &&         //if p is between vj and vk vertically
+      |                        ~^~
+./kernel.h:58:31: error: member reference base type 'float' is not a structure or union
+   58 |         if (is_between(p.y, vj.y, vk.y) &&         //if p is between vj and vk vertically
+      |                             ~~^~
+./kernel.h:58:37: error: member reference base type 'float' is not a structure or union
+   58 |         if (is_between(p.y, vj.y, vk.y) &&         //if p is between vj and vk vertically
+      |                                   ~~^~
+./kernel.h:59:15: error: member reference base type 'float' is not a structure or union
+   59 |             (p.x < slope * (p.y-vj.y) + vj.x)
+      |              ~^~
+./kernel.h:59:30: error: member reference base type 'float' is not a structure or union
+   59 |             (p.x < slope * (p.y-vj.y) + vj.x)
+      |                             ~^~
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+make: *** [Makefile.aomp:60: main.o] Error 1
+
+
+
+**Compile error winograd-omp: main.cpp:84:18: error: use of undeclared identifier 'rtclock'; did you mean 'clock'?
+   84 |   double start = rtclock();
+      |                  ^~~~~~~
+      |                  clock
+/home/pdp15/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/include/time.h:189:16: note: 'clock' declared here
+  189 | extern clock_t clock (void) __THROW;
+      |                ^
+main.cpp:133:23: error: use of undeclared identifier 'rtclock'; did you mean 'clock'?
+  133 |     double co_start = rtclock();
+      |                       ^~~~~~~
+      |                       clock
+/home/pdp15/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/include/time.h:189:16: note: 'clock' declared here
+  189 | extern clock_t clock (void) __THROW;
+      |                ^
+main.cpp:143:16: error: use of undeclared identifier 'rtclock'; did you mean 'clock'?
+  143 |     co_time += rtclock() - co_start;
+      |                ^~~~~~~
+      |                clock
+/home/pdp15/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/include/time.h:189:16: note: 'clock' declared here
+  189 | extern clock_t clock (void) __THROW;
+      |                ^
+main.cpp:163:16: error: use of undeclared identifier 'rtclock'; did you mean 'clock'?
+  163 |   double end = rtclock();
+      |                ^~~~~~~
+      |                clock
+/home/pdp15/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/include/time.h:189:16: note: 'clock' declared here
+  189 | extern clock_t clock (void) __THROW;
+      |                ^
+4 errors generated.
+make: *** [Makefile.aomp:61: main.o] Error 1
+make: *** Waiting for unfinished jobs....
+
+
+
+**Execution out keogh-omp: ./main 256 20000000 100
+Query length = 256
+Subject length = 20000000
+Average kernel execution time: 0.000542 (s)
+0 0.000000 189.958908
+FAIL
+
+
+**Execution out stencil1d-omp: ./main 134217728 1000
+Average kernel execution time: 0.000251 (s)
+Error at 0: 28 (host) != 0 (device)
+Error at 14: 210 (host) != 0 (device)
+FAIL
+
+
+**Compile error particlefilter-omp: main.cpp:36:10: fatal error: 'kernel_find_index.h' file not found
+   36 | #include "kernel_find_index.h"
+      |          ^~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+make: *** [Makefile.aomp:63: main.o] Error 1
+
+
+
+**Compile error meanshift-omp: main.cpp:18:32: error: use of undeclared identifier 'N'; did you mean 'gpu::N'?
+   18 |     for (size_t tid = 0; tid < N; ++tid) {
+      |                                ^
+      |                                gpu::N
+/home/pdp15/UniPar_AI/data/Datasets/HeCBench/src/meanshift-cuda/constants.h:16:19: note: 'gpu::N' declared here
+   16 |     constexpr int N = 10000;
+      |                   ^
+main.cpp:19:26: error: use of undeclared identifier 'D'; did you mean 'gpu::D'?
+   19 |       size_t row = tid * D;
+      |                          ^
+      |                          gpu::D
+/home/pdp15/UniPar_AI/data/Datasets/HeCBench/src/meanshift-cuda/constants.h:17:19: note: 'gpu::D' declared here
+   17 |     constexpr int D = 3;
+      |                   ^
+main.cpp:20:26: error: use of undeclared identifier 'D'; did you mean 'gpu::D'?
+   20 |       float new_position[D] = {0.f};
+      |                          ^
+      |                          gpu::D
+/home/pdp15/UniPar_AI/data/Datasets/HeCBench/src/meanshift-cuda/constants.h:17:19: note: 'gpu::D' declared here
+   17 |     constexpr int D = 3;
+      |                   ^
+main.cpp:22:30: error: use of undeclared identifier 'N'; did you mean 'gpu::N'?
+   22 |       for (size_t i = 0; i < N; ++i) {
+      |                              ^
+      |                              gpu::N
+/home/pdp15/UniPar_AI/data/Datasets/HeCBench/src/meanshift-cuda/constants.h:16:19: note: 'gpu::N' declared here
+   16 |     constexpr int N = 10000;
+      |                   ^
+main.cpp:23:28: error: use of undeclared identifier 'D'; did you mean 'gpu::D'?
+   23 |         size_t row_n = i * D;
+      |                            ^
+      |                            gpu::D
+/home/pdp15/UniPar_AI/data/Datasets/HeCBench/src/meanshift-cuda/constants.h:17:19: note: 'gpu::D' declared here
+   17 |     constexpr int D = 3;
+      |                   ^
+main.cpp:25:32: error: use of undeclared identifier 'D'; did you mean 'gpu::D'?
+   25 |         for (size_t j = 0; j < D; ++j) {
+      |                                ^
+      |                                gpu::D
+/home/pdp15/UniPar_AI/data/Datasets/HeCBench/src/meanshift-cuda/constants.h:17:19: note: 'gpu::D' declared here
+   17 |     constexpr int D = 3;
+      |                   ^
+main.cpp:28:24: error: use of undeclared identifier 'RADIUS'; did you mean 'gpu::RADIUS'?
+   28 |         if (sq_dist <= RADIUS) {
+      |                        ^~~~~~
+      |                        gpu::RADIUS
+/home/pdp15/UniPar_AI/data/Datasets/HeCBench/src/meanshift-cuda/constants.h:9:21: note: 'gpu::RADIUS' declared here
+    9 |     constexpr float RADIUS = 60;
+      |                     ^
+main.cpp:29:42: error: use of undeclared identifier 'DBL_SIGMA_SQ'; did you mean 'gpu::DBL_SIGMA_SQ'?
+   29 |           float weight = expf(-sq_dist / DBL_SIGMA_SQ);
+      |                                          ^~~~~~~~~~~~
+      |                                          gpu::DBL_SIGMA_SQ
+/home/pdp15/UniPar_AI/data/Datasets/HeCBench/src/meanshift-cuda/constants.h:11:21: note: 'gpu::DBL_SIGMA_SQ' declared here
+   11 |     constexpr float DBL_SIGMA_SQ = (2 * SIGMA * SIGMA);
+      |                     ^
+main.cpp:30:34: error: use of undeclared identifier 'D'; did you mean 'gpu::D'?
+   30 |           for (size_t j = 0; j < D; ++j) {
+      |                                  ^
+      |                                  gpu::D
+/home/pdp15/UniPar_AI/data/Datasets/HeCBench/src/meanshift-cuda/constants.h:17:19: note: 'gpu::D' declared here
+   17 |     constexpr int D = 3;
+      |                   ^
+main.cpp:36:30: error: use of undeclared identifier 'D'; did you mean 'gpu::D'?
+   36 |       for (size_t j = 0; j < D; ++j) {
+      |                              ^
+      |                              gpu::D
+/home/pdp15/UniPar_AI/data/Datasets/HeCBench/src/meanshift-cuda/constants.h:17:19: note: 'gpu::D' declared here
+   17 |     constexpr int D = 3;
+      |                   ^
+main.cpp:45:24: error: use of undeclared identifier 'TILE_WIDTH'; did you mean 'gpu::TILE_WIDTH'?
+   45 |       float local_data[TILE_WIDTH * D];
+      |                        ^~~~~~~~~~
+      |                        gpu::TILE_WIDTH
+/home/pdp15/UniPar_AI/data/Datasets/HeCBench/src/meanshift-cuda/constants.h:22:19: note: 'gpu::TILE_WIDTH' declared here
+   22 |     constexpr int TILE_WIDTH = THREADS;
+      |                   ^
+main.cpp:45:37: error: use of undeclared identifier 'D'; did you mean 'gpu::D'?
+   45 |       float local_data[TILE_WIDTH * D];
+      |                                     ^
+      |                                     gpu::D
+/home/pdp15/UniPar_AI/data/Datasets/HeCBench/src/meanshift-cuda/constants.h:17:19: note: 'gpu::D' declared here
+   17 |     constexpr int D = 3;
+      |                   ^
+main.cpp:46:24: error: use of undeclared identifier 'TILE_WIDTH'; did you mean 'gpu::TILE_WIDTH'?
+   46 |       float valid_data[TILE_WIDTH];
+      |                        ^~~~~~~~~~
+      |                        gpu::TILE_WIDTH
+/home/pdp15/UniPar_AI/data/Datasets/HeCBench/src/meanshift-cuda/constants.h:22:19: note: 'gpu::TILE_WIDTH' declared here
+   22 |     constexpr int TILE_WIDTH = THREADS;
+      |                   ^
+main.cpp:49:31: error: use of undeclared identifier 'N'; did you mean 'gpu::N'?
+   49 |       for (int tid = 0; tid < N; ++tid) {
+      |                               ^
+      |                               gpu::N
+/home/pdp15/UniPar_AI/data/Datasets/HeCBench/src/meanshift-cuda/constants.h:16:19: note: 'gpu::N' declared here
+   16 |     constexpr int N = 10000;
+      |                   ^
+main.cpp:50:25: error: use of undeclared identifier 'D'; did you mean 'gpu::D'?
+   50 |         int row = tid * D;
+      |                         ^
+      |                         gpu::D
+/home/pdp15/UniPar_AI/data/Datasets/HeCBench/src/meanshift-cuda/constants.h:17:19: note: 'gpu::D' declared here
+   17 |     constexpr int D = 3;
+      |                   ^
+main.cpp:51:31: error: use of undeclared identifier 'TILE_WIDTH'; did you mean 'gpu::TILE_WIDTH'?
+   51 |         int local_row = tid % TILE_WIDTH * D;
+      |                               ^~~~~~~~~~
+      |                               gpu::TILE_WIDTH
+/home/pdp15/UniPar_AI/data/Datasets/HeCBench/src/meanshift-cuda/constants.h:22:19: note: 'gpu::TILE_WIDTH' declared here
+   22 |     constexpr int TILE_WIDTH = THREADS;
+      |                   ^
+main.cpp:51:44: error: use of undeclared identifier 'D'; did you mean 'gpu::D'?
+   51 |         int local_row = tid % TILE_WIDTH * D;
+      |                                            ^
+      |                                            gpu::D
+/home/pdp15/UniPar_AI/data/Datasets/HeCBench/src/meanshift-cuda/constants.h:17:19: note: 'gpu::D' declared here
+   17 |     constexpr int D = 3;
+      |                   ^
+main.cpp:52:28: error: use of undeclared identifier 'D'; did you mean 'gpu::D'?
+   52 |         float new_position[D] = {0.f};
+      |                            ^
+      |                            gpu::D
+/home/pdp15/UniPar_AI/data/Datasets/HeCBench/src/meanshift-cuda/constants.h:17:19: note: 'gpu::D' declared here
+   17 |     constexpr int D = 3;
+      |                   ^
+main.cpp:55:29: error: use of undeclared identifier 'BLOCKS'; did you mean 'gpu::BLOCKS'?
+   55 |         for (int t = 0; t < BLOCKS; ++t) {
+      |                             ^~~~~~
+      |                             gpu::BLOCKS
+/home/pdp15/UniPar_AI/data/Datasets/HeCBench/src/meanshift-cuda/constants.h:21:19: note: 'gpu::BLOCKS' declared here
+   21 |     constexpr int BLOCKS = (N + THREADS - 1) / THREADS;
+      |                   ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+make: *** [Makefile.aomp:60: main.o] Error 1
+
+
+
+**Compile error pool-omp: main.cpp:95:23: error: cannot use variable 'phstart' in collapsed imperfectly-nested loop init statement
+   95 |         for (int ph = phstart; ph < phend; ++ph) {
+      |                       ^~~~~~~
+main.cpp:177:5: error: use of undeclared identifier 'memcpy'; did you mean 'wmemcpy'?
+  177 |     memcpy(input_data, input, input_numel * sizeof(float));
+      |     ^~~~~~
+      |     wmemcpy
+/home/pdp15/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/include/wchar.h:329:17: note: 'wmemcpy' declared here
+  329 | extern wchar_t *wmemcpy (wchar_t *__restrict __s1,
+      |                 ^
+main.cpp:177:12: error: cannot initialize a parameter of type 'wchar_t *' with an lvalue of type 'float *'
+  177 |     memcpy(input_data, input, input_numel * sizeof(float));
+      |            ^~~~~~~~~~
+/home/pdp15/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/include/wchar.h:329:46: note: passing argument to parameter '__s1' here
+  329 | extern wchar_t *wmemcpy (wchar_t *__restrict __s1,
+      |                                              ^
+main.cpp:178:5: error: use of undeclared identifier 'memcpy'; did you mean 'wmemcpy'?
+  178 |     memcpy(output_data, output, output_numel * sizeof(float));
+      |     ^~~~~~
+      |     wmemcpy
+/home/pdp15/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/include/wchar.h:329:17: note: 'wmemcpy' declared here
+  329 | extern wchar_t *wmemcpy (wchar_t *__restrict __s1,
+      |                 ^
+main.cpp:178:12: error: cannot initialize a parameter of type 'wchar_t *' with an lvalue of type 'float *'
+  178 |     memcpy(output_data, output, output_numel * sizeof(float));
+      |            ^~~~~~~~~~~
+/home/pdp15/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/include/wchar.h:329:46: note: passing argument to parameter '__s1' here
+  329 | extern wchar_t *wmemcpy (wchar_t *__restrict __s1,
+      |                                              ^
+main.cpp:179:5: error: use of undeclared identifier 'memcpy'; did you mean 'wmemcpy'?
+  179 |     memcpy(output_grad_data, output_grad, output_numel * sizeof(float));
+      |     ^~~~~~
+      |     wmemcpy
+/home/pdp15/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/include/wchar.h:329:17: note: 'wmemcpy' declared here
+  329 | extern wchar_t *wmemcpy (wchar_t *__restrict __s1,
+      |                 ^
+main.cpp:179:12: error: cannot initialize a parameter of type 'wchar_t *' with an lvalue of type 'float *'
+  179 |     memcpy(output_grad_data, output_grad, output_numel * sizeof(float));
+      |            ^~~~~~~~~~~~~~~~
+/home/pdp15/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/include/wchar.h:329:46: note: passing argument to parameter '__s1' here
+  329 | extern wchar_t *wmemcpy (wchar_t *__restrict __s1,
+      |                                              ^
+main.cpp:196:5: error: use of undeclared identifier 'memcpy'; did you mean 'wmemcpy'?
+  196 |     memcpy(input_grad, input_grad_data, input_numel * sizeof(float));
+      |     ^~~~~~
+      |     wmemcpy
+/home/pdp15/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/include/wchar.h:329:17: note: 'wmemcpy' declared here
+  329 | extern wchar_t *wmemcpy (wchar_t *__restrict __s1,
+      |                 ^
+main.cpp:196:12: error: cannot initialize a parameter of type 'wchar_t *' with an lvalue of type 'float *'
+  196 |     memcpy(input_grad, input_grad_data, input_numel * sizeof(float));
+      |            ^~~~~~~~~~
+/home/pdp15/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/include/wchar.h:329:46: note: passing argument to parameter '__s1' here
+  329 | extern wchar_t *wmemcpy (wchar_t *__restrict __s1,
+      |                                              ^
+9 errors generated.
+make: *** [Makefile.aomp:60: main.o] Error 1
+
+
+
+**Compile error convolution1D-omp: main.cpp:33:30: error: use of variable template 'mask' requires template arguments
+   33 |         s += in[start + j] * mask[j];
+      |                              ^
+main.cpp:19:3: note: template is declared here
+   18 | template<typename T>
+      | ~~~~~~~~~~~~~~~~~~~~
+   19 | T mask[MAX_MASK_WIDTH];
+      |   ^
+main.cpp:70:22: error: use of variable template 'mask' requires template arguments
+   70 |       s += tile[j] * mask[j];
+      |                      ^
+main.cpp:19:3: note: template is declared here
+   18 | template<typename T>
+      | ~~~~~~~~~~~~~~~~~~~~
+   19 | T mask[MAX_MASK_WIDTH];
+      |   ^
+main.cpp:96:65: error: use of variable template 'mask' requires template arguments
+   96 |           s += tile[(in_index - this_tile_start) % TILE_SIZE] * mask[j];
+      |                                                                 ^
+main.cpp:19:3: note: template is declared here
+   18 | template<typename T>
+      | ~~~~~~~~~~~~~~~~~~~~
+   19 | T mask[MAX_MASK_WIDTH];
+      |   ^
+main.cpp:98:31: error: use of variable template 'mask' requires template arguments
+   98 |           s += in[in_index] * mask[j];
+      |                               ^
+main.cpp:19:3: note: template is declared here
+   18 | template<typename T>
+      | ~~~~~~~~~~~~~~~~~~~~
+   19 | T mask[MAX_MASK_WIDTH];
+      |   ^
+main.cpp:150:40: error: use of variable template 'mask' requires template arguments
+  150 |   for (int i = 0; i < mask_width; i++) mask[i] = h_mask[i];
+      |                                        ^
+main.cpp:19:3: note: template is declared here
+   18 | template<typename T>
+      | ~~~~~~~~~~~~~~~~~~~~
+   19 | T mask[MAX_MASK_WIDTH];
+      |   ^
+5 errors generated.
+make: *** [Makefile.aomp:60: main.o] Error 1
+
+
+
+**Execution out heat-omp: ./main 4096 1000
+
+ MMS heat equation
+
+--------------------
+Problem input
+
+ Grid size: 4096 x 4096
+ Cell width: 0.244081
+ Grid length: 1000x1000
+
+ Alpha: 0.1
+
+ Steps: 1000
+ Total time: 0.5
+ Time step: 0.0005
+ GPU device: OpenMP
+--------------------
+Stability
+
+ r value: 0.00083927
+--------------------
+Results
+
+Error (L2norm): 5.44522e-12
+Solve time (s): 8.0246
+Total time (s): 8.10565
+Bandwidth (GB/s): 33.4516
+--------------------
+
+
+**Compile error su3-omp: In file included from su3_nn_bench.cpp:14:
+./mat_nn_openmp.hpp:29:7: error: use of undeclared identifier 'verbose'
+   29 |   if (verbose >= 1) {
+      |       ^
+./mat_nn_openmp.hpp:36:17: error: use of undeclared identifier 'Clock'
+   36 |   auto tstart = Clock::now();
+      |                 ^
+./mat_nn_openmp.hpp:37:38: error: use of undeclared identifier 'warmups'
+   37 |   for (int iters=0; iters<iterations+warmups; ++iters) {
+      |                                      ^
+./mat_nn_openmp.hpp:38:18: error: use of undeclared identifier 'warmups'
+   38 |     if (iters == warmups) {
+      |                  ^
+./mat_nn_openmp.hpp:39:16: error: use of undeclared identifier 'Clock'
+   39 |       tstart = Clock::now();
+      |                ^
+./mat_nn_openmp.hpp:66:66: error: use of undeclared identifier 'Clock'
+   66 |   ttotal = std::chrono::duration_cast<std::chrono::microseconds>(Clock::now()-tstart).count();
+      |                                                                  ^
+./mat_nn_openmp.hpp:92:7: error: use of undeclared identifier 'almost_equal'
+   92 |   if (almost_equal(sum, 4.0*sizeof(su3_matrix)/(sizeof(Complx)), 1E-6)) {
+      |       ^
+su3_nn_bench.cpp:103:10: fatal error: 'mat_nn_omp.hpp' file not found
+  103 | #include "mat_nn_omp.hpp"
+      |          ^~~~~~~~~~~~~~~~
+8 errors generated.
+make: *** [Makefile.aomp:60: su3_nn_bench.o] Error 1
+
+
+
+**Compile error michalewicz-omp: main.cpp:42:38: error: incorrect reduction identifier, expected one of '+', '-', '*', '&', '|', '^', '&&', '||', 'min' or 'max' or declare reduction for type 'float *'
+   42 |   #pragma omp parallel for reduction(minimum : minima)
+      |                                      ^~~~~~~
+1 error generated.
+make: *** [Makefile.aomp:60: main.o] Error 1
+
+
+
+**Timeout expired for vanGenuchten-omp: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_baseline_shot_0_m_4096_t_0.2_p_0.9/HeCBench-cuda-omp
+
+
+**Compile error wsm5-omp: In file included from main.cpp:14:
+./kernel.h:3:6: error: redefinition of 'wsm'
+    3 | void wsm (
+      |      ^
+./kernel.h:3:6: note: previous definition is here
+    3 | void wsm (
+      |      ^
+main.cpp:53:5: error: use of undeclared identifier 'TODEV3'
+   53 |     TODEV3(pii);
+      |     ^
+main.cpp:54:5: error: use of undeclared identifier 'TODEV3'
+   54 |     TODEV3(den);
+      |     ^
+main.cpp:55:5: error: use of undeclared identifier 'TODEV3'
+   55 |     TODEV3(p);
+      |     ^
+main.cpp:56:5: error: use of undeclared identifier 'TODEV3'
+   56 |     TODEV3(delz);
+      |     ^
+main.cpp:58:5: error: use of undeclared identifier 'TODEV3'
+   58 |     TODEV3(th);
+      |     ^
+main.cpp:59:5: error: use of undeclared identifier 'TODEV3'
+   59 |     TODEV3(q);
+      |     ^
+main.cpp:60:5: error: use of undeclared identifier 'TODEV3'
+   60 |     TODEV3(qc);
+      |     ^
+main.cpp:61:5: error: use of undeclared identifier 'TODEV3'
+   61 |     TODEV3(qi);
+      |     ^
+main.cpp:62:5: error: use of undeclared identifier 'TODEV3'
+   62 |     TODEV3(qr);
+      |     ^
+main.cpp:63:5: error: use of undeclared identifier 'TODEV3'
+   63 |     TODEV3(qs);
+      |     ^
+main.cpp:64:5: error: use of undeclared identifier 'TODEV2'
+   64 |     TODEV2(rain);
+      |     ^
+main.cpp:65:5: error: use of undeclared identifier 'TODEV2'
+   65 |     TODEV2(rainncv);
+      |     ^
+main.cpp:66:5: error: use of undeclared identifier 'TODEV2'
+   66 |     TODEV2(sr);
+      |     ^
+main.cpp:67:5: error: use of undeclared identifier 'TODEV2'
+   67 |     TODEV2(snow);
+      |     ^
+main.cpp:68:5: error: use of undeclared identifier 'TODEV2'
+   68 |     TODEV2(snowncv);
+      |     ^
+main.cpp:75:13: error: use of undeclared identifier 'th_d'
+   75 |             th_d, pii_d, q_d, qc_d, qi_d, qr_d, qs_d, den_d, p_d, delz_d,
+      |             ^
+main.cpp:75:19: error: use of undeclared identifier 'pii_d'
+   75 |             th_d, pii_d, q_d, qc_d, qi_d, qr_d, qs_d, den_d, p_d, delz_d,
+      |                   ^
+main.cpp:75:26: error: use of undeclared identifier 'q_d'
+   75 |             th_d, pii_d, q_d, qc_d, qi_d, qr_d, qs_d, den_d, p_d, delz_d,
+      |                          ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+make: *** [Makefile.aomp:60: main.o] Error 1
+
+
+
+**Compile error geodesic-omp: main.cpp:16:1: warning: non-void function does not return a value [-Wreturn-type]
+   16 | }
+      | ^
+main.cpp:18:28: error: unknown type name 'float4'; did you mean 'float'?
+   18 | void kernel_distance(const float4 *__restrict__ d_A,
+      |                            ^~~~~~
+      |                            float
+main.cpp:27:28: error: unknown type name 'float4'; did you mean 'float'?
+   27 | void distance_device(const float4* VA, float* VC, const size_t N, const int iteration) {
+      |                            ^~~~~~
+      |                            float
+main.cpp:28:3: error: use of undeclared identifier 'float4'; did you mean 'float'?
+   28 |   float4 *d_VA = (float4*)malloc(sizeof(float4) * N);
+      |   ^~~~~~
+      |   float
+main.cpp:28:19: error: use of undeclared identifier 'float4'; did you mean 'float'?
+   28 |   float4 *d_VA = (float4*)malloc(sizeof(float4) * N);
+      |                   ^~~~~~
+      |                   float
+main.cpp:28:41: error: use of undeclared identifier 'float4'; did you mean 'float'?
+   28 |   float4 *d_VA = (float4*)malloc(sizeof(float4) * N);
+      |                                         ^~~~~~
+      |                                         float
+main.cpp:29:27: error: use of undeclared identifier 'float4'; did you mean 'float'?
+   29 |   memcpy(d_VA, VA, sizeof(float4) * N);
+      |                           ^~~~~~
+      |                           float
+main.cpp:29:3: error: use of undeclared identifier 'memcpy'; did you mean 'wmemcpy'?
+   29 |   memcpy(d_VA, VA, sizeof(float4) * N);
+      |   ^~~~~~
+      |   wmemcpy
+/home/pdp15/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/include/wchar.h:329:17: note: 'wmemcpy' declared here
+  329 | extern wchar_t *wmemcpy (wchar_t *__restrict __s1,
+      |                 ^
+main.cpp:29:10: error: cannot initialize a parameter of type 'wchar_t *' with an lvalue of type 'float *'
+   29 |   memcpy(d_VA, VA, sizeof(float4) * N);
+      |          ^~~~
+/home/pdp15/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/include/wchar.h:329:46: note: passing argument to parameter '__s1' here
+  329 | extern wchar_t *wmemcpy (wchar_t *__restrict __s1,
+      |                                              ^
+main.cpp:42:3: error: use of undeclared identifier 'memcpy'; did you mean 'wmemcpy'?
+   42 |   memcpy(VC, d_VC, sizeof(float) * N);
+      |   ^~~~~~
+      |   wmemcpy
+/home/pdp15/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/include/wchar.h:329:17: note: 'wmemcpy' declared here
+  329 | extern wchar_t *wmemcpy (wchar_t *__restrict __s1,
+      |                 ^
+main.cpp:42:10: error: cannot initialize a parameter of type 'wchar_t *' with an lvalue of type 'float *'
+   42 |   memcpy(VC, d_VC, sizeof(float) * N);
+      |          ^~
+/home/pdp15/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/include/wchar.h:329:46: note: passing argument to parameter '__s1' here
+  329 | extern wchar_t *wmemcpy (wchar_t *__restrict __s1,
+      |                                              ^
+1 warning and 10 errors generated.
+make: *** [Makefile.aomp:61: main.o] Error 1
+
+
+
+**Execution out mixbench-omp: ./main 8192
+Buffer size: 32MB
+Trade-off type:compute with global memory (block strided)
+Total kernel execution time: 0.289095 (s)
+PASS
+
+  [canonical] missing kernel counted as fail: zmddft
+cuda - omp compile rate: 6/18 (0.333) | correct rate: 1/18 (0.056)
+skipping:  eval_run.log
+
+cuda compile rate: 5/18 (0.278)
+cuda correct rate: 1/18 (0.056)
+omp compile rate: 6/18 (0.333)
+omp correct rate: 1/18 (0.056)
+
+compile=5/18 correct=1/18	compile=6/18 correct=1/18	
+
+Results saved to: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_baseline_shot_0_m_4096_t_0.2_p_0.9/eval_results.json
+Log saved to: Datasets/eval/qwen2.5_coder_14b_test_baseline_shot_0_m_4096_t_0.2_p_0.9/eval_run.log

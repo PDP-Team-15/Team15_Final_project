@@ -1,45 +1,46 @@
-from openai import OpenAI, AzureOpenAI
+from openai import OpenAI
 import logging
 import os
-from backup_utils import detect_suspicious_code, save_suspicious_example
+import re
+from utils import detect_suspicious_code, save_suspicious_example
 
 class ModelAgent:
     """
-    Agent responsible for interfacing with the language model API.
-    Handles sending prompts and processing responses.
-
-    When a valid OpenAI API key is provided, it uses OpenAI's API.
-    Otherwise, it falls back to the local Llama model for testing.
-
-    Includes mechanisms to detect and handle suspicious or incomplete code:
-    - Detects omissions or suspicious incomplete code
-    - Flags and saves such examples for later review
-    - Allows skipping to the next example
+    Single local model (Qwen 14B AWQ) used for both translation and fixing.
+    translator_client and fixer_client point to the same vLLM server so the
+    32768-token context window is available for all stages.
     """
-    def __init__(self, model='gpt-4o-mini', max_tokens=15000, 
-                 temperature=0.2, top_p=0.9, api_base='http://localhost:8000/v1', 
-                 api_key='mult_pipeline', openai_model='gpt-3.5-turbo'):
-        self.max_tokens = 15000#max_tokens
-        self.temperature = 0.2#temperature
-        self.top_p = 0.9#top_p
-        self.model = 'gpt-4o-mini'
-        # self.openai_model = openai_model
-        self.api_base = api_base
+    def __init__(self,
+                 translator_base_url='http://localhost:8004/v1',
+                 translator_model='Qwen/Qwen2.5-Coder-14B-Instruct-AWQ',
+                 fixer_base_url='http://localhost:8004/v1',
+                 fixer_model='Qwen/Qwen2.5-Coder-14B-Instruct-AWQ',
+                 api_key='token123',
+                 max_tokens=15000,
+                 temperature=0.2,
+                 top_p=0.9,
+                 # legacy params accepted but unused
+                 model=None, api_base=None, openai_model=None):
+        self.max_tokens = max_tokens
+        self.temperature = temperature
+        self.top_p = top_p
+        self.translator_model = translator_model
+        self.fixer_model = fixer_model
 
-        endpoint = ""
-
-        # subscription_key = ""
-        subscription_key = ''
-        api_version = "2025-01-01-preview"
-
-        self.client = AzureOpenAI(
-            api_version=api_version,
-            azure_endpoint=endpoint,
-            api_key=subscription_key,
+        self.translator_client = OpenAI(
+            base_url=translator_base_url,
+            api_key=api_key,
+        )
+        self.fixer_client = OpenAI(
+            base_url=fixer_base_url,
+            api_key=api_key,
         )
 
-
-        logging.info(f"ModelAgent initialized with model: {model}, temperature: {temperature}, top_p: {top_p}, max_tokens: {max_tokens}")
+        logging.info(
+            f"ModelAgent initialized: "
+            f"translator={translator_model}@{translator_base_url}, "
+            f"fixer={fixer_model}@{fixer_base_url}"
+        )
 
     def generate_translation(self, messages, num_return_sequences=1, context=None):
         """
@@ -55,9 +56,9 @@ class ModelAgent:
             str: The translated code, or None if the example should be skipped
         """
         try:
-            logging.info(f"Calling model with temperature={self.temperature}, top_p={self.top_p}, max_tokens={self.max_tokens}")
-            response = self.client.chat.completions.create(
-                model=self.model,
+            logging.info(f"Calling translator model with temperature={self.temperature}, top_p={self.top_p}, max_tokens={self.max_tokens}")
+            response = self.translator_client.chat.completions.create(
+                model=self.translator_model,
                 messages=messages,
                 max_tokens=self.max_tokens,
                 temperature=self.temperature,
@@ -85,7 +86,7 @@ class ModelAgent:
 
                     # Save the model response
                     with open(os.path.join(kernel_log_dir, f"translation_response.txt"), "w") as f:
-                        f.write(f"Model: {self.model}\n")
+                        f.write(f"Model: {self.translator_model}\n")
                         f.write(f"Temperature: {self.temperature}\n")
                         f.write(f"Top_p: {self.top_p}\n")
                         f.write(f"Max tokens: {self.max_tokens}\n\n")
@@ -126,6 +127,7 @@ class ModelAgent:
             # instead of raising an exception that would halt the entire experiment
             return None
 
+    ## Agent for compilation agent logic
     def fix_code(self, code, error_message, to_api, context=None):
         """
         Send code with compilation error back to the model to fix.
@@ -148,22 +150,32 @@ class ModelAgent:
         messages = [
             {
                 "role": "system",
-                "content": f"You are an expert {speciality} programmer specializing in HPC code. Fix compilation errors. Provide only the complete corrected code inside a proper code block. No explanations, no omissions, no placeholders."
+                "content": (
+                    f"You are an expert {speciality} programmer specializing in HPC code. "
+                    f"Your ONLY task is to fix compilation errors. "
+                    f"STRICT RULES: "
+                    f"(1) Make the MINIMUM changes necessary to resolve the compilation error. "
+                    f"(2) Do NOT change any algorithm, computational logic, or numerical behavior. "
+                    f"(3) Do NOT rename variables, change loop bounds, or alter data structures. "
+                    f"(4) Do NOT add, remove, or reorder any functional code beyond what is required to fix the error. "
+                    f"(5) If a platform-specific intrinsic is unavailable, replace it with a functionally identical alternative that produces the exact same numerical result. "
+                    f"Provide only the complete corrected code inside a proper code block. No explanations, no omissions, no placeholders."
+                )
             },
             {
                 "role": "user",
-                "content": f"The following code fails to compile with the given error message.\n\nCode:\n```\n{code}\n```\n\nCompilation Error:\n```\n{error_message}\n```\n\nPlease output only the complete corrected code inside:\n```{to_api}\n<full corrected code here>\n```"
+                "content": f"The following code fails to compile with the given error message.\n\nCode:\n```\n{code}\n```\n\nCompilation Error:\n```\n{error_message}\n```\n\nFix ONLY the compilation error. Do NOT change the algorithm or logic. Output only the complete corrected code inside:\n```{to_api}\n<full corrected code here>\n```"
             },
             {
                 "role": "assistant",
-                "content": f"```{to_api}\n<full corrected code here>\n```"
+                "content": "```cpp\n"
             }
         ]
 
         try:
-            logging.info(f"Calling model with temperature={self.temperature}, top_p={self.top_p}, max_tokens={self.max_tokens}")
-            response = self.client.chat.completions.create(
-                model=self.model,
+            logging.info(f"Calling fixer model with temperature={self.temperature}, top_p={self.top_p}, max_tokens={self.max_tokens}")
+            response = self.fixer_client.chat.completions.create(
+                model=self.fixer_model,
                 messages=messages,
                 max_tokens=self.max_tokens,
                 temperature=self.temperature,
@@ -191,7 +203,7 @@ class ModelAgent:
 
                     # Save the model response with attempt number
                     with open(os.path.join(kernel_log_dir, f"compilation_fix_attempt_{attempt}.txt"), "w") as f:
-                        f.write(f"Model: {self.model}\n")
+                        f.write(f"Model: {self.fixer_model}\n")
                         f.write(f"Temperature: {self.temperature}\n")
                         f.write(f"Top_p: {self.top_p}\n")
                         f.write(f"Max tokens: {self.max_tokens}\n\n")
@@ -237,10 +249,30 @@ class ModelAgent:
                 return code  # Return original code if no response
 
         except Exception as e:
-            logging.error(f"Error in fix_code: {str(e)}")
-            if 'Error code: 400' in str(e):
-                return code + '\n\n' + str(e)
-            return code # Return original code on error
+            err_str = str(e)
+            logging.error(f"Error in fix_code: {err_str}")
+            if 'Error code: 400' in err_str and 'maximum context length' in err_str:
+                m = re.search(r'maximum context length is (\d+).*?(\d+) in the messages', err_str, re.DOTALL)
+                if m:
+                    max_ctx = int(m.group(1))
+                    msg_tokens = int(m.group(2))
+                    reduced_max = max(500, max_ctx - msg_tokens - 50)
+                    logging.warning(f"Context window exceeded, retrying fix_code with max_tokens={reduced_max}")
+                    try:
+                        response = self.fixer_client.chat.completions.create(
+                            model=self.fixer_model,
+                            messages=messages,
+                            max_tokens=reduced_max,
+                            temperature=self.temperature,
+                            top_p=self.top_p
+                        )
+                        if response.choices:
+                            return response.choices[0].message.content
+                    except Exception as e2:
+                        logging.error(f"Retry with reduced max_tokens also failed: {e2}")
+            if 'Error code: 400' in err_str:
+                return code + '\n\n' + err_str
+            return code
 
     def run_code(self, code, error_message, input, to_api, context=None):
         """
@@ -278,9 +310,9 @@ class ModelAgent:
         ]
 
         try:
-            logging.info(f"Calling model with temperature={self.temperature}, top_p={self.top_p}, max_tokens={self.max_tokens}")
-            response = self.client.chat.completions.create(
-                model=self.model,
+            logging.info(f"Calling fixer model with temperature={self.temperature}, top_p={self.top_p}, max_tokens={self.max_tokens}")
+            response = self.fixer_client.chat.completions.create(
+                model=self.fixer_model,
                 messages=messages,
                 max_tokens=self.max_tokens,
                 temperature=self.temperature,
@@ -308,7 +340,7 @@ class ModelAgent:
 
                     # Save the model response with attempt number
                     with open(os.path.join(kernel_log_dir, f"runtime_fix_attempt_{attempt}.txt"), "w") as f:
-                        f.write(f"Model: {self.model}\n")
+                        f.write(f"Model: {self.fixer_model}\n")
                         f.write(f"Temperature: {self.temperature}\n")
                         f.write(f"Top_p: {self.top_p}\n")
                         f.write(f"Max tokens: {self.max_tokens}\n\n")
@@ -331,7 +363,27 @@ class ModelAgent:
                 return code  # Return original code if no response
 
         except Exception as e:
-            logging.error(f"Error in run_code: {str(e)}")
-            if 'Error code: 400' in str(e):
-                return code + '\n\n' + str(e)
-            return code  # Return original code on error
+            err_str = str(e)
+            logging.error(f"Error in run_code: {err_str}")
+            if 'Error code: 400' in err_str and 'maximum context length' in err_str:
+                m = re.search(r'maximum context length is (\d+).*?(\d+) in the messages', err_str, re.DOTALL)
+                if m:
+                    max_ctx = int(m.group(1))
+                    msg_tokens = int(m.group(2))
+                    reduced_max = max(500, max_ctx - msg_tokens - 50)
+                    logging.warning(f"Context window exceeded, retrying run_code with max_tokens={reduced_max}")
+                    try:
+                        response = self.fixer_client.chat.completions.create(
+                            model=self.fixer_model,
+                            messages=messages,
+                            max_tokens=reduced_max,
+                            temperature=self.temperature,
+                            top_p=self.top_p
+                        )
+                        if response.choices:
+                            return response.choices[0].message.content
+                    except Exception as e2:
+                        logging.error(f"Retry with reduced max_tokens also failed: {e2}")
+            if 'Error code: 400' in err_str:
+                return code + '\n\n' + err_str
+            return code

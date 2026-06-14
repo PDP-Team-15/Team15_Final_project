@@ -1,0 +1,18 @@
+main.cu(156): error: identifier "BLOCK_Z" is undefined
+    imdilate_disk_kernel<<<dim3((IszX + 16 - 1) / 16, (IszY + 16 - 1) / 16, (Nfr + BLOCK_Z - 1) / BLOCK_Z), dim3(16, 16, BLOCK_Z)>>>(I, IszX, IszY, Nfr, 5, newMatrix);
+                                                                                   ^
+
+main.cu(300): error: identifier "get_time" is undefined
+    long long start = get_time();
+                      ^
+
+main.cu(302): error: identifier "BLOCK_Z" is undefined
+    videoSequence_kernel<<<dim3((IszX + 16 - 1) / 16, (IszY + 16 - 1) / 16, (Nfr + BLOCK_Z - 1) / BLOCK_Z), dim3(16, 16, BLOCK_Z)>>>(I, IszX, IszY, Nfr, seed);
+                                                                                   ^
+
+main.cu(304): error: identifier "elapsed_time" is undefined
+    printf("VIDEO SEQUENCE TOOK %f (s)\n", elapsed_time(start, endVideoSequence));
+                                           ^
+
+4 errors detected in the compilation of "main.cu".
+make: *** [Makefile:51: main.o] Error 2

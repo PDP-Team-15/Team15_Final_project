@@ -1,0 +1,7 @@
+{
+    "cuda-omp": {
+        "vanGenuchten-omp": 0.3365817070007324,
+        "mixbench-omp": 0.3345625400543213
+    },
+    "serial-omp": {}
+}

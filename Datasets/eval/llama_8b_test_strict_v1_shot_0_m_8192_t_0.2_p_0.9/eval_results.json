@@ -1,0 +1,35 @@
+{
+    "run_name": "llama_8b_test_strict_v1_shot_0_m_8192_t_0.2_p_0.9",
+    "target": [
+        "cuda",
+        "omp"
+    ],
+    "per_pair": {
+        "omp-cuda": {
+            "compile": "5/18",
+            "compile_rate": 0.278,
+            "correct": "0/18",
+            "correct_rate": 0.0
+        },
+        "cuda-omp": {
+            "compile": "2/18",
+            "compile_rate": 0.111,
+            "correct": "0/18",
+            "correct_rate": 0.0
+        }
+    },
+    "aggregate": {
+        "cuda": {
+            "compile": "5/18",
+            "compile_rate": 0.278,
+            "correct": "0/18",
+            "correct_rate": 0.0
+        },
+        "omp": {
+            "compile": "2/18",
+            "compile_rate": 0.111,
+            "correct": "0/18",
+            "correct_rate": 0.0
+        }
+    }
+}

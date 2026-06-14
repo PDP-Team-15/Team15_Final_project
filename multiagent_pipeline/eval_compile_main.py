@@ -74,12 +74,13 @@ def main():
     temp_dir = os.path.join(output_dir, f"HeCBench-{args.from_api}-{args.to_api}")
     os.makedirs(temp_dir, exist_ok=True)
 
-    # Initialize the model agent
-    # Use a local model server to avoid authentication issues
+    # Qwen 14B AWQ for all stages — 32768 context avoids overflow on large kernels
     model_agent = ModelAgent(
-        model=args.model_name,
-        api_base='http://localhost:8000/v1',
-        api_key='mult_pipeline'
+        translator_base_url='http://localhost:8004/v1',
+        translator_model='Qwen/Qwen2.5-Coder-14B-Instruct-AWQ',
+        fixer_base_url='http://localhost:8004/v1',
+        fixer_model='Qwen/Qwen2.5-Coder-14B-Instruct-AWQ',
+        api_key='token123',
     )
 
     # Initialize the execution agent and runner agent

@@ -1,0 +1,644 @@
+2026-06-13 13:08:38,929 - root - INFO - Log file created at /home/pdp15/UniPar_AI/output/20260613_130838_datasets_after_eval_compile/datasets_after_eval_compile.log
+2026-06-13 13:08:38,929 - root - INFO - Running eval_compile to create a clean dataset...
+2026-06-13 13:08:38,929 - root - INFO - Original model name extracted: gpt
+2026-06-13 13:08:38,929 - root - INFO - Using clean dataset at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9 for main processing
+2026-06-13 13:08:38,966 - root - INFO - ModelAgent initialized: translator=Valdemardi/DeepSeek-R1-Distill-Qwen-32B-AWQ@http://localhost:8006/v1, fixer=Valdemardi/DeepSeek-R1-Distill-Qwen-32B-AWQ@http://localhost:8006/v1
+2026-06-13 13:08:38,966 - root - INFO - Processing source API: omp to cuda
+2026-06-13 13:08:38,966 - root - INFO - Found 17 kernels to process for omp to cuda
+2026-06-13 13:08:38,968 - root - INFO - Processing kernel: ace-cuda
+2026-06-13 13:08:38,968 - root - INFO - Compiling ace-cuda
+2026-06-13 13:08:38,968 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-13 13:08:38,968 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-13 13:08:38,969 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/pred_compile_0.cu
+2026-06-13 13:08:38,969 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/main.cu
+2026-06-13 13:08:38,969 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda
+2026-06-13 13:08:38,969 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda
+2026-06-13 13:08:38,973 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/Makefile
+2026-06-13 13:08:40,305 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/result.txt
+2026-06-13 13:08:40,305 - root - INFO - Generated partial result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda
+2026-06-13 13:08:40,306 - root - INFO - Running ace-cuda
+2026-06-13 13:08:40,307 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-13 13:08:40,307 - root - INFO - Attempting to run main.cu (Attempt 1)
+2026-06-13 13:08:41,948 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/pred_run_0.cu
+2026-06-13 13:08:42,269 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/error_run_0.txt
+2026-06-13 13:08:42,269 - root - ERROR - Failed to run, trying to fix the code
+2026-06-13 13:08:42,269 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:08:42,606 - openai._base_client - INFO - Retrying request to /chat/completions in 0.434406 seconds
+2026-06-13 13:08:43,043 - openai._base_client - INFO - Retrying request to /chat/completions in 0.860732 seconds
+2026-06-13 13:08:43,907 - root - ERROR - Error in run_code: Connection error.
+2026-06-13 13:08:44,587 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-13 13:08:44,588 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-13 13:08:44,588 - root - INFO - Attempting to run main.cu (Attempt 2)
+2026-06-13 13:08:45,239 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/pred_run_1.cu
+2026-06-13 13:08:45,560 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/error_run_1.txt
+2026-06-13 13:08:45,560 - root - ERROR - Failed to run, trying to fix the code
+2026-06-13 13:08:45,560 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:08:45,565 - openai._base_client - INFO - Retrying request to /chat/completions in 0.386513 seconds
+2026-06-13 13:08:45,954 - openai._base_client - INFO - Retrying request to /chat/completions in 0.905401 seconds
+2026-06-13 13:08:46,863 - root - ERROR - Error in run_code: Connection error.
+2026-06-13 13:08:47,554 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-13 13:08:47,554 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-13 13:08:47,555 - root - INFO - Attempting to run main.cu (Attempt 3)
+2026-06-13 13:08:48,230 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/pred_run_2.cu
+2026-06-13 13:08:48,544 - root - ERROR - Max attempts reached. Compilation failed.
+2026-06-13 13:08:48,545 - root - ERROR - Execution failed for ace-cuda: Failed to run the code after 3 attempts
+2026-06-13 13:08:48,546 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/result.txt
+2026-06-13 13:08:48,546 - root - INFO - Processing kernel: pnpoly-cuda
+2026-06-13 13:08:48,546 - root - INFO - Compiling pnpoly-cuda
+2026-06-13 13:08:48,547 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-13 13:08:48,547 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-13 13:08:48,547 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/pred_compile_0.cu
+2026-06-13 13:08:48,548 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/main.cu
+2026-06-13 13:08:48,548 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda
+2026-06-13 13:08:48,548 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda
+2026-06-13 13:08:48,552 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/Makefile
+2026-06-13 13:08:49,067 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-13 13:08:49,067 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:08:49,071 - openai._base_client - INFO - Retrying request to /chat/completions in 0.482280 seconds
+2026-06-13 13:08:49,556 - openai._base_client - INFO - Retrying request to /chat/completions in 0.834576 seconds
+2026-06-13 13:08:50,394 - root - ERROR - Error in fix_code: Connection error.
+2026-06-13 13:08:50,394 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/pred_compile_1.cu
+2026-06-13 13:08:50,395 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/error_compile_0.txt
+2026-06-13 13:08:50,395 - root - INFO - Attempting to compile main.cu (Attempt 2)
+2026-06-13 13:08:50,404 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/main.cu
+2026-06-13 13:08:50,404 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda
+2026-06-13 13:08:50,404 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda
+2026-06-13 13:08:50,408 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/Makefile
+2026-06-13 13:08:50,926 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-13 13:08:50,926 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:08:50,930 - openai._base_client - INFO - Retrying request to /chat/completions in 0.461377 seconds
+2026-06-13 13:08:51,394 - openai._base_client - INFO - Retrying request to /chat/completions in 0.787488 seconds
+2026-06-13 13:08:52,185 - root - ERROR - Error in fix_code: Connection error.
+2026-06-13 13:08:52,186 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/pred_compile_2.cu
+2026-06-13 13:08:52,186 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/error_compile_1.txt
+2026-06-13 13:08:52,186 - root - INFO - Attempting to compile main.cu (Attempt 3)
+2026-06-13 13:08:52,186 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/main.cu
+2026-06-13 13:08:52,186 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda
+2026-06-13 13:08:52,187 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda
+2026-06-13 13:08:52,191 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/Makefile
+2026-06-13 13:08:52,706 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-13 13:08:52,707 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:08:52,711 - openai._base_client - INFO - Retrying request to /chat/completions in 0.438790 seconds
+2026-06-13 13:08:53,152 - openai._base_client - INFO - Retrying request to /chat/completions in 0.911457 seconds
+2026-06-13 13:08:54,067 - root - ERROR - Error in fix_code: Connection error.
+2026-06-13 13:08:54,068 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/pred_compile_3.cu
+2026-06-13 13:08:54,068 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/error_compile_2.txt
+2026-06-13 13:08:54,077 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/result.txt
+2026-06-13 13:08:54,077 - root - INFO - Generated result.txt file with compilation failure in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda
+2026-06-13 13:08:54,077 - root - ERROR - Compilation failed for pnpoly-cuda: Failed to compile after 3 attempts
+2026-06-13 13:08:54,077 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/result.txt
+2026-06-13 13:08:54,078 - root - INFO - Processing kernel: keogh-cuda
+2026-06-13 13:08:54,078 - root - INFO - Compiling keogh-cuda
+2026-06-13 13:08:54,078 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-13 13:08:54,078 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-13 13:08:54,078 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda/pred_compile_0.cu
+2026-06-13 13:08:54,078 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda/main.cu
+2026-06-13 13:08:54,078 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda
+2026-06-13 13:08:54,078 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda
+2026-06-13 13:08:54,083 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda/Makefile
+2026-06-13 13:08:55,213 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda/result.txt
+2026-06-13 13:08:55,213 - root - INFO - Generated partial result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda
+2026-06-13 13:08:55,213 - root - INFO - Running keogh-cuda
+2026-06-13 13:08:55,214 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-13 13:08:55,214 - root - INFO - Attempting to run pred_2.cu (Attempt 1)
+2026-06-13 13:08:55,214 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda/pred_2.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda/pred_run_0.cu
+2026-06-13 13:09:27,506 - root - WARNING - Program results do not match expected results: Did not find 'pass' in result.txt
+2026-06-13 13:09:27,507 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda/result.txt
+2026-06-13 13:09:27,507 - root - INFO - Generated/updated result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda
+2026-06-13 13:09:27,507 - root - INFO - Execution succeeded for keogh-cuda
+2026-06-13 13:09:27,507 - root - WARNING - Results are not valid for keogh-cuda: Did not find 'pass' in result.txt
+2026-06-13 13:09:27,507 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda/result.txt
+2026-06-13 13:09:27,508 - root - INFO - Processing kernel: atomicIntrinsics-cuda
+2026-06-13 13:09:27,508 - root - INFO - Compiling atomicIntrinsics-cuda
+2026-06-13 13:09:27,508 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-13 13:09:27,509 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-13 13:09:27,509 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/pred_compile_0.cu
+2026-06-13 13:09:27,509 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/main.cu
+2026-06-13 13:09:27,509 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda
+2026-06-13 13:09:27,509 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda
+2026-06-13 13:09:27,514 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/Makefile
+2026-06-13 13:09:27,863 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-13 13:09:27,863 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:09:27,872 - openai._base_client - INFO - Retrying request to /chat/completions in 0.423297 seconds
+2026-06-13 13:09:28,298 - openai._base_client - INFO - Retrying request to /chat/completions in 0.920845 seconds
+2026-06-13 13:09:29,222 - root - ERROR - Error in fix_code: Connection error.
+2026-06-13 13:09:29,223 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/pred_compile_1.cu
+2026-06-13 13:09:29,223 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/error_compile_0.txt
+2026-06-13 13:09:29,223 - root - INFO - Attempting to compile main.cu (Attempt 2)
+2026-06-13 13:09:29,232 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/main.cu
+2026-06-13 13:09:29,232 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda
+2026-06-13 13:09:29,232 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda
+2026-06-13 13:09:29,237 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/Makefile
+2026-06-13 13:09:29,575 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-13 13:09:29,575 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:09:29,579 - openai._base_client - INFO - Retrying request to /chat/completions in 0.442606 seconds
+2026-06-13 13:09:30,024 - openai._base_client - INFO - Retrying request to /chat/completions in 0.764525 seconds
+2026-06-13 13:09:30,791 - root - ERROR - Error in fix_code: Connection error.
+2026-06-13 13:09:30,792 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/pred_compile_2.cu
+2026-06-13 13:09:30,792 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/error_compile_1.txt
+2026-06-13 13:09:30,792 - root - INFO - Attempting to compile main.cu (Attempt 3)
+2026-06-13 13:09:30,801 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/main.cu
+2026-06-13 13:09:30,802 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda
+2026-06-13 13:09:30,802 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda
+2026-06-13 13:09:30,806 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/Makefile
+2026-06-13 13:09:31,149 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-13 13:09:31,149 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:09:31,154 - openai._base_client - INFO - Retrying request to /chat/completions in 0.489949 seconds
+2026-06-13 13:09:31,646 - openai._base_client - INFO - Retrying request to /chat/completions in 0.952428 seconds
+2026-06-13 13:09:32,601 - root - ERROR - Error in fix_code: Connection error.
+2026-06-13 13:09:32,602 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/pred_compile_3.cu
+2026-06-13 13:09:32,602 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/error_compile_2.txt
+2026-06-13 13:09:32,603 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/result.txt
+2026-06-13 13:09:32,603 - root - INFO - Generated result.txt file with compilation failure in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda
+2026-06-13 13:09:32,603 - root - ERROR - Compilation failed for atomicIntrinsics-cuda: Failed to compile after 3 attempts
+2026-06-13 13:09:32,603 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/result.txt
+2026-06-13 13:09:32,604 - root - INFO - Processing kernel: heat-cuda
+2026-06-13 13:09:32,604 - root - INFO - Compiling heat-cuda
+2026-06-13 13:09:32,604 - root - INFO - Extracted source filename from Makefile: heat.cu
+2026-06-13 13:09:32,605 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-13 13:09:32,605 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda/heat.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda/pred_compile_0.cu
+2026-06-13 13:09:32,605 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda/heat.cu
+2026-06-13 13:09:32,606 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda
+2026-06-13 13:09:32,606 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda
+2026-06-13 13:09:32,610 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda/Makefile
+2026-06-13 13:09:32,902 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-13 13:09:32,903 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:09:32,906 - openai._base_client - INFO - Retrying request to /chat/completions in 0.376163 seconds
+2026-06-13 13:09:33,285 - openai._base_client - INFO - Retrying request to /chat/completions in 0.963969 seconds
+2026-06-13 13:09:34,252 - root - ERROR - Error in fix_code: Connection error.
+2026-06-13 13:09:34,253 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda/heat.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda/pred_compile_1.cu
+2026-06-13 13:09:34,253 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda/error_compile_0.txt
+2026-06-13 13:09:34,253 - root - INFO - Attempting to compile heat.cu (Attempt 2)
+2026-06-13 13:09:34,262 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda/heat.cu
+2026-06-13 13:09:34,262 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda
+2026-06-13 13:09:34,262 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda
+2026-06-13 13:09:34,266 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda/Makefile
+2026-06-13 13:09:34,584 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-13 13:09:34,584 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:09:34,588 - openai._base_client - INFO - Retrying request to /chat/completions in 0.439081 seconds
+2026-06-13 13:09:35,029 - openai._base_client - INFO - Retrying request to /chat/completions in 0.866902 seconds
+2026-06-13 13:09:35,899 - root - ERROR - Error in fix_code: Connection error.
+2026-06-13 13:09:35,900 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda/heat.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda/pred_compile_2.cu
+2026-06-13 13:09:35,900 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda/error_compile_1.txt
+2026-06-13 13:09:35,900 - root - INFO - Attempting to compile heat.cu (Attempt 3)
+2026-06-13 13:09:35,909 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda/heat.cu
+2026-06-13 13:09:35,909 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda
+2026-06-13 13:09:35,909 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda
+2026-06-13 13:09:35,914 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda/Makefile
+2026-06-13 13:09:36,222 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-13 13:09:36,222 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:09:36,226 - openai._base_client - INFO - Retrying request to /chat/completions in 0.384931 seconds
+2026-06-13 13:09:36,614 - openai._base_client - INFO - Retrying request to /chat/completions in 0.986351 seconds
+2026-06-13 13:09:37,603 - root - ERROR - Error in fix_code: Connection error.
+2026-06-13 13:09:37,604 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda/heat.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda/pred_compile_3.cu
+2026-06-13 13:09:37,604 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda/error_compile_2.txt
+2026-06-13 13:09:37,604 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda/result.txt
+2026-06-13 13:09:37,605 - root - INFO - Generated result.txt file with compilation failure in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda
+2026-06-13 13:09:37,605 - root - ERROR - Compilation failed for heat-cuda: Failed to compile after 3 attempts
+2026-06-13 13:09:37,605 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda/result.txt
+2026-06-13 13:09:37,605 - root - INFO - Processing kernel: su3-cuda
+2026-06-13 13:09:37,606 - root - INFO - Compiling su3-cuda
+2026-06-13 13:09:37,606 - root - INFO - Extracted source filename from Makefile: su3_nn_bench.cu
+2026-06-13 13:09:37,606 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-13 13:09:37,607 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda/su3_nn_bench.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda/pred_compile_0.cu
+2026-06-13 13:09:37,607 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda/su3_nn_bench.cu
+2026-06-13 13:09:37,607 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda
+2026-06-13 13:09:37,607 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda
+2026-06-13 13:09:37,612 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda/Makefile
+2026-06-13 13:09:37,747 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-13 13:09:37,747 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:09:37,752 - openai._base_client - INFO - Retrying request to /chat/completions in 0.401393 seconds
+2026-06-13 13:09:38,155 - openai._base_client - INFO - Retrying request to /chat/completions in 0.939669 seconds
+2026-06-13 13:09:39,097 - root - ERROR - Error in fix_code: Connection error.
+2026-06-13 13:09:39,098 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda/su3_nn_bench.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda/pred_compile_1.cu
+2026-06-13 13:09:39,098 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda/error_compile_0.txt
+2026-06-13 13:09:39,098 - root - INFO - Attempting to compile su3_nn_bench.cu (Attempt 2)
+2026-06-13 13:09:39,108 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda/su3_nn_bench.cu
+2026-06-13 13:09:39,108 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda
+2026-06-13 13:09:39,108 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda
+2026-06-13 13:09:39,113 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda/Makefile
+2026-06-13 13:09:39,246 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-13 13:09:39,247 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:09:39,251 - openai._base_client - INFO - Retrying request to /chat/completions in 0.379735 seconds
+2026-06-13 13:09:39,633 - openai._base_client - INFO - Retrying request to /chat/completions in 0.888614 seconds
+2026-06-13 13:09:40,524 - root - ERROR - Error in fix_code: Connection error.
+2026-06-13 13:09:40,525 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda/su3_nn_bench.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda/pred_compile_2.cu
+2026-06-13 13:09:40,525 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda/error_compile_1.txt
+2026-06-13 13:09:40,525 - root - INFO - Attempting to compile su3_nn_bench.cu (Attempt 3)
+2026-06-13 13:09:40,534 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda/su3_nn_bench.cu
+2026-06-13 13:09:40,534 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda
+2026-06-13 13:09:40,534 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda
+2026-06-13 13:09:40,539 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda/Makefile
+2026-06-13 13:09:40,671 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-13 13:09:40,672 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:09:40,675 - openai._base_client - INFO - Retrying request to /chat/completions in 0.384773 seconds
+2026-06-13 13:09:41,062 - openai._base_client - INFO - Retrying request to /chat/completions in 0.876115 seconds
+2026-06-13 13:09:41,941 - root - ERROR - Error in fix_code: Connection error.
+2026-06-13 13:09:41,942 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda/su3_nn_bench.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda/pred_compile_3.cu
+2026-06-13 13:09:41,942 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda/error_compile_2.txt
+2026-06-13 13:09:41,952 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda/result.txt
+2026-06-13 13:09:41,952 - root - INFO - Generated result.txt file with compilation failure in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda
+2026-06-13 13:09:41,952 - root - ERROR - Compilation failed for su3-cuda: Failed to compile after 3 attempts
+2026-06-13 13:09:41,952 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda/result.txt
+2026-06-13 13:09:41,953 - root - INFO - Processing kernel: stencil1d-cuda
+2026-06-13 13:09:41,953 - root - INFO - Compiling stencil1d-cuda
+2026-06-13 13:09:41,953 - root - INFO - Extracted source filename from Makefile: stencil_1d.cu
+2026-06-13 13:09:41,953 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-13 13:09:41,953 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda/stencil_1d.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda/pred_compile_0.cu
+2026-06-13 13:09:41,953 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda/stencil_1d.cu
+2026-06-13 13:09:41,953 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda
+2026-06-13 13:09:41,953 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda
+2026-06-13 13:09:41,958 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda/Makefile
+2026-06-13 13:09:43,077 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda/result.txt
+2026-06-13 13:09:43,077 - root - INFO - Generated partial result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda
+2026-06-13 13:09:43,077 - root - INFO - Running stencil1d-cuda
+2026-06-13 13:09:43,077 - root - INFO - Extracted source filename from Makefile: stencil_1d.cu
+2026-06-13 13:09:43,077 - root - INFO - Attempting to run stencil_1d.cu (Attempt 1)
+2026-06-13 13:09:44,427 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda/stencil_1d.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda/pred_run_0.cu
+2026-06-13 13:09:44,730 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda/error_run_0.txt
+2026-06-13 13:09:44,730 - root - ERROR - Failed to run, trying to fix the code
+2026-06-13 13:09:44,730 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:09:44,734 - openai._base_client - INFO - Retrying request to /chat/completions in 0.453875 seconds
+2026-06-13 13:09:45,190 - openai._base_client - INFO - Retrying request to /chat/completions in 0.764291 seconds
+2026-06-13 13:09:45,957 - root - ERROR - Error in run_code: Connection error.
+2026-06-13 13:09:46,589 - root - INFO - Extracted source filename from Makefile: stencil_1d.cu
+2026-06-13 13:09:46,589 - root - INFO - Extracted source filename from Makefile: stencil_1d.cu
+2026-06-13 13:09:46,590 - root - INFO - Attempting to run stencil_1d.cu (Attempt 2)
+2026-06-13 13:09:47,208 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda/stencil_1d.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda/pred_run_1.cu
+2026-06-13 13:09:47,527 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda/error_run_1.txt
+2026-06-13 13:09:47,528 - root - ERROR - Failed to run, trying to fix the code
+2026-06-13 13:09:47,528 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:09:47,531 - openai._base_client - INFO - Retrying request to /chat/completions in 0.498842 seconds
+2026-06-13 13:09:48,032 - openai._base_client - INFO - Retrying request to /chat/completions in 0.860952 seconds
+2026-06-13 13:09:48,896 - root - ERROR - Error in run_code: Connection error.
+2026-06-13 13:09:49,564 - root - INFO - Extracted source filename from Makefile: stencil_1d.cu
+2026-06-13 13:09:49,564 - root - INFO - Extracted source filename from Makefile: stencil_1d.cu
+2026-06-13 13:09:49,565 - root - INFO - Attempting to run stencil_1d.cu (Attempt 3)
+2026-06-13 13:09:50,209 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda/stencil_1d.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda/pred_run_2.cu
+2026-06-13 13:09:50,530 - root - ERROR - Max attempts reached. Compilation failed.
+2026-06-13 13:09:50,530 - root - ERROR - Execution failed for stencil1d-cuda: Failed to run the code after 3 attempts
+2026-06-13 13:09:50,531 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda/result.txt
+2026-06-13 13:09:50,531 - root - INFO - Processing kernel: vanGenuchten-cuda
+2026-06-13 13:09:50,531 - root - INFO - Compiling vanGenuchten-cuda
+2026-06-13 13:09:50,532 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-13 13:09:50,532 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-13 13:09:50,533 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda/pred_compile_0.cu
+2026-06-13 13:09:50,533 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda/main.cu
+2026-06-13 13:09:50,533 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda
+2026-06-13 13:09:50,533 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda
+2026-06-13 13:09:50,538 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda/Makefile
+2026-06-13 13:09:51,686 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda/result.txt
+2026-06-13 13:09:51,686 - root - INFO - Generated partial result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda
+2026-06-13 13:09:51,686 - root - INFO - Running vanGenuchten-cuda
+2026-06-13 13:09:51,687 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-13 13:09:51,687 - root - INFO - Attempting to run main.cu (Attempt 1)
+2026-06-13 13:09:53,889 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda/pred_run_0.cu
+2026-06-13 13:10:36,485 - root - WARNING - Program results do not match expected results: Did not find 'pass' in result.txt
+2026-06-13 13:10:36,486 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda/result.txt
+2026-06-13 13:10:36,486 - root - INFO - Generated/updated result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda
+2026-06-13 13:10:36,486 - root - INFO - Execution succeeded for vanGenuchten-cuda
+2026-06-13 13:10:36,486 - root - WARNING - Results are not valid for vanGenuchten-cuda: Did not find 'pass' in result.txt
+2026-06-13 13:10:36,496 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda/result.txt
+2026-06-13 13:10:36,496 - root - INFO - Processing kernel: wsm5-cuda
+2026-06-13 13:10:36,496 - root - INFO - Compiling wsm5-cuda
+2026-06-13 13:10:36,496 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-13 13:10:36,496 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-13 13:10:36,496 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda/pred_compile_0.cu
+2026-06-13 13:10:36,497 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda/main.cu
+2026-06-13 13:10:36,497 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda
+2026-06-13 13:10:36,497 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda
+2026-06-13 13:10:36,501 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda/Makefile
+2026-06-13 13:10:36,876 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-13 13:10:36,876 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:10:36,880 - openai._base_client - INFO - Retrying request to /chat/completions in 0.426469 seconds
+2026-06-13 13:10:37,309 - openai._base_client - INFO - Retrying request to /chat/completions in 0.843353 seconds
+2026-06-13 13:10:38,155 - root - ERROR - Error in fix_code: Connection error.
+2026-06-13 13:10:38,156 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda/pred_compile_1.cu
+2026-06-13 13:10:38,156 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda/error_compile_0.txt
+2026-06-13 13:10:38,157 - root - INFO - Attempting to compile main.cu (Attempt 2)
+2026-06-13 13:10:38,157 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda/main.cu
+2026-06-13 13:10:38,157 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda
+2026-06-13 13:10:38,157 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda
+2026-06-13 13:10:38,162 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda/Makefile
+2026-06-13 13:10:38,543 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-13 13:10:38,543 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:10:38,547 - openai._base_client - INFO - Retrying request to /chat/completions in 0.479914 seconds
+2026-06-13 13:10:39,029 - openai._base_client - INFO - Retrying request to /chat/completions in 0.909176 seconds
+2026-06-13 13:10:39,941 - root - ERROR - Error in fix_code: Connection error.
+2026-06-13 13:10:39,942 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda/pred_compile_2.cu
+2026-06-13 13:10:39,943 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda/error_compile_1.txt
+2026-06-13 13:10:39,943 - root - INFO - Attempting to compile main.cu (Attempt 3)
+2026-06-13 13:10:39,952 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda/main.cu
+2026-06-13 13:10:39,952 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda
+2026-06-13 13:10:39,952 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda
+2026-06-13 13:10:39,957 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda/Makefile
+2026-06-13 13:10:40,349 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-13 13:10:40,349 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:10:40,353 - openai._base_client - INFO - Retrying request to /chat/completions in 0.403691 seconds
+2026-06-13 13:10:40,759 - openai._base_client - INFO - Retrying request to /chat/completions in 0.796686 seconds
+2026-06-13 13:10:41,558 - root - ERROR - Error in fix_code: Connection error.
+2026-06-13 13:10:41,559 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda/pred_compile_3.cu
+2026-06-13 13:10:41,559 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda/error_compile_2.txt
+2026-06-13 13:10:41,568 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda/result.txt
+2026-06-13 13:10:41,569 - root - INFO - Generated result.txt file with compilation failure in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda
+2026-06-13 13:10:41,569 - root - ERROR - Compilation failed for wsm5-cuda: Failed to compile after 3 attempts
+2026-06-13 13:10:41,569 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda/result.txt
+2026-06-13 13:10:41,569 - root - INFO - Processing kernel: stddev-cuda
+2026-06-13 13:10:41,569 - root - INFO - Compiling stddev-cuda
+2026-06-13 13:10:41,569 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-13 13:10:41,569 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-13 13:10:41,570 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda/pred_compile_0.cu
+2026-06-13 13:10:41,570 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda/main.cu
+2026-06-13 13:10:41,570 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda
+2026-06-13 13:10:41,570 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda
+2026-06-13 13:10:41,574 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda/Makefile
+2026-06-13 13:10:41,933 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-13 13:10:41,934 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:10:41,938 - openai._base_client - INFO - Retrying request to /chat/completions in 0.477375 seconds
+2026-06-13 13:10:42,418 - openai._base_client - INFO - Retrying request to /chat/completions in 0.839565 seconds
+2026-06-13 13:10:43,260 - root - ERROR - Error in fix_code: Connection error.
+2026-06-13 13:10:43,261 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda/result.txt
+2026-06-13 13:10:43,261 - root - INFO - Generated result.txt file with compilation failure in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda
+2026-06-13 13:10:43,261 - root - ERROR - Compilation failed for stddev-cuda: Failed to compile after 3 attempts
+2026-06-13 13:10:43,261 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda/result.txt
+2026-06-13 13:10:43,262 - root - INFO - Processing kernel: geodesic-cuda
+2026-06-13 13:10:43,262 - root - INFO - Compiling geodesic-cuda
+2026-06-13 13:10:43,262 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-13 13:10:43,263 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-13 13:10:43,263 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/pred_compile_0.cu
+2026-06-13 13:10:43,263 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/main.cu
+2026-06-13 13:10:43,263 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda
+2026-06-13 13:10:43,263 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda
+2026-06-13 13:10:43,268 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/Makefile
+2026-06-13 13:10:43,755 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-13 13:10:43,755 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:10:43,759 - openai._base_client - INFO - Retrying request to /chat/completions in 0.488544 seconds
+2026-06-13 13:10:44,250 - openai._base_client - INFO - Retrying request to /chat/completions in 0.868578 seconds
+2026-06-13 13:10:45,122 - root - ERROR - Error in fix_code: Connection error.
+2026-06-13 13:10:45,122 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/pred_compile_1.cu
+2026-06-13 13:10:45,123 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/error_compile_0.txt
+2026-06-13 13:10:45,123 - root - INFO - Attempting to compile main.cu (Attempt 2)
+2026-06-13 13:10:45,133 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/main.cu
+2026-06-13 13:10:45,133 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda
+2026-06-13 13:10:45,133 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda
+2026-06-13 13:10:45,138 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/Makefile
+2026-06-13 13:10:45,659 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-13 13:10:45,659 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:10:45,663 - openai._base_client - INFO - Retrying request to /chat/completions in 0.439290 seconds
+2026-06-13 13:10:46,105 - openai._base_client - INFO - Retrying request to /chat/completions in 0.865075 seconds
+2026-06-13 13:10:46,973 - root - ERROR - Error in fix_code: Connection error.
+2026-06-13 13:10:46,974 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/pred_compile_2.cu
+2026-06-13 13:10:46,974 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/error_compile_1.txt
+2026-06-13 13:10:46,974 - root - INFO - Attempting to compile main.cu (Attempt 3)
+2026-06-13 13:10:46,983 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/main.cu
+2026-06-13 13:10:46,983 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda
+2026-06-13 13:10:46,983 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda
+2026-06-13 13:10:46,987 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/Makefile
+2026-06-13 13:10:47,447 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-13 13:10:47,447 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:10:47,451 - openai._base_client - INFO - Retrying request to /chat/completions in 0.409401 seconds
+2026-06-13 13:10:47,863 - openai._base_client - INFO - Retrying request to /chat/completions in 0.966378 seconds
+2026-06-13 13:10:48,832 - root - ERROR - Error in fix_code: Connection error.
+2026-06-13 13:10:48,833 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/pred_compile_3.cu
+2026-06-13 13:10:48,833 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/error_compile_2.txt
+2026-06-13 13:10:48,842 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/result.txt
+2026-06-13 13:10:48,843 - root - INFO - Generated result.txt file with compilation failure in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda
+2026-06-13 13:10:48,843 - root - ERROR - Compilation failed for geodesic-cuda: Failed to compile after 3 attempts
+2026-06-13 13:10:48,843 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/result.txt
+2026-06-13 13:10:48,843 - root - INFO - Processing kernel: pool-cuda
+2026-06-13 13:10:48,843 - root - INFO - Compiling pool-cuda
+2026-06-13 13:10:48,843 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-13 13:10:48,843 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-13 13:10:48,844 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/pred_compile_0.cu
+2026-06-13 13:10:48,844 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/main.cu
+2026-06-13 13:10:48,844 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda
+2026-06-13 13:10:48,844 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda
+2026-06-13 13:10:48,849 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/Makefile
+2026-06-13 13:10:50,027 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-13 13:10:50,027 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:10:50,032 - openai._base_client - INFO - Retrying request to /chat/completions in 0.388468 seconds
+2026-06-13 13:10:50,422 - openai._base_client - INFO - Retrying request to /chat/completions in 0.964576 seconds
+2026-06-13 13:10:51,390 - root - ERROR - Error in fix_code: Connection error.
+2026-06-13 13:10:51,391 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/pred_compile_1.cu
+2026-06-13 13:10:51,391 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/error_compile_0.txt
+2026-06-13 13:10:51,392 - root - INFO - Attempting to compile main.cu (Attempt 2)
+2026-06-13 13:10:51,400 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/main.cu
+2026-06-13 13:10:51,400 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda
+2026-06-13 13:10:51,401 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda
+2026-06-13 13:10:51,405 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/Makefile
+2026-06-13 13:10:52,550 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-13 13:10:52,550 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:10:52,555 - openai._base_client - INFO - Retrying request to /chat/completions in 0.388775 seconds
+2026-06-13 13:10:52,946 - openai._base_client - INFO - Retrying request to /chat/completions in 0.850465 seconds
+2026-06-13 13:10:53,799 - root - ERROR - Error in fix_code: Connection error.
+2026-06-13 13:10:53,800 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/pred_compile_2.cu
+2026-06-13 13:10:53,800 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/error_compile_1.txt
+2026-06-13 13:10:53,801 - root - INFO - Attempting to compile main.cu (Attempt 3)
+2026-06-13 13:10:53,810 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/main.cu
+2026-06-13 13:10:53,810 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda
+2026-06-13 13:10:53,810 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda
+2026-06-13 13:10:53,814 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/Makefile
+2026-06-13 13:10:54,959 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-13 13:10:54,959 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:10:54,964 - openai._base_client - INFO - Retrying request to /chat/completions in 0.459650 seconds
+2026-06-13 13:10:55,426 - openai._base_client - INFO - Retrying request to /chat/completions in 0.803098 seconds
+2026-06-13 13:10:56,232 - root - ERROR - Error in fix_code: Connection error.
+2026-06-13 13:10:56,233 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/pred_compile_3.cu
+2026-06-13 13:10:56,233 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/error_compile_2.txt
+2026-06-13 13:10:56,242 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/result.txt
+2026-06-13 13:10:56,242 - root - INFO - Generated result.txt file with compilation failure in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda
+2026-06-13 13:10:56,242 - root - ERROR - Compilation failed for pool-cuda: Failed to compile after 3 attempts
+2026-06-13 13:10:56,243 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/result.txt
+2026-06-13 13:10:56,243 - root - INFO - Processing kernel: particlefilter-cuda
+2026-06-13 13:10:56,243 - root - INFO - Compiling particlefilter-cuda
+2026-06-13 13:10:56,243 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-13 13:10:56,243 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-13 13:10:56,244 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda/pred_compile_0.cu
+2026-06-13 13:10:56,244 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda/main.cu
+2026-06-13 13:10:56,244 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda
+2026-06-13 13:10:56,244 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda
+2026-06-13 13:10:56,249 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda/Makefile
+2026-06-13 13:10:56,595 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-13 13:10:56,595 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:10:56,599 - openai._base_client - INFO - Retrying request to /chat/completions in 0.394574 seconds
+2026-06-13 13:10:56,996 - openai._base_client - INFO - Retrying request to /chat/completions in 0.974345 seconds
+2026-06-13 13:10:57,973 - root - ERROR - Error in fix_code: Connection error.
+2026-06-13 13:10:57,974 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda/pred_compile_1.cu
+2026-06-13 13:10:57,975 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda/error_compile_0.txt
+2026-06-13 13:10:57,975 - root - INFO - Attempting to compile main.cu (Attempt 2)
+2026-06-13 13:10:57,975 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda/main.cu
+2026-06-13 13:10:57,975 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda
+2026-06-13 13:10:57,975 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda
+2026-06-13 13:10:57,981 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda/Makefile
+2026-06-13 13:10:58,283 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-13 13:10:58,283 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:10:58,287 - openai._base_client - INFO - Retrying request to /chat/completions in 0.441299 seconds
+2026-06-13 13:10:58,731 - openai._base_client - INFO - Retrying request to /chat/completions in 0.780531 seconds
+2026-06-13 13:10:59,514 - root - ERROR - Error in fix_code: Connection error.
+2026-06-13 13:10:59,515 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda/pred_compile_2.cu
+2026-06-13 13:10:59,516 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda/error_compile_1.txt
+2026-06-13 13:10:59,516 - root - INFO - Attempting to compile main.cu (Attempt 3)
+2026-06-13 13:10:59,525 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda/main.cu
+2026-06-13 13:10:59,525 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda
+2026-06-13 13:10:59,525 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda
+2026-06-13 13:10:59,530 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda/Makefile
+2026-06-13 13:10:59,836 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-13 13:10:59,836 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:10:59,840 - openai._base_client - INFO - Retrying request to /chat/completions in 0.459095 seconds
+2026-06-13 13:11:00,302 - openai._base_client - INFO - Retrying request to /chat/completions in 0.840897 seconds
+2026-06-13 13:11:01,146 - root - ERROR - Error in fix_code: Connection error.
+2026-06-13 13:11:01,147 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda/pred_compile_3.cu
+2026-06-13 13:11:01,147 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda/error_compile_2.txt
+2026-06-13 13:11:01,156 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda/result.txt
+2026-06-13 13:11:01,157 - root - INFO - Generated result.txt file with compilation failure in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda
+2026-06-13 13:11:01,157 - root - ERROR - Compilation failed for particlefilter-cuda: Failed to compile after 3 attempts
+2026-06-13 13:11:01,157 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda/result.txt
+2026-06-13 13:11:01,157 - root - INFO - Processing kernel: meanshift-cuda
+2026-06-13 13:11:01,157 - root - INFO - Compiling meanshift-cuda
+2026-06-13 13:11:01,157 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-13 13:11:01,158 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-13 13:11:01,158 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/pred_compile_0.cu
+2026-06-13 13:11:01,158 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/main.cu
+2026-06-13 13:11:01,158 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda
+2026-06-13 13:11:01,158 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda
+2026-06-13 13:11:01,163 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/Makefile
+2026-06-13 13:11:04,041 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/result.txt
+2026-06-13 13:11:04,041 - root - INFO - Generated partial result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda
+2026-06-13 13:11:04,041 - root - INFO - Running meanshift-cuda
+2026-06-13 13:11:04,041 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-13 13:11:04,042 - root - INFO - Attempting to run main.cu (Attempt 1)
+2026-06-13 13:11:07,689 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/pred_run_0.cu
+2026-06-13 13:11:08,417 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/error_run_0.txt
+2026-06-13 13:11:08,417 - root - ERROR - Failed to run, trying to fix the code
+2026-06-13 13:11:08,417 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:11:08,421 - openai._base_client - INFO - Retrying request to /chat/completions in 0.444365 seconds
+2026-06-13 13:11:08,869 - openai._base_client - INFO - Retrying request to /chat/completions in 0.818710 seconds
+2026-06-13 13:11:09,690 - root - ERROR - Error in run_code: Connection error.
+2026-06-13 13:11:11,213 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-13 13:11:11,214 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-13 13:11:11,214 - root - INFO - Attempting to run main.cu (Attempt 2)
+2026-06-13 13:11:12,736 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/pred_run_1.cu
+2026-06-13 13:11:13,481 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/error_run_1.txt
+2026-06-13 13:11:13,481 - root - ERROR - Failed to run, trying to fix the code
+2026-06-13 13:11:13,481 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:11:13,485 - openai._base_client - INFO - Retrying request to /chat/completions in 0.458743 seconds
+2026-06-13 13:11:13,947 - openai._base_client - INFO - Retrying request to /chat/completions in 0.982492 seconds
+2026-06-13 13:11:14,933 - root - ERROR - Error in run_code: Connection error.
+2026-06-13 13:11:16,441 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-13 13:11:16,441 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-13 13:11:16,441 - root - INFO - Attempting to run main.cu (Attempt 3)
+2026-06-13 13:11:17,957 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/pred_run_2.cu
+2026-06-13 13:11:18,682 - root - ERROR - Max attempts reached. Compilation failed.
+2026-06-13 13:11:18,682 - root - ERROR - Execution failed for meanshift-cuda: Failed to run the code after 3 attempts
+2026-06-13 13:11:18,683 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/result.txt
+2026-06-13 13:11:18,683 - root - INFO - Processing kernel: mixbench-cuda
+2026-06-13 13:11:18,683 - root - INFO - Compiling mixbench-cuda
+2026-06-13 13:11:18,684 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-13 13:11:18,684 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-13 13:11:18,684 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/pred_compile_0.cu
+2026-06-13 13:11:18,685 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/main.cu
+2026-06-13 13:11:18,685 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda
+2026-06-13 13:11:18,685 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda
+2026-06-13 13:11:18,689 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/Makefile
+2026-06-13 13:11:19,779 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/result.txt
+2026-06-13 13:11:19,780 - root - INFO - Generated partial result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda
+2026-06-13 13:11:19,780 - root - INFO - Running mixbench-cuda
+2026-06-13 13:11:19,780 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-13 13:11:19,780 - root - INFO - Attempting to run main.cu (Attempt 1)
+2026-06-13 13:11:21,070 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/pred_run_0.cu
+2026-06-13 13:11:21,367 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/error_run_0.txt
+2026-06-13 13:11:21,367 - root - ERROR - Failed to run, trying to fix the code
+2026-06-13 13:11:21,367 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:11:21,372 - openai._base_client - INFO - Retrying request to /chat/completions in 0.499190 seconds
+2026-06-13 13:11:21,873 - openai._base_client - INFO - Retrying request to /chat/completions in 0.811505 seconds
+2026-06-13 13:11:22,687 - root - ERROR - Error in run_code: Connection error.
+2026-06-13 13:11:23,368 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-13 13:11:23,368 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-13 13:11:23,368 - root - INFO - Attempting to run main.cu (Attempt 2)
+2026-06-13 13:11:24,004 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/pred_run_1.cu
+2026-06-13 13:11:24,321 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/error_run_1.txt
+2026-06-13 13:11:24,322 - root - ERROR - Failed to run, trying to fix the code
+2026-06-13 13:11:24,322 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:11:24,326 - openai._base_client - INFO - Retrying request to /chat/completions in 0.430410 seconds
+2026-06-13 13:11:24,759 - openai._base_client - INFO - Retrying request to /chat/completions in 0.861710 seconds
+2026-06-13 13:11:25,623 - root - ERROR - Error in run_code: Connection error.
+2026-06-13 13:11:26,264 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-13 13:11:26,264 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-13 13:11:26,264 - root - INFO - Attempting to run main.cu (Attempt 3)
+2026-06-13 13:11:26,922 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/pred_run_2.cu
+2026-06-13 13:11:27,263 - root - ERROR - Max attempts reached. Compilation failed.
+2026-06-13 13:11:27,264 - root - ERROR - Execution failed for mixbench-cuda: Failed to run the code after 3 attempts
+2026-06-13 13:11:27,264 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/result.txt
+2026-06-13 13:11:27,265 - root - INFO - Processing kernel: winograd-cuda
+2026-06-13 13:11:27,265 - root - INFO - Compiling winograd-cuda
+2026-06-13 13:11:27,265 - root - INFO - Extracted source filename from Makefile: main.cu utils.cu
+2026-06-13 13:11:27,266 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-13 13:11:27,266 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda/main.cu utils.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda/pred_compile_0.cu
+2026-06-13 13:11:27,266 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda/main.cu utils.cu
+2026-06-13 13:11:27,266 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda
+2026-06-13 13:11:27,266 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda
+2026-06-13 13:11:27,271 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda/Makefile
+2026-06-13 13:11:27,592 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-13 13:11:27,592 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:11:27,596 - openai._base_client - INFO - Retrying request to /chat/completions in 0.396058 seconds
+2026-06-13 13:11:27,995 - openai._base_client - INFO - Retrying request to /chat/completions in 0.997393 seconds
+2026-06-13 13:11:28,996 - root - ERROR - Error in fix_code: Connection error.
+2026-06-13 13:11:28,997 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda/main.cu utils.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda/pred_compile_1.cu
+2026-06-13 13:11:28,997 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda/error_compile_0.txt
+2026-06-13 13:11:28,997 - root - INFO - Attempting to compile main.cu utils.cu (Attempt 2)
+2026-06-13 13:11:29,006 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda/main.cu utils.cu
+2026-06-13 13:11:29,006 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda
+2026-06-13 13:11:29,007 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda
+2026-06-13 13:11:29,012 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda/Makefile
+2026-06-13 13:11:29,350 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-13 13:11:29,351 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:11:29,355 - openai._base_client - INFO - Retrying request to /chat/completions in 0.433468 seconds
+2026-06-13 13:11:29,791 - openai._base_client - INFO - Retrying request to /chat/completions in 0.887277 seconds
+2026-06-13 13:11:30,681 - root - ERROR - Error in fix_code: Connection error.
+2026-06-13 13:11:30,682 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda/main.cu utils.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda/pred_compile_2.cu
+2026-06-13 13:11:30,683 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda/error_compile_1.txt
+2026-06-13 13:11:30,683 - root - INFO - Attempting to compile main.cu utils.cu (Attempt 3)
+2026-06-13 13:11:30,692 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda/main.cu utils.cu
+2026-06-13 13:11:30,692 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda
+2026-06-13 13:11:30,692 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda
+2026-06-13 13:11:30,696 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda/Makefile
+2026-06-13 13:11:31,030 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-13 13:11:31,031 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:11:31,034 - openai._base_client - INFO - Retrying request to /chat/completions in 0.436989 seconds
+2026-06-13 13:11:31,474 - openai._base_client - INFO - Retrying request to /chat/completions in 0.949866 seconds
+2026-06-13 13:11:32,427 - root - ERROR - Error in fix_code: Connection error.
+2026-06-13 13:11:32,428 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda/main.cu utils.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda/pred_compile_3.cu
+2026-06-13 13:11:32,428 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda/error_compile_2.txt
+2026-06-13 13:11:32,429 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda/result.txt
+2026-06-13 13:11:32,429 - root - INFO - Generated result.txt file with compilation failure in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda
+2026-06-13 13:11:32,429 - root - ERROR - Compilation failed for winograd-cuda: Failed to compile after 3 attempts
+2026-06-13 13:11:32,429 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda/result.txt
+2026-06-13 13:11:32,430 - root - INFO - Processing kernel: convolution1D-cuda
+2026-06-13 13:11:32,430 - root - INFO - Compiling convolution1D-cuda
+2026-06-13 13:11:32,430 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-13 13:11:32,431 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-13 13:11:32,431 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/convolution1D-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/convolution1D-cuda/pred_compile_0.cu
+2026-06-13 13:11:32,431 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/convolution1D-cuda/main.cu
+2026-06-13 13:11:32,431 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/convolution1D-cuda
+2026-06-13 13:11:32,432 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/convolution1D-cuda
+2026-06-13 13:11:32,437 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/convolution1D-cuda/Makefile
+2026-06-13 13:11:32,753 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-13 13:11:32,753 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-13 13:11:32,758 - openai._base_client - INFO - Retrying request to /chat/completions in 0.445401 seconds
+2026-06-13 13:11:33,206 - openai._base_client - INFO - Retrying request to /chat/completions in 0.994744 seconds
+2026-06-13 13:11:34,205 - root - ERROR - Error in fix_code: Connection error.
+2026-06-13 13:11:34,206 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/convolution1D-cuda/result.txt
+2026-06-13 13:11:34,206 - root - INFO - Generated result.txt file with compilation failure in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/convolution1D-cuda
+2026-06-13 13:11:34,206 - root - ERROR - Compilation failed for convolution1D-cuda: Failed to compile after 3 attempts
+2026-06-13 13:11:34,206 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/convolution1D-cuda/result.txt
+2026-06-13 13:11:34,207 - root - INFO - Processing complete. Output directory: /home/pdp15/UniPar_AI/output/20260613_130838_datasets_after_eval_compile
+2026-06-13 13:11:34,207 - root - INFO - 
+==================================================
+SUMMARY  (omp -> cuda)
+==================================================
+  Total kernels   : 17
+  Compile pass    : 6/17  (35.3%)
+  Compile fail    : 11/17
+  Run pass        : 1/17  (5.9%)
+  Run fail        : 5/6  (of compiled)
+==================================================

@@ -1,0 +1,35 @@
+{
+    "run_name": "deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9",
+    "target": [
+        "cuda",
+        "omp"
+    ],
+    "per_pair": {
+        "omp-cuda": {
+            "compile": "7/18",
+            "compile_rate": 0.389,
+            "correct": "2/18",
+            "correct_rate": 0.111
+        },
+        "cuda-omp": {
+            "compile": "8/18",
+            "compile_rate": 0.444,
+            "correct": "0/18",
+            "correct_rate": 0.0
+        }
+    },
+    "aggregate": {
+        "cuda": {
+            "compile": "7/18",
+            "compile_rate": 0.389,
+            "correct": "2/18",
+            "correct_rate": 0.111
+        },
+        "omp": {
+            "compile": "8/18",
+            "compile_rate": 0.444,
+            "correct": "0/18",
+            "correct_rate": 0.0
+        }
+    }
+}

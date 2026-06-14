@@ -1,0 +1,6 @@
+main.cu(56): error: identifier "nthreads" is undefined
+      if (index >= nthreads) return;
+                   ^
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:51: main.o] Error 2

@@ -1,0 +1,14 @@
+main.cu(154): error: calling a __device__ function("roundFloat(float)") from a __host__ function("particleFilter") is not allowed
+      float xe = roundFloat(IszY / 2.0f);
+                 ^
+
+main.cu(155): error: calling a __device__ function("_Z10roundFloat1?") from a __host__ function("particleFilter") is not allowed
+      float ye = roundFloat(IszX / 2.0f);
+                 ^
+
+main.cu(159): error: identifier "strelDisk" is undefined
+      strelDisk(disk, radius);
+      ^
+
+3 errors detected in the compilation of "main.cu".
+make: *** [Makefile:51: main.o] Error 2

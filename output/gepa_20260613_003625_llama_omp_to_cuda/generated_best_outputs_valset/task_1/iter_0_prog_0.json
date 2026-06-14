@@ -1,0 +1,19 @@
+[
+    0.5,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "kernel": "cbsfil",
+        "from_api": "omp",
+        "to_api": "cuda",
+        "compiled": true,
+        "fix_needed": true,
+        "initial_compile_error": "main.cu(100): error: identifier \"uchar\" is undefined\n      const uchar *t = (const uchar*)(&image[i * sizeof(float)]);\n            ^\n\nmain.cu(100): error: identifier \"uchar\" is undefined\n      const uchar *t = (const uchar*)(&image[i * sizeof(float)]);\n                              ^\n\n2 errors detected in the compilation of \"main.cu\".\nmake: *** [Makefile:50: main.o] Error 2\n",
+        "post_fix_error": "",
+        "source_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <algorithm>\n#include <chrono>\n#include <omp.h>\n#include \"kernels.h\"\n\nint PowTwoDivider(int n)\n{\n  if (n == 0) return 0;\n  int divider = 1;\n  while ((n & divider) == 0) divider <<= 1;\n  return divider;\n}\n\nint main(int argc, char* argv[]) {\n  if (argc != 4) {\n    printf(\"Usage: %s <width> <height> <repeat>\\n\", argv[0]);\n    return 1;\n",
+        "translated_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <cuda_runtime.h>\n#include <time.h>\n\nint PowTwoDivider(int n)\n{\n  if (n == 0) return 0;\n  int divider = 1;\n  while ((n & divider) == 0) divider <<= 1;\n  return divider;\n}\n\n__global__ void toCoef2DX(float *image, int numThreadsX, int image_pitch, int width, int height)\n{\n  int x = blockIdx.x * blockDim.x + threadIdx.x;\n  int y = block",
+        "log": "[cbsfil] Compile failed, trying model fix...\n[cbsfil] Compile error:\nmain.cu(100): error: identifier \"uchar\" is undefined\n      const uchar *t = (const uchar*)(&image[i * sizeof(float)]);\n            ^\n\nmain.cu(100): error: identifier \"uchar\" is undefined\n      const uchar *t = (const uchar*)(&image[i * sizeof(float)]);\n                              ^\n\n2 errors detected in the compilation of \"main.cu\".\nmake: *** [Makefile:50: main.o] Error 2\n\n[cbsfil] Compiled after model fix \u2713\n"
+    }
+]

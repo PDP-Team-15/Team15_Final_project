@@ -1,0 +1,19 @@
+[
+    0.0,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "kernel": "cfd",
+        "from_api": "omp",
+        "to_api": "cuda",
+        "compiled": false,
+        "fix_needed": true,
+        "initial_compile_error": "euler3d.cu:28:2: warning: #warning \"the kernels may fail too launch on some systems if the block length is too large\" [-Wcpp]\n   28 | #warning \"the kernels may fail too launch on some systems if the block length is too large\"\n      |  ^~~~~~~\neuler3d.cu(33): error: identifier \"gettimeofday\" is undefined\n    gettimeofday(&t,\n    ^\n\neuler3d.cu(37): error: identifier \"Float3\" is undefined\n  __attribute__((device)) __inline__ float compute_speed_sqd(Float3 velocity){\n                                                             ^\n\neuler3d.cu(49): error: identifier \"Float3\" is undefined\n  __attribut",
+        "post_fix_error": "euler3d.cu:32:2: warning: #warning \"the kernels may fail too launch on some systems if the block length is too large\" [-Wcpp]\n   32 | #warning \"the kernels may fail too launch on some systems if the block length is too large\"\n      |  ^~~~~~~\neuler3d.cu(38): error: identifier \"gettimeofday\" is undefined\n    gettimeofday(&t,\n    ^\n\nAt end of source: error: expected an expression\n\nAt end of source: ",
+        "source_snippet": "\n\n\n#include <iostream>\n#include <fstream>\n#include <math.h>\n#include \"util.h\"\n\n\n \n#define GAMMA 1.4f\n#define iterations 2000\n#ifndef block_length\n#define block_length 192\n#endif\n\n#define NDIM 3\n#define NNB 4\n\n#define RK 3  \n\n#define ff_mach 1.2f\n#define deg_angle_of_attack 0.0f\n\n#define VAR_DENSITY 0\n#define VAR_MOMENTUM  1\n#define VAR_DENSITY_ENERGY (VAR_MOMENTUM+NDIM)\n#define NVAR (VAR_DENSITY_E",
+        "translated_snippet": "#include <iostream>\n#include <fstream>\n#include <math.h>\n#include <cuda_runtime.h>\n#include <cuda.h>\n\n#define GAMMA 1.4f\n#define iterations 2000\n#ifndef block_length\n#define block_length 192\n#endif\n\n#define NDIM 3\n#define NNB 4\n\n#define RK 3  \n\n#define ff_mach 1.2f\n#define deg_angle_of_attack 0.0f\n\n#define VAR_DENSITY 0\n#define VAR_MOMENTUM  1\n#define VAR_DENSITY_ENERGY (VAR_MOMENTUM+NDIM)\n#define",
+        "log": "[cfd] Compile failed, trying model fix...\n[cfd] Compile error:\neuler3d.cu:28:2: warning: #warning \"the kernels may fail too launch on some systems if the block length is too large\" [-Wcpp]\n   28 | #warning \"the kernels may fail too launch on some systems if the block length is too large\"\n      |  ^~~~~~~\neuler3d.cu(33): error: identifier \"gettimeofday\" is undefined\n    gettimeofday(&t,\n    ^\n\neuler3d.cu(37): error: identifier \"Float3\" is undefined\n  __attribute__((device)) __inline__ float compute_speed_sqd(Float3 velocity){\n                                                             ^\n\neuler3d.cu(49): error: identifier \"Float3\" is undefined\n  __attribut\n[cfd] Still failed after model fix \u2717\n[cfd] Second error:\neuler3d.cu:32:2: warning: #warning \"the kernels may fail too launch on some systems if the block length is too large\" [-Wcpp]\n   32 | #warning \"the kernels may fail too launch on some systems if the block length is too large\"\n      |  ^~~~~~~\neuler3d.cu(38): error: identifier \"gettimeofday\" is undefined\n    gettimeofday(&t,\n    ^\n\nAt end of source: error: expected an expression\n\nAt end of source: \n"
+    }
+]

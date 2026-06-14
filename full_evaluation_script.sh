@@ -1,7 +1,7 @@
 #!/bin/bash
 
 source ~/.bashrc
-source /home/tomerbitan/miniconda3/etc/profile.d/conda.sh
+source /usr/local/anaconda3/etc/profile.d/conda.sh
 
 conda activate unipar
 
@@ -11,13 +11,23 @@ TOP_P=0.9
 MAX_TOKEN=15000
 MODEL="gpt"
 
-if [[ $MODEL == "gpt" ]]; then
-    ANSWER_NAME="gpt-4o-mini"
-    OUT_ANSWER_NAME="gpt"
-else
-    ANSWER_NAME="llama3.3_70b_eval"
-    OUT_ANSWER_NAME="eval"
-fi
+# if [[ $MODEL == "gpt" ]]; then
+#     ANSWER_NAME="gpt-4o-mini"
+#     OUT_ANSWER_NAME="gpt"
+# else
+#     ANSWER_NAME="llama3.3_70b_eval"
+#     OUT_ANSWER_NAME="eval"
+# fi
+ANSWER_NAME="llama_8b_test_16k_strict"    
+OUT_ANSWER_NAME="llama_8b_test_16k_strict"       
+# ANSWER_NAME="qwen2.5_coder_7b_eval"
+# OUT_ANSWER_NAME="qwen2.5_coder_7b"
+
+NUM_SHOTS=0
+TEMP=0.2
+TOP_P=0.9
+MAX_TOKEN=2048
+
 
 OUTPATH="${OUT_ANSWER_NAME}_shot_${NUM_SHOTS}_m_${MAX_TOKEN}_t_${TEMP}_p_${TOP_P}"
 
@@ -34,3 +44,4 @@ if [ "$CORE_COUNT" -gt 50 ]; then
     #note that we used 100 AMD EPYC 9334 changing this might warnet changing the timeout threshold
     python -u eval/run_and_speedup/eval_run.py --target 'omp' --run_names $OUTPATH
 fi
+

@@ -1,0 +1,6 @@
+main.cu(106): error: too few arguments in function call
+          dips+1, dipe, djps+1, djpe, dkps+1, dkpe, teamX, teamY);
+                                                                ^
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:50: main.o] Error 2

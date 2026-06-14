@@ -1,0 +1,1368 @@
+Selected target APIs: ['cuda', 'omp']
+Selected from APIs: ['omp', 'cuda']
+/home/pdp15/UniPar_AI/Datasets/eval/llama_8b_test_strict_v1_shot_0_m_8192_t_0.2_p_0.9
+
+********Translate total for:  HeCBench-omp-cuda ********
+
+
+**Compile error ace-cuda: main.cu(63): error: a __global__ function call must be configured
+    Fx[idx + idy * 400 + idz * 400 * 400] = GradientX(Fx, dx, dy, dz, idx, idy, idz);
+                                            ^
+
+main.cu(63): error: a value of type "void" cannot be assigned to an entity of type "double"
+    Fx[idx + idy * 400 + idz * 400 * 400] = GradientX(Fx, dx, dy, dz, idx, idy, idz);
+                                          ^
+
+main.cu(64): error: a __global__ function call must be configured
+    Fy[idx + idy * 400 + idz * 400 * 400] = GradientY(Fy, dx, dy, dz, idx, idy, idz);
+                                            ^
+
+main.cu(64): error: a value of type "void" cannot be assigned to an entity of type "double"
+    Fy[idx + idy * 400 + idz * 400 * 400] = GradientY(Fy, dx, dy, dz, idx, idy, idz);
+                                          ^
+
+main.cu(65): error: a __global__ function call must be configured
+    Fz[idx + idy * 400 + idz * 400 * 400] = GradientZ(Fz, dx, dy, dz, idx, idy, idz);
+                                            ^
+
+main.cu(65): error: a value of type "void" cannot be assigned to an entity of type "double"
+    Fz[idx + idy * 400 + idz * 400 * 400] = GradientZ(Fz, dx, dy, dz, idx, idy, idz);
+                                          ^
+
+main.cu(85): error: expected a ")"
+      phix[x + y * 400 + z * 400 * 400] = ((1.0 - 3.0 * epsilon) * (1.0 + (((4.0 * epsilon) / (1.0 - 3.0 * epsilon)) * ((((phix[x + y * 400 + z * 400 * 400])*(phix[x + y * 400 + z * 400 * 400])) + ((phiy[x + y * 400 + z * 400 * 400])*(phiy[x + y * 400 + z * 400 * 400])) + ((phiz[x + y * 400 + z * 400 * 400])*(phiz[x + y * 400 + z * 400 * 400]))) / ((((phix[x + y * 400 + z * 400 * 400])*(phix[x + y * 400 + z * 400 * 400])) + ((phiy[x + y * 400 + z * 400 * 400])*(phiy[x + y * 400 + z * 400 * 400])) + ((phiz[x + y * 400 + z * 400 * 400])*(phiz[x + y * 400 + z * 400 * 400]))) * (((phix[x + y * 400 + z * 400 * 400])*(phix[x + y * 400 + z * 400 * 400])) + ((phiy[x + y * 400 + z * 400 * 400])*(phiy[x + y * 400 + z * 400 * 400])) + ((phiz[x + y * 400 + z * 400 * 400])*(phiz[x + y * 400 + z * 400 * 400])))))));
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ^
+
+main.cu(97): error: a __global__ function call must be configured
+    phix[x + y * 400 + z * 400 * 400] = W0 * An(phix, phiy, phiz, epsilon, x, y, z);
+                                             ^
+
+main.cu(97): error: expression must have arithmetic or unscoped enum type
+    phix[x + y * 400 + z * 400 * 400] = W0 * An(phix, phiy, phiz, epsilon, x, y, z);
+                                             ^
+
+main.cu(105): error: a __global__ function call must be configured
+    phix[x + y * 400 + z * 400 * 400] = tau0 * ((An(phix, phiy, phiz, epsilon, x, y, z))*(An(phix, phiy, phiz, epsilon, x, y, z)));
+                                                 ^
+
+main.cu(105): error: a __global__ function call must be configured
+    phix[x + y * 400 + z * 400 * 400] = tau0 * ((An(phix, phiy, phiz, epsilon, x, y, z))*(An(phix, phiy, phiz, epsilon, x, y, z)));
+                                                                                          ^
+
+main.cu(105): error: expression must have arithmetic or unscoped enum type
+    phix[x + y * 400 + z * 400 * 400] = tau0 * ((An(phix, phiy, phiz, epsilon, x, y, z))*(An(phix, phiy, phiz, epsilon, x, y, z)));
+                                                ^
+
+main.cu(105): error: expression must have arithmetic or unscoped enum type
+    phix[x + y * 400 + z * 400 * 400] = tau0 * ((An(phix, phiy, phiz, epsilon, x, y, z))*(An(phix, phiy, phiz, epsilon, x, y, z)));
+                                                                                         ^
+
+main.cu(114): error: expected a ")"
+      phix[x + y * 400 + z * 400 * 400] = (((phix[x + y * 400 + z * 400 * 400] * phix[x + y * 400 + z * 400 * 400] * phix[x + y * 400 + z * 400 * 400] * (((phiy[x + y * 400 + z * 400 * 400])*(phiy[x + y * 400 + z * 400 * 400])) + ((phiz[x + y * 400 + z * 400 * 400])*(phiz[x + y * 400 + z * 400 * 400]))) - phix[x + y * 400 + z * 400 * 400] * (((phiy[x + y * 400 + z * 400 * 400])*(phiy[x + y * 400 + z * 400 * 400])) * ((phiy[x + y * 400 + z * 400 * 400])*(phiy[x + y * 400 + z * 400 * 400])) + ((phiz[x + y * 400 + z * 400 * 400])*(phiz[x + y * 400 + z * 400 * 400])) * ((phiz[x + y * 400 + z * 400 * 400])*(phiz[x + y * 400 + z * 400 * 400])))) / ((((phix[x + y * 400 + z * 400 * 400])*(phix[x + y * 400 + z * 400 * 400])) + ((phiy[x + y * 400 + z * 400 * 400])*(phiy[x + y * 400 + z * 400 * 400])) + ((phiz[x + y * 400 + z * 400 * 400])*(phiz[x + y * 400 + z * 400 * 400]))) * (((phix[x + y * 400 + z * 400 * 400])*(phix[x + y * 400 + z * 400 * 400])) + ((phiy[x + y * 400 + z * 400 * 400])*(phiy[x + y * 400 + z * 400 * 400])) + ((phiz[x + y * 400 + z * 400 * 400])*(phiz[x + y * 400 + z * 400 * 400])))));
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ^
+
+main.cu(127): error: a __global__ function call must be configured
+      double phix = GradientX(phi, dx, dy, dz, idx, idy, idz);
+                    ^
+
+main.cu(127): error: a value of type "void" cannot be used to initialize an entity of type "double"
+      double phix = GradientX(phi, dx, dy, dz, idx, idy, idz);
+                    ^
+
+main.cu(128): error: a __global__ function call must be configured
+      double phiy = GradientY(phi, dx, dy, dz, idx, idy, idz);
+                    ^
+
+main.cu(128): error: a value of type "void" cannot be used to initialize an entity of type "double"
+      double phiy = GradientY(phi, dx, dy, dz, idx, idy, idz);
+                    ^
+
+main.cu(129): error: a __global__ function call must be configured
+      double phiz = GradientZ(phi, dx, dy, dz, idx, idy, idz);
+                    ^
+
+main.cu(129): error: a value of type "void" cannot be used to initialize an entity of type "double"
+      double phiz = GradientZ(phi, dx, dy, dz, idx, idy, idz);
+                    ^
+
+main.cu(132): error: argument of type "double" is incompatible with parameter of type "double *"
+      double w = Wn(phix, phiy, phiz, epsilon, W0, idx, idy, idz);
+                    ^
+
+main.cu(132): error: argument of type "double" is incompatible with parameter of type "double *"
+      double w = Wn(phix, phiy, phiz, epsilon, W0, idx, idy, idz);
+                          ^
+
+main.cu(132): error: argument of type "double" is incompatible with parameter of type "double *"
+      double w = Wn(phix, phiy, phiz, epsilon, W0, idx, idy, idz);
+                                ^
+
+main.cu(134): error: argument of type "double" is incompatible with parameter of type "double *"
+      Fx[idx + idy * 400 + idz * 400 * 400] = w2 * phix + sqGphi * w * c * dFunc(phix, phiy, phiz, idx, idy, idz);
+                                                                                 ^
+
+main.cu(134): error: argument of type "double" is incompatible with parameter of type "double *"
+      Fx[idx + idy * 400 + idz * 400 * 400] = w2 * phix + sqGphi * w * c * dFunc(phix, phiy, phiz, idx, idy, idz);
+                                                                                       ^
+
+main.cu(134): error: argument of type "double" is incompatible with parameter of type "double *"
+      Fx[idx + idy * 400 + idz * 400 * 400] = w2 * phix + sqGphi * w * c * dFunc(phix, phiy, phiz, idx, idy, idz);
+                                                                                             ^
+
+main.cu(135): error: argument of type "double" is incompatible with parameter of type "double *"
+      Fy[idx + idy * 400 + idz * 400 * 400] = w2 * phiy + sqGphi * w * c * dFunc(phiy, phiz, phix, idx, idy, idz);
+                                                                                 ^
+
+main.cu(135): error: argument of type "double" is incompatible with parameter of type "double *"
+      Fy[idx + idy * 400 + idz * 400 * 400] = w2 * phiy + sqGphi * w * c * dFunc(phiy, phiz, phix, idx, idy, idz);
+                                                                                       ^
+
+main.cu(135): error: argument of type "double" is incompatible with parameter of type "double *"
+      Fy[idx + idy * 400 + idz * 400 * 400] = w2 * phiy + sqGphi * w * c * dFunc(phiy, phiz, phix, idx, idy, idz);
+                                                                                             ^
+
+main.cu(136): error: argument of type "double" is incompatible with parameter of type "double *"
+      Fz[idx + idy * 400 + idz * 400 * 400] = w2 * phiz + sqGphi * w * c * dFunc(phiz, phix, phiy, idx, idy, idz);
+                                                                                 ^
+
+main.cu(136): error: argument of type "double" is incompatible with parameter of type "double *"
+      Fz[idx + idy * 400 + idz * 400 * 400] = w2 * phiz + sqGphi * w * c * dFunc(phiz, phix, phiy, idx, idy, idz);
+                                                                                       ^
+
+main.cu(136): error: argument of type "double" is incompatible with parameter of type "double *"
+      Fz[idx + idy * 400 + idz * 400 * 400] = w2 * phiz + sqGphi * w * c * dFunc(phiz, phix, phiy, idx, idy, idz);
+                                                                                             ^
+
+main.cu(151): error: a __global__ function call must be configured
+      double phix = GradientX(phiold, dx, dy, dz, idx, idy, idz);
+                    ^
+
+main.cu(151): error: a value of type "void" cannot be used to initialize an entity of type "double"
+      double phix = GradientX(phiold, dx, dy, dz, idx, idy, idz);
+                    ^
+
+main.cu(152): error: a __global__ function call must be configured
+      double phiy = GradientY(phiold, dx, dy, dz, idx, idy, idz);
+                    ^
+
+main.cu(152): error: a value of type "void" cannot be used to initialize an entity of type "double"
+      double phiy = GradientY(phiold, dx, dy, dz, idx, idy, idz);
+                    ^
+
+main.cu(153): error: a __global__ function call must be configured
+      double phiz = GradientZ(phiold, dx, dy, dz, idx, idy, idz);
+                    ^
+
+main.cu(153): error: a value of type "void" cannot be used to initialize an entity of type "double"
+      double phiz = GradientZ(phiold, dx, dy, dz, idx, idy, idz);
+                    ^
+
+main.cu(154): error: argument of type "double" is incompatible with parameter of type "double *"
+      phinew[idx + idy * 400 + idz * 400 * 400] = phiold[idx + idy * 400 + idz * 400 * 400] + (dt / taun(phix, phiy, phiz, epsilon, tau0, idx, idy, idz)) * (Divergence(Fx, Fy, Fz, dx, dy, dz, idx, idy, idz) - dFphi(phiold, uold, &lambda, idx, idy, idz));
+                                                                                                         ^
+
+main.cu(154): error: argument of type "double" is incompatible with parameter of type "double *"
+      phinew[idx + idy * 400 + idz * 400 * 400] = phiold[idx + idy * 400 + idz * 400 * 400] + (dt / taun(phix, phiy, phiz, epsilon, tau0, idx, idy, idz)) * (Divergence(Fx, Fy, Fz, dx, dy, dz, idx, idy, idz) - dFphi(phiold, uold, &lambda, idx, idy, idz));
+                                                                                                               ^
+
+main.cu(154): error: argument of type "double" is incompatible with parameter of type "double *"
+      phinew[idx + idy * 400 + idz * 400 * 400] = phiold[idx + idy * 400 + idz * 400 * 400] + (dt / taun(phix, phiy, phiz, epsilon, tau0, idx, idy, idz)) * (Divergence(Fx, Fy, Fz, dx, dy, dz, idx, idy, idz) - dFphi(phiold, uold, &lambda, idx, idy, idz));
+                                                                                                                     ^
+
+main.cu(154): error: a __global__ function call must be configured
+      phinew[idx + idy * 400 + idz * 400 * 400] = phiold[idx + idy * 400 + idz * 400 * 400] + (dt / taun(phix, phiy, phiz, epsilon, tau0, idx, idy, idz)) * (Divergence(Fx, Fy, Fz, dx, dy, dz, idx, idy, idz) - dFphi(phiold, uold, &lambda, idx, idy, idz));
+                                                                                                                                                             ^
+
+main.cu(154): error: a __global__ function call must be configured
+      phinew[idx + idy * 400 + idz * 400 * 400] = phiold[idx + idy * 400 + idz * 400 * 400] + (dt / taun(phix, phiy, phiz, epsilon, tau0, idx, idy, idz)) * (Divergence(Fx, Fy, Fz, dx, dy, dz, idx, idy, idz) - dFphi(phiold, uold, &lambda, idx, idy, idz));
+                                                                                                                                                                                                                 ^
+
+main.cu(154): error: expression must have arithmetic, unscoped enum, or pointer type but has type "void"
+      phinew[idx + idy * 400 + idz * 400 * 400] = phiold[idx + idy * 400 + idz * 400 * 400] + (dt / taun(phix, phiy, phiz, epsilon, tau0, idx, idy, idz)) * (Divergence(Fx, Fy, Fz, dx, dy, dz, idx, idy, idz) - dFphi(phiold, uold, &lambda, idx, idy, idz));
+                                                                                                                                                             ^
+
+main.cu(189): error: a __global__ function call must be configured
+      unew[idx + idy * 400 + idz * 400 * 400] = uold[idx + idy * 400 + idz * 400 * 400] + 0.5 * (phinew[idx + idy * 400 + idz * 400 * 400] - phiold[idx + idy * 400 + idz * 400 * 400]) + dt * D * Laplacian(uold, dx, dy, dz, idx, idy, idz);
+                                                                                                                                                                                                   ^
+
+main.cu(189): error: expression must have arithmetic or unscoped enum type
+      unew[idx + idy * 400 + idz * 400 * 400] = uold[idx + idy * 400 + idz * 400 * 400] + 0.5 * (phinew[idx + idy * 400 + idz * 400 * 400] - phiold[idx + idy * 400 + idz * 400 * 400]) + dt * D * Laplacian(uold, dx, dy, dz, idx, idy, idz);
+                                                                                                                                                                                                   ^
+
+46 errors detected in the compilation of "main.cu".
+make: *** [Makefile:55: main.o] Error 2
+
+
+**Run error vanGenuchten-cuda: make: *** [Makefile:56: run] Segmentation fault (core dumped)
+
+
+
+**Compile error wsm5-cuda: main.cu:15: warning: "XXX" redefined
+   15 | #define XXX 16
+      | 
+In file included from main.cu:12:
+utils.h:2: note: this is the location of the previous definition
+    2 | #define XXX 8
+      | 
+main.cu:16: warning: "YYY" redefined
+   16 | #define YYY 16
+      | 
+In file included from main.cu:12:
+utils.h:3: note: this is the location of the previous definition
+    3 | #define YYY 8
+      | 
+kernel.h(4): error: function "wsm" has already been defined
+  void wsm (
+       ^
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:50: main.o] Error 2
+
+
+
+**Compile error pool-cuda: main.cu(143): error: identifier "AvgPoolGrad" is undefined
+    AvgPoolGrad<float> pool_process;
+    ^
+
+main.cu(143): error: type name is not allowed
+    AvgPoolGrad<float> pool_process;
+                ^
+
+main.cu(143): error: identifier "pool_process" is undefined
+    AvgPoolGrad<float> pool_process;
+                       ^
+
+main.cu(174): error: type name is not allowed
+      KernelPool2DGrad<AvgPoolGrad<float>, float>
+                                   ^
+
+main.cu(174): error: expected an identifier
+      KernelPool2DGrad<AvgPoolGrad<float>, float>
+                                         ^
+
+main.cu(174): error: expected an identifier
+      KernelPool2DGrad<AvgPoolGrad<float>, float>
+                                           ^
+
+main.cu(175): error: expected a ";"
+        <<<gridSize, blockSize>>>(nthreads, input, output, output_grad,
+                              ^
+
+main.cu(178): warning #12-D: parsing restarts here after previous syntax error
+        padding_width, pool_process, exclusive, input_grad, channel_last);
+                                                                         ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+main.cu(186): error: identifier "reference" is undefined
+    reference<AvgPoolGrad<float>, float>(
+    ^
+
+main.cu(186): error: type name is not allowed
+    reference<AvgPoolGrad<float>, float>(
+                          ^
+
+main.cu(186): error: expected an expression
+    reference<AvgPoolGrad<float>, float>(
+                                ^
+
+main.cu(190): warning #12-D: parsing restarts here after previous syntax error
+            pool_process, exclusive, input_grad_ref, channel_last);
+                                                                  ^
+
+10 errors detected in the compilation of "main.cu".
+make: *** [Makefile:51: main.o] Error 2
+
+
+
+**Compile error particlefilter-cuda: main.cu(195): error: a break statement may only be used within a loop or switch
+        break;
+        ^
+
+main.cu(330): error: calling a __device__ function("get_time()") from a __host__ function("main") is not allowed
+    long long start = get_time();
+                      ^
+
+main.cu(341): error: argument of type "int *" is incompatible with parameter of type "float *"
+    particleFilterKernel<<<dim3(1, 1, Nparticles), dim3(16, 16, 1)>>>(I, IszX, IszY, Nfr, seed, Nparticles, (float *) calloc(Nparticles, sizeof(float)), (float *) calloc(Nparticles, sizeof(float)), (float *) calloc(Nparticles, sizeof(float)), (float *) calloc(Nparticles, sizeof(float)), (float *) calloc(Nparticles, sizeof(float)), (float *) calloc(Nparticles, sizeof(float)), (int *) calloc(Nparticles * 8, sizeof(int)));
+                                                                                                                                                                                                                                                                                                                                                                                          ^
+
+main.cu(341): error: too few arguments in function call
+    particleFilterKernel<<<dim3(1, 1, Nparticles), dim3(16, 16, 1)>>>(I, IszX, IszY, Nfr, seed, Nparticles, (float *) calloc(Nparticles, sizeof(float)), (float *) calloc(Nparticles, sizeof(float)), (float *) calloc(Nparticles, sizeof(float)), (float *) calloc(Nparticles, sizeof(float)), (float *) calloc(Nparticles, sizeof(float)), (float *) calloc(Nparticles, sizeof(float)), (int *) calloc(Nparticles * 8, sizeof(int)));
+                                                                                                                                                                                                                                                                                                                                                                                                                                     ^
+
+4 errors detected in the compilation of "main.cu".
+make: *** [Makefile:51: main.o] Error 2
+
+
+
+**Compile error winograd-cuda: main.cu:9: warning: "MAP_SIZE" redefined
+    9 | #define MAP_SIZE 16
+      | 
+<command-line>: note: this is the location of the previous definition
+main.cu:10: warning: "DIM_LOCAL_WORK_GROUP_X" redefined
+   10 | #define DIM_LOCAL_WORK_GROUP_X 16
+      | 
+In file included from main.cu:3:
+utils.h:26: note: this is the location of the previous definition
+   26 | #define DIM_LOCAL_WORK_GROUP_X 32
+      | 
+main.cu:11: warning: "DIM_LOCAL_WORK_GROUP_Y" redefined
+   11 | #define DIM_LOCAL_WORK_GROUP_Y 16
+      | 
+In file included from main.cu:3:
+utils.h:27: note: this is the location of the previous definition
+   27 | #define DIM_LOCAL_WORK_GROUP_Y 8
+      | 
+main.cu(100): error: no instance of overloaded function "cudaLaunchKernel" matches the argument list
+            argument types are: (void (*)(float *, float *, float *, size_t *, size_t *), dim3, dim3, int, int)
+    do { cudaError_t cudaError = (cudaLaunchKernel(kernel, dimGrid, dimBlock, 0, 0)); if (cudaError != cudaSuccess) { printf("CUDA error: %s:%d: %s\n", "main.cu", 100, cudaGetErrorString(cudaError)); exit(1); } } while (0);
+                                  ^
+/home/pdp15/.conda/envs/unipar/bin/../include/cuda_runtime.h(206): note #3327-D: candidate function template "cudaLaunchKernel(const T *, dim3, dim3, void **, size_t, cudaStream_t)" failed deduction
+  static __inline__ __attribute__((host)) cudaError_t cudaLaunchKernel(
+                                                      ^
+/home/pdp15/.conda/envs/unipar/bin/../include/cuda_runtime_api.h(4037): note #3322-D: number of parameters of function "cudaLaunchKernel(const void *, dim3, dim3, void **, size_t, cudaStream_t)" does not match the call
+  extern __attribute__((host)) cudaError_t cudaLaunchKernel(const void *func, dim3 gridDim, dim3 blockDim, void **args, size_t sharedMem, cudaStream_t stream);
+                                           ^
+
+main.cu(104): error: identifier "rtclock" is undefined
+    double start = rtclock();
+                   ^
+
+main.cu(171): error: identifier "kernel" is undefined
+        LaunchKernel<<<dimGrid, dimBlock>>>(kernel, (void*)d_A, (void*)d_B, (void*)d_C, (void*)d_global_size, (void*)d_global_offset);(WinogradConv2D_2x2_kernel, d_A, d_B, d_C, gpu_global_size, global_offset);
+                                            ^
+
+main.cu(171): error: identifier "d_global_size" is undefined
+        LaunchKernel<<<dimGrid, dimBlock>>>(kernel, (void*)d_A, (void*)d_B, (void*)d_C, (void*)d_global_size, (void*)d_global_offset);(WinogradConv2D_2x2_kernel, d_A, d_B, d_C, gpu_global_size, global_offset);
+                                                                                               ^
+
+main.cu(171): error: identifier "d_global_offset" is undefined
+        LaunchKernel<<<dimGrid, dimBlock>>>(kernel, (void*)d_A, (void*)d_B, (void*)d_C, (void*)d_global_size, (void*)d_global_offset);(WinogradConv2D_2x2_kernel, d_A, d_B, d_C, gpu_global_size, global_offset);
+                                                                                                                     ^
+
+main.cu(171): error: no suitable constructor exists to convert from "void *" to "dim3"
+        LaunchKernel<<<dimGrid, dimBlock>>>(kernel, (void*)d_A, (void*)d_B, (void*)d_C, (void*)d_global_size, (void*)d_global_offset);(WinogradConv2D_2x2_kernel, d_A, d_B, d_C, gpu_global_size, global_offset);
+                                                    ^
+
+main.cu(171): error: argument of type "void *" is incompatible with parameter of type "void (*)(float *, float *, float *, size_t *, size_t *)"
+        LaunchKernel<<<dimGrid, dimBlock>>>(kernel, (void*)d_A, (void*)d_B, (void*)d_C, (void*)d_global_size, (void*)d_global_offset);(WinogradConv2D_2x2_kernel, d_A, d_B, d_C, gpu_global_size, global_offset);
+                                                                ^
+
+main.cu(171): error: too many arguments in function call
+        LaunchKernel<<<dimGrid, dimBlock>>>(kernel, (void*)d_A, (void*)d_B, (void*)d_C, (void*)d_global_size, (void*)d_global_offset);(WinogradConv2D_2x2_kernel, d_A, d_B, d_C, gpu_global_size, global_offset);
+                                                                            ^
+
+main.cu(171): warning #174-D: expression has no effect
+        LaunchKernel<<<dimGrid, dimBlock>>>(kernel, (void*)d_A, (void*)d_B, (void*)d_C, (void*)d_global_size, (void*)d_global_offset);(WinogradConv2D_2x2_kernel, d_A, d_B, d_C, gpu_global_size, global_offset);
+                                                                                                                                       ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+main.cu(171): warning #174-D: expression has no effect
+        LaunchKernel<<<dimGrid, dimBlock>>>(kernel, (void*)d_A, (void*)d_B, (void*)d_C, (void*)d_global_size, (void*)d_global_offset);(WinogradConv2D_2x2_kernel, d_A, d_B, d_C, gpu_global_size, global_offset);
+                                                                                                                                       ^
+
+main.cu(171): warning #174-D: expression has no effect
+        LaunchKernel<<<dimGrid, dimBlock>>>(kernel, (void*)d_A, (void*)d_B, (void*)d_C, (void*)d_global_size, (void*)d_global_offset);(WinogradConv2D_2x2_kernel, d_A, d_B, d_C, gpu_global_size, global_offset);
+                                                                                                                                       ^
+
+main.cu(171): warning #174-D: expression has no effect
+        LaunchKernel<<<dimGrid, dimBlock>>>(kernel, (void*)d_A, (void*)d_B, (void*)d_C, (void*)d_global_size, (void*)d_global_offset);(WinogradConv2D_2x2_kernel, d_A, d_B, d_C, gpu_global_size, global_offset);
+                                                                                                                                       ^
+
+main.cu(171): warning #174-D: expression has no effect
+        LaunchKernel<<<dimGrid, dimBlock>>>(kernel, (void*)d_A, (void*)d_B, (void*)d_C, (void*)d_global_size, (void*)d_global_offset);(WinogradConv2D_2x2_kernel, d_A, d_B, d_C, gpu_global_size, global_offset);
+                                                                                                                                       ^
+
+main.cu(171): warning #174-D: expression has no effect
+        LaunchKernel<<<dimGrid, dimBlock>>>(kernel, (void*)d_A, (void*)d_B, (void*)d_C, (void*)d_global_size, (void*)d_global_offset);(WinogradConv2D_2x2_kernel, d_A, d_B, d_C, gpu_global_size, global_offset);
+                                                                                                                                      ^
+
+8 errors detected in the compilation of "main.cu".
+make: *** [Makefile:53: main.o] Error 2
+make: *** Waiting for unfinished jobs....
+utils.cu:52: warning: ignoring #pragma omp parallel [-Wunknown-pragmas]
+   52 |   #pragma omp parallel
+      | 
+utils.cu:54: warning: ignoring #pragma omp for [-Wunknown-pragmas]
+   54 |     #pragma omp for
+      | 
+utils.cu: In function ‘void WinogradConv2D_2x2_omp(float*, float*, float*, size_t*)’:
+utils.cu:53:29: warning: comparison of integer expressions of different signedness: ‘int’ and ‘size_t’ {aka ‘long unsigned int’} [-Wsign-compare]
+   53 |   for (int tile_i = 0; tile_i < cpu_global_size[0]; tile_i++) {
+      |                      ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+**Compile error pnpoly-cuda: kernel.h(32): error: identifier "BLOCK_SIZE_X" is undefined
+    int i = blockIdx.x * BLOCK_SIZE_X * tile_size + threadIdx.x;
+                         ^
+
+kernel.h(44): error: identifier "VERTICES" is undefined
+      int k = VERTICES-1;
+              ^
+
+kernel.h(90): error: identifier "VERTICES" is undefined
+      int k = VERTICES-1;
+              ^
+
+main.cu(24): error: invalid redeclaration of type name "float2" (declared at line 396 of /home/pdp15/.conda/envs/unipar/bin/../include/vector_types.h)
+  } float2;
+    ^
+
+kernel.h(17): error: function "is_between" has already been defined
+  __attribute__((device)) __inline__ __attribute__((always_inline)) int is_between(float a, float b, float c) {
+                                                                        ^
+
+5 errors detected in the compilation of "main.cu".
+make: *** [Makefile:50: main.o] Error 2
+
+
+
+**Run error stddev-cuda: make: *** [Makefile:57: run] Segmentation fault (core dumped)
+
+
+
+**Compile error geodesic-cuda: main.cu(17): error: invalid redeclaration of type name "float4" (declared at line 398 of /home/pdp15/.conda/envs/unipar/bin/../include/vector_types.h)
+  } float4;
+    ^
+
+main.cu(73): error: expected a ")"
+    dist = (((((SY * SY * 4.0f - 3.0f) * dist * CZ * D / 6.0f - X) * D / 4.0f + CZ) * SY * D + Y) * C * GDC_SEMI_MINOR;
+                                                                                                                      ^
+
+main.cu(144): error: identifier "distance_host" is undefined
+      expected_output[i] = distance_host(i, lat1, lon1, lat2, lon2);
+                           ^
+
+3 errors detected in the compilation of "main.cu".
+make: *** [Makefile:52: main.o] Error 2
+
+
+
+**Compile error convolution1D-cuda: main.cu(69): error: identifier "tile" is undefined
+      tile[lid - (dim - n)] = halo_left < 0 ? 0 : in[halo_left];
+      ^
+
+main.cu(71): error: identifier "tile" is undefined
+    tile[n + lid] = in[bid * dim + lid];
+    ^
+
+main.cu(112): error: identifier "tile" is undefined
+    tile[lid] = in[i];
+    ^
+
+3 errors detected in the compilation of "main.cu".
+make: *** [Makefile:52: main.o] Error 2
+
+
+
+**Compile error su3-cuda: su3_nn_bench.cu:14:10: fatal error: mat_nn_openmp.hpp: No such file or directory
+   14 | #include "mat_nn_openmp.hpp"
+      |          ^~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Makefile:51: su3_nn_bench.o] Error 1
+
+
+
+**Execution out stencil1d-cuda: ./main 134217728 1000
+Average kernel execution time: 0.001807 (s)
+Error at 0: 28 (host) != 105 (device)
+Error at 14: 210 (host) != 315 (device)
+FAIL
+
+
+**Compile error michalewicz-cuda: main.cu(79): error: calling a __device__ function("michalewicz(const float *, int)") from a __host__ function("main") is not allowed
+          minValue = (minValue) < (michalewicz(d_values + j * dim, dim)) ? (minValue) : (michalewicz(d_values + j * dim, dim));
+                                   ^
+
+main.cu(79): error: calling a __device__ function("_Z11michalewicz1?1?") from a __host__ function("main") is not allowed
+          minValue = (minValue) < (michalewicz(d_values + j * dim, dim)) ? (minValue) : (michalewicz(d_values + j * dim, dim));
+                                                                                         ^
+
+main.cu(88): error: a __global__ function call must be configured
+      Error(minValue, dim);
+      ^
+
+3 errors detected in the compilation of "main.cu".
+make: *** [Makefile:50: main.o] Error 2
+
+
+  [canonical] missing kernel counted as fail: zmddft
+omp - cuda compile rate: 5/18 (0.278) | correct rate: 0/18 (0.000)
+
+********Translate total for:  HeCBench-cuda-omp ********
+
+
+**Compile error stddev-omp: main.cpp:37:47: error: use of undeclared identifier 'threadIdx'
+   37 |   if (omp_get_thread_num() < ColsPerBlk) sstd[threadIdx.x] = Type(0);
+      |                                               ^
+1 error generated.
+make: *** [Makefile.aomp:61: main.o] Error 1
+
+
+
+**Compile error ace-omp: main.cpp:390:18: error: use of undeclared identifier 'vy'
+  390 |       d_phiold[i/vy][i%vy][i%vx] = phi_host[i/vy][i%vy][i%vx];
+      |                  ^
+main.cpp:390:24: error: use of undeclared identifier 'vy'
+  390 |       d_phiold[i/vy][i%vy][i%vx] = phi_host[i/vy][i%vy][i%vx];
+      |                        ^
+main.cpp:390:30: error: use of undeclared identifier 'vx'
+  390 |       d_phiold[i/vy][i%vy][i%vx] = phi_host[i/vy][i%vy][i%vx];
+      |                              ^
+main.cpp:390:47: error: use of undeclared identifier 'vy'
+  390 |       d_phiold[i/vy][i%vy][i%vx] = phi_host[i/vy][i%vy][i%vx];
+      |                                               ^
+main.cpp:390:53: error: use of undeclared identifier 'vy'
+  390 |       d_phiold[i/vy][i%vy][i%vx] = phi_host[i/vy][i%vy][i%vx];
+      |                                                     ^
+main.cpp:390:59: error: use of undeclared identifier 'vx'
+  390 |       d_phiold[i/vy][i%vy][i%vx] = phi_host[i/vy][i%vy][i%vx];
+      |                                                           ^
+main.cpp:391:16: error: use of undeclared identifier 'vy'
+  391 |       d_uold[i/vy][i%vy][i%vx] = u_host[i/vy][i%vy][i%vx];
+      |                ^
+main.cpp:391:22: error: use of undeclared identifier 'vy'
+  391 |       d_uold[i/vy][i%vy][i%vx] = u_host[i/vy][i%vy][i%vx];
+      |                      ^
+main.cpp:391:28: error: use of undeclared identifier 'vx'
+  391 |       d_uold[i/vy][i%vy][i%vx] = u_host[i/vy][i%vy][i%vx];
+      |                            ^
+main.cpp:391:43: error: use of undeclared identifier 'vy'
+  391 |       d_uold[i/vy][i%vy][i%vx] = u_host[i/vy][i%vy][i%vx];
+      |                                           ^
+main.cpp:391:49: error: use of undeclared identifier 'vy'
+  391 |       d_uold[i/vy][i%vy][i%vx] = u_host[i/vy][i%vy][i%vx];
+      |                                                 ^
+main.cpp:391:55: error: use of undeclared identifier 'vx'
+  391 |       d_uold[i/vy][i%vy][i%vx] = u_host[i/vy][i%vy][i%vx];
+      |                                                       ^
+main.cpp:407:13: error: no matching function for call to 'calculateForce'
+  407 |             calculateForce(phiold,d_Fx,d_Fy,d_Fz,
+      |             ^~~~~~~~~~~~~~
+main.cpp:103:6: note: candidate function not viable: requires 10 arguments, but 13 were provided
+  103 | void calculateForce(double phi[][DATAYSIZE][DATAXSIZE], 
+      |      ^              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  104 |                     double Fx[][DATAYSIZE][DATAXSIZE],
+      |                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  105 |                     double Fy[][DATAYSIZE][DATAXSIZE],
+      |                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  106 |                     double Fz[][DATAYSIZE][DATAXSIZE],
+      |                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  107 |                     double dx, double dy, double dz,
+      |                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  108 |                     double epsilon, double W0, double tau0)
+      |                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.cpp:420:13: error: no matching function for call to 'allenCahn'
+  420 |             allenCahn(phinew,phiold,d_uold,
+      |             ^~~~~~~~~
+main.cpp:142:6: note: candidate function not viable: requires 14 arguments, but 17 were provided
+  142 | void allenCahn(double phinew[][DATAYSIZE][DATAXSIZE], 
+      |      ^         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  143 |                double phiold[][DATAYSIZE][DATAXSIZE],
+      |                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  144 |                double uold[][DATAYSIZE][DATAXSIZE],
+      |                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  145 |                double Fx[][DATAYSIZE][DATAXSIZE],
+      |                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  146 |                double Fy[][DATAYSIZE][DATAXSIZE],
+      |                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  147 |                double Fz[][DATAYSIZE][DATAXSIZE],
+      |                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  148 |                double epsilon, double W0, double tau0, double lambda,
+      |                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  149 |                double dt, double dx, double dy, double dz)
+      |                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.cpp:435:13: error: no matching function for call to 'boundaryConditionsPhi'
+  435 |             boundaryConditionsPhi(phinew,ix,iy,iz);
+      |             ^~~~~~~~~~~~~~~~~~~~~
+main.cpp:173:6: note: candidate function not viable: requires single argument 'phinew', but 4 arguments were provided
+  173 | void boundaryConditionsPhi(double phinew[][DATAYSIZE][DATAXSIZE])
+      |      ^                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.cpp:447:13: error: no matching function for call to 'thermalEquation'
+  447 |             thermalEquation(unew,d_uold,phinew,phiold,
+      |             ^~~~~~~~~~~~~~~
+main.cpp:202:6: note: candidate function not viable: requires 9 arguments, but 12 were provided
+  202 | void thermalEquation(double unew[][DATAYSIZE][DATAXSIZE],
+      |      ^               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  203 |                      double uold[][DATAYSIZE][DATAXSIZE],
+      |                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  204 |                      double phinew[][DATAYSIZE][DATAXSIZE],
+      |                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  205 |                      double phiold[][DATAYSIZE][DATAXSIZE],
+      |                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  206 |                      double D, double dt, double dx, double dy, double dz)
+      |                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.cpp:460:13: error: no matching function for call to 'boundaryConditionsU'
+  460 |             boundaryConditionsU(unew,delta,ix,iy,iz);
+      |             ^~~~~~~~~~~~~~~~~~~
+main.cpp:224:6: note: candidate function not viable: requires 2 arguments, but 5 were provided
+  224 | void boundaryConditionsU(double unew[][DATAYSIZE][DATAXSIZE], double delta)
+      |      ^                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.cpp:472:22: error: use of undeclared identifier 'ph_inew'
+  472 |             swapGrid(ph_inew, phiold, ix, iy, iz);
+      |                      ^
+main.cpp:473:13: error: no matching function for call to 'swapGrid'
+  473 |             swapGrid(unew, d_uold, ix, iy, iz);
+      |             ^~~~~~~~
+main.cpp:253:6: note: candidate function not viable: requires 2 arguments, but 5 were provided
+  253 | void swapGrid(double cnew[][DATAYSIZE][DATAXSIZE],
+      |      ^        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  254 |               double cold[][DATAYSIZE][DATAXSIZE])
+      |               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+make: *** [Makefile.aomp:66: main.o] Error 1
+
+
+
+**Compile error pnpoly-omp: In file included from main.cpp:8:
+./kernel.h:29:11: error: unknown type name 'float2'; did you mean 'float'?
+   29 |     const float2*__restrict point,
+      |           ^~~~~~
+      |           float
+./kernel.h:30:11: error: unknown type name 'float2'; did you mean 'float'?
+   30 |     const float2*__restrict vertex,
+      |           ^~~~~~
+      |           float
+./kernel.h:36:5: error: use of undeclared identifier 'float2'; did you mean 'float'?
+   36 |     float2 lpoint[tile_size];
+      |     ^~~~~~
+      |     float
+./kernel.h:40:13: error: use of undeclared identifier 'BLOCK_SIZE_X'
+   40 |       if (i+BLOCK_SIZE_X*ti < n) {
+      |             ^
+./kernel.h:41:30: error: use of undeclared identifier 'BLOCK_SIZE_X'
+   41 |         lpoint[ti] = point[i+BLOCK_SIZE_X*ti];
+      |                              ^
+./kernel.h:45:13: error: use of undeclared identifier 'VERTICES'
+   45 |     int k = VERTICES-1;
+      |             ^
+./kernel.h:47:21: error: use of undeclared identifier 'VERTICES'
+   47 |     for (int j=0; j<VERTICES; k = j++) {    // edge from vj to vk
+      |                     ^
+./kernel.h:48:7: error: use of undeclared identifier 'float2'; did you mean 'float'?
+   48 |       float2 vj = vertex[j]; 
+      |       ^~~~~~
+      |       float
+./kernel.h:49:7: error: use of undeclared identifier 'float2'; did you mean 'float'?
+   49 |       float2 vk = vertex[k]; 
+      |       ^~~~~~
+      |       float
+./kernel.h:51:24: error: member reference base type 'float' is not a structure or union
+   51 |       float slope = (vk.x-vj.x) / (vk.y-vj.y);
+      |                      ~~^~
+./kernel.h:51:29: error: member reference base type 'float' is not a structure or union
+   51 |       float slope = (vk.x-vj.x) / (vk.y-vj.y);
+      |                           ~~^~
+./kernel.h:51:38: error: member reference base type 'float' is not a structure or union
+   51 |       float slope = (vk.x-vj.x) / (vk.y-vj.y);
+      |                                    ~~^~
+./kernel.h:51:43: error: member reference base type 'float' is not a structure or union
+   51 |       float slope = (vk.x-vj.x) / (vk.y-vj.y);
+      |                                         ~~^~
+./kernel.h:56:9: error: use of undeclared identifier 'float2'; did you mean 'float'?
+   56 |         float2 p = lpoint[ti];
+      |         ^~~~~~
+      |         float
+./kernel.h:58:25: error: member reference base type 'float' is not a structure or union
+   58 |         if (is_between(p.y, vj.y, vk.y) &&         //if p is between vj and vk vertically
+      |                        ~^~
+./kernel.h:58:31: error: member reference base type 'float' is not a structure or union
+   58 |         if (is_between(p.y, vj.y, vk.y) &&         //if p is between vj and vk vertically
+      |                             ~~^~
+./kernel.h:58:37: error: member reference base type 'float' is not a structure or union
+   58 |         if (is_between(p.y, vj.y, vk.y) &&         //if p is between vj and vk vertically
+      |                                   ~~^~
+./kernel.h:59:15: error: member reference base type 'float' is not a structure or union
+   59 |             (p.x < slope * (p.y-vj.y) + vj.x)
+      |              ~^~
+./kernel.h:59:30: error: member reference base type 'float' is not a structure or union
+   59 |             (p.x < slope * (p.y-vj.y) + vj.x)
+      |                             ~^~
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+make: *** [Makefile.aomp:60: main.o] Error 1
+
+
+
+**Compile error winograd-omp: main.cpp:10:9: warning: 'MAP_SIZE' macro redefined [-Wmacro-redefined]
+   10 | #define MAP_SIZE 256
+      |         ^
+<command line>:1:9: note: previous definition is here
+    1 | #define MAP_SIZE 1024
+      |         ^
+main.cpp:11:9: warning: 'DIM_LOCAL_WORK_GROUP_X' macro redefined [-Wmacro-redefined]
+   11 | #define DIM_LOCAL_WORK_GROUP_X 16
+      |         ^
+./utils.h:26:9: note: previous definition is here
+   26 | #define DIM_LOCAL_WORK_GROUP_X 32
+      |         ^
+main.cpp:12:9: warning: 'DIM_LOCAL_WORK_GROUP_Y' macro redefined [-Wmacro-redefined]
+   12 | #define DIM_LOCAL_WORK_GROUP_Y 16
+      |         ^
+./utils.h:27:9: note: previous definition is here
+   27 | #define DIM_LOCAL_WORK_GROUP_Y 8
+      |         ^
+main.cpp:20:27: error: non-constant-expression cannot be narrowed from type 'size_t' (aka 'unsigned long') to 'int' in initializer list [-Wc++11-narrowing]
+   20 |   int global_offset[2] = {cpu_global_size[0], 0};
+      |                           ^~~~~~~~~~~~~~~~~~
+main.cpp:20:27: note: insert an explicit cast to silence this issue
+   20 |   int global_offset[2] = {cpu_global_size[0], 0};
+      |                           ^~~~~~~~~~~~~~~~~~
+      |                           static_cast<int>( )
+main.cpp:21:7: warning: unused variable 'local_work_group_size' [-Wunused-variable]
+   21 |   int local_work_group_size[2] = {DIM_LOCAL_WORK_GROUP_X, DIM_LOCAL_WORK_GROUP_Y};
+      |       ^~~~~~~~~~~~~~~~~~~~~
+main.cpp:105:7: warning: unused variable 'local_work_group_size' [-Wunused-variable]
+  105 |   int local_work_group_size[2] = {DIM_LOCAL_WORK_GROUP_X, DIM_LOCAL_WORK_GROUP_Y};
+      |       ^~~~~~~~~~~~~~~~~~~~~
+5 warnings and 1 error generated.
+make: *** [Makefile.aomp:61: main.o] Error 1
+make: *** Waiting for unfinished jobs....
+
+
+
+**Compile error keogh-omp: main.cpp:27:39: error: read-only variable is not assignable
+   27 |     if (idx + k < N) subject[idx + k] = subject[idx + k];
+      |                      ~~~~~~~~~~~~~~~~ ^
+main.cpp:29:3: error: use of undeclared identifier '__sync_threads'
+   29 |   __sync_threads();
+      |   ^
+main.cpp:85:13: error: use of undeclared identifier 'lid'
+   85 |     private(lid, idx, residues, avg, std, i, value, lower, upper)
+      |             ^
+main.cpp:85:18: error: use of undeclared identifier 'idx'
+   85 |     private(lid, idx, residues, avg, std, i, value, lower, upper)
+      |                  ^
+main.cpp:85:23: error: use of undeclared identifier 'residues'
+   85 |     private(lid, idx, residues, avg, std, i, value, lower, upper)
+      |                       ^
+main.cpp:85:33: error: use of undeclared identifier 'avg'; did you mean 'avgs'?
+   85 |     private(lid, idx, residues, avg, std, i, value, lower, upper)
+      |                                 ^~~
+      |                                 avgs
+main.cpp:68:10: note: 'avgs' declared here
+   68 |   float *avgs = (float*) malloc (sizeof(float)*(N-M+1));
+      |          ^
+main.cpp:85:38: error: unexpected namespace name 'std': expected expression
+   85 |     private(lid, idx, residues, avg, std, i, value, lower, upper)
+      |                                      ^
+main.cpp:85:43: error: use of undeclared identifier 'i'
+   85 |     private(lid, idx, residues, avg, std, i, value, lower, upper)
+      |                                           ^
+main.cpp:85:46: error: use of undeclared identifier 'value'; did you mean 'false'?
+   85 |     private(lid, idx, residues, avg, std, i, value, lower, upper)
+      |                                              ^~~~~
+      |                                              false
+main.cpp:85:33: error: shared variable cannot be private
+   85 |     private(lid, idx, residues, avg, std, i, value, lower, upper)
+      |                                 ^
+main.cpp:84:21: note: defined as shared
+   84 |     shared(subject, avgs, stds, lb_keogh, lower, upper, M, N) \
+      |                     ^
+main.cpp:85:46: error: expected variable name
+   85 |     private(lid, idx, residues, avg, std, i, value, lower, upper)
+      |                                              ^~~~~
+main.cpp:85:53: error: shared variable cannot be private
+   85 |     private(lid, idx, residues, avg, std, i, value, lower, upper)
+      |                                                     ^
+main.cpp:84:43: note: defined as shared
+   84 |     shared(subject, avgs, stds, lb_keogh, lower, upper, M, N) \
+      |                                           ^
+main.cpp:85:60: error: shared variable cannot be private
+   85 |     private(lid, idx, residues, avg, std, i, value, lower, upper)
+      |                                                            ^
+main.cpp:84:50: note: defined as shared
+   84 |     shared(subject, avgs, stds, lb_keogh, lower, upper, M, N) \
+      |                                                  ^
+main.cpp:93:34: error: subscripted value is not an array, pointer, or vector
+   93 |       float lower = value - lower[i];
+      |                             ~~~~~^~
+main.cpp:94:34: error: subscripted value is not an array, pointer, or vector
+   94 |       float upper = value - upper[i];
+      |                             ~~~~~^~
+main.cpp:104:13: error: use of undeclared identifier 'lid'
+  104 |     private(lid, idx, avg, std, i, value, lower, upper)
+      |             ^
+main.cpp:104:18: error: use of undeclared identifier 'idx'
+  104 |     private(lid, idx, avg, std, i, value, lower, upper)
+      |                  ^
+main.cpp:104:23: error: use of undeclared identifier 'avg'; did you mean 'avgs'?
+  104 |     private(lid, idx, avg, std, i, value, lower, upper)
+      |                       ^~~
+      |                       avgs
+main.cpp:68:10: note: 'avgs' declared here
+   68 |   float *avgs = (float*) malloc (sizeof(float)*(N-M+1));
+      |          ^
+main.cpp:104:28: error: unexpected namespace name 'std': expected expression
+  104 |     private(lid, idx, avg, std, i, value, lower, upper)
+      |                            ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+make: *** [Makefile.aomp:60: main.o] Error 1
+
+
+
+**Compile error stencil1d-omp: stencil_1d.cpp:28:5: error: region cannot be closely nested inside 'parallel for' region
+   28 |     #pragma omp barrier
+      |     ^
+stencil_1d.cpp:57:63: error: expected variable name
+   57 |   #pragma omp parallel for default(none) shared(a, b, length, RADIUS)
+      |                                                               ^~~~~~
+stencil_1d.cpp:9:16: note: expanded from macro 'RADIUS'
+    9 | #define RADIUS 7
+      |                ^
+2 errors generated.
+make: *** [Makefile.aomp:60: stencil_1d.o] Error 1
+
+
+
+**Compile error particlefilter-omp: main.cpp:258:5: error: use of undeclared identifier 'kernel_likelihood'
+  258 |     kernel_likelihood(arrayX, arrayY, xj, yj, ind, objxy, likelihood, I, weights, seed, likelihood + Nparticles, Nparticles, countOnes, IszY, Nfr, k, max_size);
+      |     ^
+main.cpp:259:5: error: use of undeclared identifier 'kernel_sum'
+  259 |     kernel_sum(likelihood + Nparticles, Nparticles);
+      |     ^
+main.cpp:260:5: error: use of undeclared identifier 'kernel_normalize_weights'
+  260 |     kernel_normalize_weights(weights, likelihood + Nparticles, CDF, u, seed, Nparticles);
+      |     ^
+main.cpp:261:5: error: use of undeclared identifier 'kernel_find_index'
+  261 |     kernel_find_index(arrayX, arrayY, CDF, u, xj, yj, Nparticles);
+      |     ^
+4 errors generated.
+make: *** [Makefile.aomp:63: main.o] Error 1
+
+
+
+**Compile error meanshift-omp: main.cpp:66:33: error: read-only variable is not assignable
+   66 |           data[row_in_tile + j] = data[row_in_tile + j];
+      |           ~~~~~~~~~~~~~~~~~~~~~ ^
+main.cpp:71:16: error: use of undeclared identifier 'row_in_tile'; did you mean 'tid_in_tile'?
+   71 |           data[row_in_tile + j] = 0;
+      |                ^~~~~~~~~~~
+      |                tid_in_tile
+main.cpp:62:11: note: 'tid_in_tile' declared here
+   62 |       int tid_in_tile = t * TILE_WIDTH + tid;
+      |           ^
+main.cpp:71:33: error: read-only variable is not assignable
+   71 |           data[row_in_tile + j] = 0;
+      |           ~~~~~~~~~~~~~~~~~~~~~ ^
+main.cpp:82:33: error: read-only variable is not assignable
+   82 |           data[row_in_tile + j] = data[row_in_tile + j];
+      |           ~~~~~~~~~~~~~~~~~~~~~ ^
+main.cpp:87:16: error: use of undeclared identifier 'row_in_tile'; did you mean 'tid_in_tile'?
+   87 |           data[row_in_tile + j] = 0;
+      |                ^~~~~~~~~~~
+      |                tid_in_tile
+main.cpp:78:11: note: 'tid_in_tile' declared here
+   78 |       int tid_in_tile = t * TILE_WIDTH + tid;
+      |           ^
+main.cpp:87:33: error: read-only variable is not assignable
+   87 |           data[row_in_tile + j] = 0;
+      |           ~~~~~~~~~~~~~~~~~~~~~ ^
+main.cpp:98:33: error: read-only variable is not assignable
+   98 |           data[row_in_tile + j] = data[row_in_tile + j];
+      |           ~~~~~~~~~~~~~~~~~~~~~ ^
+main.cpp:103:16: error: use of undeclared identifier 'row_in_tile'; did you mean 'tid_in_tile'?
+  103 |           data[row_in_tile + j] = 0;
+      |                ^~~~~~~~~~~
+      |                tid_in_tile
+main.cpp:94:11: note: 'tid_in_tile' declared here
+   94 |       int tid_in_tile = t * TILE_WIDTH + tid;
+      |           ^
+main.cpp:103:33: error: read-only variable is not assignable
+  103 |           data[row_in_tile + j] = 0;
+      |           ~~~~~~~~~~~~~~~~~~~~~ ^
+main.cpp:130:43: error: expected unqualified-id
+  130 |   for (size_t i = 0; i < mean_shift::gpu::NUM_ITER; ++i) {
+      |                                           ^
+main.cpp:21:18: note: expanded from macro 'NUM_ITER'
+   21 | #define NUM_ITER 10
+      |                  ^
+main.cpp:130:43: error: expected ';' in 'for' statement specifier
+main.cpp:21:18: note: expanded from macro 'NUM_ITER'
+   21 | #define NUM_ITER 10
+      |                  ^
+main.cpp:138:43: error: expected unqualified-id
+  138 |   for (size_t i = 0; i < mean_shift::gpu::NUM_ITER; ++i) {
+      |                                           ^
+main.cpp:21:18: note: expanded from macro 'NUM_ITER'
+   21 | #define NUM_ITER 10
+      |                  ^
+main.cpp:138:43: error: expected ';' in 'for' statement specifier
+main.cpp:21:18: note: expanded from macro 'NUM_ITER'
+   21 | #define NUM_ITER 10
+      |                  ^
+main.cpp:147:50: error: expected unqualified-id
+  147 |             << (time * 1e-6f) / mean_shift::gpu::NUM_ITER << " ms\n" << std::endl;
+      |                                                  ^
+main.cpp:21:18: note: expanded from macro 'NUM_ITER'
+   21 | #define NUM_ITER 10
+      |                  ^
+main.cpp:149:115: error: expected unqualified-id
+  149 |   std::array<float, N * D> centroids = mean_shift::gpu::utils::reduce_to_centroids<N, D>(result, mean_shift::gpu::MIN_DISTANCE);
+      |                                                                                                                   ^
+main.cpp:22:22: note: expanded from macro 'MIN_DISTANCE'
+   22 | #define MIN_DISTANCE 1e-6
+      |                      ^
+main.cpp:150:20: error: no matching function for call to 'are_close_to_real'
+  150 |   bool are_close = mean_shift::gpu::utils::are_close_to_real<M, D>(centroids, real, DIST_TO_REAL);
+      |                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/pdp15/UniPar_AI/data/Datasets/HeCBench/src/meanshift-cuda/utils.h:150:10: note: candidate function template not viable: no known conversion from 'std::array<float, 1000 * 10>' to 'const std::vector<std::array<float, 10UL>>' for 1st argument
+  150 |     bool are_close_to_real(const std::vector<std::array<float, D>>& centroids,
+      |          ^                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+16 errors generated.
+make: *** [Makefile.aomp:60: main.o] Error 1
+
+
+
+**Compile error pool-omp: main.cpp:18:9: warning: 'HOSTDEVICE' macro redefined [-Wmacro-redefined]
+   18 | #define HOSTDEVICE inline void compute(const float& x, const float& y, const float& dy, float scale, float* dx) {
+      |         ^
+main.cpp:16:9: note: previous definition is here
+   16 | #define HOSTDEVICE __attribute__((always_inline))
+      |         ^
+main.cpp:19:7: error: invalid '+=' at end of declaration; did you mean '='?
+   19 |   *dx += (scale * dy);
+      |       ^~
+      |       =
+main.cpp:19:4: error: a type specifier is required for all declarations
+   19 |   *dx += (scale * dy);
+      |    ^
+main.cpp:19:11: error: use of undeclared identifier 'scale'; did you mean 'scalb'?
+   19 |   *dx += (scale * dy);
+      |           ^~~~~
+      |           scalb
+/home/pdp15/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/include/bits/mathcalls.h:364:13: note: 'scalb' declared here
+  364 | __MATHCALL (scalb,, (_Mdouble_ __x, _Mdouble_ __n));
+      |             ^
+main.cpp:19:19: error: use of undeclared identifier 'dy'
+   19 |   *dx += (scale * dy);
+      |                   ^
+main.cpp:20:1: error: extraneous closing brace ('}')
+   20 | }
+      | ^
+main.cpp:23:7: error: invalid '+=' at end of declaration; did you mean '='?
+   23 |   *dx += dy * static_cast<float>(x == y);
+      |       ^~
+      |       =
+main.cpp:23:4: error: a type specifier is required for all declarations
+   23 |   *dx += dy * static_cast<float>(x == y);
+      |    ^
+main.cpp:23:10: error: use of undeclared identifier 'dy'
+   23 |   *dx += dy * static_cast<float>(x == y);
+      |          ^
+main.cpp:23:34: error: use of undeclared identifier 'x'
+   23 |   *dx += dy * static_cast<float>(x == y);
+      |                                  ^
+main.cpp:23:39: error: use of undeclared identifier 'y'
+   23 |   *dx += dy * static_cast<float>(x == y);
+      |                                       ^
+main.cpp:24:1: error: extraneous closing brace ('}')
+   24 | }
+      | ^
+main.cpp:49:1: error: function definition is not allowed here
+   49 | {
+      | ^
+main.cpp:114:1: error: function definition is not allowed here
+  114 | {
+      | ^
+main.cpp:209:2: error: expected '}'
+  209 | }
+      |  ^
+main.cpp:36:1: note: to match this '{'
+   36 | HOSTDEVICE void KernelPool2DGrad(
+      | ^
+main.cpp:22:113: note: expanded from macro 'HOSTDEVICE'
+   22 | #define HOSTDEVICE inline void compute(const float& x, const float& y, const float& dy, float scale, float* dx) {
+      |                                                                                                                 ^
+1 warning and 14 errors generated.
+make: *** [Makefile.aomp:60: main.o] Error 1
+
+
+
+**Compile error convolution1D-omp: main.cpp:31:28: error: use of variable template 'mask' requires template arguments
+   31 |       s += in[start + j] * mask[j];
+      |                            ^
+main.cpp:18:3: note: template is declared here
+   17 | template<typename T>
+      | ~~~~~~~~~~~~~~~~~~~~
+   18 | T mask[MAX_MASK_WIDTH];
+      |   ^
+main.cpp:43:3: error: unknown type name '__shared__'
+   43 |   __shared__ T tile[TILE_SIZE + MAX_MASK_WIDTH - 1];
+      |   ^
+main.cpp:43:15: error: expected ';' at end of declaration
+   43 |   __shared__ T tile[TILE_SIZE + MAX_MASK_WIDTH - 1];
+      |               ^
+      |               ;
+main.cpp:50:3: error: use of undeclared identifier 'tile'; did you mean 'time'?
+   50 |   tile[n + omp_get_thread_num()] = in[omp_get_thread_num()];
+      |   ^~~~
+      |   time
+/home/pdp15/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/include/time.h:192:15: note: 'time' declared here
+  192 | extern time_t time (time_t *__timer) __THROW;
+      |               ^
+main.cpp:50:3: error: subscript of pointer to function type 'time_t (time_t *) throw()' (aka 'long (long *) throw()')
+   50 |   tile[n + omp_get_thread_num()] = in[omp_get_thread_num()];
+      |   ^~~~
+main.cpp:54:3: error: use of undeclared identifier '__syncthreads'
+   54 |   __syncthreads();
+      |   ^
+main.cpp:56:4: error: expected ';' after expression
+   56 |   T s = 0;
+      |    ^
+      |    ;
+main.cpp:56:5: error: use of undeclared identifier 's'
+   56 |   T s = 0;
+      |     ^
+main.cpp:58:5: error: use of undeclared identifier 's'
+   58 |     s += tile[omp_get_thread_num() + j] * mask[j];
+      |     ^
+main.cpp:58:10: error: use of undeclared identifier 'tile'; did you mean 'time'?
+   58 |     s += tile[omp_get_thread_num() + j] * mask[j];
+      |          ^~~~
+      |          time
+/home/pdp15/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/include/time.h:192:15: note: 'time' declared here
+  192 | extern time_t time (time_t *__timer) __THROW;
+      |               ^
+main.cpp:58:10: error: subscript of pointer to function type 'time_t (time_t *) throw()' (aka 'long (long *) throw()')
+   58 |     s += tile[omp_get_thread_num() + j] * mask[j];
+      |          ^~~~
+main.cpp:58:43: error: use of variable template 'mask' requires template arguments
+   58 |     s += tile[omp_get_thread_num() + j] * mask[j];
+      |                                           ^
+main.cpp:18:3: note: template is declared here
+   17 | template<typename T>
+      | ~~~~~~~~~~~~~~~~~~~~
+   18 | T mask[MAX_MASK_WIDTH];
+      |   ^
+main.cpp:60:12: error: use of undeclared identifier 's'
+   60 |   out[i] = s;
+      |            ^
+main.cpp:69:3: error: unknown type name '__shared__'
+   69 |   __shared__ T tile[TILE_SIZE];
+      |   ^
+main.cpp:69:15: error: expected ';' at end of declaration
+   69 |   __shared__ T tile[TILE_SIZE];
+      |               ^
+      |               ;
+main.cpp:72:3: error: use of undeclared identifier 'tile'; did you mean 'time'?
+   72 |   tile[omp_get_thread_num()] = in[i];
+      |   ^~~~
+      |   time
+/home/pdp15/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/include/time.h:192:15: note: 'time' declared here
+  192 | extern time_t time (time_t *__timer) __THROW;
+      |               ^
+main.cpp:72:3: error: subscript of pointer to function type 'time_t (time_t *) throw()' (aka 'long (long *) throw()')
+   72 |   tile[omp_get_thread_num()] = in[i];
+      |   ^~~~
+main.cpp:73:3: error: use of undeclared identifier '__syncthreads'
+   73 |   __syncthreads();
+      |   ^
+main.cpp:78:4: error: expected ';' after expression
+   78 |   T s = 0;
+      |    ^
+      |    ;
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+make: *** [Makefile.aomp:60: main.o] Error 1
+
+
+
+**Compile error heat-omp: heat.cpp:84:11: error: use of undeclared identifier 'j'
+   84 |       u[i+j*n] = sin(PI * x / length) * sin(PI * y / length);
+      |           ^
+heat.cpp:101:17: error: use of undeclared identifier 'j'
+  101 |         u_tmp[i+j*n] =  r2 * u[i+j*n] +
+      |                 ^
+heat.cpp:101:34: error: use of undeclared identifier 'j'
+  101 |         u_tmp[i+j*n] =  r2 * u[i+j*n] +
+      |                                  ^
+heat.cpp:102:34: error: use of undeclared identifier 'j'
+  102 |         r * ((i_ < n-1) ? u[i_+1+j*n] : 0.0) +
+      |                                  ^
+heat.cpp:103:34: error: use of undeclared identifier 'j'
+  103 |         r * ((i_ > 0)   ? u[i_-1+j*n] : 0.0) +
+      |                                  ^
+heat.cpp:138:11: error: use of undeclared identifier 'j'
+  138 |       u[i+j*n] = sin(PI * x / length) * sin(PI * y / length);
+      |           ^
+heat.cpp:160:15: error: use of undeclared identifier 'j'
+  160 |       u_tmp[i+j*n] =  r2 * u[i+j*n] +
+      |               ^
+heat.cpp:160:32: error: use of undeclared identifier 'j'
+  160 |       u_tmp[i+j*n] =  r2 * u[i+j*n] +
+      |                                ^
+heat.cpp:161:32: error: use of undeclared identifier 'j'
+  161 |       r * ((i_ < n-1) ? u[i_+1+j*n] : 0.0) +
+      |                                ^
+heat.cpp:162:32: error: use of undeclared identifier 'j'
+  162 |       r * ((i_ > 0)   ? u[i_-1+j*n] : 0.0) +
+      |                                ^
+10 errors generated.
+make: *** [Makefile.aomp:62: heat.o] Error 1
+
+
+
+**Compile error su3-omp: In file included from su3_nn_bench.cpp:14:
+./mat_nn_openmp.hpp:29:7: error: use of undeclared identifier 'verbose'
+   29 |   if (verbose >= 1) {
+      |       ^
+./mat_nn_openmp.hpp:36:17: error: use of undeclared identifier 'Clock'
+   36 |   auto tstart = Clock::now();
+      |                 ^
+./mat_nn_openmp.hpp:37:38: error: use of undeclared identifier 'warmups'
+   37 |   for (int iters=0; iters<iterations+warmups; ++iters) {
+      |                                      ^
+./mat_nn_openmp.hpp:38:18: error: use of undeclared identifier 'warmups'
+   38 |     if (iters == warmups) {
+      |                  ^
+./mat_nn_openmp.hpp:39:16: error: use of undeclared identifier 'Clock'
+   39 |       tstart = Clock::now();
+      |                ^
+./mat_nn_openmp.hpp:66:66: error: use of undeclared identifier 'Clock'
+   66 |   ttotal = std::chrono::duration_cast<std::chrono::microseconds>(Clock::now()-tstart).count();
+      |                                                                  ^
+./mat_nn_openmp.hpp:92:7: error: use of undeclared identifier 'almost_equal'
+   92 |   if (almost_equal(sum, 4.0*sizeof(su3_matrix)/(sizeof(Complx)), 1E-6)) {
+      |       ^
+su3_nn_bench.cpp:154:18: warning: passing 8-byte aligned argument to 16-byte aligned parameter 1 of 'make_lattice' may result in an unaligned pointer access [-Walign-mismatch]
+  154 |   make_lattice(a.data(), ldim, Complx{1.0,0.0});
+      |                  ^
+su3_nn_bench.cpp:168:5: error: no matching function for call to 'su3_mat_nn'
+  168 |     su3_mat_nn(a, b, c, total_sites);
+      |     ^~~~~~~~~~
+./mat_nn_openmp.hpp:7:8: note: candidate function not viable: requires 7 arguments, but 4 were provided
+    7 | double su3_mat_nn(std::vector<site> &a, std::vector<su3_matrix> &b, std::vector<site> &c, 
+      |        ^          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    8 |               size_t total_sites, size_t iterations, size_t threads_per_team, int use_device)
+      |               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1 warning and 8 errors generated.
+make: *** [Makefile.aomp:60: su3_nn_bench.o] Error 1
+
+
+
+**Run error michalewicz-omp: ./main: error while loading shared libraries: libomp.so: cannot open shared object file: No such file or directory
+make: *** [Makefile.aomp:66: run] Error 127
+
+
+
+**Compile error vanGenuchten-omp: main.cpp:34:17: error: variable 'theta_S' must have explicitly specified data sharing attributes
+   34 |       _theta = (theta_S - theta_R) / pow(1.0 + pow((alpha*(-_psi)),n), m) + theta_R;
+      |                 ^~~~~~~
+main.cpp:24:36: note: explicit data sharing attribute requested here
+   24 |   #pragma omp parallel for default(none) \
+      |                                    ^
+main.cpp:34:27: error: variable 'theta_R' must have explicitly specified data sharing attributes
+   34 |       _theta = (theta_S - theta_R) / pow(1.0 + pow((alpha*(-_psi)),n), m) + theta_R;
+      |                           ^~~~~~~
+main.cpp:24:36: note: explicit data sharing attribute requested here
+   24 |   #pragma omp parallel for default(none) \
+      |                                    ^
+main.cpp:29:14: error: variable 'n' must have explicitly specified data sharing attributes
+   29 |     lambda = n - 1.0;
+      |              ^
+main.cpp:24:36: note: explicit data sharing attribute requested here
+   24 |   #pragma omp parallel for default(none) \
+      |                                    ^
+main.cpp:34:53: error: variable 'alpha' must have explicitly specified data sharing attributes
+   34 |       _theta = (theta_S - theta_R) / pow(1.0 + pow((alpha*(-_psi)),n), m) + theta_R;
+      |                                                     ^~~~~
+main.cpp:24:36: note: explicit data sharing attribute requested here
+   24 |   #pragma omp parallel for default(none) \
+      |                                    ^
+main.cpp:90:11: error: use of undeclared identifier 'i'
+   90 |   private(i)
+      |           ^
+main.cpp:91:8: error: use of undeclared identifier 'i'
+   91 |   for (i = 0; i < size; i++) {
+      |        ^
+main.cpp:91:15: error: use of undeclared identifier 'i'
+   91 |   for (i = 0; i < size; i++) {
+      |               ^
+main.cpp:91:25: error: use of undeclared identifier 'i'
+   91 |   for (i = 0; i < size; i++) {
+      |                         ^
+main.cpp:92:10: error: use of undeclared identifier 'i'
+   92 |     Ksat[i] = Ksat[i];
+      |          ^
+main.cpp:92:20: error: use of undeclared identifier 'i'
+   92 |     Ksat[i] = Ksat[i];
+      |                    ^
+main.cpp:93:9: error: use of undeclared identifier 'i'
+   93 |     psi[i] = psi[i];
+      |         ^
+main.cpp:93:18: error: use of undeclared identifier 'i'
+   93 |     psi[i] = psi[i];
+      |                  ^
+main.cpp:91:3: error: initialization clause of OpenMP for loop is not in canonical form ('var = init' or 'T var = init')
+   91 |   for (i = 0; i < size; i++) {
+      |   ^
+13 errors generated.
+make: *** [Makefile.aomp:61: main.o] Error 1
+
+
+
+**Compile error wsm5-omp: In file included from main.cpp:13:
+./kernel.h:3:6: error: redefinition of 'wsm'
+    3 | void wsm (
+      |      ^
+./kernel.h:3:6: note: previous definition is here
+    3 | void wsm (
+      |      ^
+main.cpp:68:5: error: use of undeclared identifier 'TODEV3'
+   68 |     TODEV3(pii);
+      |     ^
+main.cpp:69:5: error: use of undeclared identifier 'TODEV3'
+   69 |     TODEV3(den);
+      |     ^
+main.cpp:70:5: error: use of undeclared identifier 'TODEV3'
+   70 |     TODEV3(p);
+      |     ^
+main.cpp:71:5: error: use of undeclared identifier 'TODEV3'
+   71 |     TODEV3(delz);
+      |     ^
+main.cpp:73:5: error: use of undeclared identifier 'TODEV3'
+   73 |     TODEV3(th);
+      |     ^
+main.cpp:74:5: error: use of undeclared identifier 'TODEV3'
+   74 |     TODEV3(q);
+      |     ^
+main.cpp:75:5: error: use of undeclared identifier 'TODEV3'
+   75 |     TODEV3(qc);
+      |     ^
+main.cpp:76:5: error: use of undeclared identifier 'TODEV3'
+   76 |     TODEV3(qi);
+      |     ^
+main.cpp:77:5: error: use of undeclared identifier 'TODEV3'
+   77 |     TODEV3(qr);
+      |     ^
+main.cpp:78:5: error: use of undeclared identifier 'TODEV3'
+   78 |     TODEV3(qs);
+      |     ^
+main.cpp:79:5: error: use of undeclared identifier 'TODEV2'
+   79 |     TODEV2(rain);
+      |     ^
+main.cpp:80:5: error: use of undeclared identifier 'TODEV2'
+   80 |     TODEV2(rainncv);
+      |     ^
+main.cpp:81:5: error: use of undeclared identifier 'TODEV2'
+   81 |     TODEV2(sr);
+      |     ^
+main.cpp:82:5: error: use of undeclared identifier 'TODEV2'
+   82 |     TODEV2(snow);
+      |     ^
+main.cpp:83:5: error: use of undeclared identifier 'TODEV2'
+   83 |     TODEV2(snowncv);
+      |     ^
+main.cpp:90:11: error: no matching function for call to 'wsm'
+   90 |           wsm(
+      |           ^~~
+./kernel.h:3:6: note: candidate function not viable: requires 36 arguments, but 34 were provided
+    3 | void wsm (
+      |      ^
+    4 |         float *__restrict th,
+      |         ~~~~~~~~~~~~~~~~~~~~~
+    5 |   const float *__restrict pii,
+      |   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    6 |         float *__restrict q,
+      |         ~~~~~~~~~~~~~~~~~~~~
+    7 |         float *__restrict qc,
+      |         ~~~~~~~~~~~~~~~~~~~~~
+    8 |         float *__restrict qi,
+      |         ~~~~~~~~~~~~~~~~~~~~~
+    9 |         float *__restrict qr,
+      |         ~~~~~~~~~~~~~~~~~~~~~
+   10 |         float *__restrict qs,
+      |         ~~~~~~~~~~~~~~~~~~~~~
+   11 |   const float *__restrict den,
+      |   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   12 |   const float *__restrict p,
+      |   ~~~~~~~~~~~~~~~~~~~~~~~~~~
+   13 |   const float *__restrict delz,
+      |   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   14 |         float *__restrict rain,
+      |         ~~~~~~~~~~~~~~~~~~~~~~~
+   15 |         float *__restrict rainncv,
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~
+   16 |         float *__restrict sr,
+      |         ~~~~~~~~~~~~~~~~~~~~~
+   17 |         float *__restrict snow,
+      |         ~~~~~~~~~~~~~~~~~~~~~~~
+   18 |         float *__restrict snowncv,
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.cpp:121:5: error: use of undeclared identifier 'FROMDEV2'
+  121 |     FROMDEV2(rain);
+      |     ^
+main.cpp:122:5: error: use of undeclared identifier 'FROMDEV2'
+  122 |     FROMDEV2(snow);
+      |     ^
+19 errors generated.
+make: *** [Makefile.aomp:60: main.o] Error 1
+
+
+
+**Compile error geodesic-omp: main.cpp:74:116: error: expected ')'
+   74 |   dist = (((((SY * SY * 4.0f - 3.0f) * dist * CZ * D / 6.0f - X) * D / 4.0f + CZ) * SY * D + Y) * C * GC_SEMI_MINOR;
+      |                                                                                                                    ^
+main.cpp:74:10: note: to match this '('
+   74 |   dist = (((((SY * SY * 4.0f - 3.0f) * dist * CZ * D / 6.0f - X) * D / 4.0f + CZ) * SY * D + Y) * C * GC_SEMI_MINOR;
+      |          ^
+main.cpp:93:42: error: member reference base type 'const float' is not a structure or union
+   93 |   const float rad_latitude_1 = d_A[i * 4].x * GDC_DEG_TO_RAD;
+      |                                ~~~~~~~~~~^~
+main.cpp:94:43: error: member reference base type 'const float' is not a structure or union
+   94 |   const float rad_longitude_1 = d_A[i * 4].y * GDC_DEG_TO_RAD;
+      |                                 ~~~~~~~~~~^~
+main.cpp:95:42: error: member reference base type 'const float' is not a structure or union
+   95 |   const float rad_latitude_2 = d_A[i * 4].z * GDC_DEG_TO_RAD;
+      |                                ~~~~~~~~~~^~
+main.cpp:96:43: error: member reference base type 'const float' is not a structure or union
+   96 |   const float rad_longitude_2 = d_A[i * 4].w * GDC_DEG_TO_RAD;
+      |                                 ~~~~~~~~~~^~
+main.cpp:136:116: error: expected ')'
+  136 |   dist = (((((SY * SY * 4.0f - 3.0f) * dist * CZ * D / 6.0f - X) * D / 4.0f + CZ) * SY * D + Y) * C * GC_SEMI_MINOR;
+      |                                                                                                                    ^
+main.cpp:136:10: note: to match this '('
+  136 |   dist = (((((SY * SY * 4.0f - 3.0f) * dist * CZ * D / 6.0f - X) * D / 4.0f + CZ) * SY * D + Y) * C * GC_SEMI_MINOR;
+      |          ^
+main.cpp:143:17: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+  143 |   int thread_id[num_threads];
+      |                 ^~~~~~~~~~~
+main.cpp:143:17: note: read of non-const variable 'num_threads' is not allowed in a constant expression
+main.cpp:142:7: note: declared here
+  142 |   int num_threads = omp_get_max_threads();
+      |       ^
+main.cpp:243:42: error: member reference base type 'float' is not a structure or union
+  243 |       input[j * 4 + 2] = input[index * 4].x;
+      |                          ~~~~~~~~~~~~~~~~^~
+main.cpp:244:42: error: member reference base type 'float' is not a structure or union
+  244 |       input[j * 4 + 3] = input[index * 4].y;
+      |                          ~~~~~~~~~~~~~~~~^~
+1 warning and 8 errors generated.
+make: *** [Makefile.aomp:61: main.o] Error 1
+
+
+
+**Run error mixbench-omp: ./main: error while loading shared libraries: libomp.so: cannot open shared object file: No such file or directory
+make: *** [Makefile.aomp:66: run] Error 127
+
+
+  [canonical] missing kernel counted as fail: zmddft
+cuda - omp compile rate: 2/18 (0.111) | correct rate: 0/18 (0.000)
+skipping:  eval_run.log
+
+cuda compile rate: 5/18 (0.278)
+cuda correct rate: 0/18 (0.000)
+omp compile rate: 2/18 (0.111)
+omp correct rate: 0/18 (0.000)
+
+compile=5/18 correct=0/18	compile=2/18 correct=0/18	
+
+Results saved to: /home/pdp15/UniPar_AI/Datasets/eval/llama_8b_test_strict_v1_shot_0_m_8192_t_0.2_p_0.9/eval_results.json
+Log saved to: Datasets/eval/llama_8b_test_strict_v1_shot_0_m_8192_t_0.2_p_0.9/eval_run.log

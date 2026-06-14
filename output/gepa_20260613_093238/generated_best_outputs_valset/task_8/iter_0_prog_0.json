@@ -1,0 +1,19 @@
+[
+    0.0,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "kernel": "knn",
+        "from_api": "omp",
+        "to_api": "cuda",
+        "compiled": false,
+        "fix_needed": true,
+        "initial_compile_error": "main.cu(86): error: identifier \"ref_nb\" is undefined\n      for (int l = k; l < ref_nb; l++) {\n                          ^\n\nmain.cu(110): error: expression must have class type but it has type \"float *\"\n    if (idx < knn_dist.size()) {\n              ^\n\nmain.cu(172): error: identifier \"knn_serial\" is undefined\n    if (!knn_serial(ref, ref_nb, query, query_nb, dim, k, knn_dist, knn_index)) {\n         ^\n\nmain.cu(185): error: identifier \"gettimeofday\" is undefined\n    gettimeofday(&tic, \n    ^\n\nmain.cu(264): error: argument of type \"const float *\" is incompatible with parameter of type \"float *\"\n  ",
+        "post_fix_error": "main.cu(86): error: identifier \"ref_nb\" is undefined\n      for (int l = k; l < ref_nb; l++) {\n                          ^\n\nmain.cu(110): error: identifier \"query_nb\" is undefined\n    if (idx < query_nb * k) {\n              ^\n\nmain.cu(110): error: identifier \"k\" is undefined\n    if (idx < query_nb * k) {\n                         ^\n\nmain.cu(172): error: identifier \"knn_serial\" is undefined\n    if (!",
+        "source_snippet": "\n\n\n\n\n#include <algorithm>\n#include <cstdio>\n#include <sys/time.h>\n#include <time.h>\n#include <omp.h>\n#include <math.h>\n\n\n\n#define BLOCK_DIM 16\n\n\n\n\n\n\n\n\nfloat compute_distance(const float *ref, int ref_nb, const float *query,\n                       int query_nb, int dim, int ref_index, int query_index) {\n  float sum = 0.f;\n  for (int d = 0; d < dim; ++d) {\n    const float diff =\n        ref[d * ref_",
+        "translated_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <time.h>\n\n#define BLOCK_DIM 16\n\n__global__ void compute_distance(float *ref, float *query, int ref_nb, int query_nb, int dim, int ref_index, int query_index, float *dist) {\n  int idx = blockIdx.x * blockDim.x + threadIdx.x;\n  int idy = blockIdx.y * blockDim.y + threadIdx.y;\n  int dim_idx = idy * BLOCK_DIM + idx;\n  if (dim_idx < dim)",
+        "log": "[knn] Compile failed, trying model fix...\n[knn] Compile error:\nmain.cu(86): error: identifier \"ref_nb\" is undefined\n      for (int l = k; l < ref_nb; l++) {\n                          ^\n\nmain.cu(110): error: expression must have class type but it has type \"float *\"\n    if (idx < knn_dist.size()) {\n              ^\n\nmain.cu(172): error: identifier \"knn_serial\" is undefined\n    if (!knn_serial(ref, ref_nb, query, query_nb, dim, k, knn_dist, knn_index)) {\n         ^\n\nmain.cu(185): error: identifier \"gettimeofday\" is undefined\n    gettimeofday(&tic, \n    ^\n\nmain.cu(264): error: argument of type \"const float *\" is incompatible with parameter of type \"float *\"\n  \n[knn] Still failed after model fix \u2717\n[knn] Second error:\nmain.cu(86): error: identifier \"ref_nb\" is undefined\n      for (int l = k; l < ref_nb; l++) {\n                          ^\n\nmain.cu(110): error: identifier \"query_nb\" is undefined\n    if (idx < query_nb * k) {\n              ^\n\nmain.cu(110): error: identifier \"k\" is undefined\n    if (idx < query_nb * k) {\n                         ^\n\nmain.cu(172): error: identifier \"knn_serial\" is undefined\n    if (!\n"
+    }
+]

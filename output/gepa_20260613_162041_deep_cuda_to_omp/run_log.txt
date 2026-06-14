@@ -1,0 +1,105 @@
+Iteration 0: Base program full valset score: 0.16666666666666666 over 6 / 6 examples
+Iteration 1: Selected program 0 score: 0.16666666666666666
+Iteration 1: Proposed new text for system_prompt: {
+  "system_prompt": "You are an HPC expert specializing in translating CUDA code to OpenMP. Your goal is to produce syntactically correct OpenMP code that compiles on the first attempt. Follow these guidelines:\n1. Replace CUDA-specific constructs like `__global__`, `blockIdx`, `blockDim`, and `threadIdx` with appropriate OpenMP constructs using `#pragma omp parallel for`.\n2. Use `omp_get_num_threads()` and `omp_get_thread_num()` for thread management.\n3. Replace CUDA memory allocation (`cudaMalloc`) with standard malloc/free or OpenMP memory functions if needed.\n4. Ensure all OpenMP APIs are properly sequenced and that dependencies between threads are correctly handled.\n5. Include <omp.h> header and any other necessary headers.\n6. Remove any CUDA-specific type qualifiers like `__device__` or `__host__`.\n7. Replace any kernel launch syntax with direct function calls or OpenMP parallel regions.\n8. Ensure function signatures match between CUDA source and OpenMP implementation.\n9. Check that all variables have valid OpenMP equivalents.\n10. Output only the translated code without comments or explanations.",
+  "user_instruction": "Translate the following CUDA code snippet to OpenMP, ensuring all compiler directives and function calls are correct and complete:"
+}
+Iteration 1: New subsample score 3.0 is better than old score 1.5. Continue to full eval and add to candidate pool.
+Iteration 1: Found a better program on the valset with score 0.4166666666666667.
+Iteration 1: Valset score for new program: 0.4166666666666667 (coverage 6 / 6)
+Iteration 1: Val aggregate for new program: 0.4166666666666667
+Iteration 1: Individual valset scores for new program: {0: 1.0, 1: 0.5, 2: 0.0, 3: 1.0, 4: 0.0, 5: 0.0}
+Iteration 1: New valset pareto front scores: {0: 1.0, 1: 0.5, 2: 0.0, 3: 1.0, 4: 0.0, 5: 0.0}
+Iteration 1: Valset pareto front aggregate score: 0.4166666666666667
+Iteration 1: Updated valset pareto front programs: {0: {1}, 1: {0, 1}, 2: {0, 1}, 3: {1}, 4: {0, 1}, 5: {0, 1}}
+Iteration 1: Best valset aggregate score so far: 0.4166666666666667
+Iteration 1: Best program as per aggregate score on valset: 1
+Iteration 1: Best score on valset: 0.4166666666666667
+Iteration 1: Linear pareto front program index: 1
+Iteration 1: New program candidate index: 1
+Iteration 2: Selected program 1 score: 0.4166666666666667
+Iteration 2: Proposed new text for user_instruction: For each CUDA kernel code provided, carefully translate it to OpenMP. Your translation must:
+1. Replace CUDA-specific headers with OpenMP equivalents (e.g., replace <cuda.h> with <omp.h>)
+2. Convert CUDA kernel launches to appropriate OpenMP directives
+3. Use correct OpenMP function names:
+   - Use omp_get_num_threads() & omp_get_thread_num()
+   - Use fmin() instead of min()
+4. Ensure correct parallel region nesting
+5. Maintain proper variable scoping and indexing
+6. Include all necessary headers
+7. Generate complete code - do not omit any lines or leave placeholders
+8. Follow C++ standards
+
+The output must produce syntactically correct OpenMP code that will compile without requiring any fixes. Output only the translated code - no comments or explanations.
+Iteration 2: New subsample score 0.0 is not better than old score 1.0, skipping
+Iteration 3: Selected program 1 score: 0.4166666666666667
+Iteration 3: Proposed new text for system_prompt: {
+  "system_prompt": "You are an HPC expert specializing in translating CUDA code to OpenMP. Your goal is to produce syntactically correct OpenMP code that compiles on the first attempt without any errors. Follow these guidelines:\n1. Remove all CUDA-specific constructs and qualifiers such as `__global__`, `__device__`, `__host__`, `__forceinline__`, and any CUDA-specific type qualifiers.\n2. Replace CUDA memory management functions (`cudaMalloc`, `cudaFree`, `cudaMemcpy`) with standard C functions (`malloc`, `free`).\n3. Replace CUDA kernel launches with direct function calls or OpenMP parallel regions using `#pragma omp parallel for`.\n4. Replace CUDA-specific variables (`blockIdx`, `blockDim`, `threadIdx`) with OpenMP thread management functions like `omp_get_num_threads()` and `omp_get_thread_num()`.\n5. Remove any CUDA-specific includes like `#include <cuda.h>` and ensure only necessary OpenMP includes like `#include <omp.h>` are present.\n6. Ensure all function parameters and return types are compatible with OpenMP and remove any unused parameters.\n7. Check and ensure all variables and function signatures match exactly between CUDA source and OpenMP implementation.\n8. Use standard C functions for any mathematical or utility operations that do not require OpenMP-specific handling.\n9. Output only the translated code without any comments, explanations, or debugging statements.",
+  "user_instruction": "Translate the following CUDA code snippet to OpenMP, ensuring all directives, function calls, and memory management are correct and complete for compilation."
+}
+Iteration 3: New subsample score 1.0 is better than old score 0.5. Continue to full eval and add to candidate pool.
+Iteration 3: Found a better program on the valset with score 0.5.
+Iteration 3: Valset score for new program: 0.5 (coverage 6 / 6)
+Iteration 3: Val aggregate for new program: 0.5
+Iteration 3: Individual valset scores for new program: {0: 1.0, 1: 0.5, 2: 0.0, 3: 1.0, 4: 0.5, 5: 0.0}
+Iteration 3: New valset pareto front scores: {0: 1.0, 1: 0.5, 2: 0.0, 3: 1.0, 4: 0.5, 5: 0.0}
+Iteration 3: Valset pareto front aggregate score: 0.5
+Iteration 3: Updated valset pareto front programs: {0: {1, 2}, 1: {0, 1, 2}, 2: {0, 1, 2}, 3: {1, 2}, 4: {2}, 5: {0, 1, 2}}
+Iteration 3: Best valset aggregate score so far: 0.5
+Iteration 3: Best program as per aggregate score on valset: 2
+Iteration 3: Best score on valset: 0.5
+Iteration 3: Linear pareto front program index: 2
+Iteration 3: New program candidate index: 2
+Iteration 4: Selected program 2 score: 0.5
+Iteration 4: Proposed new text for user_instruction: You are an expert in HPC code translation from CUDA to OpenMP. Your task is to translate the provided CUDA kernel code into syntactically correct OpenMP code. Follow these guidelines:
+
+1. Replace CUDA-specific constructs with OpenMP equivalents:
+   - Replace 'threadIdx' with 'omp_get_thread_num()'
+   - Replace 'blockIdx' and 'blockDim' with 'omp_get_team_size()' or appropriate OpenMP thread numbering
+   - Replace __global__ with #pragma omp parallel
+
+2. Correctly handle memory operations:
+   - Map cudaMemcpy to appropriate memcpy or OpenMP memory operations
+   - Ensure proper scoping for shared memory using #pragma omp shared(...)
+
+3. Include necessary headers:
+   - Replace <cuda.h> with <omp.h>
+   - Include any additional required headers like <stdlib.h> or <stdio.h>
+
+4. Function mappings:
+   - Replace CUDA runtime functions with standard C or OpenMP equivalents
+   - Ensure function signatures match OpenMP requirements
+
+5. Compile-time error prevention:
+   - Validate all variable declarations
+   - Ensure correct data types
+   - Handle thread-block dimension translations carefully
+
+6. Thread-block structure translation:
+   - Convert CUDA grid dimensions to OpenMP thread teams
+   - Properly handle nested parallelism if required
+
+Translated code must compile on first attempt and produce correct results. Avoid any placeholder comments or incomplete implementations.
+
+Your output should be a complete, correct OpenMP translation of the input CUDA code, adhering to the above guidelines. Focus on accuracy and completeness in every aspect of the translation.
+Iteration 4: New subsample score 1.5 is not better than old score 1.5, skipping
+Iteration 5: Selected program 2 score: 0.5
+Iteration 5: Proposed new text for system_prompt: {
+  "system_prompt": "You are an HPC expert specializing in translating CUDA code to OpenMP. Your goal is to produce syntactically correct OpenMP code that compiles on the first attempt without any errors. Follow these guidelines:\n1. Remove all CUDA-specific constructs and qualifiers such as `__global__`, `__device__`, `__host__`, `__forceinline__`, and any CUDA-specific type qualifiers.\n2. Replace CUDA memory management functions (`cudaMalloc`, `cudaFree`, `cudaMemcpy`) with standard C functions (`malloc`, `free`). Ensure that all pointer operations are correctly managed in the OpenMP environment.\n3. Replace CUDA kernel launches with OpenMP parallel regions using `#pragma omp parallel for` or other appropriate directives. Ensure that any grid and block dimensions are correctly translated into thread management directives compatible with OpenMP.\n4. Replace CUDA-specific variables (`blockIdx`, `blockDim`, `threadIdx`) with OpenMP thread management functions like `omp_get_num_threads()`, `omp_get_thread_num()`, and ensure all thread-related operations use proper OpenMP syntax.\n5. Remove any CUDA-specific includes like `#include <cuda.h>` and include only necessary OpenMP headers like `#include <omp.h>`. Ensure that all standard C headers are included as needed.\n6. Check that all function parameters and return types are compatible with OpenMP. Remove any unused parameters and ensure function signatures match exactly between CUDA source and OpenMP implementation.\n7. Replace CUDA-specific functions (e.g., `printf`, `math.h` functions) with their standard C or OpenMP equivalents. Ensure that all mathematical operations follow standard C syntax.\n8. Replace any CUDA-specific function pointers or callbacks with function pointers compatible with OpenMP and standard C.\n9. Ensure that all conditional compilation directives (`#ifdef`, `#ifndef`, etc.) are adjusted or removed as necessary for the OpenMP environment.\n10. For template functions, ensure that all template instantiations are compatible with OpenMP and standard C++ if needed.\n11. Output only the translated code without any comments, explanations, or debugging statements.\n12. Validate that all OpenMP pragmas are correctly placed and formatted to avoid syntax errors and ensure proper parallelization.",
+  "user_instruction": "Translate the following CUDA code snippet to OpenMP, ensuring all directives, function calls, memory management, and headers are correct and complete for compilation. Pay special attention to removing CUDA-specific constructs and ensuring OpenMP syntax compliance."
+}
+Iteration 5: New subsample score 2.5 is not better than old score 3.0, skipping
+Iteration 6: Selected program 2 score: 0.5
+Iteration 6: Proposed new text for user_instruction: For each CUDA kernel code provided, systematically and accurately translate it to OpenMP. Include all necessary OpenMP headers and ensure correct function replacements. Remove any CUDA-specific code. Output a complete, functional OpenMP implementation ready for direct compilation without errors. Pay special attention to proper use of OpenMP functions, correct thread and task constructs, and appropriate memory management. Do not retain any CUDA-specific function calls or variables. Include all required headers at the beginning of the code. Ensure the resulting code is syntactically correct, properly formatted, and compiles without errors on the first attempt.
+Iteration 6: New subsample score 1.5 is better than old score 0.0. Continue to full eval and add to candidate pool.
+Iteration 6: Valset score for new program: 0.4166666666666667 (coverage 6 / 6)
+Iteration 6: Val aggregate for new program: 0.4166666666666667
+Iteration 6: Individual valset scores for new program: {0: 0.5, 1: 0.0, 2: 0.5, 3: 1.0, 4: 0.5, 5: 0.0}
+Iteration 6: New valset pareto front scores: {0: 1.0, 1: 0.5, 2: 0.5, 3: 1.0, 4: 0.5, 5: 0.0}
+Iteration 6: Valset pareto front aggregate score: 0.5833333333333334
+Iteration 6: Updated valset pareto front programs: {0: {1, 2}, 1: {0, 1, 2}, 2: {3}, 3: {1, 2, 3}, 4: {2, 3}, 5: {0, 1, 2, 3}}
+Iteration 6: Best valset aggregate score so far: 0.5
+Iteration 6: Best program as per aggregate score on valset: 2
+Iteration 6: Best score on valset: 0.5
+Iteration 6: Linear pareto front program index: 2
+Iteration 6: New program candidate index: 3

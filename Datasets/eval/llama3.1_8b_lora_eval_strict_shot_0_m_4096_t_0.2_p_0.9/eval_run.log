@@ -1,0 +1,609 @@
+Selected target APIs: ['cuda', 'omp']
+Selected from APIs: ['omp', 'cuda']
+/home/pdp15/UniPar_AI/Datasets/eval/llama3.1_8b_lora_eval_strict_shot_0_m_4096_t_0.2_p_0.9
+
+********Translate total for:  HeCBench-omp-cuda ********
+
+
+**Compile error pnpoly-cuda: nvcc warning : Support for offline compilation for architectures prior to '<compute/sm/lto>_75' will be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+kernel.h(32): error: identifier "BLOCK_SIZE_X" is undefined
+    int i = blockIdx.x * BLOCK_SIZE_X * tile_size + threadIdx.x;
+                         ^
+
+kernel.h(44): error: identifier "VERTICES" is undefined
+      int k = VERTICES-1;
+              ^
+
+kernel.h(90): error: identifier "VERTICES" is undefined
+      int k = VERTICES-1;
+              ^
+
+main.cu(23): error: type "float2" has already been defined (previous definition at line 400 of /usr/local/cuda/bin/../targets/x86_64-linux/include/vector_types.h)
+  } float2;
+    ^
+
+kernel.h(17): error: function "is_between" has already been defined (previous definition at line 17)
+  __attribute__((device)) __inline__ __attribute__((always_inline)) int is_between(float a, float b, float c) {
+                                                                        ^
+
+main.cu(66): error: a __global__ function call must be configured
+        pnpoly_base(bitmap_ref, point, vertex, nPoints);
+        ^
+
+main.cu(77): error: a __global__ function call must be configured
+        pnpoly_opt<1>(bitmap_opt, point, vertex, nPoints);
+        ^
+
+main.cu(86): error: a __global__ function call must be configured
+        pnpoly_opt<2>(bitmap_opt, point, vertex, nPoints);
+        ^
+
+main.cu(95): error: a __global__ function call must be configured
+        pnpoly_opt<4>(bitmap_opt, point, vertex, nPoints);
+        ^
+
+main.cu(104): error: a __global__ function call must be configured
+        pnpoly_opt<8>(bitmap_opt, point, vertex, nPoints);
+        ^
+
+main.cu(113): error: a __global__ function call must be configured
+        pnpoly_opt<16>(bitmap_opt, point, vertex, nPoints);
+        ^
+
+main.cu(122): error: a __global__ function call must be configured
+        pnpoly_opt<32>(bitmap_opt, point, vertex, nPoints);
+        ^
+
+main.cu(131): error: a __global__ function call must be configured
+        pnpoly_opt<64>(bitmap_opt, point, vertex, nPoints);
+        ^
+
+13 errors detected in the compilation of "main.cu".
+make: *** [Makefile:50: main.o] Error 2
+
+
+Make clean failed for src: make: *** No rule to make target 'clean'.  Stop.
+
+
+**Compile error src: make: *** No targets specified and no makefile found.  Stop.
+
+
+
+**Compile error wsm5-cuda: nvcc warning : Support for offline compilation for architectures prior to '<compute/sm/lto>_75' will be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+kernel.h(4): error: function "wsm" has already been defined (previous definition at line 4)
+  void wsm (
+       ^
+
+main.cu(44): error: identifier "ALLOC3" is undefined
+      ALLOC3(th) ;
+      ^
+
+main.cu(54): error: identifier "ALLOC2" is undefined
+      ALLOC2(rain) ;
+      ^
+
+main.cu(107): error: too many arguments in function call
+          teamX , teamY );
+          ^
+
+main.cu(84): error: a __global__ function call must be configured
+        wsm(th, pii, q, qc, qi, qr, qs, den, p, delz,
+        ^
+
+main.cu(119): error: identifier "th_d" is undefined
+      free(th); cudaFree(th_d) ;
+                         ^
+
+main.cu(120): error: identifier "pii_d" is undefined
+      free(pii); cudaFree(pii_d) ;
+                          ^
+
+main.cu(121): error: identifier "q_d" is undefined
+      free(q); cudaFree(q_d) ;
+                        ^
+
+main.cu(122): error: identifier "qc_d" is undefined
+      free(qc); cudaFree(qc_d) ;
+                         ^
+
+main.cu(123): error: identifier "qi_d" is undefined
+      free(qi); cudaFree(qi_d) ;
+                         ^
+
+main.cu(124): error: identifier "qr_d" is undefined
+      free(qr); cudaFree(qr_d) ;
+                         ^
+
+main.cu(125): error: identifier "qs_d" is undefined
+      free(qs); cudaFree(qs_d) ;
+                         ^
+
+main.cu(126): error: identifier "den_d" is undefined
+      free(den); cudaFree(den_d) ;
+                          ^
+
+main.cu(127): error: identifier "p_d" is undefined
+      free(p); cudaFree(p_d) ;
+                        ^
+
+main.cu(128): error: identifier "delz_d" is undefined
+      free(delz); cudaFree(delz_d) ;
+                           ^
+
+main.cu(129): error: identifier "rain_d" is undefined
+      free(rain); cudaFree(rain_d) ;
+                           ^
+
+main.cu(130): error: identifier "rainncv_d" is undefined
+      free(rainncv); cudaFree(rainncv_d) ;
+                              ^
+
+main.cu(131): error: identifier "sr_d" is undefined
+      free(sr); cudaFree(sr_d) ;
+                         ^
+
+main.cu(132): error: identifier "snow_d" is undefined
+      free(snow); cudaFree(snow_d) ;
+                           ^
+
+main.cu(133): error: identifier "snowncv_d" is undefined
+      free(snowncv); cudaFree(snowncv_d) ;
+                              ^
+
+20 errors detected in the compilation of "main.cu".
+make: *** [Makefile:50: main.o] Error 2
+
+
+
+**Compile error stddev-cuda: nvcc warning : Support for offline compilation for architectures prior to '<compute/sm/lto>_75' will be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+main.cu(6): error: expected a declaration
+  - Incompilable Code -
+  ^
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:51: main.o] Error 2
+
+
+
+**Compile error meanshift-cuda: nvcc warning : Support for offline compilation for architectures prior to '<compute/sm/lto>_75' will be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+main.cu(8): error: expected a declaration
+  - Incompilable Code -
+  ^
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:50: main.o] Error 2
+
+
+
+**Compile error mixbench-cuda: nvcc warning : Support for offline compilation for architectures prior to '<compute/sm/lto>_75' will be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+main.cu:24: warning: ignoring #pragma omp target [-Wunknown-pragmas]
+   24 |   #pragma omp target teams num_teams(grid_dim) thread_limit(block_dim)
+      | 
+main.cu:26: warning: ignoring #pragma omp parallel [-Wunknown-pragmas]
+   26 |     #pragma omp parallel
+      | 
+main.cu:35: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+   35 |         for(int j=0; j<granularity; j++) {
+      | 
+main.cu:50: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+   50 |         for(int j=0; j<granularity; j+=2)
+      | 
+main.cu:54: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+   54 |         for(int j=0; j<granularity; j++)
+      | 
+main.cu:71: warning: ignoring #pragma omp target [-Wunknown-pragmas]
+   71 |   #pragma omp target data map(tofrom: cd[0:size])
+      | 
+nvcc warning : Support for offline compilation for architectures prior to '<compute/sm/lto>_75' will be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+/usr/bin/ld: main.o: in function `benchmark_func(float*, int, int, int) [clone .constprop.0]':
+tmpxft_000d22fd_00000000-6_main.cudafe1.cpp:(.text+0x30): undefined reference to `omp_get_team_num'
+/usr/bin/ld: tmpxft_000d22fd_00000000-6_main.cudafe1.cpp:(.text+0x37): undefined reference to `omp_get_thread_num'
+/usr/bin/ld: tmpxft_000d22fd_00000000-6_main.cudafe1.cpp:(.text+0x42): undefined reference to `omp_get_num_teams'
+/usr/bin/ld: main.o: in function `benchmark_func(float*, int, int, int)':
+tmpxft_000d22fd_00000000-6_main.cudafe1.cpp:(.text+0x162): undefined reference to `omp_get_team_num'
+/usr/bin/ld: tmpxft_000d22fd_00000000-6_main.cudafe1.cpp:(.text+0x16e): undefined reference to `omp_get_thread_num'
+/usr/bin/ld: tmpxft_000d22fd_00000000-6_main.cudafe1.cpp:(.text+0x176): undefined reference to `omp_get_num_teams'
+collect2: error: ld returned 1 exit status
+make: *** [Makefile:49: main] Error 1
+
+
+
+**Compile error heat-cuda: nvcc warning : Support for offline compilation for architectures prior to '<compute/sm/lto>_75' will be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+heat.cu(111): warning #177-D: variable "block_size" was declared but never referenced
+    const int block_size = 256;
+              ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+heat.cu:113: warning: ignoring #pragma omp target [-Wunknown-pragmas]
+  113 | #pragma omp target data map(tofrom: u[0:n*n], u_tmp[0:n*n])
+      | 
+heat.cu:117: warning: ignoring #pragma omp target [-Wunknown-pragmas]
+  117 |   #pragma omp target teams distribute parallel for simd collapse(2) thread_limit(block_size)
+      | 
+heat.cu:128: warning: ignoring #pragma omp target [-Wunknown-pragmas]
+  128 |   #pragma omp target teams distribute parallel for simd collapse(2) thread_limit(block_size)
+      | 
+heat.cu:160: warning: ignoring #pragma omp target [-Wunknown-pragmas]
+  160 |     #pragma omp target teams distribute parallel for simd collapse(2) thread_limit(block_size)
+      | 
+nvcc warning : Support for offline compilation for architectures prior to '<compute/sm/lto>_75' will be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+/usr/bin/ld: heat.o: in function `main':
+tmpxft_000d2206_00000000-6_heat.cudafe1.cpp:(.text.startup+0x1e): undefined reference to `omp_get_wtime'
+/usr/bin/ld: tmpxft_000d2206_00000000-6_heat.cudafe1.cpp:(.text.startup+0x3a4): undefined reference to `omp_get_wtime'
+/usr/bin/ld: tmpxft_000d2206_00000000-6_heat.cudafe1.cpp:(.text.startup+0x95e): undefined reference to `omp_get_wtime'
+/usr/bin/ld: tmpxft_000d2206_00000000-6_heat.cudafe1.cpp:(.text.startup+0x9a6): undefined reference to `omp_get_wtime'
+collect2: error: ld returned 1 exit status
+make: *** [Makefile:49: main] Error 1
+
+
+
+**Compile error su3-cuda: nvcc warning : Support for offline compilation for architectures prior to '<compute/sm/lto>_75' will be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+su3_nn_bench.cu:14:10: fatal error: mat_nn_openmp.hpp: No such file or directory
+   14 | #include "mat_nn_openmp.hpp"
+      |          ^~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Makefile:51: su3_nn_bench.o] Error 1
+
+
+
+**Compile error geodesic-cuda: nvcc warning : Support for offline compilation for architectures prior to '<compute/sm/lto>_75' will be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+main.cu(6): error: expected a declaration
+  - Incompilable Code -
+  ^
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:52: main.o] Error 2
+
+
+
+**Timeout expired for pool-cuda: /home/pdp15/UniPar_AI/Datasets/eval/llama3.1_8b_lora_eval_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda
+
+
+**Compile error convolution1D-cuda: nvcc warning : Support for offline compilation for architectures prior to '<compute/sm/lto>_75' will be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+main.cu(7): error: expected a declaration
+  - Incompilable Code -
+  ^
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:52: main.o] Error 2
+
+
+
+**Compile error winograd-cuda: nvcc warning : Support for offline compilation for architectures prior to '<compute/sm/lto>_75' will be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+nvcc warning : Support for offline compilation for architectures prior to '<compute/sm/lto>_75' will be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+main.cu(4): error: expected a declaration
+  - Incompilable Code -
+  ^
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:53: main.o] Error 2
+make: *** Waiting for unfinished jobs....
+utils.cu:52: warning: ignoring #pragma omp parallel [-Wunknown-pragmas]
+   52 |   #pragma omp parallel
+      | 
+utils.cu:54: warning: ignoring #pragma omp for [-Wunknown-pragmas]
+   54 |     #pragma omp for
+      | 
+utils.cu: In function ‘void WinogradConv2D_2x2_omp(float*, float*, float*, size_t*)’:
+utils.cu:53:29: warning: comparison of integer expressions of different signedness: ‘int’ and ‘size_t’ {aka ‘long unsigned int’} [-Wsign-compare]
+   53 |   for (int tile_i = 0; tile_i < cpu_global_size[0]; tile_i++) {
+      |                      ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~
+
+
+
+**Timeout expired for michalewicz-cuda: /home/pdp15/UniPar_AI/Datasets/eval/llama3.1_8b_lora_eval_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda
+
+
+**Timeout expired for keogh-cuda: /home/pdp15/UniPar_AI/Datasets/eval/llama3.1_8b_lora_eval_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda
+
+
+**Execution out atomicIntrinsics-cuda: ./main 27 100
+PASS
+Average kernel execution time: 161236.281250 (us)
+PASS
+Average kernel execution time: 162735.421875 (us)
+
+omp - cuda compile rate: 6/17 (0.353) | correct rate: 2/17 (0.118)
+
+********Translate total for:  HeCBench-cuda-omp ********
+
+Make clean failed for src: make: *** No rule to make target 'clean'.  Stop.
+
+
+**Compile error src: make: Makefile.aomp: No such file or directory
+make: *** No rule to make target 'Makefile.aomp'.  Stop.
+
+
+
+**Compile error stddev-omp: main.cpp:34:23: error: use of undeclared identifier 'threadIdx'
+  IdxType thisColId = threadIdx.x % ColsPerBlk;
+                      ^
+main.cpp:35:23: error: use of undeclared identifier 'threadIdx'
+  IdxType thisRowId = threadIdx.x / ColsPerBlk;
+                      ^
+main.cpp:72:42: error: use of undeclared identifier 'inputSize'
+  #pragma omp target data map(to: data[0:inputSize]) \
+                                         ^
+main.cpp:73:43: error: use of undeclared identifier 'outputSize'
+                          map(from: std[0:outputSize])
+                                          ^
+main.cpp:75:5: error: use of undeclared identifier 'memset'
+    memset(std, 0, sizeof(Type) * D); 
+    ^
+main.cpp:119:3: note: in instantiation of function template specialization 'stddev<float, int>' requested here
+  stddev(std, data, D, N, sample);
+  ^
+main.cpp:78:5: error: no matching function for call to 'sopKernel'
+    sopKernel<Type, IdxType, TPB, ColsPerBlk>
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.cpp:27:6: note: candidate function template not viable: requires 4 arguments, but 6 were provided
+void sopKernel(
+     ^
+main.cpp:82:5: error: no matching function for call to 'sampleKernel'
+    sampleKernel<Type, IdxType>
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.cpp:19:6: note: candidate function template not viable: requires 3 arguments, but 4 were provided
+void sampleKernel (Type *std, IdxType D, IdxType N) {
+     ^
+7 errors generated.
+make: *** [Makefile.aomp:61: main.o] Error 1
+
+
+
+**Compile error pnpoly-omp: In file included from main.cpp:8:
+./kernel.h:29:11: error: unknown type name 'float2'; did you mean 'float'?
+    const float2*__restrict point,
+          ^~~~~~
+          float
+./kernel.h:30:11: error: unknown type name 'float2'; did you mean 'float'?
+    const float2*__restrict vertex,
+          ^~~~~~
+          float
+./kernel.h:36:5: error: use of undeclared identifier 'float2'; did you mean 'float'?
+    float2 lpoint[tile_size];
+    ^~~~~~
+    float
+./kernel.h:40:13: error: use of undeclared identifier 'BLOCK_SIZE_X'
+      if (i+BLOCK_SIZE_X*ti < n) {
+            ^
+./kernel.h:41:30: error: use of undeclared identifier 'BLOCK_SIZE_X'
+        lpoint[ti] = point[i+BLOCK_SIZE_X*ti];
+                             ^
+./kernel.h:45:13: error: use of undeclared identifier 'VERTICES'
+    int k = VERTICES-1;
+            ^
+./kernel.h:47:21: error: use of undeclared identifier 'VERTICES'
+    for (int j=0; j<VERTICES; k = j++) {    // edge from vj to vk
+                    ^
+./kernel.h:48:7: error: use of undeclared identifier 'float2'; did you mean 'float'?
+      float2 vj = vertex[j]; 
+      ^~~~~~
+      float
+./kernel.h:49:7: error: use of undeclared identifier 'float2'; did you mean 'float'?
+      float2 vk = vertex[k]; 
+      ^~~~~~
+      float
+./kernel.h:51:24: error: member reference base type 'float' is not a structure or union
+      float slope = (vk.x-vj.x) / (vk.y-vj.y);
+                     ~~^~
+./kernel.h:51:29: error: member reference base type 'float' is not a structure or union
+      float slope = (vk.x-vj.x) / (vk.y-vj.y);
+                          ~~^~
+./kernel.h:51:38: error: member reference base type 'float' is not a structure or union
+      float slope = (vk.x-vj.x) / (vk.y-vj.y);
+                                   ~~^~
+./kernel.h:51:43: error: member reference base type 'float' is not a structure or union
+      float slope = (vk.x-vj.x) / (vk.y-vj.y);
+                                        ~~^~
+./kernel.h:56:9: error: use of undeclared identifier 'float2'; did you mean 'float'?
+        float2 p = lpoint[ti];
+        ^~~~~~
+        float
+./kernel.h:58:25: error: member reference base type 'float' is not a structure or union
+        if (is_between(p.y, vj.y, vk.y) &&         //if p is between vj and vk vertically
+                       ~^~
+./kernel.h:58:31: error: member reference base type 'float' is not a structure or union
+        if (is_between(p.y, vj.y, vk.y) &&         //if p is between vj and vk vertically
+                            ~~^~
+./kernel.h:58:37: error: member reference base type 'float' is not a structure or union
+        if (is_between(p.y, vj.y, vk.y) &&         //if p is between vj and vk vertically
+                                  ~~^~
+./kernel.h:59:15: error: member reference base type 'float' is not a structure or union
+            (p.x < slope * (p.y-vj.y) + vj.x)
+             ~^~
+./kernel.h:59:30: error: member reference base type 'float' is not a structure or union
+            (p.x < slope * (p.y-vj.y) + vj.x)
+                            ~^~
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+make: *** [Makefile.aomp:60: main.o] Error 1
+
+
+
+**Compile error winograd-omp: main.cpp:15:37: error: use of undeclared identifier 'omp_get_num_threads_x'; did you mean 'omp_get_num_threads'?
+  int tile_i = omp_get_team_num() * omp_get_num_threads_x() + omp_get_thread_num_x() + offset_i;
+                                    ^~~~~~~~~~~~~~~~~~~~~
+                                    omp_get_num_threads
+/usr/lib/llvm-10/lib/clang/10.0.0/include/omp.h:64:42: note: 'omp_get_num_threads' declared here
+    extern int    __KAI_KMPC_CONVENTION  omp_get_num_threads  (void);
+                                         ^
+main.cpp:15:63: error: use of undeclared identifier 'omp_get_thread_num_x'; did you mean 'omp_get_thread_num'?
+  int tile_i = omp_get_team_num() * omp_get_num_threads_x() + omp_get_thread_num_x() + offset_i;
+                                                              ^~~~~~~~~~~~~~~~~~~~
+                                                              omp_get_thread_num
+/usr/lib/llvm-10/lib/clang/10.0.0/include/omp.h:68:42: note: 'omp_get_thread_num' declared here
+    extern int    __KAI_KMPC_CONVENTION  omp_get_thread_num   (void);
+                                         ^
+main.cpp:16:37: error: use of undeclared identifier 'omp_get_num_threads_y'; did you mean 'omp_get_num_threads'?
+  int tile_j = omp_get_team_num() * omp_get_num_threads_y() + omp_get_thread_num_y() + offset_j;
+                                    ^~~~~~~~~~~~~~~~~~~~~
+                                    omp_get_num_threads
+/usr/lib/llvm-10/lib/clang/10.0.0/include/omp.h:64:42: note: 'omp_get_num_threads' declared here
+    extern int    __KAI_KMPC_CONVENTION  omp_get_num_threads  (void);
+                                         ^
+main.cpp:16:63: error: use of undeclared identifier 'omp_get_thread_num_y'; did you mean 'omp_get_thread_num'?
+  int tile_j = omp_get_team_num() * omp_get_num_threads_y() + omp_get_thread_num_y() + offset_j;
+                                                              ^~~~~~~~~~~~~~~~~~~~
+                                                              omp_get_thread_num
+/usr/lib/llvm-10/lib/clang/10.0.0/include/omp.h:68:42: note: 'omp_get_thread_num' declared here
+    extern int    __KAI_KMPC_CONVENTION  omp_get_thread_num   (void);
+                                         ^
+main.cpp:93:18: error: use of undeclared identifier 'rtclock'; did you mean 'clock'?
+  double start = rtclock();
+                 ^~~~~~~
+                 clock
+/usr/include/time.h:72:16: note: 'clock' declared here
+extern clock_t clock (void) __THROW;
+               ^
+main.cpp:144:23: error: use of undeclared identifier 'rtclock'; did you mean 'clock'?
+    double co_start = rtclock();
+                      ^~~~~~~
+                      clock
+/usr/include/time.h:72:16: note: 'clock' declared here
+extern clock_t clock (void) __THROW;
+               ^
+main.cpp:155:7: error: use of undeclared identifier 'memcpy'
+      memcpy(B_outputFromGpu, B, gpu_run ? global_offset[0]*2*(MAP_SIZE-2)*sizeof(DATA_TYPE) : 
+      ^
+main.cpp:161:16: error: use of undeclared identifier 'rtclock'; did you mean 'clock'?
+    co_time += rtclock() - co_start;
+               ^~~~~~~
+               clock
+/usr/include/time.h:72:16: note: 'clock' declared here
+extern clock_t clock (void) __THROW;
+               ^
+main.cpp:182:16: error: use of undeclared identifier 'rtclock'; did you mean 'clock'?
+  double end = rtclock();
+               ^~~~~~~
+               clock
+/usr/include/time.h:72:16: note: 'clock' declared here
+extern clock_t clock (void) __THROW;
+               ^
+9 errors generated.
+make: *** [Makefile.aomp:61: main.o] Error 1
+make: *** Waiting for unfinished jobs....
+
+
+
+**Compile error keogh-omp: main.cpp:82:42: error: subscripted value is not an array, pointer, or vector
+              float lower = value - lower[i];
+                                    ~~~~~^~
+main.cpp:83:42: error: subscripted value is not an array, pointer, or vector
+              float upper = value - upper[i];
+                                    ~~~~~^~
+2 errors generated.
+make: *** [Makefile.aomp:60: main.o] Error 1
+
+
+
+**Compile error stencil1d-omp: stencil_1d.cpp:25:20: error: use of undeclared identifier 'threadIdx'
+      int lindex = threadIdx.x + RADIUS;
+                   ^
+stencil_1d.cpp:28:11: error: use of undeclared identifier 'threadIdx'
+      if (threadIdx.x < RADIUS) {
+          ^
+stencil_1d.cpp:33:7: error: region cannot be closely nested inside 'target teams distribute parallel for' region
+      #pragma omp barrier
+      ^
+3 errors generated.
+make: *** [Makefile.aomp:60: stencil_1d.o] Error 1
+
+
+
+**Compile error meanshift-omp: main.cpp:8:1: error: expected external declaration
+- Incompilable Code -
+^
+main.cpp:8:3: error: unknown type name 'Incompilable'
+- Incompilable Code -
+  ^
+main.cpp:8:20: error: expected ';' after top level declarator
+- Incompilable Code -
+                   ^
+                   ;
+3 errors generated.
+make: *** [Makefile.aomp:60: main.o] Error 1
+
+
+
+**Compile error pool-omp: main.cpp:77:13: error: use of undeclared identifier 'min'; did you mean 'fmin'?
+    phend = min(h_offset / stride_height + 1, output_height);
+            ^~~
+            fmin
+/usr/include/x86_64-linux-gnu/bits/mathcalls.h:332:14: note: 'fmin' declared here
+__MATHCALLX (fmin,, (_Mdouble_ __x, _Mdouble_ __y), (__const__));
+             ^
+main.cpp:78:13: error: use of undeclared identifier 'min'; did you mean 'fmin'?
+    pwend = min(w_offset / stride_width + 1, output_width);
+            ^~~
+            fmin
+/usr/include/x86_64-linux-gnu/bits/mathcalls.h:332:14: note: 'fmin' declared here
+__MATHCALLX (fmin,, (_Mdouble_ __x, _Mdouble_ __y), (__const__));
+             ^
+main.cpp:97:20: error: use of undeclared identifier 'min'; did you mean 'fmin'?
+        int hend = min(hstart + ksize_height, input_height);
+                   ^~~
+                   fmin
+/usr/include/x86_64-linux-gnu/bits/mathcalls.h:332:14: note: 'fmin' declared here
+__MATHCALLX (fmin,, (_Mdouble_ __x, _Mdouble_ __y), (__const__));
+             ^
+main.cpp:98:20: error: use of undeclared identifier 'min'; did you mean 'fmin'?
+        int wend = min(wstart + ksize_width, input_width);
+                   ^~~
+                   fmin
+/usr/include/x86_64-linux-gnu/bits/mathcalls.h:332:14: note: 'fmin' declared here
+__MATHCALLX (fmin,, (_Mdouble_ __x, _Mdouble_ __y), (__const__));
+             ^
+main.cpp:99:18: error: use of undeclared identifier 'max'; did you mean 'fmax'?
+        hstart = max(hstart, 0);
+                 ^~~
+                 fmax
+/usr/include/x86_64-linux-gnu/bits/mathcalls.h:329:14: note: 'fmax' declared here
+__MATHCALLX (fmax,, (_Mdouble_ __x, _Mdouble_ __y), (__const__));
+             ^
+main.cpp:100:18: error: use of undeclared identifier 'max'; did you mean 'fmax'?
+        wstart = max(wstart, 0);
+                 ^~~
+                 fmax
+/usr/include/x86_64-linux-gnu/bits/mathcalls.h:329:14: note: 'fmax' declared here
+__MATHCALLX (fmax,, (_Mdouble_ __x, _Mdouble_ __y), (__const__));
+             ^
+6 errors generated.
+make: *** [Makefile.aomp:60: main.o] Error 1
+
+
+
+**Compile error convolution1D-omp: main.cpp:32:30: error: use of undeclared identifier 'mask'
+        s += in[start + j] * mask<T>[j];
+                             ^
+main.cpp:47:12: error: use of undeclared identifier 'TILE_SIZE'
+    T tile[TILE_SIZE + MAX_MASK_WIDTH - 1];
+           ^
+main.cpp:74:47: error: use of undeclared identifier 'mask'
+        s += tile[omp_get_thread_num() + j] * mask<T>[j];
+                                              ^
+main.cpp:89:12: error: use of undeclared identifier 'TILE_SIZE'
+    T tile[TILE_SIZE];
+           ^
+main.cpp:108:70: error: use of undeclared identifier 'mask'
+            s += tile[omp_get_thread_num() + j - (mask_width / 2)] * mask<T>[j];
+                                                                     ^
+main.cpp:110:33: error: use of undeclared identifier 'mask'
+            s += in[in_index] * mask<T>[j];
+                                ^
+6 errors generated.
+make: *** [Makefile.aomp:60: main.o] Error 1
+
+
+cuda - omp compile rate: 1/16 (0.062) | correct rate: 1/16 (0.062)
+skipping:  eval_run.log
+
+cuda compile rate: 6/17 (0.353)
+cuda correct rate: 2/17 (0.118)
+omp compile rate: 1/16 (0.062)
+omp correct rate: 1/16 (0.062)
+
+compile=6/17 correct=2/17	compile=1/16 correct=1/16	
+
+Results saved to: /home/pdp15/UniPar_AI/Datasets/eval/llama3.1_8b_lora_eval_strict_shot_0_m_4096_t_0.2_p_0.9/eval_results.json
+Log saved to: Datasets/eval/llama3.1_8b_lora_eval_strict_shot_0_m_4096_t_0.2_p_0.9/eval_run.log

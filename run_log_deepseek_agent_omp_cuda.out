@@ -1,0 +1,583 @@
+2026-06-08 21:06:59,048 - INFO - Log file created at /home/pdp15/UniPar_AI/output/20260608_210659_datasets_after_eval_compile/datasets_after_eval_compile.log
+2026-06-08 21:06:59,050 - INFO - Running eval_compile to create a clean dataset...
+2026-06-08 21:06:59,051 - INFO - Original model name extracted: gpt
+2026-06-08 21:06:59,051 - INFO - Using clean dataset at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9 for main processing
+2026-06-08 21:06:59,114 - INFO - ModelAgent initialized: translator=Valdemardi/DeepSeek-R1-Distill-Qwen-32B-AWQ@http://localhost:8006/v1, fixer=Valdemardi/DeepSeek-R1-Distill-Qwen-32B-AWQ@http://localhost:8006/v1
+2026-06-08 21:06:59,115 - INFO - Processing source API: omp to cuda
+2026-06-08 21:06:59,116 - INFO - Found 18 kernels to process for omp to cuda
+omp->cuda:   0%|          | 0/18 [00:00<?, ?kernel/s]2026-06-08 21:06:59,128 - INFO - Processing kernel: ace-cuda
+2026-06-08 21:06:59,129 - INFO - Compiling ace-cuda
+2026-06-08 21:06:59,130 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-08 21:06:59,131 - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-08 21:06:59,136 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/pred_compile_0.cu
+2026-06-08 21:06:59,137 - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/main.cu
+2026-06-08 21:06:59,138 - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda
+2026-06-08 21:06:59,140 - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda
+2026-06-08 21:06:59,154 - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/Makefile
+2026-06-08 21:07:06,763 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/result.txt
+2026-06-08 21:07:06,763 - INFO - Generated partial result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda
+2026-06-08 21:07:06,763 - INFO - Running ace-cuda
+2026-06-08 21:07:06,764 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-08 21:07:06,764 - INFO - Attempting to run pred_compile_0.cu (Attempt 1)
+2026-06-08 21:07:06,764 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/pred_compile_0.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/pred_run_0.cu
+2026-06-08 21:07:08,310 - WARNING - Program results do not match expected results: Did not find 'pass' in result.txt
+2026-06-08 21:07:08,310 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/result.txt
+2026-06-08 21:07:08,311 - INFO - Generated/updated result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda
+2026-06-08 21:07:08,311 - INFO - Execution succeeded for ace-cuda
+2026-06-08 21:07:08,311 - WARNING - Results are not valid for ace-cuda: Did not find 'pass' in result.txt
+2026-06-08 21:07:08,320 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/result.txt
+omp->cuda:   6%|▌         | 1/18 [00:09<02:36,  9.19s/kernel]2026-06-08 21:07:08,320 - INFO - Processing kernel: pnpoly-cuda
+2026-06-08 21:07:08,320 - INFO - Compiling pnpoly-cuda
+2026-06-08 21:07:08,320 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-08 21:07:08,321 - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-08 21:07:08,321 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/pred_compile_0.cu
+2026-06-08 21:07:08,321 - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/main.cu
+2026-06-08 21:07:08,321 - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda
+2026-06-08 21:07:08,321 - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda
+2026-06-08 21:07:08,618 - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/Makefile
+2026-06-08 21:07:10,676 - ERROR - Compilation failed, trying to fix the code
+2026-06-08 21:07:10,677 - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-08 21:07:11,780 - INFO - HTTP Request: POST http://localhost:8006/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-06-08 21:07:11,784 - ERROR - Error in fix_code: Error code: 400 - {'object': 'error', 'message': "This model's maximum context length is 16384 tokens. However, you requested 17619 tokens (2619 in the messages, 15000 in the completion). Please reduce the length of the messages or completion.", 'type': 'BadRequestError', 'param': None, 'code': 400}
+2026-06-08 21:07:11,785 - WARNING - Context window exceeded, retrying fix_code with max_tokens=13715
+2026-06-08 21:17:11,888 - INFO - Retrying request to /chat/completions in 0.400197 seconds
+2026-06-08 21:27:12,388 - INFO - Retrying request to /chat/completions in 0.980656 seconds
+2026-06-08 21:37:13,468 - ERROR - Retry with reduced max_tokens also failed: Request timed out.
+2026-06-08 21:37:13,469 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/result.txt
+2026-06-08 21:37:13,469 - INFO - Generated result.txt file with compilation failure in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda
+2026-06-08 21:37:13,469 - ERROR - Compilation failed for pnpoly-cuda: Failed to compile after 3 attempts
+2026-06-08 21:37:13,479 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/result.txt
+omp->cuda:  11%|█         | 2/18 [30:14<4:44:10, 1065.64s/kernel]2026-06-08 21:37:13,479 - INFO - Processing kernel: src
+2026-06-08 21:37:13,479 - WARNING - Skipping src: no source files found
+2026-06-08 21:37:13,479 - INFO - Processing kernel: keogh-cuda
+2026-06-08 21:37:13,479 - INFO - Compiling keogh-cuda
+2026-06-08 21:37:13,480 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-08 21:37:13,480 - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-08 21:37:13,522 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda/pred_compile_0.cu
+2026-06-08 21:37:13,523 - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda/main.cu
+2026-06-08 21:37:13,523 - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda
+2026-06-08 21:37:13,523 - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda
+2026-06-08 21:37:13,560 - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda/Makefile
+2026-06-08 21:37:22,164 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda/result.txt
+2026-06-08 21:37:22,165 - INFO - Generated partial result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda
+2026-06-08 21:37:22,165 - INFO - Running keogh-cuda
+2026-06-08 21:37:22,165 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-08 21:37:22,165 - INFO - Attempting to run pred_compile_0.cu (Attempt 1)
+2026-06-08 21:37:22,165 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda/pred_compile_0.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda/pred_run_0.cu
+2026-06-08 21:40:41,078 - WARNING - Program results do not match expected results: Did not find 'pass' in result.txt
+2026-06-08 21:40:41,078 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda/result.txt
+2026-06-08 21:40:41,079 - INFO - Generated/updated result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda
+2026-06-08 21:40:41,079 - INFO - Execution succeeded for keogh-cuda
+2026-06-08 21:40:41,079 - WARNING - Results are not valid for keogh-cuda: Did not find 'pass' in result.txt
+2026-06-08 21:40:41,079 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda/result.txt
+omp->cuda:  22%|██▏       | 4/18 [33:41<1:47:56, 462.61s/kernel] 2026-06-08 21:40:41,080 - INFO - Processing kernel: atomicIntrinsics-cuda
+2026-06-08 21:40:41,080 - INFO - Compiling atomicIntrinsics-cuda
+2026-06-08 21:40:41,081 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-08 21:40:41,081 - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-08 21:40:41,082 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/pred_compile_0.cu
+2026-06-08 21:40:41,082 - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/main.cu
+2026-06-08 21:40:41,082 - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda
+2026-06-08 21:40:41,082 - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda
+2026-06-08 21:40:41,088 - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/Makefile
+2026-06-08 21:40:43,245 - ERROR - Compilation failed, trying to fix the code
+2026-06-08 21:40:43,245 - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-08 21:50:43,348 - INFO - Retrying request to /chat/completions in 0.437873 seconds
+2026-06-08 22:00:43,916 - INFO - Retrying request to /chat/completions in 0.922909 seconds
+2026-06-08 22:10:44,943 - ERROR - Error in fix_code: Request timed out.
+2026-06-08 22:10:44,944 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/pred_compile_1.cu
+2026-06-08 22:10:44,944 - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/error_compile_0.txt
+2026-06-08 22:10:44,944 - INFO - Attempting to compile main.cu (Attempt 2)
+2026-06-08 22:10:44,954 - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/main.cu
+2026-06-08 22:10:44,954 - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda
+2026-06-08 22:10:44,954 - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda
+2026-06-08 22:10:44,961 - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/Makefile
+2026-06-08 22:10:47,101 - ERROR - Compilation failed, trying to fix the code
+2026-06-08 22:10:47,101 - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-08 22:20:47,215 - INFO - Retrying request to /chat/completions in 0.425528 seconds
+2026-06-08 22:30:47,747 - INFO - Retrying request to /chat/completions in 0.756926 seconds
+2026-06-08 22:40:48,605 - ERROR - Error in fix_code: Request timed out.
+2026-06-08 22:40:48,605 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/pred_compile_2.cu
+2026-06-08 22:40:48,606 - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/error_compile_1.txt
+2026-06-08 22:40:48,606 - INFO - Attempting to compile main.cu (Attempt 3)
+2026-06-08 22:40:48,615 - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/main.cu
+2026-06-08 22:40:48,615 - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda
+2026-06-08 22:40:48,615 - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda
+2026-06-08 22:40:48,657 - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/Makefile
+2026-06-08 22:40:51,402 - ERROR - Compilation failed, trying to fix the code
+2026-06-08 22:40:51,402 - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-08 22:50:51,504 - INFO - Retrying request to /chat/completions in 0.396848 seconds
+2026-06-08 23:00:52,000 - INFO - Retrying request to /chat/completions in 0.836262 seconds
+2026-06-08 23:10:52,936 - ERROR - Error in fix_code: Request timed out.
+2026-06-08 23:10:52,937 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/pred_compile_3.cu
+2026-06-08 23:10:52,937 - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/error_compile_2.txt
+2026-06-08 23:10:52,938 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/result.txt
+2026-06-08 23:10:52,938 - INFO - Generated result.txt file with compilation failure in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda
+2026-06-08 23:10:52,938 - ERROR - Compilation failed for atomicIntrinsics-cuda: Failed to compile after 3 attempts
+2026-06-08 23:10:52,938 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/result.txt
+omp->cuda:  28%|██▊       | 5/18 [2:03:53<7:11:54, 1993.46s/kernel]2026-06-08 23:10:52,938 - INFO - Processing kernel: heat-cuda
+2026-06-08 23:10:52,938 - INFO - Compiling heat-cuda
+2026-06-08 23:10:52,939 - INFO - Extracted source filename from Makefile: heat.cu
+2026-06-08 23:10:52,939 - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-08 23:10:52,939 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda/heat.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda/pred_compile_0.cu
+2026-06-08 23:10:52,939 - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda/heat.cu
+2026-06-08 23:10:52,939 - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda
+2026-06-08 23:10:52,939 - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda
+2026-06-08 23:10:53,033 - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda/Makefile
+2026-06-08 23:10:54,973 - ERROR - Compilation failed, trying to fix the code
+2026-06-08 23:10:54,973 - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-08 23:10:55,231 - INFO - HTTP Request: POST http://localhost:8006/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-06-08 23:10:55,233 - ERROR - Error in fix_code: Error code: 400 - {'object': 'error', 'message': "This model's maximum context length is 16384 tokens. However, you requested 16976 tokens (1976 in the messages, 15000 in the completion). Please reduce the length of the messages or completion.", 'type': 'BadRequestError', 'param': None, 'code': 400}
+2026-06-08 23:10:55,233 - WARNING - Context window exceeded, retrying fix_code with max_tokens=14358
+2026-06-08 23:20:55,336 - INFO - Retrying request to /chat/completions in 0.456077 seconds
+2026-06-08 23:30:55,895 - INFO - Retrying request to /chat/completions in 0.785376 seconds
+2026-06-08 23:40:56,780 - ERROR - Retry with reduced max_tokens also failed: Request timed out.
+2026-06-08 23:40:56,781 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda/result.txt
+2026-06-08 23:40:56,781 - INFO - Generated result.txt file with compilation failure in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda
+2026-06-08 23:40:56,781 - ERROR - Compilation failed for heat-cuda: Failed to compile after 3 attempts
+2026-06-08 23:40:56,791 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda/result.txt
+omp->cuda:  33%|███▎      | 6/18 [2:33:57<6:27:04, 1935.35s/kernel]2026-06-08 23:40:56,792 - INFO - Processing kernel: su3-cuda
+2026-06-08 23:40:56,792 - INFO - Compiling su3-cuda
+2026-06-08 23:40:56,792 - INFO - Extracted source filename from Makefile: su3_nn_bench.cu
+2026-06-08 23:40:56,792 - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-08 23:40:56,793 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda/su3_nn_bench.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda/pred_compile_0.cu
+2026-06-08 23:40:56,793 - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda/su3_nn_bench.cu
+2026-06-08 23:40:56,793 - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda
+2026-06-08 23:40:56,793 - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda
+2026-06-08 23:40:56,997 - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda/Makefile
+2026-06-08 23:40:57,218 - ERROR - Compilation failed, trying to fix the code
+2026-06-08 23:40:57,219 - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-08 23:40:57,258 - INFO - HTTP Request: POST http://localhost:8006/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-06-08 23:40:57,259 - ERROR - Error in fix_code: Error code: 400 - {'object': 'error', 'message': "This model's maximum context length is 16384 tokens. However, you requested 17314 tokens (2314 in the messages, 15000 in the completion). Please reduce the length of the messages or completion.", 'type': 'BadRequestError', 'param': None, 'code': 400}
+2026-06-08 23:40:57,259 - WARNING - Context window exceeded, retrying fix_code with max_tokens=14020
+2026-06-08 23:50:57,360 - INFO - Retrying request to /chat/completions in 0.466558 seconds
+2026-06-09 00:00:57,928 - INFO - Retrying request to /chat/completions in 0.948239 seconds
+2026-06-09 00:10:59,002 - ERROR - Retry with reduced max_tokens also failed: Request timed out.
+2026-06-09 00:10:59,002 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda/result.txt
+2026-06-09 00:10:59,002 - INFO - Generated result.txt file with compilation failure in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda
+2026-06-09 00:10:59,003 - ERROR - Compilation failed for su3-cuda: Failed to compile after 3 attempts
+2026-06-09 00:10:59,040 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda/result.txt
+omp->cuda:  39%|███▉      | 7/18 [3:03:59<5:47:23, 1894.83s/kernel]2026-06-09 00:10:59,041 - INFO - Processing kernel: stencil1d-cuda
+2026-06-09 00:10:59,041 - INFO - Compiling stencil1d-cuda
+2026-06-09 00:10:59,041 - INFO - Extracted source filename from Makefile: stencil_1d.cu
+2026-06-09 00:10:59,041 - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-09 00:10:59,041 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda/stencil_1d.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda/pred_compile_0.cu
+2026-06-09 00:10:59,042 - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda/stencil_1d.cu
+2026-06-09 00:10:59,042 - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda
+2026-06-09 00:10:59,042 - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda
+2026-06-09 00:10:59,180 - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda/Makefile
+2026-06-09 00:11:06,066 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda/result.txt
+2026-06-09 00:11:06,066 - INFO - Generated partial result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda
+2026-06-09 00:11:06,066 - INFO - Running stencil1d-cuda
+2026-06-09 00:11:06,066 - INFO - Extracted source filename from Makefile: stencil_1d.cu
+2026-06-09 00:11:06,067 - INFO - Attempting to run pred_compile_0.cu (Attempt 1)
+2026-06-09 00:11:06,067 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda/pred_compile_0.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda/pred_run_0.cu
+2026-06-09 00:11:18,972 - WARNING - Program results do not match expected results: Did not find 'pass' in result.txt
+2026-06-09 00:11:18,973 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda/result.txt
+2026-06-09 00:11:18,973 - INFO - Generated/updated result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda
+2026-06-09 00:11:18,973 - INFO - Execution succeeded for stencil1d-cuda
+2026-06-09 00:11:18,973 - WARNING - Results are not valid for stencil1d-cuda: Did not find 'pass' in result.txt
+2026-06-09 00:11:18,982 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda/result.txt
+omp->cuda:  44%|████▍     | 8/18 [3:04:19<3:41:04, 1326.49s/kernel]2026-06-09 00:11:18,982 - INFO - Processing kernel: vanGenuchten-cuda
+2026-06-09 00:11:18,983 - INFO - Compiling vanGenuchten-cuda
+2026-06-09 00:11:18,983 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-09 00:11:18,983 - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-09 00:11:18,983 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda/pred_compile_0.cu
+2026-06-09 00:11:18,983 - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda/main.cu
+2026-06-09 00:11:18,983 - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda
+2026-06-09 00:11:18,983 - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda
+2026-06-09 00:11:18,986 - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda/Makefile
+2026-06-09 00:11:26,498 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda/result.txt
+2026-06-09 00:11:26,499 - INFO - Generated partial result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda
+2026-06-09 00:11:26,499 - INFO - Running vanGenuchten-cuda
+2026-06-09 00:11:26,499 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-09 00:11:26,500 - INFO - Attempting to run pred_compile_0.cu (Attempt 1)
+2026-06-09 00:11:26,500 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda/pred_compile_0.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda/pred_run_0.cu
+2026-06-09 00:12:28,545 - WARNING - Program results do not match expected results: Did not find 'pass' in result.txt
+2026-06-09 00:12:28,545 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda/result.txt
+2026-06-09 00:12:28,545 - INFO - Generated/updated result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda
+2026-06-09 00:12:28,545 - INFO - Execution succeeded for vanGenuchten-cuda
+2026-06-09 00:12:28,545 - WARNING - Results are not valid for vanGenuchten-cuda: Did not find 'pass' in result.txt
+2026-06-09 00:12:28,554 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda/result.txt
+omp->cuda:  50%|█████     | 9/18 [3:05:29<2:22:00, 946.67s/kernel] 2026-06-09 00:12:28,555 - INFO - Processing kernel: wsm5-cuda
+2026-06-09 00:12:28,555 - INFO - Compiling wsm5-cuda
+2026-06-09 00:12:28,555 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-09 00:12:28,555 - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-09 00:12:28,556 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda/pred_compile_0.cu
+2026-06-09 00:12:28,556 - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda/main.cu
+2026-06-09 00:12:28,556 - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda
+2026-06-09 00:12:28,556 - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda
+2026-06-09 00:12:28,560 - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda/Makefile
+2026-06-09 00:12:30,554 - ERROR - Compilation failed, trying to fix the code
+2026-06-09 00:12:30,554 - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-09 00:12:30,592 - INFO - HTTP Request: POST http://localhost:8006/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-06-09 00:12:30,594 - ERROR - Error in fix_code: Error code: 400 - {'object': 'error', 'message': "This model's maximum context length is 16384 tokens. However, you requested 17425 tokens (2425 in the messages, 15000 in the completion). Please reduce the length of the messages or completion.", 'type': 'BadRequestError', 'param': None, 'code': 400}
+2026-06-09 00:12:30,594 - WARNING - Context window exceeded, retrying fix_code with max_tokens=13909
+2026-06-09 00:22:30,696 - INFO - Retrying request to /chat/completions in 0.456355 seconds
+2026-06-09 00:32:31,240 - INFO - Retrying request to /chat/completions in 0.845883 seconds
+2026-06-09 00:42:32,189 - ERROR - Retry with reduced max_tokens also failed: Request timed out.
+2026-06-09 00:42:32,190 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda/result.txt
+2026-06-09 00:42:32,190 - INFO - Generated result.txt file with compilation failure in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda
+2026-06-09 00:42:32,191 - ERROR - Compilation failed for wsm5-cuda: Failed to compile after 3 attempts
+2026-06-09 00:42:32,191 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda/result.txt
+omp->cuda:  56%|█████▌    | 10/18 [3:35:33<2:40:40, 1205.07s/kernel]2026-06-09 00:42:32,191 - INFO - Processing kernel: stddev-cuda
+2026-06-09 00:42:32,191 - INFO - Compiling stddev-cuda
+2026-06-09 00:42:32,192 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-09 00:42:32,192 - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-09 00:42:32,193 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda/pred_compile_0.cu
+2026-06-09 00:42:32,193 - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda/main.cu
+2026-06-09 00:42:32,193 - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda
+2026-06-09 00:42:32,193 - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda
+2026-06-09 00:42:32,197 - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda/Makefile
+2026-06-09 00:42:32,571 - ERROR - Compilation failed, trying to fix the code
+2026-06-09 00:42:32,571 - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-09 00:42:32,611 - INFO - HTTP Request: POST http://localhost:8006/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-06-09 00:42:32,612 - ERROR - Error in fix_code: Error code: 400 - {'object': 'error', 'message': "This model's maximum context length is 16384 tokens. However, you requested 16943 tokens (1943 in the messages, 15000 in the completion). Please reduce the length of the messages or completion.", 'type': 'BadRequestError', 'param': None, 'code': 400}
+2026-06-09 00:42:32,613 - WARNING - Context window exceeded, retrying fix_code with max_tokens=14391
+2026-06-09 00:52:32,717 - INFO - Retrying request to /chat/completions in 0.425941 seconds
+2026-06-09 01:01:07,176 - INFO - HTTP Request: POST http://localhost:8006/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 01:01:07,185 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda/pred_compile_1.cu
+2026-06-09 01:01:07,185 - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda/error_compile_0.txt
+2026-06-09 01:01:07,185 - INFO - Attempting to compile main.cu (Attempt 2)
+2026-06-09 01:01:07,194 - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda/main.cu
+2026-06-09 01:01:07,195 - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda
+2026-06-09 01:01:07,195 - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda
+2026-06-09 01:01:07,198 - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda/Makefile
+2026-06-09 01:01:07,546 - ERROR - Compilation failed, trying to fix the code
+2026-06-09 01:01:07,546 - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-09 01:01:07,583 - INFO - HTTP Request: POST http://localhost:8006/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-06-09 01:01:07,585 - ERROR - Error in fix_code: Error code: 400 - {'object': 'error', 'message': "This model's maximum context length is 16384 tokens. However, you requested 16457 tokens (1457 in the messages, 15000 in the completion). Please reduce the length of the messages or completion.", 'type': 'BadRequestError', 'param': None, 'code': 400}
+2026-06-09 01:01:07,585 - WARNING - Context window exceeded, retrying fix_code with max_tokens=14877
+2026-06-09 01:10:48,238 - INFO - HTTP Request: POST http://localhost:8006/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 01:10:48,240 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda/pred_compile_2.cu
+2026-06-09 01:10:48,241 - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda/error_compile_1.txt
+2026-06-09 01:10:48,241 - INFO - Attempting to compile main.cu (Attempt 3)
+2026-06-09 01:10:48,241 - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda/main.cu
+2026-06-09 01:10:48,241 - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda
+2026-06-09 01:10:48,241 - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda
+2026-06-09 01:10:48,245 - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda/Makefile
+2026-06-09 01:10:49,394 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda/result.txt
+2026-06-09 01:10:49,394 - INFO - Generated partial result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda
+2026-06-09 01:10:49,394 - INFO - Running stddev-cuda
+2026-06-09 01:10:49,395 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-09 01:10:49,395 - INFO - Attempting to run pred_compile_0.cu (Attempt 1)
+2026-06-09 01:10:49,395 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda/pred_compile_0.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda/pred_run_0.cu
+2026-06-09 01:11:14,839 - WARNING - Program results do not match expected results: Did not find 'pass' in result.txt
+2026-06-09 01:11:14,840 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda/result.txt
+2026-06-09 01:11:14,840 - INFO - Generated/updated result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda
+2026-06-09 01:11:14,840 - INFO - Execution succeeded for stddev-cuda
+2026-06-09 01:11:14,840 - WARNING - Results are not valid for stddev-cuda: Did not find 'pass' in result.txt
+2026-06-09 01:11:14,848 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda/result.txt
+omp->cuda:  61%|██████    | 11/18 [4:04:15<2:38:46, 1360.90s/kernel]2026-06-09 01:11:14,849 - INFO - Processing kernel: geodesic-cuda
+2026-06-09 01:11:14,849 - INFO - Compiling geodesic-cuda
+2026-06-09 01:11:14,849 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-09 01:11:14,849 - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-09 01:11:14,849 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/pred_compile_0.cu
+2026-06-09 01:11:14,849 - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/main.cu
+2026-06-09 01:11:14,849 - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda
+2026-06-09 01:11:14,849 - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda
+2026-06-09 01:11:14,853 - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/Makefile
+2026-06-09 01:11:15,331 - ERROR - Compilation failed, trying to fix the code
+2026-06-09 01:11:15,331 - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-09 01:11:15,371 - INFO - HTTP Request: POST http://localhost:8006/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-06-09 01:11:15,372 - ERROR - Error in fix_code: Error code: 400 - {'object': 'error', 'message': "This model's maximum context length is 16384 tokens. However, you requested 16760 tokens (1760 in the messages, 15000 in the completion). Please reduce the length of the messages or completion.", 'type': 'BadRequestError', 'param': None, 'code': 400}
+2026-06-09 01:11:15,372 - WARNING - Context window exceeded, retrying fix_code with max_tokens=14574
+2026-06-09 01:18:15,346 - INFO - HTTP Request: POST http://localhost:8006/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 01:18:15,349 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/pred_compile_1.cu
+2026-06-09 01:18:15,349 - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/error_compile_0.txt
+2026-06-09 01:18:15,349 - INFO - Attempting to compile main.cu (Attempt 2)
+2026-06-09 01:18:15,359 - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/main.cu
+2026-06-09 01:18:15,359 - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda
+2026-06-09 01:18:15,359 - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda
+2026-06-09 01:18:15,362 - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/Makefile
+2026-06-09 01:18:17,060 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/result.txt
+2026-06-09 01:18:17,060 - INFO - Generated partial result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda
+2026-06-09 01:18:17,060 - INFO - Running geodesic-cuda
+2026-06-09 01:18:17,061 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-09 01:18:17,061 - INFO - Attempting to run pred_compile_0.cu (Attempt 1)
+2026-06-09 01:18:17,061 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/pred_compile_0.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/pred_run_0.cu
+2026-06-09 01:18:17,068 - WARNING - Program results do not match expected results: Did not find 'pass' in result.txt
+2026-06-09 01:18:17,069 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/result.txt
+2026-06-09 01:18:17,069 - INFO - Generated/updated result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda
+2026-06-09 01:18:17,069 - INFO - Execution succeeded for geodesic-cuda
+2026-06-09 01:18:17,069 - WARNING - Results are not valid for geodesic-cuda: Did not find 'pass' in result.txt
+2026-06-09 01:18:17,069 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/result.txt
+omp->cuda:  67%|██████▋   | 12/18 [4:11:17<1:47:51, 1078.59s/kernel]2026-06-09 01:18:17,070 - INFO - Processing kernel: pool-cuda
+2026-06-09 01:18:17,070 - INFO - Compiling pool-cuda
+2026-06-09 01:18:17,070 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-09 01:18:17,071 - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-09 01:18:17,071 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/pred_compile_0.cu
+2026-06-09 01:18:17,071 - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/main.cu
+2026-06-09 01:18:17,071 - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda
+2026-06-09 01:18:17,072 - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda
+2026-06-09 01:18:17,074 - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/Makefile
+2026-06-09 01:18:18,218 - ERROR - Compilation failed, trying to fix the code
+2026-06-09 01:18:18,218 - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-09 01:18:18,261 - INFO - HTTP Request: POST http://localhost:8006/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-06-09 01:18:18,261 - ERROR - Error in fix_code: Error code: 400 - {'object': 'error', 'message': "This model's maximum context length is 16384 tokens. However, you requested 17392 tokens (2392 in the messages, 15000 in the completion). Please reduce the length of the messages or completion.", 'type': 'BadRequestError', 'param': None, 'code': 400}
+2026-06-09 01:18:18,262 - WARNING - Context window exceeded, retrying fix_code with max_tokens=13942
+2026-06-09 01:27:46,887 - INFO - HTTP Request: POST http://localhost:8006/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 01:27:46,890 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/pred_compile_1.cu
+2026-06-09 01:27:46,890 - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/error_compile_0.txt
+2026-06-09 01:27:46,890 - INFO - Attempting to compile main.cu (Attempt 2)
+2026-06-09 01:27:46,891 - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/main.cu
+2026-06-09 01:27:46,891 - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda
+2026-06-09 01:27:46,891 - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda
+2026-06-09 01:27:46,895 - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/Makefile
+2026-06-09 01:27:48,901 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/result.txt
+2026-06-09 01:27:48,901 - INFO - Generated partial result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda
+2026-06-09 01:27:48,902 - INFO - Running pool-cuda
+2026-06-09 01:27:48,902 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-09 01:27:48,902 - INFO - Attempting to run pred_compile_0.cu (Attempt 1)
+2026-06-09 01:27:48,902 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/pred_compile_0.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/pred_run_0.cu
+2026-06-09 01:27:49,277 - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/error_run_0.txt
+2026-06-09 01:27:49,278 - ERROR - Failed to run, trying to fix the code
+2026-06-09 01:27:49,278 - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-09 01:27:49,315 - INFO - HTTP Request: POST http://localhost:8006/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-06-09 01:27:49,316 - ERROR - Error in run_code: Error code: 400 - {'object': 'error', 'message': "This model's maximum context length is 16384 tokens. However, you requested 16980 tokens (1980 in the messages, 15000 in the completion). Please reduce the length of the messages or completion.", 'type': 'BadRequestError', 'param': None, 'code': 400}
+2026-06-09 01:27:49,316 - WARNING - Context window exceeded, retrying run_code with max_tokens=14354
+2026-06-09 01:37:49,421 - INFO - Retrying request to /chat/completions in 0.376586 seconds
+2026-06-09 01:46:58,995 - INFO - HTTP Request: POST http://localhost:8006/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 01:47:01,368 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-09 01:47:01,369 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-09 01:47:01,369 - INFO - Attempting to run main.cu (Attempt 2)
+2026-06-09 01:47:03,094 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/pred_run_1.cu
+2026-06-09 01:47:03,643 - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/error_run_1.txt
+2026-06-09 01:47:03,643 - ERROR - Failed to run, trying to fix the code
+2026-06-09 01:47:03,643 - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-09 01:47:03,681 - INFO - HTTP Request: POST http://localhost:8006/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-06-09 01:47:03,682 - ERROR - Error in run_code: Error code: 400 - {'object': 'error', 'message': "This model's maximum context length is 16384 tokens. However, you requested 17362 tokens (2362 in the messages, 15000 in the completion). Please reduce the length of the messages or completion.", 'type': 'BadRequestError', 'param': None, 'code': 400}
+2026-06-09 01:47:03,682 - WARNING - Context window exceeded, retrying run_code with max_tokens=13972
+2026-06-09 01:56:50,563 - INFO - HTTP Request: POST http://localhost:8006/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 01:56:52,324 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-09 01:56:52,325 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-09 01:56:52,325 - INFO - Attempting to run main.cu (Attempt 3)
+2026-06-09 01:56:53,489 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/pred_run_2.cu
+2026-06-09 01:56:54,034 - ERROR - Max attempts reached. Compilation failed.
+2026-06-09 01:56:54,035 - ERROR - Execution failed for pool-cuda: Failed to run the code after 3 attempts
+2026-06-09 01:56:54,035 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/result.txt
+omp->cuda:  72%|███████▏  | 13/18 [4:49:54<2:00:53, 1450.75s/kernel]2026-06-09 01:56:54,035 - INFO - Processing kernel: particlefilter-cuda
+2026-06-09 01:56:54,036 - INFO - Compiling particlefilter-cuda
+2026-06-09 01:56:54,036 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-09 01:56:54,036 - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-09 01:56:54,037 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda/pred_compile_0.cu
+2026-06-09 01:56:54,037 - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda/main.cu
+2026-06-09 01:56:54,037 - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda
+2026-06-09 01:56:54,037 - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda
+2026-06-09 01:56:54,041 - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda/Makefile
+2026-06-09 01:56:54,333 - ERROR - Compilation failed, trying to fix the code
+2026-06-09 01:56:54,333 - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-09 01:56:54,374 - INFO - HTTP Request: POST http://localhost:8006/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-06-09 01:56:54,375 - ERROR - Error in fix_code: Error code: 400 - {'object': 'error', 'message': "This model's maximum context length is 16384 tokens. However, you requested 17551 tokens (2551 in the messages, 15000 in the completion). Please reduce the length of the messages or completion.", 'type': 'BadRequestError', 'param': None, 'code': 400}
+2026-06-09 01:56:54,375 - WARNING - Context window exceeded, retrying fix_code with max_tokens=13783
+2026-06-09 02:06:54,387 - INFO - Retrying request to /chat/completions in 0.457825 seconds
+2026-06-09 02:16:54,946 - INFO - Retrying request to /chat/completions in 0.853454 seconds
+2026-06-09 02:26:55,808 - ERROR - Retry with reduced max_tokens also failed: Request timed out.
+2026-06-09 02:26:55,809 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda/result.txt
+2026-06-09 02:26:55,809 - INFO - Generated result.txt file with compilation failure in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda
+2026-06-09 02:26:55,809 - ERROR - Compilation failed for particlefilter-cuda: Failed to compile after 3 attempts
+2026-06-09 02:26:55,818 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda/result.txt
+omp->cuda:  78%|███████▊  | 14/18 [5:19:56<1:43:44, 1556.19s/kernel]2026-06-09 02:26:55,819 - INFO - Processing kernel: meanshift-cuda
+2026-06-09 02:26:55,819 - INFO - Compiling meanshift-cuda
+2026-06-09 02:26:55,819 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-09 02:26:55,819 - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-09 02:26:55,819 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/pred_compile_0.cu
+2026-06-09 02:26:55,819 - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/main.cu
+2026-06-09 02:26:55,819 - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda
+2026-06-09 02:26:55,820 - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda
+2026-06-09 02:26:55,824 - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/Makefile
+2026-06-09 02:26:58,696 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/result.txt
+2026-06-09 02:26:58,696 - INFO - Generated partial result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda
+2026-06-09 02:26:58,696 - INFO - Running meanshift-cuda
+2026-06-09 02:26:58,697 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-09 02:26:58,697 - INFO - Attempting to run pred_compile_0.cu (Attempt 1)
+2026-06-09 02:26:58,697 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/pred_compile_0.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/pred_run_0.cu
+2026-06-09 02:26:58,884 - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/error_run_0.txt
+2026-06-09 02:26:58,884 - ERROR - Failed to run, trying to fix the code
+2026-06-09 02:26:58,885 - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-09 02:26:58,927 - INFO - HTTP Request: POST http://localhost:8006/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-06-09 02:26:58,928 - ERROR - Error in run_code: Error code: 400 - {'object': 'error', 'message': "This model's maximum context length is 16384 tokens. However, you requested 17057 tokens (2057 in the messages, 15000 in the completion). Please reduce the length of the messages or completion.", 'type': 'BadRequestError', 'param': None, 'code': 400}
+2026-06-09 02:26:58,928 - WARNING - Context window exceeded, retrying run_code with max_tokens=14277
+2026-06-09 02:36:59,032 - INFO - Retrying request to /chat/completions in 0.405137 seconds
+2026-06-09 02:46:59,540 - INFO - Retrying request to /chat/completions in 0.832866 seconds
+2026-06-09 02:56:38,716 - INFO - HTTP Request: POST http://localhost:8006/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 02:56:44,498 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-09 02:56:44,498 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-09 02:56:44,498 - INFO - Attempting to run main.cu (Attempt 2)
+2026-06-09 02:56:47,981 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/pred_run_1.cu
+2026-06-09 02:56:48,702 - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/error_run_1.txt
+2026-06-09 02:56:48,703 - ERROR - Failed to run, trying to fix the code
+2026-06-09 02:56:48,703 - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-09 02:56:48,742 - INFO - HTTP Request: POST http://localhost:8006/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-06-09 02:56:48,743 - ERROR - Error in run_code: Error code: 400 - {'object': 'error', 'message': "This model's maximum context length is 16384 tokens. However, you requested 17113 tokens (2113 in the messages, 15000 in the completion). Please reduce the length of the messages or completion.", 'type': 'BadRequestError', 'param': None, 'code': 400}
+2026-06-09 02:56:48,743 - WARNING - Context window exceeded, retrying run_code with max_tokens=14221
+2026-06-09 03:06:48,848 - INFO - Retrying request to /chat/completions in 0.499564 seconds
+2026-06-09 03:16:31,086 - INFO - HTTP Request: POST http://localhost:8006/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 03:16:34,729 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-09 03:16:34,730 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-09 03:16:34,730 - INFO - Attempting to run main.cu (Attempt 3)
+2026-06-09 03:16:36,223 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/pred_run_2.cu
+2026-06-09 03:16:36,953 - ERROR - Max attempts reached. Compilation failed.
+2026-06-09 03:16:36,953 - ERROR - Execution failed for meanshift-cuda: Failed to run the code after 3 attempts
+2026-06-09 03:16:36,954 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/result.txt
+omp->cuda:  83%|████████▎ | 15/18 [6:09:37<1:39:12, 1984.04s/kernel]2026-06-09 03:16:36,954 - INFO - Processing kernel: mixbench-cuda
+2026-06-09 03:16:36,955 - INFO - Compiling mixbench-cuda
+2026-06-09 03:16:36,955 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-09 03:16:36,955 - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-09 03:16:36,956 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/pred_compile_0.cu
+2026-06-09 03:16:36,956 - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/main.cu
+2026-06-09 03:16:36,956 - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda
+2026-06-09 03:16:36,956 - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda
+2026-06-09 03:16:36,961 - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/Makefile
+2026-06-09 03:16:38,022 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/result.txt
+2026-06-09 03:16:38,022 - INFO - Generated partial result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda
+2026-06-09 03:16:38,022 - INFO - Running mixbench-cuda
+2026-06-09 03:16:38,023 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-09 03:16:38,023 - INFO - Attempting to run pred_compile_0.cu (Attempt 1)
+2026-06-09 03:16:38,023 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/pred_compile_0.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/pred_run_0.cu
+2026-06-09 03:16:38,029 - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/error_run_0.txt
+2026-06-09 03:16:38,029 - ERROR - Failed to run, trying to fix the code
+2026-06-09 03:16:38,029 - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-09 03:26:38,133 - INFO - Retrying request to /chat/completions in 0.455089 seconds
+2026-06-09 03:33:28,379 - INFO - HTTP Request: POST http://localhost:8006/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 03:33:28,381 - INFO - Saved runtime fix model response for kernel mixbench (attempt 1) to /home/pdp15/UniPar_AI/output/kernel_logs/mixbench_omp_to_cuda
+2026-06-09 03:33:30,535 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-09 03:33:30,535 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-09 03:33:30,535 - INFO - Attempting to run main.cu (Attempt 2)
+2026-06-09 03:33:31,860 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/pred_run_1.cu
+2026-06-09 03:33:32,167 - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/error_run_1.txt
+2026-06-09 03:33:32,167 - ERROR - Failed to run, trying to fix the code
+2026-06-09 03:33:32,168 - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-09 03:40:26,364 - INFO - HTTP Request: POST http://localhost:8006/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-09 03:40:26,366 - INFO - Saved runtime fix model response for kernel mixbench (attempt 2) to /home/pdp15/UniPar_AI/output/kernel_logs/mixbench_omp_to_cuda
+2026-06-09 03:40:28,490 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-09 03:40:28,490 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-09 03:40:28,490 - INFO - Attempting to run main.cu (Attempt 3)
+2026-06-09 03:40:30,565 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/pred_run_2.cu
+2026-06-09 03:40:36,915 - WARNING - Program results do not match expected results: Did not find 'pass' in result.txt
+2026-06-09 03:40:36,916 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/result.txt
+2026-06-09 03:40:36,916 - INFO - Generated/updated result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda
+2026-06-09 03:40:36,916 - INFO - Execution succeeded for mixbench-cuda
+2026-06-09 03:40:36,916 - WARNING - Results are not valid for mixbench-cuda: Did not find 'pass' in result.txt
+2026-06-09 03:40:36,916 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/result.txt
+omp->cuda:  89%|████████▉ | 16/18 [6:33:37<1:00:41, 1820.72s/kernel]2026-06-09 03:40:36,917 - INFO - Processing kernel: winograd-cuda
+2026-06-09 03:40:36,917 - INFO - Compiling winograd-cuda
+2026-06-09 03:40:36,917 - INFO - Extracted source filename from Makefile: main.cu utils.cu
+2026-06-09 03:40:36,917 - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-09 03:40:36,918 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda/main.cu utils.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda/pred_compile_0.cu
+2026-06-09 03:40:36,918 - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda/main.cu utils.cu
+2026-06-09 03:40:36,918 - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda
+2026-06-09 03:40:36,918 - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda
+2026-06-09 03:40:36,923 - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda/Makefile
+2026-06-09 03:40:37,270 - ERROR - Compilation failed, trying to fix the code
+2026-06-09 03:40:37,271 - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-09 03:40:37,316 - INFO - HTTP Request: POST http://localhost:8006/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-06-09 03:40:37,317 - ERROR - Error in fix_code: Error code: 400 - {'object': 'error', 'message': "This model's maximum context length is 16384 tokens. However, you requested 18438 tokens (3438 in the messages, 15000 in the completion). Please reduce the length of the messages or completion.", 'type': 'BadRequestError', 'param': None, 'code': 400}
+2026-06-09 03:40:37,317 - WARNING - Context window exceeded, retrying fix_code with max_tokens=12896
+2026-06-09 03:50:37,421 - INFO - Retrying request to /chat/completions in 0.488814 seconds
+2026-06-09 04:00:38,013 - INFO - Retrying request to /chat/completions in 0.776395 seconds
+2026-06-09 04:10:38,892 - ERROR - Retry with reduced max_tokens also failed: Request timed out.
+2026-06-09 04:10:38,893 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda/result.txt
+2026-06-09 04:10:38,893 - INFO - Generated result.txt file with compilation failure in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda
+2026-06-09 04:10:38,893 - ERROR - Compilation failed for winograd-cuda: Failed to compile after 3 attempts
+2026-06-09 04:10:38,903 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda/result.txt
+omp->cuda:  94%|█████████▍| 17/18 [7:03:39<30:15, 1815.10s/kernel]  2026-06-09 04:10:38,903 - INFO - Processing kernel: convolution1D-cuda
+2026-06-09 04:10:38,903 - INFO - Compiling convolution1D-cuda
+2026-06-09 04:10:38,903 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-09 04:10:38,903 - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-09 04:10:38,904 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/convolution1D-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/convolution1D-cuda/pred_compile_0.cu
+2026-06-09 04:10:38,904 - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/convolution1D-cuda/main.cu
+2026-06-09 04:10:38,904 - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/convolution1D-cuda
+2026-06-09 04:10:38,904 - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/convolution1D-cuda
+2026-06-09 04:10:38,908 - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/convolution1D-cuda/Makefile
+2026-06-09 04:10:40,350 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/convolution1D-cuda/result.txt
+2026-06-09 04:10:40,351 - INFO - Generated partial result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/convolution1D-cuda
+2026-06-09 04:10:40,351 - INFO - Running convolution1D-cuda
+2026-06-09 04:10:40,351 - INFO - Extracted source filename from Makefile: main.cu
+2026-06-09 04:10:40,351 - INFO - Attempting to run pred_compile_0.cu (Attempt 1)
+2026-06-09 04:10:40,352 - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/convolution1D-cuda/pred_compile_0.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/convolution1D-cuda/pred_run_0.cu
+2026-06-09 04:11:05,831 - WARNING - Program results do not match expected results: Did not find 'pass' in result.txt
+2026-06-09 04:11:05,832 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/convolution1D-cuda/result.txt
+2026-06-09 04:11:05,832 - INFO - Generated/updated result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/convolution1D-cuda
+2026-06-09 04:11:05,832 - INFO - Execution succeeded for convolution1D-cuda
+2026-06-09 04:11:05,832 - WARNING - Results are not valid for convolution1D-cuda: Did not find 'pass' in result.txt
+2026-06-09 04:11:05,841 - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/convolution1D-cuda/result.txt
+omp->cuda: 100%|██████████| 18/18 [7:04:06<00:00, 1278.49s/kernel]omp->cuda: 100%|██████████| 18/18 [7:04:06<00:00, 1413.71s/kernel]
+2026-06-09 04:11:05,841 - INFO - Processing complete. Output directory: /home/pdp15/UniPar_AI/output/20260608_210659_datasets_after_eval_compile
+2026-06-09 04:11:05,841 - INFO - 
+==================================================
+SUMMARY  (omp -> cuda)
+==================================================
+  Total kernels   : 17
+  Compile pass    : 10/17  (58.8%)
+  Compile fail    : 7/17
+  Run pass        : 4/17  (23.5%)
+  Run fail        : 6/10  (of compiled)
+==================================================
+Make clean failed for make: *** No rule to make target 'clean'.  Stop.
+
+Error replacing main function from /home/pdp15/HeCBench/src/ace-cuda/pred_compile_0.cu to /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/pred_compile_0.cu: [Errno 2] No such file or directory: '/home/pdp15/HeCBench/src/ace-cuda/pred_compile_0.cu'
+Make clean failed for make: *** No rule to make target 'clean'.  Stop.
+
+Make clean failed for make: *** No rule to make target 'clean'.  Stop.
+
+Error replacing main function from /home/pdp15/HeCBench/src/keogh-cuda/pred_compile_0.cu to /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda/pred_compile_0.cu: [Errno 2] No such file or directory: '/home/pdp15/HeCBench/src/keogh-cuda/pred_compile_0.cu'
+Make clean failed for make: *** No rule to make target 'clean'.  Stop.
+
+Make clean failed for make: *** No rule to make target 'clean'.  Stop.
+
+Make clean failed for make: *** No rule to make target 'clean'.  Stop.
+
+Make clean failed for make: *** No rule to make target 'clean'.  Stop.
+
+Make clean failed for make: *** No rule to make target 'clean'.  Stop.
+
+Make clean failed for make: *** No rule to make target 'clean'.  Stop.
+
+Error replacing main function from /home/pdp15/HeCBench/src/stencil1d-cuda/pred_compile_0.cu to /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda/pred_compile_0.cu: [Errno 2] No such file or directory: '/home/pdp15/HeCBench/src/stencil1d-cuda/pred_compile_0.cu'
+Make clean failed for make: *** No rule to make target 'clean'.  Stop.
+
+Error replacing main function from /home/pdp15/HeCBench/src/vanGenuchten-cuda/pred_compile_0.cu to /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda/pred_compile_0.cu: [Errno 2] No such file or directory: '/home/pdp15/HeCBench/src/vanGenuchten-cuda/pred_compile_0.cu'
+Make clean failed for make: *** No rule to make target 'clean'.  Stop.
+
+Make clean failed for make: *** No rule to make target 'clean'.  Stop.
+
+Make clean failed for make: *** No rule to make target 'clean'.  Stop.
+
+Make clean failed for make: *** No rule to make target 'clean'.  Stop.
+
+Error replacing main function from /home/pdp15/HeCBench/src/stddev-cuda/pred_compile_0.cu to /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda/pred_compile_0.cu: [Errno 2] No such file or directory: '/home/pdp15/HeCBench/src/stddev-cuda/pred_compile_0.cu'
+Make clean failed for make: *** No rule to make target 'clean'.  Stop.
+
+Make clean failed for make: *** No rule to make target 'clean'.  Stop.
+
+Error replacing main function from /home/pdp15/HeCBench/src/geodesic-cuda/pred_compile_0.cu to /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/pred_compile_0.cu: [Errno 2] No such file or directory: '/home/pdp15/HeCBench/src/geodesic-cuda/pred_compile_0.cu'
+Make clean failed for make: *** No rule to make target 'clean'.  Stop.
+
+Make clean failed for make: *** No rule to make target 'clean'.  Stop.
+
+Error replacing main function from /home/pdp15/HeCBench/src/pool-cuda/pred_compile_0.cu to /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/pred_compile_0.cu: [Errno 2] No such file or directory: '/home/pdp15/HeCBench/src/pool-cuda/pred_compile_0.cu'
+Replaced main function in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/pred_compile_0.cu with main function from /home/pdp15/HeCBench/src/pool-cuda/main.cu
+Replaced main function in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/main.cu with main function from /home/pdp15/HeCBench/src/pool-cuda/main.cu
+Replaced main function in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/main.cu with main function from /home/pdp15/HeCBench/src/pool-cuda/main.cu
+Replaced main function in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/main.cu with main function from /home/pdp15/HeCBench/src/pool-cuda/main.cu
+Error replacing main function from /home/pdp15/HeCBench/src/meanshift-cuda/pred_compile_0.cu to /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/pred_compile_0.cu: [Errno 2] No such file or directory: '/home/pdp15/HeCBench/src/meanshift-cuda/pred_compile_0.cu'
+Replaced main function in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/pred_compile_0.cu with main function from /home/pdp15/HeCBench/src/meanshift-cuda/main.cu
+Replaced main function in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/main.cu with main function from /home/pdp15/HeCBench/src/meanshift-cuda/main.cu
+Replaced main function in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/main.cu with main function from /home/pdp15/HeCBench/src/meanshift-cuda/main.cu
+Replaced main function in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/main.cu with main function from /home/pdp15/HeCBench/src/meanshift-cuda/main.cu
+Error replacing main function from /home/pdp15/HeCBench/src/mixbench-cuda/pred_compile_0.cu to /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/pred_compile_0.cu: [Errno 2] No such file or directory: '/home/pdp15/HeCBench/src/mixbench-cuda/pred_compile_0.cu'
+Replaced main function in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/pred_compile_0.cu with main function from /home/pdp15/HeCBench/src/mixbench-cuda/main.cu
+Replaced main function in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/main.cu with main function from /home/pdp15/HeCBench/src/mixbench-cuda/main.cu
+Replaced main function in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/main.cu with main function from /home/pdp15/HeCBench/src/mixbench-cuda/main.cu
+Replaced main function in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/main.cu with main function from /home/pdp15/HeCBench/src/mixbench-cuda/main.cu
+Error replacing main function from /home/pdp15/HeCBench/src/convolution1D-cuda/pred_compile_0.cu to /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/convolution1D-cuda/pred_compile_0.cu: [Errno 2] No such file or directory: '/home/pdp15/HeCBench/src/convolution1D-cuda/pred_compile_0.cu'
+
+==================================================
+SUMMARY  (omp -> cuda)
+==================================================
+  Total kernels   : 17
+  Compile pass    : 10/17  (58.8%)
+  Compile fail    : 7/17
+  Run pass        : 4/17  (23.5%)
+  Run fail        : 6/10  (of compiled)
+==================================================

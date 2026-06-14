@@ -19,10 +19,12 @@ import argparse
 # test 458 / 544
 
 HOME_PATH = os.path.expanduser('~')
-PROJECT_PATH = os.path.join(HOME_PATH, 'unipar', 'UniPar')
+
+PROJECT_PATH = os.path.join(HOME_PATH, 'UniPar_AI') 
 
 files_mapping = []
-files_mapping_path = 'unipar/UniPar/data/Datasets/HeCBench/kernel_files_analysis/relevant_files.jsonl'
+files_mapping_path = 'UniPar_AI/data/Datasets/HeCBench/kernel_files_analysis/relevant_files.jsonl'
+
 with open(os.path.join(HOME_PATH, files_mapping_path), 'r') as f:
     for line in f:
         files_mapping.append(json.loads(line))
@@ -50,21 +52,36 @@ def extract_code_blocks(kernel_name, text):
             if line.strip().startswith("#include"):
                 return "\n".join(lines[i:]).strip()
         return text.strip()
+    # Strip DeepSeek-R1 <think>...</think> blocks before processing.
+    # If the block is unclosed (model hit token limit), there is no code to extract.
+    if '<think>' in text:
+        if '</think>' in text:
+            text = re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL).strip()
+        else:
+            return "- Incompilable Code -"
+
     code_blocks = re.findall(r"```(.*?)```", text, re.DOTALL)#remove ```???
-    if code_blocks: 
+    if code_blocks:
         code = code_blocks[0]
 
         if code.startswith("cpp"):
             code = code[3:]
         elif code.startswith("c"):
             code = code[1:]
-                
+
         code = re.sub(r'^(?:.*\.(c|cpp|cu|hip):|main:)\s*', '', code.strip())#r'^.*\.(c|cpp|cu|hip):\s*'
         code = take_from_include(code)
         if all([line not in code for line in ['#include','int ','__global__ ', '#define' ]]):
             text[list(re.finditer(r'```', text))[1].end():]
         return code
     else:
+        # Handle unclosed code block: model ran out of tokens after opening ```
+        unclosed = re.search(r'```(?:cpp|c|cuda|cu)?\n(.*)', text, re.DOTALL)
+        if unclosed:
+            code = unclosed.group(1)
+            code = take_from_include(code)
+            if any(line in code for line in ['#include', 'int ', '__global__ ', '#define']):
+                return code
         delim = list(get_kernel_files(kernel_name))[0]
         matches = list(re.finditer(f'{os.path.splitext(delim)[0]}.*?:', text))
 
@@ -94,7 +111,8 @@ def copy_structure_with_symlinks(source_dir, destination_dir, generated_kernels)
     if not source_dir.exists():
         return changed_makefile_dirs
 
-    for root, _, files in tqdm(os.walk(source_dir)):
+    # for root, _, files in tqdm(os.walk(source_dir)):
+    for root, _, files in tqdm(os.walk(source_dir, followlinks=True)): # modify
         root_path = Path(root)
 
         if 'heat' in str(root_path):
@@ -146,8 +164,6 @@ def copy_structure_with_symlinks(source_dir, destination_dir, generated_kernels)
     
     return changed_makefile_dirs
 
-    return changed_makefile_dirs
-
 def update_hecbench(from_api, to_api, gen_code_path, hecbench_path, temp_dir):
     generated_kernels = os.listdir(gen_code_path)
     total = len(generated_kernels)
@@ -187,10 +203,11 @@ def update_hecbench(from_api, to_api, gen_code_path, hecbench_path, temp_dir):
             gen_code = extract_code_blocks(gen_path, f.read())
 
         if from_kernel == from_api and to_kernel == to_api:
-            # if os.path.exists(path.replace('HeCBench', temp_dir)):
-            os.remove(path.replace('HeCBench', temp_dir))
-            # os.makedirs(os.path.dirname(path.replace('HeCBench', temp_dir)), exist_ok=True)
-            with open(path.replace('HeCBench', temp_dir), 'w') as f:
+            target_path = path.replace('HeCBench', temp_dir)
+            os.makedirs(os.path.dirname(target_path), exist_ok=True)
+            if os.path.exists(target_path):
+                os.remove(target_path)
+            with open(target_path, 'w') as f:
                 f.write(gt_includues + '\n' + gen_code)
 
 
@@ -210,7 +227,7 @@ if __name__ == '__main__':
     for res_name, extracted_code_path in zip(run_names_to_process, extracted_code_paths):
         for from_api, to_api in itertools.product(from_apis, to_apis):
             if from_api != to_api:
-                gen_code_dir = os.path.join(HOME_PATH, f'unipar/Datasets/{extracted_code_path}')
+                gen_code_dir = os.path.join(HOME_PATH, f'UniPar_AI/data/Datasets/{res_name}')
 
                 if not os.path.exists(gen_code_dir):
                     print(f"Skipping {gen_code_dir} - directory does not exist")
@@ -218,6 +235,6 @@ if __name__ == '__main__':
                 print(f"Processing {gen_code_dir}")
                 update_hecbench(from_api=from_api,
                                 to_api=to_api,
-                                gen_code_path=os.path.join(HOME_PATH, gen_code_dir),
-                                hecbench_path=os.path.join(HOME_PATH, 'unipar/HeCBench'),
-                                temp_dir=os.path.join(HOME_PATH, f'unipar/Datasets/eval/{res_name}/HeCBench-{from_api}-{to_api}'))
+                                gen_code_path=gen_code_dir,
+                                hecbench_path=os.path.join(PROJECT_PATH, 'data/Datasets/HeCBench'),
+                                temp_dir=os.path.join(HOME_PATH, f'UniPar_AI/Datasets/eval/{extracted_code_path}/HeCBench-{from_api}-{to_api}'))

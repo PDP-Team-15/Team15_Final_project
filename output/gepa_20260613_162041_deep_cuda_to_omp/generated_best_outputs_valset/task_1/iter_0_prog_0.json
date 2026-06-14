@@ -1,0 +1,19 @@
+[
+    0.5,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "kernel": "cbsfil",
+        "from_api": "cuda",
+        "to_api": "omp",
+        "compiled": true,
+        "fix_needed": true,
+        "initial_compile_error": "In file included from main.cpp:6:\nkernels.h: In function 'float InitialCausalCoefficient(float*, uint, int)':\nkernels.h:8:15: error: 'sqrtf' was not declared in this scope; did you mean 'strtof'?\n    8 | #define POLE (sqrtf(3.0f)-2.0f)  //pole for cubic b-spline\n      |               ^~~~~\nkernels.h:23:14: note: in expansion of macro 'POLE'\n   23 |   float zn = POLE;\n      |              ^~~~\nkernels.h: In function 'float InitialAntiCausalCoefficient(float*, uint, int)':\nkernels.h:8:15: error: 'sqrtf' was not declared in this scope; did you mean 'strtof'?\n    8 | #define POLE (sqrtf(3.0f)-2.0f",
+        "post_fix_error": "",
+        "source_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <algorithm>\n#include <chrono>\n#include <cuda.h>\n#include \"kernels.h\"\n\nint PowTwoDivider(int n)\n{\n  if (n == 0) return 0;\n  int divider = 1;\n  while ((n & divider) == 0) divider <<= 1;\n  return divider;\n}\n\nint main(int argc, char* argv[]) {\n  if (argc != 4) {\n    printf(\"Usage: %s <width> <height> <repeat>\\n\", argv[0]);\n    return 1;\n  }\n\n  const int ",
+        "translated_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <algorithm>\n#include <chrono>\n#include <omp.h>\n#include \"kernels.h\"\n\nint PowTwoDivider(int n)\n{\n  if (n == 0) return 0;\n  int divider = 1;\n  while ((n & divider) == 0) divider <<= 1;\n  return divider;\n}\n\nint main(int argc, char* argv[]) {\n  if (argc != 4) {\n    printf(\"Usage: %s <width> <height> <repeat>\\n\", argv[0]);\n    return 1;\n  }\n\n  const int w",
+        "log": "[cbsfil] Compile failed, trying model fix...\n[cbsfil] Compile error:\nIn file included from main.cpp:6:\nkernels.h: In function 'float InitialCausalCoefficient(float*, uint, int)':\nkernels.h:8:15: error: 'sqrtf' was not declared in this scope; did you mean 'strtof'?\n    8 | #define POLE (sqrtf(3.0f)-2.0f)  //pole for cubic b-spline\n      |               ^~~~~\nkernels.h:23:14: note: in expansion of macro 'POLE'\n   23 |   float zn = POLE;\n      |              ^~~~\nkernels.h: In function 'float InitialAntiCausalCoefficient(float*, uint, int)':\nkernels.h:8:15: error: 'sqrtf' was not declared in this scope; did you mean 'strtof'?\n    8 | #define POLE (sqrtf(3.0f)-2.0f\n[cbsfil] Compiled after model fix \u2713\n"
+    }
+]

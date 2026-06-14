@@ -1,0 +1,32 @@
+main.cu(34): error: identifier "atomicKernel1" is undefined
+      atomicKernel1<<<1, numThreads, 0, 0>>>(d_gpuData, len);
+      ^
+          detected during instantiation of "void testcase<T>(int, int) [with T=int]" at line 89
+
+main.cu(35): error: identifier "reductionMax" is undefined
+      reductionMax<<<1, numThreads, 0, 0>>>(d_gpuData, len);
+      ^
+          detected during instantiation of "void testcase<T>(int, int) [with T=int]" at line 89
+
+main.cu(36): error: identifier "reductionMin" is undefined
+      reductionMin<<<1, numThreads, 0, 0>>>(d_gpuData, len);
+      ^
+          detected during instantiation of "void testcase<T>(int, int) [with T=int]" at line 89
+
+main.cu(34): error: identifier "atomicKernel1" is undefined
+      atomicKernel1<<<1, numThreads, 0, 0>>>(d_gpuData, len);
+      ^
+          detected during instantiation of "void testcase<T>(int, int) [with T=unsigned int]" at line 90
+
+main.cu(35): error: identifier "reductionMax" is undefined
+      reductionMax<<<1, numThreads, 0, 0>>>(d_gpuData, len);
+      ^
+          detected during instantiation of "void testcase<T>(int, int) [with T=unsigned int]" at line 90
+
+main.cu(36): error: identifier "reductionMin" is undefined
+      reductionMin<<<1, numThreads, 0, 0>>>(d_gpuData, len);
+      ^
+          detected during instantiation of "void testcase<T>(int, int) [with T=unsigned int]" at line 90
+
+6 errors detected in the compilation of "main.cu".
+make: *** [Makefile:52: main.o] Error 1

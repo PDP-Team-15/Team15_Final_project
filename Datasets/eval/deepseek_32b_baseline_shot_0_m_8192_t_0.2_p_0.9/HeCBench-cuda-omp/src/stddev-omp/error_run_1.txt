@@ -1,0 +1,2 @@
+./main: error while loading shared libraries: libomp.so: cannot open shared object file: No such file or directory
+make: *** [Makefile.aomp:67: run] Error 127

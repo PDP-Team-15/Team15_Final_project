@@ -1,0 +1,39 @@
+main.cu(45): error: declaration is incompatible with previous "tile" (declared at line 45)
+    extern __attribute__((shared)) T tile[];
+                                     ^
+          detected during:
+            instantiation of "void conv1d_tiled_kernel(const T *, const T *, T *, int, int) [with T=float]" at line 172
+            instantiation of "void conv1D<T>(int, int, int) [with T=float]" at line 222
+
+main.cu(45): warning #20042-D: a host variable("tile") redeclared with __shared__
+    extern __attribute__((shared)) T tile[];
+                                     ^
+          detected during:
+            instantiation of "void conv1d_tiled_kernel(const T *, const T *, T *, int, int) [with T=float]" at line 172
+            instantiation of "void conv1D<T>(int, int, int) [with T=float]" at line 222
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+main.cu(79): warning #20042-D: a host variable("tile") redeclared with __shared__
+    extern __attribute__((shared)) T tile[];
+                                     ^
+          detected during:
+            instantiation of "void conv1d_tiled_caching_kernel(const T *, const T *, T *, int, int) [with T=float]" at line 185
+            instantiation of "void conv1D<T>(int, int, int) [with T=float]" at line 222
+
+main.cu(45): warning #20042-D: a host variable("tile") redeclared with __shared__
+    extern __attribute__((shared)) T tile[];
+                                     ^
+          detected during:
+            instantiation of "void conv1d_tiled_kernel(const T *, const T *, T *, int, int) [with T=int16_t]" at line 172
+            instantiation of "void conv1D<T>(int, int, int) [with T=int16_t]" at line 225
+
+main.cu(79): warning #20042-D: a host variable("tile") redeclared with __shared__
+    extern __attribute__((shared)) T tile[];
+                                     ^
+          detected during:
+            instantiation of "void conv1d_tiled_caching_kernel(const T *, const T *, T *, int, int) [with T=int16_t]" at line 185
+            instantiation of "void conv1D<T>(int, int, int) [with T=int16_t]" at line 225
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:52: main.o] Error 1

@@ -1,0 +1,19 @@
+[
+    0.0,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "kernel": "ne",
+        "from_api": "cuda",
+        "to_api": "omp",
+        "compiled": false,
+        "fix_needed": true,
+        "initial_compile_error": "main.cpp:6:8: error: unknown type name 'float3'; did you mean 'float'?\n    6 | inline float3 operator*(const float3 &a, const float b)\n      |        ^~~~~~\n      |        float\nmain.cpp:6:31: error: unknown type name 'float3'; did you mean 'float'?\n    6 | inline float3 operator*(const float3 &a, const float b)\n      |                               ^~~~~~\n      |                               float\nmain.cpp:6:15: error: overloaded 'operator*' must have at least one parameter of class or enumeration type\n    6 | inline float3 operator*(const float3 &a, const float b)\n      |               ^\nma",
+        "post_fix_error": "main.cpp:48:18: error: use of undeclared identifier 'rsqrtf'\n   48 |   float invLen = rsqrtf(dot(v, v));\n      |                  ^\nmain.cpp:59:10: error: use of undeclared identifier 'sqrtf'\n   59 |   return sqrtf(dot(v, v));\n      |          ^\nmain.cpp:65:7: error: use of undeclared identifier 'isnan'\n   65 |   if (isnan(query_pt.z))\n      |       ^\nmain.cpp:71:44: error: use of undeclared ident",
+        "source_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <chrono>\n#include <cuda.h>\n\ninline __device__ float3 operator*(const float3 &a, const float b)\n{\n  return make_float3(a.x * b, a.y * b, a.z * b);\n}\n\ninline __device__ float3 operator-(const float3 &a, const float3 &b)\n{\n  return make_float3(a.x - b.x, a.y - b.y, a.z - b.z);\n}\n\ninline __device__ float dot(const float3 &a, const float3 &b)\n{\n  return a",
+        "translated_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <chrono>\n#include <omp.h>\n\ninline float3 operator*(const float3 &a, const float b)\n{\n  return make_float3(a.x * b, a.y * b, a.z * b);\n}\n\ninline float3 operator-(const float3 &a, const float3 &b)\n{\n  return make_float3(a.x - b.x, a.y - b.y, a.z - b.z);\n}\n\ninline float dot(const float3 &a, const float3 &b)\n{\n  return a.x * b.x + a.y * b.y + a.z * b.z;\n",
+        "log": "[ne] Compile failed, trying model fix...\n[ne] Compile error:\nmain.cpp:6:8: error: unknown type name 'float3'; did you mean 'float'?\n    6 | inline float3 operator*(const float3 &a, const float b)\n      |        ^~~~~~\n      |        float\nmain.cpp:6:31: error: unknown type name 'float3'; did you mean 'float'?\n    6 | inline float3 operator*(const float3 &a, const float b)\n      |                               ^~~~~~\n      |                               float\nmain.cpp:6:15: error: overloaded 'operator*' must have at least one parameter of class or enumeration type\n    6 | inline float3 operator*(const float3 &a, const float b)\n      |               ^\nma\n[ne] Still failed after model fix \u2717\n[ne] Second error:\nmain.cpp:48:18: error: use of undeclared identifier 'rsqrtf'\n   48 |   float invLen = rsqrtf(dot(v, v));\n      |                  ^\nmain.cpp:59:10: error: use of undeclared identifier 'sqrtf'\n   59 |   return sqrtf(dot(v, v));\n      |          ^\nmain.cpp:65:7: error: use of undeclared identifier 'isnan'\n   65 |   if (isnan(query_pt.z))\n      |       ^\nmain.cpp:71:44: error: use of undeclared ident\n"
+    }
+]

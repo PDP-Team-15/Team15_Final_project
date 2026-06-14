@@ -1,0 +1,6 @@
+{
+    "omp-cuda": {
+        "atomicIntrinsics-cuda": 65.75109958648682
+    },
+    "cuda-omp": {}
+}

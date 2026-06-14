@@ -11,20 +11,28 @@ import time
 sys.path.append('data')#'../../data')
 from kernel_dataset import KernelDataset
 
-HOME_PATH = os.path.expanduser('~/unipar')#TODO: change to place with lots of storage!!
-PROJECT_PATH = os.path.join(HOME_PATH, 'UniPar')
-DATASET_PATH = os.path.join(HOME_PATH, 'Datasets')
-DATASET_NAME = 'llama3.3_70b_eval'#change name for future reference when changing model
+# Resolve paths relative to the repo root (one level above this file).
+PROJECT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+DATASET_PATH = os.path.join(PROJECT_PATH, 'data', 'Datasets')
+# DATASET_NAME = 'llama3.1_8b_eval' #change name for future reference when changing model
+# DATASET_NAME = 'llama3.1_8b_test' 
 
-
-def build_message(from_api, to_api, code, prompts, num_shots=0):
+def build_message(from_api, to_api, code, prompts, num_shots=0, prompt_style='baseline'):
     # prompt_kernels = ['accuracy', 'swish','permute']#, 'gabor'
     prompt_kernels = ['accuracy', 'gabor', 'permute']
 
-    messages = [
-        {"role": "system", "content": "You are an HPC expert specializing in translating between parallel programming APIs."},
-        {"role": "user", "content": f"For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Do not change the main function Ensure correctness. All function names must match."},
-    ]
+    if prompt_style == 'strict':
+        messages = [
+            {"role": "system", "content": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely, preserving all function qualifiers (e.g., const, inline), template parameters, and macro definitions. Output only the translated code inside a code block. No explanations, no comments, no omissions.\n\nWhen translating to CUDA:\n1. Always use proper __host__, __device__, or __global__ qualifiers based on function scope\n2. Preserve const qualifiers in function parameters\n3. Ensure all #define directives are correctly translated\n4. Validate CUDA-specific constructs like memory operations, kernel launches, and stream usage\n5. Default to compile-time safety when converting run-time parameters"},
+            {"role": "user", "content": f"For each kernel code provided, translate it from {from_api} to {to_api}. Ensure the translated code is complete, correct, and compiles without errors. Follow these guidelines:\n\n1. Preserve all original functionality and algorithmic logic\n2. Replace {from_api} with {to_api} functions and constructs\n3. Correctly declare and initialize all variables\n4. Use proper CUDA syntax for kernel launches and memory management\n5. Ensure all code is properly terminated with semicolons\n6. Include necessary headers\n7. Validate code structure and syntax before providing output"},
+        ]
+    # hints
+
+    else: # baseline
+        messages = [
+            {"role": "system", "content": "You are an HPC expert specializing in translating between parallel programming APIs."},
+            {"role": "user", "content": f"For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Do not change the main function Ensure correctness. All function names must match."},
+        ]
     
     for kernel in prompt_kernels[:num_shots]:
         from_code = prompts.dataset[f"{kernel}-{from_api}"]
@@ -39,17 +47,24 @@ def build_message(from_api, to_api, code, prompts, num_shots=0):
 
 def translate_kernels(args, client, kernels, prompts, batch_size=4, num_return_sequences=3, output_dir=None):
     timer = 0
-    for i in range(0, len(kernels), batch_size):
-        batch = kernels[i:i+batch_size]
-
-        if batch[0][1] not in ['serial', 'omp', 'cuda'] or batch[0][3] not in ['serial', 'omp', 'cuda']:
-            continue
-        batch_messages = [build_message(kernel[1], kernel[3], kernel[2], prompts, num_shots=args.num_shots) for kernel in batch]
+    # filter kernels to only include omp->cuda and cuda->omp
+    batches = [kernels[i:i+batch_size] for i in range(0, len(kernels), batch_size)]
+    filtered = [b for b in batches if
+                (b[0][1] == 'omp' and b[0][3] == 'cuda') or
+                (b[0][1] == 'cuda' and b[0][3] == 'omp')]
+    # for i in range(0, len(kernels), batch_size):
+    for batch in tqdm(filtered, desc="Translating", unit="kernel"):
+        # original
+        # batch = kernels[i:i+batch_size]
+        # if batch[0][1] not in ['serial', 'omp', 'cuda'] or batch[0][3] not in ['serial', 'omp', 'cuda']:
+        #     continue
+        
+        batch_messages = [build_message(kernel[1], kernel[3], kernel[2], prompts, num_shots=args.num_shots, prompt_style=args.prompt_style) for kernel in batch]
         kernel = batch[0]
         kernel_name, from_api, from_code, to_api, to_code = kernel
         try:
             outputs_batch = client.chat.completions.create(
-                model='meta-llama/Llama-3.3-70B-Instruct',#change name here to change the model in huggingface
+                model='meta-llama/Meta-Llama-3.1-8B-Instruct',#change name here to change the model in huggingface
                 messages=batch_messages[0],
                 max_tokens=args.max_token,
                 temperature=args.temp,
@@ -105,32 +120,37 @@ if __name__ == '__main__':
     parser.add_argument('--top_p', type=float, required=True)
     parser.add_argument('--max_token', type=float, required=True)
     parser.add_argument('--overwrite_out', type=bool, required=False)
-    
+    parser.add_argument('--port', type=int, required=False, default=8001)
+    parser.add_argument('--dataset_name', type=str, default='llama3.1_8b_eval')
+    parser.add_argument('--prompt_style', type=str, default='baseline',choices=['baseline', 'strict', 'hints', 'cot'], help='Prompt style to use for translation')
+
     args = parser.parse_args()
+    DATASET_NAME = f"{args.dataset_name}_{args.prompt_style}"
 
     # Set up logging
     current_time = datetime.now().strftime("%d-%m-%y_%H-%M")
-    log_file_name = f'few_shot={args.num_shots}_{current_time}.log'
+    log_file_name = f'few_shot={args.num_shots}_{DATASET_NAME}_{current_time}_pid={os.getpid()}.log'
     print("logfile_name:",log_file_name)
     logging.basicConfig(filename=log_file_name, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
     # Load dataset
     dataset_dir = os.path.join(PROJECT_PATH, 'data/Datasets/HeCBench')
-    out_path = os.path.join(DATASET_PATH, f'vllm_{DATASET_NAME}_shots={args.num_shots}_max_token={args.max_token}_temp={args.temp}_p={args.top_p}')
+    out_path = os.path.join(DATASET_PATH, f'vllm_{DATASET_NAME}_shots={args.num_shots}_max_token={args.max_token}_temp={args.temp}_p={args.top_p}_port={args.port}')
     if not args.overwrite_out:
         to_ignore = get_directory_names(out_path)
         print(type(to_ignore))
     else:
         print("overwriting output directory")
         to_ignore = []
-    test_set = KernelDataset(dataset_dir, dataset_type='dataset_Data_encoding_decoding',ignore_kernels=to_ignore)#filter out already done in this run here
+    # test_set = KernelDataset(dataset_dir, dataset_type='dataset_Data_encoding_decoding',ignore_kernels=to_ignore)#filter out already done in this run here
+    test_set = KernelDataset(dataset_dir, dataset_type='test', ignore_kernels=to_ignore) # all test set data
     logging.info(f'Dataset size: {len(test_set)}')
 
     # Set up few-shot prompts
     prompt_set = KernelDataset(dataset_dir, dataset_type='prompt_Data_encoding_decoding')
 
     client = OpenAI(
-        base_url='http://localhost:8001/v1',
+        base_url=f'http://localhost:{args.port}/v1',
         api_key='token123'
     )
 

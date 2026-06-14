@@ -1,0 +1,19 @@
+[
+    0.0,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "kernel": "stencil1d",
+        "from_api": "omp",
+        "to_api": "cuda",
+        "compiled": false,
+        "fix_needed": true,
+        "initial_compile_error": "make: *** No rule to make target 'stencil_1d.cu', needed by 'stencil_1d.o'.  Stop.\n",
+        "post_fix_error": "make: *** No rule to make target 'stencil_1d.cu', needed by 'stencil_1d.o'.  Stop.\n",
+        "source_snippet": "\n\n\n#include <stdio.h>\n#include <stdlib.h>\n#include <chrono>\n#include <omp.h>\n\n#define RADIUS 7\n#define BLOCK_SIZE 256\n\nint main(int argc, char* argv[]) {\n  if (argc != 3) {\n    printf(\"Usage: %s <length> <repeat>\\n\", argv[0]);\n    printf(\"length is a multiple of %d\\n\", BLOCK_SIZE);\n    return 1;\n  }\n  const int length = atoi(argv[1]);\n  const int repeat = atoi(argv[2]);\n\n  int size = length;\n  int",
+        "translated_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <chrono>\n#include <cuda_runtime.h>\n\n#define RADIUS 7\n#define BLOCK_SIZE 256\n\n__global__ void filter_kernel(int* a, int* b, int length, int pad_size) {\n    int block_start = blockIdx.x * BLOCK_SIZE;\n    int global_index = block_start + threadIdx.x;\n\n    __shared__ int temp[BLOCK_SIZE + 2 * RADIUS];\n\n    if (threadIdx.x < BLOCK_SIZE) {\n        int gind",
+        "log": "[stencil1d] Compile failed, trying model fix...\n[stencil1d] Compile error:\nmake: *** No rule to make target 'stencil_1d.cu', needed by 'stencil_1d.o'.  Stop.\n\n[stencil1d] Still failed after model fix \u2717\n[stencil1d] Second error:\nmake: *** No rule to make target 'stencil_1d.cu', needed by 'stencil_1d.o'.  Stop.\n\n"
+    }
+]

@@ -1,0 +1,12 @@
+main.cu(18): error: invalid redeclaration of type name "float4" (declared at line 398 of /home/pdp15/.conda/envs/unipar/bin/../include/vector_types.h)
+  } float4;
+    ^
+
+main.cu(23): warning #940-D: missing return statement at end of non-void function "distance_host"
+  }
+  ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:52: main.o] Error 2

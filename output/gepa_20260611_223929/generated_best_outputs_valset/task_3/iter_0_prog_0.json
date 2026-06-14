@@ -1,0 +1,19 @@
+[
+    0.0,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "kernel": "romberg",
+        "from_api": "omp",
+        "to_api": "cuda",
+        "compiled": false,
+        "fix_needed": true,
+        "initial_compile_error": "main.cu:6:10: fatal error: reference.h: No such file or directory\n    6 | #include \"reference.h\"\n      |          ^~~~~~~~~~~~~\ncompilation terminated.\nmake: *** [Makefile:51: main.o] Error 1\n",
+        "post_fix_error": "main.cu(50): error: calling a __host__ function(\"f(double)\") from a __global__ function(\"kernel\") is not allowed\n\nmain.cu(50): error: identifier \"f\" is undefined in device code\n\nmain.cu(50): error: calling a __host__ function(\"f(double)\") from a __global__ function(\"kernel\") is not allowed\n\nmain.cu(50): error: identifier \"f\" is undefined in device code\n\nmain.cu(56): error: calling a __host__ funct",
+        "source_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <chrono>\n#include <omp.h>\n#include \"reference.h\"\n\n\n\n#define A 0\n#define B 15\n\n\n\n#define ROW_SIZE 17\n#define EPS      1e-7\n\ninline double f(double x)\n{\n  return exp(x)*sin(x);\n}\n\ninline unsigned int getFirstSetBitPos(int n)\n{\n  return log2((float)(n&-n))+1;\n}\n\nint main( int argc, char** argv)\n{\n  if (argc != 4) {\n    printf(\"Usage: %",
+        "translated_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <chrono>\n#include <cuda_runtime.h>\n#include \"reference.h\"\n\n#define A 0\n#define B 15\n\n#define ROW_SIZE 17\n#define EPS 1e-7\n\ninline double f(double x) {\n    return exp(x) * sin(x);\n}\n\ninline unsigned int getFirstSetBitPos(int n) {\n    return log2((float)(n & -n)) + 1;\n}\n\n__global__ void kernel(double *result, double a, double b, int m",
+        "log": "[romberg] Compile failed, trying model fix...\n[romberg] Compile error:\nmain.cu:6:10: fatal error: reference.h: No such file or directory\n    6 | #include \"reference.h\"\n      |          ^~~~~~~~~~~~~\ncompilation terminated.\nmake: *** [Makefile:51: main.o] Error 1\n\n[romberg] Still failed after model fix \u2717\n[romberg] Second error:\nmain.cu(50): error: calling a __host__ function(\"f(double)\") from a __global__ function(\"kernel\") is not allowed\n\nmain.cu(50): error: identifier \"f\" is undefined in device code\n\nmain.cu(50): error: calling a __host__ function(\"f(double)\") from a __global__ function(\"kernel\") is not allowed\n\nmain.cu(50): error: identifier \"f\" is undefined in device code\n\nmain.cu(56): error: calling a __host__ funct\n"
+    }
+]

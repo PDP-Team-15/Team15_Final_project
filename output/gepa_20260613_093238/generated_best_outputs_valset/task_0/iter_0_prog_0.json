@@ -1,0 +1,19 @@
+[
+    0.0,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "kernel": "ecdh",
+        "from_api": "omp",
+        "to_api": "cuda",
+        "compiled": false,
+        "fix_needed": true,
+        "initial_compile_error": "main.cu(13): error: expected a \")\"\n  __attribute__((global)) void k_slow(int num_pk, int 5, int 1, int *pk_x, int *pk_y, int 17, int 2, int num_threads) {\n                                                      ^\n\nmain.cu(16): error: identifier \"pk_x\" is undefined\n      pk_x[idx] = (2 * 5) % 17;\n      ^\n\nmain.cu(17): error: identifier \"pk_y\" is undefined\n      pk_y[idx] = (2 * 1) % 17;\n      ^\n\nmain.cu(21): error: expected a \")\"\n  __attribute__((global)) void k_fast(int num_pk, int 5, int 1, int *pk_x, int *pk_y, int 17, int 2, int num_threads) {\n                                                 ",
+        "post_fix_error": "main.cu(13): error: expected a \")\"\n  __attribute__((global)) void k_slow(int num_pk, int 5, int 1, int *pk_x, int *pk_y, int 17, int 2) {\n                                                      ^\n\nmain.cu(16): error: identifier \"pk_x\" is undefined\n      pk_x[idx] = (2 * 5) % 17;\n      ^\n\nmain.cu(17): error: identifier \"pk_y\" is undefined\n      pk_y[idx] = (2 * 1) % 17;\n      ^\n\nmain.cu(21): error: e",
+        "source_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <sys/time.h>\n#include <math.h>\n#include <omp.h>\n#include \"ecdh.h\"\n\n#define P_x 5\n#define P_y 1\n#define MODULUS 17\n#define a 2\n\nint main(int argc, char **argv)\n{\n  if (argc != 3) {\n    printf(\"Usage: %s <positive number of keys> <repeat>\\n\", argv[0]);\n    return 1;\n  }\n  const int num_pk = atoi(argv[1]); \n  const int repeat = atoi(",
+        "translated_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <sys/time.h>\n#include <math.h>\n#include \"ecdh.h\"\n\n#define P_x 5\n#define P_y 1\n#define MODULUS 17\n#define a 2\n\n__global__ void k_slow(int num_pk, int P_x, int P_y, int *pk_x, int *pk_y, int MODULUS, int a, int num_threads) {\n  int idx = blockIdx.x * blockDim.x + threadIdx.x;\n  if (idx < num_pk) {\n    pk_x[idx] = (a * P_x) % MODULUS",
+        "log": "[ecdh] Compile failed, trying model fix...\n[ecdh] Compile error:\nmain.cu(13): error: expected a \")\"\n  __attribute__((global)) void k_slow(int num_pk, int 5, int 1, int *pk_x, int *pk_y, int 17, int 2, int num_threads) {\n                                                      ^\n\nmain.cu(16): error: identifier \"pk_x\" is undefined\n      pk_x[idx] = (2 * 5) % 17;\n      ^\n\nmain.cu(17): error: identifier \"pk_y\" is undefined\n      pk_y[idx] = (2 * 1) % 17;\n      ^\n\nmain.cu(21): error: expected a \")\"\n  __attribute__((global)) void k_fast(int num_pk, int 5, int 1, int *pk_x, int *pk_y, int 17, int 2, int num_threads) {\n                                                 \n[ecdh] Still failed after model fix \u2717\n[ecdh] Second error:\nmain.cu(13): error: expected a \")\"\n  __attribute__((global)) void k_slow(int num_pk, int 5, int 1, int *pk_x, int *pk_y, int 17, int 2) {\n                                                      ^\n\nmain.cu(16): error: identifier \"pk_x\" is undefined\n      pk_x[idx] = (2 * 5) % 17;\n      ^\n\nmain.cu(17): error: identifier \"pk_y\" is undefined\n      pk_y[idx] = (2 * 1) % 17;\n      ^\n\nmain.cu(21): error: e\n"
+    }
+]

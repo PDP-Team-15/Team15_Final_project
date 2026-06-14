@@ -1,0 +1,518 @@
+Selected target APIs: ['cuda', 'omp']
+Selected from APIs: ['omp', 'cuda']
+/home/pdp15/UniPar_AI/Datasets/eval/llama_8b_test_strict_shot_0_m_1024_t_0.2_p_0.9
+
+********Translate total for:  HeCBench-omp-cuda ********
+
+
+**Compile error heat-cuda: heat.cu(5): error: expected a declaration
+  - Incompilable Code -
+  ^
+
+1 error detected in the compilation of "heat.cu".
+make: *** [Makefile:52: heat.o] Error 2
+
+
+
+**Compile error su3-cuda: su3_nn_bench.cu:14:10: fatal error: mat_nn_openmp.hpp: No such file or directory
+   14 | #include "mat_nn_openmp.hpp"
+      |          ^~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Makefile:51: su3_nn_bench.o] Error 1
+
+
+
+**Compile error wsm5-cuda: main.cu(8): error: expected a declaration
+  - Incompilable Code -
+  ^
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:50: main.o] Error 2
+
+
+
+**Compile error stddev-cuda: main.cu(6): error: expected a declaration
+  - Incompilable Code -
+  ^
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:51: main.o] Error 2
+
+
+
+**Compile error particlefilter-cuda: main.cu(12): error: expected a declaration
+  - Incompilable Code -
+  ^
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:51: main.o] Error 2
+
+
+
+**Compile error meanshift-cuda: main.cu(8): error: expected a declaration
+  - Incompilable Code -
+  ^
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:50: main.o] Error 2
+
+
+
+**Compile error ace-cuda: main.cu(8): error: expected a declaration
+  - Incompilable Code -
+  ^
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:55: main.o] Error 2
+
+
+
+**Compile error pnpoly-cuda: kernel.h(32): error: identifier "BLOCK_SIZE_X" is undefined
+    int i = blockIdx.x * BLOCK_SIZE_X * tile_size + threadIdx.x;
+                         ^
+
+kernel.h(44): error: identifier "VERTICES" is undefined
+      int k = VERTICES-1;
+              ^
+
+kernel.h(90): error: identifier "VERTICES" is undefined
+      int k = VERTICES-1;
+              ^
+
+main.cu(9): error: expected a declaration
+  - Incompilable Code -
+  ^
+
+4 errors detected in the compilation of "main.cu".
+make: *** [Makefile:50: main.o] Error 2
+
+
+
+**Compile error geodesic-cuda: main.cu(6): error: expected a declaration
+  - Incompilable Code -
+  ^
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:52: main.o] Error 2
+
+
+
+**Compile error pool-cuda: main.cu(7): error: expected a declaration
+  - Incompilable Code -
+  ^
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:51: main.o] Error 2
+
+
+
+**Run error mixbench-cuda: make: *** [Makefile:58: run] Error 1
+
+
+
+**Compile error winograd-cuda: main.cu(4): error: expected a declaration
+  - Incompilable Code -
+  ^
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:53: main.o] Error 2
+make: *** Waiting for unfinished jobs....
+utils.cu:52: warning: ignoring #pragma omp parallel [-Wunknown-pragmas]
+   52 |   #pragma omp parallel
+      | 
+utils.cu:54: warning: ignoring #pragma omp for [-Wunknown-pragmas]
+   54 |     #pragma omp for
+      | 
+utils.cu: In function ‘void WinogradConv2D_2x2_omp(float*, float*, float*, size_t*)’:
+utils.cu:53:29: warning: comparison of integer expressions of different signedness: ‘int’ and ‘size_t’ {aka ‘long unsigned int’} [-Wsign-compare]
+   53 |   for (int tile_i = 0; tile_i < cpu_global_size[0]; tile_i++) {
+      |                      ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~
+
+
+
+**Run error stencil1d-cuda: make: *** [Makefile:58: run] Segmentation fault (core dumped)
+
+
+
+**Compile error vanGenuchten-cuda: main.cu(6): error: expected a declaration
+  - Incompilable Code -
+  ^
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:50: main.o] Error 2
+
+
+
+**Run error michalewicz-cuda: make: *** [Makefile:56: run] Segmentation fault (core dumped)
+
+
+
+**Compile error convolution1D-cuda: main.cu(7): error: expected a declaration
+  - Incompilable Code -
+  ^
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:52: main.o] Error 2
+
+
+
+**Compile error keogh-cuda: main.cu(6): error: expected a declaration
+  - Incompilable Code -
+  ^
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:52: main.o] Error 2
+
+
+
+**Execution out atomicIntrinsics-cuda: ./main 27 100
+PASS
+Average kernel execution time: 161412.093750 (us)
+PASS
+Average kernel execution time: 162595.171875 (us)
+
+omp - cuda compile rate: 4/18 (0.222) | correct rate: 1/18 (0.056)
+
+********Translate total for:  HeCBench-cuda-omp ********
+
+
+**Compile error stddev-omp: main.cpp:53:20: warning: unused variable 'RowsPerBlk' [-Wunused-variable]
+   53 |   static const int RowsPerBlk = (TPB / ColsPerBlk) * RowsPerThread;
+      |                    ^~~~~~~~~~
+main.cpp:78:7: warning: unused variable 'repeat' [-Wunused-variable]
+   78 |   int repeat = atoi(argv[3]);
+      |       ^~~~~~
+main.cpp:99:10: warning: unused variable 'data_ref' [-Wunused-variable]
+   99 |   float *data_ref = (float*) malloc (inputSizeByte);
+      |          ^~~~~~~~
+main.cpp:58:7: error: use of undeclared identifier 'cudaMemset'
+   58 |       cudaMemset(std, 0, sizeof(Type) * D); 
+      |       ^
+main.cpp:95:3: note: in instantiation of function template specialization 'stddev<float, int>' requested here
+   95 |   stddev(std, data, D, N, sample);
+      |   ^
+3 warnings and 1 error generated.
+make: *** [Makefile.aomp:61: main.o] Error 1
+
+
+
+**Compile error ace-omp: main.cpp:8:1: error: expected external declaration
+    8 | - Incompilable Code -
+      | ^
+main.cpp:8:3: error: unknown type name 'Incompilable'
+    8 | - Incompilable Code -
+      |   ^
+main.cpp:8:20: error: expected ';' after top level declarator
+    8 | - Incompilable Code -
+      |                    ^
+      |                    ;
+3 errors generated.
+make: *** [Makefile.aomp:66: main.o] Error 1
+
+
+
+**Compile error pnpoly-omp: In file included from main.cpp:8:
+./kernel.h:29:11: error: unknown type name 'float2'; did you mean 'float'?
+   29 |     const float2*__restrict point,
+      |           ^~~~~~
+      |           float
+./kernel.h:30:11: error: unknown type name 'float2'; did you mean 'float'?
+   30 |     const float2*__restrict vertex,
+      |           ^~~~~~
+      |           float
+./kernel.h:36:5: error: use of undeclared identifier 'float2'; did you mean 'float'?
+   36 |     float2 lpoint[tile_size];
+      |     ^~~~~~
+      |     float
+./kernel.h:40:13: error: use of undeclared identifier 'BLOCK_SIZE_X'
+   40 |       if (i+BLOCK_SIZE_X*ti < n) {
+      |             ^
+./kernel.h:41:30: error: use of undeclared identifier 'BLOCK_SIZE_X'
+   41 |         lpoint[ti] = point[i+BLOCK_SIZE_X*ti];
+      |                              ^
+./kernel.h:45:13: error: use of undeclared identifier 'VERTICES'
+   45 |     int k = VERTICES-1;
+      |             ^
+./kernel.h:47:21: error: use of undeclared identifier 'VERTICES'
+   47 |     for (int j=0; j<VERTICES; k = j++) {    // edge from vj to vk
+      |                     ^
+./kernel.h:48:7: error: use of undeclared identifier 'float2'; did you mean 'float'?
+   48 |       float2 vj = vertex[j]; 
+      |       ^~~~~~
+      |       float
+./kernel.h:49:7: error: use of undeclared identifier 'float2'; did you mean 'float'?
+   49 |       float2 vk = vertex[k]; 
+      |       ^~~~~~
+      |       float
+./kernel.h:51:24: error: member reference base type 'float' is not a structure or union
+   51 |       float slope = (vk.x-vj.x) / (vk.y-vj.y);
+      |                      ~~^~
+./kernel.h:51:29: error: member reference base type 'float' is not a structure or union
+   51 |       float slope = (vk.x-vj.x) / (vk.y-vj.y);
+      |                           ~~^~
+./kernel.h:51:38: error: member reference base type 'float' is not a structure or union
+   51 |       float slope = (vk.x-vj.x) / (vk.y-vj.y);
+      |                                    ~~^~
+./kernel.h:51:43: error: member reference base type 'float' is not a structure or union
+   51 |       float slope = (vk.x-vj.x) / (vk.y-vj.y);
+      |                                         ~~^~
+./kernel.h:56:9: error: use of undeclared identifier 'float2'; did you mean 'float'?
+   56 |         float2 p = lpoint[ti];
+      |         ^~~~~~
+      |         float
+./kernel.h:58:25: error: member reference base type 'float' is not a structure or union
+   58 |         if (is_between(p.y, vj.y, vk.y) &&         //if p is between vj and vk vertically
+      |                        ~^~
+./kernel.h:58:31: error: member reference base type 'float' is not a structure or union
+   58 |         if (is_between(p.y, vj.y, vk.y) &&         //if p is between vj and vk vertically
+      |                             ~~^~
+./kernel.h:58:37: error: member reference base type 'float' is not a structure or union
+   58 |         if (is_between(p.y, vj.y, vk.y) &&         //if p is between vj and vk vertically
+      |                                   ~~^~
+./kernel.h:59:15: error: member reference base type 'float' is not a structure or union
+   59 |             (p.x < slope * (p.y-vj.y) + vj.x)
+      |              ~^~
+./kernel.h:59:30: error: member reference base type 'float' is not a structure or union
+   59 |             (p.x < slope * (p.y-vj.y) + vj.x)
+      |                             ~^~
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+make: *** [Makefile.aomp:60: main.o] Error 1
+
+
+
+**Compile error winograd-omp: main.cpp:4:1: error: expected external declaration
+    4 | - Incompilable Code -
+      | ^
+main.cpp:4:3: error: unknown type name 'Incompilable'
+    4 | - Incompilable Code -
+      |   ^
+main.cpp:4:20: error: expected ';' after top level declarator
+    4 | - Incompilable Code -
+      |                    ^
+      |                    ;
+3 errors generated.
+make: *** [Makefile.aomp:61: main.o] Error 1
+make: *** Waiting for unfinished jobs....
+
+
+
+**Run error keogh-omp: ./main: error while loading shared libraries: libomp.so: cannot open shared object file: No such file or directory
+make: *** [Makefile.aomp:66: run] Error 127
+
+
+
+**Compile error stencil1d-omp: stencil_1d.cpp:26:5: error: region cannot be closely nested inside 'parallel for' region
+   26 |     #pragma omp barrier
+      |     ^
+stencil_1d.cpp:18:5: error: variable 'lindex' must have explicitly specified data sharing attributes
+   18 |     lindex = gindex + RADIUS;
+      |     ^~~~~~
+stencil_1d.cpp:16:36: note: explicit data sharing attribute requested here
+   16 |   #pragma omp parallel for default(none) shared(in, out, temp) num_threads(BLOCK_SIZE)
+      |                                    ^
+stencil_1d.cpp:29:10: error: variable 'offset' must have explicitly specified data sharing attributes
+   29 |     for (offset = -RADIUS; offset <= RADIUS; offset++)
+      |          ^~~~~~
+stencil_1d.cpp:16:36: note: explicit data sharing attribute requested here
+   16 |   #pragma omp parallel for default(none) shared(in, out, temp) num_threads(BLOCK_SIZE)
+      |                                    ^
+stencil_1d.cpp:17:29: error: variable 'length' must have explicitly specified data sharing attributes
+   17 |   for (gindex = 0; gindex < length; gindex++) {
+      |                             ^~~~~~
+stencil_1d.cpp:16:36: note: explicit data sharing attribute requested here
+   16 |   #pragma omp parallel for default(none) shared(in, out, temp) num_threads(BLOCK_SIZE)
+      |                                    ^
+stencil_1d.cpp:28:5: error: variable 'result' must have explicitly specified data sharing attributes
+   28 |     result = 0;
+      |     ^~~~~~
+stencil_1d.cpp:16:36: note: explicit data sharing attribute requested here
+   16 |   #pragma omp parallel for default(none) shared(in, out, temp) num_threads(BLOCK_SIZE)
+      |                                    ^
+5 errors generated.
+make: *** [Makefile.aomp:60: stencil_1d.o] Error 1
+
+
+
+**Compile error particlefilter-omp: main.cpp:12:1: error: expected external declaration
+   12 | - Incompilable Code -
+      | ^
+main.cpp:12:3: error: unknown type name 'Incompilable'
+   12 | - Incompilable Code -
+      |   ^
+main.cpp:12:20: error: expected ';' after top level declarator
+   12 | - Incompilable Code -
+      |                    ^
+      |                    ;
+3 errors generated.
+make: *** [Makefile.aomp:63: main.o] Error 1
+
+
+
+**Compile error meanshift-omp: main.cpp:8:1: error: expected external declaration
+    8 | - Incompilable Code -
+      | ^
+main.cpp:8:3: error: unknown type name 'Incompilable'
+    8 | - Incompilable Code -
+      |   ^
+main.cpp:8:20: error: expected ';' after top level declarator
+    8 | - Incompilable Code -
+      |                    ^
+      |                    ;
+3 errors generated.
+make: *** [Makefile.aomp:60: main.o] Error 1
+
+
+
+**Compile error pool-omp: main.cpp:7:1: error: expected external declaration
+    7 | - Incompilable Code -
+      | ^
+main.cpp:7:3: error: unknown type name 'Incompilable'
+    7 | - Incompilable Code -
+      |   ^
+main.cpp:7:20: error: expected ';' after top level declarator
+    7 | - Incompilable Code -
+      |                    ^
+      |                    ;
+3 errors generated.
+make: *** [Makefile.aomp:60: main.o] Error 1
+
+
+
+**Compile error convolution1D-omp: main.cpp:7:1: error: expected external declaration
+    7 | - Incompilable Code -
+      | ^
+main.cpp:7:3: error: unknown type name 'Incompilable'
+    7 | - Incompilable Code -
+      |   ^
+main.cpp:7:20: error: expected ';' after top level declarator
+    7 | - Incompilable Code -
+      |                    ^
+      |                    ;
+3 errors generated.
+make: *** [Makefile.aomp:60: main.o] Error 1
+
+
+
+**Compile error heat-omp: heat.cpp:5:1: error: unknown type name 'endl'
+    5 | endl << std::endl
+      | ^
+heat.cpp:5:6: error: expected unqualified-id
+    5 | endl << std::endl
+      |      ^
+heat.cpp:19:8: error: no type named 'cout' in namespace 'std'
+   19 |   std::cout << "Stability" << std::endl << std::endl;
+      |   ~~~~~^
+heat.cpp:19:13: error: expected unqualified-id
+   19 |   std::cout << "Stability" << std::endl << std::endl;
+      |             ^
+heat.cpp:20:8: error: no type named 'cout' in namespace 'std'
+   20 |   std::cout << " r value: " << r << std::endl;
+      |   ~~~~~^
+heat.cpp:20:13: error: expected unqualified-id
+   20 |   std::cout << " r value: " << r << std::endl;
+      |             ^
+heat.cpp:21:3: error: expected unqualified-id
+   21 |   if (r > 0.5)
+      |   ^
+heat.cpp:23:8: error: no type named 'cout' in namespace 'std'
+   23 |   std::cout << LINE << std::endl;
+      |   ~~~~~^
+heat.cpp:23:13: error: expected unqualified-id
+   23 |   std::cout << LINE << std::endl;
+      |             ^
+heat.cpp:25:26: error: use of undeclared identifier 'n'
+   25 |   double *u = new double[n*n];
+      |                          ^
+heat.cpp:25:28: error: use of undeclared identifier 'n'
+   25 |   double *u = new double[n*n];
+      |                            ^
+heat.cpp:26:30: error: use of undeclared identifier 'n'
+   26 |   double *u_tmp = new double[n*n];
+      |                              ^
+heat.cpp:26:32: error: use of undeclared identifier 'n'
+   26 |   double *u_tmp = new double[n*n];
+      |                                ^
+heat.cpp:29:17: error: use of undeclared identifier 'n'
+   29 |   int n_ceil = (n*n+num_threads-1) / num_threads;
+      |                 ^
+heat.cpp:29:19: error: use of undeclared identifier 'n'
+   29 |   int n_ceil = (n*n+num_threads-1) / num_threads;
+      |                   ^
+heat.cpp:31:24: error: unexpected OpenMP directive '#pragma omp parallel for'
+   31 |   #pragma omp parallel for
+      |                        ^
+heat.cpp:32:3: error: expected unqualified-id
+   32 |   for (int i = 0; i < n*n; ++i) {
+      |   ^
+heat.cpp:41:24: error: unexpected OpenMP directive '#pragma omp parallel for'
+   41 |   #pragma omp parallel for
+      |                        ^
+heat.cpp:42:3: error: expected unqualified-id
+   42 |   for (int i = 0; i < n*n; ++i) {
+      |   ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+make: *** [Makefile.aomp:62: heat.o] Error 1
+
+
+
+**Compile error su3-omp: In file included from su3_nn_bench.cpp:14:
+./mat_nn_openmp.hpp:29:7: error: use of undeclared identifier 'verbose'
+   29 |   if (verbose >= 1) {
+      |       ^
+./mat_nn_openmp.hpp:36:17: error: use of undeclared identifier 'Clock'
+   36 |   auto tstart = Clock::now();
+      |                 ^
+./mat_nn_openmp.hpp:37:38: error: use of undeclared identifier 'warmups'
+   37 |   for (int iters=0; iters<iterations+warmups; ++iters) {
+      |                                      ^
+./mat_nn_openmp.hpp:38:18: error: use of undeclared identifier 'warmups'
+   38 |     if (iters == warmups) {
+      |                  ^
+./mat_nn_openmp.hpp:39:16: error: use of undeclared identifier 'Clock'
+   39 |       tstart = Clock::now();
+      |                ^
+./mat_nn_openmp.hpp:66:66: error: use of undeclared identifier 'Clock'
+   66 |   ttotal = std::chrono::duration_cast<std::chrono::microseconds>(Clock::now()-tstart).count();
+      |                                                                  ^
+./mat_nn_openmp.hpp:92:7: error: use of undeclared identifier 'almost_equal'
+   92 |   if (almost_equal(sum, 4.0*sizeof(su3_matrix)/(sizeof(Complx)), 1E-6)) {
+      |       ^
+su3_nn_bench.cpp:15:1: error: expected external declaration
+   15 | - Incompilable Code -
+      | ^
+su3_nn_bench.cpp:15:3: error: unknown type name 'Incompilable'
+   15 | - Incompilable Code -
+      |   ^
+su3_nn_bench.cpp:15:20: error: expected ';' after top level declarator
+   15 | - Incompilable Code -
+      |                    ^
+      |                    ;
+10 errors generated.
+make: *** [Makefile.aomp:60: su3_nn_bench.o] Error 1
+
+
+
+**Compile error michalewicz-omp: main.cpp:14:1: error: unknown type name '__forceinline__'
+   14 | __forceinline__
+      | ^
+main.cpp:27:1: error: unknown type name '__forceinline__'
+   27 | __forceinline__
+      | ^
+2 errors generated.
+make: *** [Makefile.aomp:60: main.o] Error 1
+
+
+cuda - omp compile rate: 1/17 (0.059) | correct rate: 0/17 (0.000)
+skipping:  eval_run.log
+
+cuda compile rate: 4/18 (0.222)
+cuda correct rate: 1/18 (0.056)
+omp compile rate: 1/17 (0.059)
+omp correct rate: 0/17 (0.000)
+
+compile=4/18 correct=1/18	compile=1/17 correct=0/17	
+
+Results saved to: /home/pdp15/UniPar_AI/Datasets/eval/llama_8b_test_strict_shot_0_m_1024_t_0.2_p_0.9/eval_results.json
+Log saved to: Datasets/eval/llama_8b_test_strict_shot_0_m_1024_t_0.2_p_0.9/eval_run.log

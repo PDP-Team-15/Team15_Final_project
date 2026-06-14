@@ -1,0 +1,10 @@
+{
+    "omp-cuda": {
+        "vanGenuchten-cuda": 60.969221353530884
+    },
+    "cuda-omp": {
+        "keogh-omp": 47.9610915184021,
+        "pool-omp": 44.74181270599365,
+        "vanGenuchten-omp": 69.58173823356628
+    }
+}

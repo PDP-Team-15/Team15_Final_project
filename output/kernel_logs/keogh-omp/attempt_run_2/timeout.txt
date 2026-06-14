@@ -1,0 +1,8 @@
+=== TIMEOUT ERROR (Final Attempt) ===
+Kernel: keogh
+From API: cuda
+To API: omp
+Filename: main.cpp
+
+=== ERROR MESSAGE ===
+Execution timed out on final attempt

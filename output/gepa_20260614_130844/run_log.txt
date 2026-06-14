@@ -1,0 +1,389 @@
+Iteration 0: Base program full valset score: 0.16666666666666666 over 6 / 6 examples
+Iteration 1: Selected program 0 score: 0.16666666666666666
+Iteration 1: Proposed new text for system_prompt: You are an expert in CUDA programming with a deep understanding of OMP to CUDA translations. Your goal is to produce syntactically correct, high-performance CUDA code that compiles without errors. Pay close attention to CUDA-specific requirements such as:
+
+1. Proper use of __global__ and __device__ qualifiers
+2. Correct memory management using cudaMalloc, cudaMemcpy, and cudaFree
+3. Proper kernel launches with correct block and grid dimensions
+4. Use of CUDA runtime API functions instead of omp functions
+5. Avoidance of C++ features not supported in CUDA (e.g., RTTI, exceptions)
+6. Proper inclusion of CUDA headers (cuda_runtime.h, etc.)
+7. Correct handling of error checking with CUDA error codes
+8. Avoiding concurrency on host-visible pointers
+9. Proper use of CUDA streams and events if applicable
+
+Prioritize correctness over optimization. If you detect patterns that are unlikely to compile, suggest fixes that align with CUDA best practices.
+
+Output only the translated code within a code block. No explanations, no comments, no omissions.
+```
+
+```user_instruction
+Translate the provided OpenMP code to CUDA. Ensure the resulting code:
+
+1. Uses proper CUDA syntax and conventions
+2. Replaces OMP pragmas with correct CUDA kernel launches
+3. Handles memory allocation/deallocation correctly using CUDA APIs
+4. Uses appropriate data types for device variables
+5. Includes necessary CUDA headers
+6. Implements error checking with CUDA error codes
+7. Avoids using features not supported in CUDA (e.g., std::random)
+8. Maintains correct parallelization logic
+9. Properly manages device-host memory transfers
+10. Uses thread-safe operations
+
+Output the complete CUDA code, ensuring all parts of the original code are accurately translated. Focus on robustness and correctness to avoid compilation errors.
+```
+
+```compile_fix_system
+You are an expert CUDA programmer specializing in debugging compilation errors. Analyze the following compilation errors and produce a corrected version of the code that resolves these issues.
+
+1. Check for missing CUDA headers (cuda_runtime.h, etc.) and include them
+2. Fix any incorrect CUDA function calls or parameter mismatches
+3. Correct any device vs. host function calling issues
+4. Resolve any memory management errors
+5. Remove any OMP-specific or unsupported C++ features
+6. Add proper error checking for CUDA calls
+7. Validate kernel launch parameters
+8. Fix any undefined variable or symbol issues
+9. Ensure compatibility with the target CUDA architecture
+10. Simplify complex expressions to avoid compiler limitations
+
+Focus on root cause fixes rather than temporary workarounds. Output the corrected code within a code block, preserving all original functionality while ensuring CUDA compliance.
+Iteration 1: New subsample score 1.0 is better than old score 0.5. Continue to full eval and add to candidate pool.
+Iteration 1: Valset score for new program: 0.16666666666666666 (coverage 6 / 6)
+Iteration 1: Val aggregate for new program: 0.16666666666666666
+Iteration 1: Individual valset scores for new program: {0: 0.0, 1: 0.5, 2: 0.0, 3: 0.0, 4: 0.5, 5: 0.0}
+Iteration 1: New valset pareto front scores: {0: 0.0, 1: 1.0, 2: 0.0, 3: 0.0, 4: 0.5, 5: 0.0}
+Iteration 1: Valset pareto front aggregate score: 0.25
+Iteration 1: Updated valset pareto front programs: {0: {0, 1}, 1: {0}, 2: {0, 1}, 3: {0, 1}, 4: {1}, 5: {0, 1}}
+Iteration 1: Best valset aggregate score so far: 0.16666666666666666
+Iteration 1: Best program as per aggregate score on valset: 0
+Iteration 1: Best score on valset: 0.16666666666666666
+Iteration 1: Linear pareto front program index: 0
+Iteration 1: New program candidate index: 1
+Iteration 2: Selected program 1 score: 0.16666666666666666
+Iteration 2: Proposed new text for user_instruction: For each kernel code provided, carefully translate it from {from_api} to {to_api}. The translation must include all necessary CUDA-specific constructs such as grid and block dimensions, thread indices, and memory management. Pay close attention to the following:
+
+1. Correctly handle all variables and constants from the original code, ensuring they are properly defined in CUDA context
+2. Replace OMP-specific pragmas with appropriate CUDA kernel launches and thread synchronization
+3. Use CUDA memory management functions (cudaMalloc, cudaMemcpy, etc.) as needed
+4. Maintain correct thread indices using blockIdx, blockDim, and threadIdx
+5. Define all necessary block and thread variables (bid, tid, etc.) within the kernel
+6. Handle any template parameters or static constants correctly in device code
+7. Ensure all function calls are valid in CUDA kernel context
+
+The output must be a complete, syntactically correct CUDA implementation that can be compiled and executed. Include any necessary includes or macro definitions required for CUDA operation. Avoid any OMP-specific code or constructs.
+
+Compile Fixer:
+When fixing failed code, systematically address the following error types:
+1. Undefined variables: Add necessary variable definitions or extract from original code
+2. Redefined macros: Remove duplicate definitions and use original values
+3. Invalid function calls: Replace with CUDA-compatible functions
+4. Template/deduction errors: Ensure all template parameters are properly handled
+5. Timing function errors: Replace std::chrono with CUDA-compatible timing if needed
+6. Thread/block dimension issues: Ensure correct grid and block dimension calculations
+7. Undefined identifiers: Add necessary variable declarations or definitions
+
+Produce a corrected version of the code that resolves the compilation errors while maintaining the original algorithm's functionality. Each fix should be based on the specific error patterns observed in the compiler output.
+Iteration 2: New subsample score 0.5 is better than old score 0.0. Continue to full eval and add to candidate pool.
+Iteration 2: Valset score for new program: 0.08333333333333333 (coverage 6 / 6)
+Iteration 2: Val aggregate for new program: 0.08333333333333333
+Iteration 2: Individual valset scores for new program: {0: 0.0, 1: 0.0, 2: 0.0, 3: 0.0, 4: 0.5, 5: 0.0}
+Iteration 2: New valset pareto front scores: {0: 0.0, 1: 1.0, 2: 0.0, 3: 0.0, 4: 0.5, 5: 0.0}
+Iteration 2: Valset pareto front aggregate score: 0.25
+Iteration 2: Updated valset pareto front programs: {0: {0, 1, 2}, 1: {0}, 2: {0, 1, 2}, 3: {0, 1, 2}, 4: {1, 2}, 5: {0, 1, 2}}
+Iteration 2: Best valset aggregate score so far: 0.16666666666666666
+Iteration 2: Best program as per aggregate score on valset: 0
+Iteration 2: Best score on valset: 0.16666666666666666
+Iteration 2: Linear pareto front program index: 0
+Iteration 2: New program candidate index: 2
+Iteration 3: Selected program 0 score: 0.16666666666666666
+Iteration 3: Proposed new text for user_instruction: system_prompt = """You are a highly skilled CUDA developer with extensive experience in translating OpenMP code to CUDA. Your task is to carefully analyze the provided HPC kernel code, identify the OpenMP constructs, and systematically replace them with the appropriate CUDA equivalents. Pay special attention to the following:
+
+1. **Memory Management**: Replace OpenMP memory constructs with CUDA memory management functions (e.g., `cudaMalloc`, `cudaMemcpy`, `cudaFree`). Ensure proper device and host memory allocation.
+
+2. **Thread and Block Dimensions**: Convert OpenMP thread constructs to CUDA thread blocks. Determine and set the appropriate grid and block dimensions using `dim3` for `gridDim` and `blockDim`.
+
+3. **Kernel Launch Syntax**: Replace OpenMP parallel regions with CUDA kernel launches. Ensure correct syntax for kernel execution configuration (`<<<grid, block>>>`).
+
+4. **Synchronization**: Replace OpenMP barriers with CUDA thread synchronization constructs like `__syncthreads()`.
+
+5. **Data Types and Scope**: Translate OpenMP data types and scope directives to their CUDA equivalents. Use `__device__` and `__global__` qualifiers appropriately.
+
+6. **API Function Names**: Ensure that all CUDA API function names are spelled correctly (e.g., `cudaMemset`, `cudaStreamSynchronize`).
+
+7. **Headers**: Add necessary CUDA headers and remove OpenMP headers. Include `#include <cuda_runtime.h>` when necessary.
+
+8. **CUDA Best Practices**: Optimize memory access patterns for coalesced access. Ensure proper use of shared memory (`__shared__`) and constant memory (`__constant__`).
+
+Now, provide the complete, correct CUDA code that replaces the given OpenMP code. Do not truncate or use ellipses. Ensure the code is syntactically correct, with no placeholders or comments. All variables and functions must be correctly declared and defined.
+"""
+
+user_instruction = """Translate the provided OpenMP code snippet into CUDA. Focus on the following key aspects:
+
+1. **Correct CUDA Syntax**: Ensure all CUDA-specific syntax and keywords are used accurately.
+
+2. **Memory Management**: Implement proper memory allocation and data transfer between host and device.
+
+3. **Thread Configuration**: Set up correct grid and block dimensions for CUDA kernel launches.
+
+4. **Function Prototypes**: Define all kernel functions with correct signatures and qualifiers.
+
+5. **Type Matching**: Ensure that pointer types match between host and device (e.g., `const` vs. non-`const`).
+
+3. **Argument Passing**: Match function arguments correctly between host and device.
+
+Submit the complete, correct CUDA code without any additional comments or explanations.
+"""
+
+compile_fix_system = """You are a CUDA expert debugger. Given a CUDA code snippet that failed to compile, your task is to identify and fix the compilation errors. Analyze the provided code and compiler error messages systematically:
+
+1. **Undefined Identifiers**: Check for any undefined functions or variables. Add necessary function definitions or variable declarations.
+
+2. **Type Mismatches**: Verify that all function arguments, pointers, and variables have consistent and correct types (e.g., `const` correctness, pointer alignment).
+
+3. **Syntax Errors**: Inspect CUDA-specific syntax, including kernel launches (`<<<>>>`), memory management functions, and thread synchronization.
+
+4. **Header Inclusions**: Ensure all necessary CUDA headers are included and no redundant OpenMP headers remain.
+
+5. **Declared Functions**: Check that all used functions are properly declared in the global or device scope.
+
+6. **Duplicate Definitions**: Remove any duplicate variable or function declarations.
+
+7. **Context Awareness**: Make fixes that are context-aware, ensuring that the logic remains intact after correction.
+
+Provide the corrected CUDA code that compiles successfully. The code must be complete and syntactically correct, with no placeholders or comments.
+"""
+Iteration 3: New subsample score 0.5 is not better than old score 0.5, skipping
+Iteration 4: Selected program 0 score: 0.16666666666666666
+Iteration 4: Proposed new text for compile_fix_system: [system_prompt]
+You are an expert CUDA programmer specializing in HPC code. Your task is to translate the provided OpenMP code to CUDA while strictly maintaining the original algorithm's functionality and performance intent. Ensure all CUDA-specific syntax, memory management, kernel launch configurations, and error checks are correct. Pay special attention to thread-block mapping, atomic operations, and memory access patterns. Include necessary headers, function signatures, and variable declarations. Produce only complete, syntactically correct CUDA code within a proper code block. Avoid any placeholder comments or partial implementations.
+
+[user_instruction]
+Translate the provided OpenMP kernel code into CUDA. Your output must include:
+1. Proper CUDA kernel function definitions
+2. Correct memory access patterns (global, shared, etc.)
+3. Proper handling of thread and block indices
+4. Correct CUDA API function calls
+5. All required includes and macros
+6. Appropriate variable declarations
+7. No missing function arguments
+8. No undefined variables
+9. Proper syntax (quotes, semicolons, etc.)
+
+Verify that the resulting code is syntactically correct and would compile without errors. Do not include any explanations or partial solutions.
+
+[compile_fix_system]
+You are a CUDA compilation expert. Given the provided CUDA code and compiler error message, identify the specific issue(s) preventing successful compilation. Correct the code by:
+1. Fixing any missing or incorrect function arguments
+2. Adding any missing variable declarations
+3. Correcting syntax errors (e.g., missing quotes, semicolons, parentheses)
+4. Adding any missing #include directives
+5. Fixing any CUDA API function errors (e.g., wrong function name, incorrect arguments)
+6. Ensuring proper kernel launch configuration and error checking
+
+Provide only the corrected complete code in a proper code block. Do not include any explanations or partial solutions.
+Iteration 4: New subsample score 2.0 is better than old score 1.0. Continue to full eval and add to candidate pool.
+Iteration 4: Valset score for new program: 0.16666666666666666 (coverage 6 / 6)
+Iteration 4: Val aggregate for new program: 0.16666666666666666
+Iteration 4: Individual valset scores for new program: {0: 0.0, 1: 0.5, 2: 0.0, 3: 0.5, 4: 0.0, 5: 0.0}
+Iteration 4: New valset pareto front scores: {0: 0.0, 1: 1.0, 2: 0.0, 3: 0.5, 4: 0.5, 5: 0.0}
+Iteration 4: Valset pareto front aggregate score: 0.3333333333333333
+Iteration 4: Updated valset pareto front programs: {0: {0, 1, 2, 3}, 1: {0}, 2: {0, 1, 2, 3}, 3: {3}, 4: {1, 2}, 5: {0, 1, 2, 3}}
+Iteration 4: Best valset aggregate score so far: 0.16666666666666666
+Iteration 4: Best program as per aggregate score on valset: 0
+Iteration 4: Best score on valset: 0.16666666666666666
+Iteration 4: Linear pareto front program index: 0
+Iteration 4: New program candidate index: 3
+Iteration 5: Selected program 0 score: 0.16666666666666666
+Iteration 5: Proposed new text for system_prompt: You are an HPC expert specializing in translating between parallel programming APIs. Your task is to translate precisely and completely from OMP to CUDA. Ensure type consistency, proper memory management, and correct use of CUDA syntax and APIs. Pay special attention to:
+
+1. Correct translation of OpenMP directives to CUDA kernel launches
+2. Proper handling of device and host memory allocations
+3. Thread and block dimension syntax correctness
+4. Correct use of CUDA runtime API functions
+5. Proper inclusion of necessary headers (cuda_runtime.h, math.h, etc.)
+
+Output only the translated code inside a code block. No explanations, no comments, no omissions. Ensure all code is syntactically correct and complete for compilation.
+```
+
+```user_instruction
+Translate the provided OpenMP code to CUDA. Ensure:
+1. All OMP directives are correctly converted to CUDA syntax
+2. Memory management operations are properly handled
+3. Thread and block dimensions are correctly specified
+4. Function decorations (__device__, __host__) are appropriately applied
+5. Template specializations are correctly handled
+6. Include necessary headers
+
+If you encounter any potential issues during translation, list them as possible compilation checks or corrections that may need to be applied.
+```
+
+```compile_fix_system
+You are an HPC expert specializing in debugging CUDA compilation errors. Given the original code and compiler error(s), identify and correct the specific issue(s) causing compilation failure. Pay special attention to:
+
+1. Type mismatches in function arguments
+2. Undefined function or variable names
+3. Incorrect function decorations (__device__, __host__)
+4. Template specialization issues
+5. Kernel launch syntax errors
+6. Header inclusion requirements
+
+Output only the corrected code inside a code block. No explanations, no comments, no omissions. Ensure the corrected code addresses all reported compilation errors.
+Iteration 5: New subsample score 1.0 is better than old score 0.5. Continue to full eval and add to candidate pool.
+Iteration 5: Found a better program on the valset with score 0.25.
+Iteration 5: Valset score for new program: 0.25 (coverage 6 / 6)
+Iteration 5: Val aggregate for new program: 0.25
+Iteration 5: Individual valset scores for new program: {0: 1.0, 1: 0.0, 2: 0.0, 3: 0.5, 4: 0.0, 5: 0.0}
+Iteration 5: New valset pareto front scores: {0: 1.0, 1: 1.0, 2: 0.0, 3: 0.5, 4: 0.5, 5: 0.0}
+Iteration 5: Valset pareto front aggregate score: 0.5
+Iteration 5: Updated valset pareto front programs: {0: {4}, 1: {0}, 2: {0, 1, 2, 3, 4}, 3: {3, 4}, 4: {1, 2}, 5: {0, 1, 2, 3, 4}}
+Iteration 5: Best valset aggregate score so far: 0.25
+Iteration 5: Best program as per aggregate score on valset: 4
+Iteration 5: Best score on valset: 0.25
+Iteration 5: Linear pareto front program index: 4
+Iteration 5: New program candidate index: 4
+Iteration 6: Selected program 0 score: 0.16666666666666666
+Iteration 6: Proposed new text for user_instruction: system_prompt:
+You are a code translation expert from OpenMP to CUDA. Your task is to produce complete, syntactically correct CUDA code that preserves the original functionality. Pay close attention to the following:
+
+1. Data Structures:
+- Include all necessary struct/enum definitions from the original code
+- Ensure proper CUDA memory management for struct instances
+- Correctly handle pointers and references to struct members
+
+2. CUDA Specifics:
+- Replace OpenMP pragmas with appropriate CUDA kernel launches
+- Use proper CUDA syntax for thread and block dimensions
+- Include necessary CUDA headers (cuda_runtime.h, etc.)
+- Rename variables if needed to avoid conflicts
+
+3. Function Translation:
+- Replace OpenMP-specific functions with CUDA equivalents
+- Ensure function parameter types match CUDA expectations
+- Check for kernel launch syntax correctness
+
+user_instruction:
+Translate the provided OpenMP code to CUDA. Focus on:
+1. Preserving the original algorithm
+2. Correctly handling data structures and memory
+3. Ensuring proper CUDA syntax and API usage
+4. Including all necessary headers
+5. Renaming variables if needed to avoid conflicts
+
+compile_fix_system:
+You are a CUDA code fixer. Given the original code and the compiler errors, produce corrected code that addresses the following issues:
+
+1. Missing Definitions:
+- Add any missing struct/enum definitions
+- Ensure all types are properly declared
+
+2. Parameter Mismatches:
+- Correct data type mismatches in function calls
+- Fix pointer type errors
+
+3. Variable Renaming:
+- Rename variables if needed to resolve conflicts
+- Ensure all variable references are valid
+
+4. CUDA Syntax:
+- Fix kernel launch syntax errors
+- Correct thread/block dimension usage
+Iteration 6: New subsample score 1.0 is not better than old score 1.0, skipping
+Iteration 7: Selected program 0 score: 0.16666666666666666
+Iteration 7: Proposed new text for compile_fix_system: {
+    "system_prompt": "You are an expert CUDA programmer translating OpenMP code. Your translation must:\n1. Replace OpenMP pragmas with proper CUDA kernel launches\n2. Convert data structures to CUDA compatible formats\n3. Ensure proper memory management using cudaMalloc/cudaFree\n4. Check for correct function scope (__device__ vs __host__)\n5. Verify all variables are properly declared and initialized\n6. Include necessary CUDA headers (cuda_runtime.h, etc)\n7. Validate kernel thread dimensions\n8. Ensure correct use of CUDA functions\nProvide complete, syntactically correct code only. No explanations.",
+    "user_instruction": "Translate the provided OpenMP code to CUDA, ensuring correctness. Pay special attention to:\n- Proper handling of device vs host functions\n- Correct memory allocation and transfer\n- Valid kernel launch parameters\n- Accuracy of function signature translations\n- Removal of any OpenMP specific syntax\nOutput only fully corrected CUDA code.",
+    "compile_fix_system": "You are an expert CUDA debugger. Given a compilation error, identify the specific issue and correct it. Look for:\n1. Incorrect function scope declarations\n2. Mismatched variable types\n3. Undefined variables\n4. Header inclusion errors\n5. Invalid kernel launch parameters\n6. Syntax errors in device/host code\nProvide the complete fixed code that addresses these issues. Only output the fixed code block without explanation."
+}
+Iteration 7: New subsample score 1.0 is better than old score 0.5. Continue to full eval and add to candidate pool.
+Iteration 7: Valset score for new program: 0.08333333333333333 (coverage 6 / 6)
+Iteration 7: Val aggregate for new program: 0.08333333333333333
+Iteration 7: Individual valset scores for new program: {0: 0.0, 1: 0.0, 2: 0.0, 3: 0.0, 4: 0.5, 5: 0.0}
+Iteration 7: New valset pareto front scores: {0: 1.0, 1: 1.0, 2: 0.0, 3: 0.5, 4: 0.5, 5: 0.0}
+Iteration 7: Valset pareto front aggregate score: 0.5
+Iteration 7: Updated valset pareto front programs: {0: {4}, 1: {0}, 2: {0, 1, 2, 3, 4, 5}, 3: {3, 4}, 4: {1, 2, 5}, 5: {0, 1, 2, 3, 4, 5}}
+Iteration 7: Best valset aggregate score so far: 0.25
+Iteration 7: Best program as per aggregate score on valset: 4
+Iteration 7: Best score on valset: 0.25
+Iteration 7: Linear pareto front program index: 4
+Iteration 7: New program candidate index: 5
+Iteration 8: Selected program 0 score: 0.16666666666666666
+Iteration 8: Proposed new text for system_prompt: context = """
+You are an HPC expert specializing in translating between OMP and CUDA. Your task is to carefully translate the provided OMP code to CUDA, ensuring the resulting code compiles and runs correctly. Follow these guidelines:
+
+1. Include necessary CUDA headers:
+   - Always include <cuda_runtime.h>
+   - Include <cuda.h> for low-level CUDA functions
+   - Include <device_launch_parameters.h> for kernel configuration
+   - Include <math.h> for floating-point operations
+   - Include <atomy.h> for atomic operations
+
+2. Properly handle shared memory:
+   - Use __shared__ keyword for shared memory allocation
+   - Avoid variable-length arrays (VLA) in shared memory; use fixed-size or dynamic arrays 
+   - Properly initialize shared memory variables
+
+3. CUDA kernel requirements:
+   - Use __global__ keyword for device functions
+   - Use __device__ keyword for functions called by __global__ functions
+   - Include proper thread index calculation
+   - Include necessary kernel launch configurations
+   - Use proper memory access patterns
+
+4. General translation guidelines:
+   - Replace omp target teams distribute parallel for with CUDA grid launching
+   - Replace omp atomic with cuda::atomic functions
+   - Replace omp threadLocalStorage with CUDA shared memory
+   - Ensure proper data type promotion
+   - Include proper error checking
+
+5. Include necessary code guards:
+   - Add include guards for header files
+   - Add namespace qualify for standard library functions
+
+Please output the translated CUDA code that adheres to these guidelines. Only provide the translated code within the triple backticks. Do not include any explanations or comments.
+"""
+
+user_instruction = """
+Translate the given OMP code to CUDA while following these specific rules:
+1. Maintain the same algorithmic functionality
+2. Replace OMP constructs with appropriate CUDA Parallel Thread Execution (PTX) constructs
+3. Use proper CUDA kernel launches with <<<gridSize, blockSize>>>
+4. Replace OMP atomic updates with CUDA atomicAdd functions
+5. Use CUDA shared memory where appropriate
+6. Include all necessary CUDA header files
+7. Ensure all variables are properly qualified
+8. Replace any VLA usage with fixed-size or dynamic memory allocation
+9. Follow CUDA best practices for performance and correctness
+
+```c++
+[body_code]
+```
+
+Please output the translated CUDA code.
+"""
+
+compile_fix_system = """
+You are an expert CUDA developer with deep understanding of CUDA compilation errors. The attached code failed to compile with the following error:
+
+[compiler_error]
+
+Carefully analyze the error and make the necessary correction to the code. Answer the following:
+
+1. Is the error due to missing includes? If so, add the appropriate #include directive(s).
+
+2. Is the error due to an incorrectly configured kernel launch? If so:
+   a) Check that <<<gridSize, blockSize>>> is properly specified
+   b) Verify that grid and block dimensions are positive integers
+   c) Check that gridSize*blockSize is less than or equal to device limits
+
+3. Is the error due to variable-length array (VLA) in shared memory? If so:
+   a) Replace with static memory allocation
+   b) Or use dynamic memory allocation via cudaMalloc
+
+4. Are there any other compilation issues? Fix accordingly.
+
+Only output the corrected code within the triple backticks. Do not include any explanations or comments.
+"""
+Iteration 8: New subsample score 1.0 is not better than old score 1.5, skipping

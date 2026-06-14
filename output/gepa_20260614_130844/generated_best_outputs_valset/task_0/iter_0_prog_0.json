@@ -1,0 +1,20 @@
+[
+    0.0,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations.",
+        "compile_fix_system": "You are an expert {to_api} programmer specializing in HPC code. Fix compilation errors. Provide only the complete corrected code inside a proper code block. No explanations, no omissions, no placeholders."
+    },
+    {
+        "kernel": "log2",
+        "from_api": "omp",
+        "to_api": "cuda",
+        "compiled": false,
+        "fix_needed": true,
+        "initial_compile_error": "main.cu(17): error: identifier \"binary_log\" is undefined\n        sum += binary_log(d_inputs[j], d_precision[i]);\n               ^\n\nmain.cu(76): error: identifier \"binary_log\" is undefined\n          output_vals[i][j] = binary_log(inputs[j], precision[i]);\n                              ^\n\nmain.cu(121): error: no operator \"-\" matches these operands\n            operand types are: std::vector<float, std::allocator<float>> - float\n        s += (output_vals[i * inputs_size + j] - ref_vals[j]) * (output_vals[i * inputs_size + j] - ref_vals[j]);\n                                               ^\n/usr/inc",
+        "post_fix_error": "main.cu(13): error: expression must have integral or unscoped enum type\n      result += (x >> i) & 1;\n                 ^\n\nmain.cu(84): error: calling a __device__ function(\"_Z10binary_log1?1?\") from a __host__ function(\"main\") is not allowed\n          output_vals[i][j] = binary_log(inputs[j], precision[i]);\n                              ^\n\nmain.cu(129): error: no operator \"-\" matches these operand",
+        "source_snippet": "#include <iostream>\n#include <fstream>\n#include <iomanip>\n#include <vector>\n#include <cmath>\n#include \"kernel.h\"\n\nint main(int argc, char* argv[]) {\n\n  if (argc != 2) {\n    std::cout << \"Usage: ./main <config filename>\\n\";\n    return 1;\n  }\n\n  std::ifstream message_file (argv[1]);\n\n  std::string placeholder;\n  message_file >> placeholder;\n  long ceilingVal;\n  message_file >> ceilingVal;\n\n  message",
+        "translated_snippet": "#include <iostream>\n#include <fstream>\n#include <iomanip>\n#include <vector>\n#include <cmath>\n#include <cuda_runtime.h>\n\n#define HOST 1\n\n__global__ void log2_approx_kernel(float* d_output_vals, float* d_inputs, int* d_precision, int inputs_size, int precision_count, int repeat) {\n  int idx = blockIdx.x * blockDim.x + threadIdx.x;\n  if (idx < inputs_size * precision_count) {\n    int i = idx / inputs",
+        "log": "[log2] Compile failed, trying model fix...\n[log2] Compile error:\nmain.cu(17): error: identifier \"binary_log\" is undefined\n        sum += binary_log(d_inputs[j], d_precision[i]);\n               ^\n\nmain.cu(76): error: identifier \"binary_log\" is undefined\n          output_vals[i][j] = binary_log(inputs[j], precision[i]);\n                              ^\n\nmain.cu(121): error: no operator \"-\" matches these operands\n            operand types are: std::vector<float, std::allocator<float>> - float\n        s += (output_vals[i * inputs_size + j] - ref_vals[j]) * (output_vals[i * inputs_size + j] - ref_vals[j]);\n                                               ^\n/usr/inc\n[log2] Still failed after model fix \u2717\n[log2] Second error:\nmain.cu(13): error: expression must have integral or unscoped enum type\n      result += (x >> i) & 1;\n                 ^\n\nmain.cu(84): error: calling a __device__ function(\"_Z10binary_log1?1?\") from a __host__ function(\"main\") is not allowed\n          output_vals[i][j] = binary_log(inputs[j], precision[i]);\n                              ^\n\nmain.cu(129): error: no operator \"-\" matches these operand\n"
+    }
+]

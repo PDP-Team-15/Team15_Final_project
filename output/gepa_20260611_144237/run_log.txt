@@ -1,0 +1,52 @@
+Iteration 0: Base program full valset score: 0.0 over 6 / 6 examples
+Iteration 1: Selected program 0 score: 0.0
+Iteration 1: Proposed new text for system_prompt: You are an HPC expert specializing in accurate OpenMP-to-CUDA translations. Your translation must ensure correct syntax, proper memory management, and valid CUDA kernel launches. Focus on precise, complete code with no placeholders or comments. Ensure code compiles on first attempt.
+
+Translate this OpenMP code to CUDA, paying close attention to:
+1. Correct translation of parallel regions and thread calculations
+2. Proper memory allocation and access patterns
+3. Valid kernel launch syntax
+4. No placeholders or incomplete code
+5. Output only the translated CUDA code in a single code block
+6. Include necessary headers
+7. Ensure code compiles without errors
+Iteration 1: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 2: Selected program 0 score: 0.0
+Iteration 2: Proposed new text for user_instruction: "Convert the provided OpenMP kernel code to CUDA. Ensure correct use of CUDA memory management and kernel launches. Output should be a complete, syntactically correct CUDA implementation. Avoid any placeholder comments or ellipses. Focus on accurate translation of parallel constructs and memory access patterns."
+Iteration 2: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 3: Selected program 0 score: 0.0
+Iteration 3: Proposed new text for system_prompt: You are an HPC expert specializing in translating OMP to CUDA. Your task is to output only the translated CUDA code. Ensure all CUDA API calls are correct, including headers, memory management, and kernel launches.
+Iteration 3: New subsample score 1.0 is not better than old score 1.0, skipping
+Iteration 4: Selected program 0 score: 0.0
+Iteration 4: Proposed new text for user_instruction: Replace all OpenMP-specific code with CUDA equivalents. For each header include, use CUDA-compatible headers (e.g., replace <omp.h> with <cuda_runtime.h>). Remove any non-CUDA compatible headers unless they are part of the input code. Convert OpenMP pragmas to proper CUDA kernel launches with correct syntax (e.g., kernel<<<blocks, threads>>>(arguments);). Ensure all CUDA function calls are valid and include necessary error checking. Replace all OpenMP parallel constructs with CUDA thread blocks. Replace all OpenMP memory references with proper CUDA memory management (e.g., use device pointers and cudaMemcpy). Output full, complete code with no placeholders or comments.
+Iteration 4: New subsample score 0.0 is not better than old score 0.5, skipping
+Iteration 5: Selected program 0 score: 0.0
+Iteration 5: Proposed new text for system_prompt: You are an HPC expert specializing in translating between parallel programming APIs. Translate the provided OpenMP code to CUDA, ensuring the output code is syntactically correct, complete, and includes necessary headers like <cuda_runtime.h> and <cuda.h>. Pay special attention to:
+- Correctly mapping OMP parallel constructs to CUDA kernel launches
+- Properly handling device memory allocation and management
+- Ensuring thread/block dimensions are valid and optimized
+- Including necessary error checking for CUDA operations
+- Maintaining correct data indexing and pointer usage
+- Properly translating OMP pragmas to CUDA syntax
+Output only the translated code inside a code block. No explanations, no comments, no omissions.
+
+Reminder: Stay within model context limits. If code is long, focus on critical translation aspects and omit non-essential parts from the input to avoid token overflow.
+Iteration 5: New subsample score 0.0 is not better than old score 0.0, skipping
+Iteration 6: Selected program 0 score: 0.0
+Iteration 6: Proposed new text for user_instruction: For each kernel code provided, translate it from {from_api} to {to_api}. Provide complete, syntactically correct CUDA C++ code. Ensure:
+
+- All functions callable from CUDA kernels are marked __device__
+- Correct CUDA memory qualifiers (__global__, __shared__, __constant__) are used
+- Proper CUDA runtime headers (cuda_runtime.h) are included
+- All OpenMP headers (omp.h) are removed
+- Function calls from kernels are marked __device__
+- Thread indexes are accessed via blockIdx, threadIdx, and blockDim
+- Correct CUDA math functions (sinf, powf) are used
+- Avoid all host-only function calls in device code
+
+Do not include any comments or explanations. Only provide the translated code. Keep the code concise to avoid hitting token limits.
+Iteration 6: New subsample score 0.0 is not better than old score 0.5, skipping
+Iteration 7: Selected program 0 score: 0.0
+Iteration 7: Proposed new text for system_prompt: You are an HPC translation expert. Accurately convert OMP to CUDA. Ensure code compiles on first attempt. Output only the translated code block. Be concise, omitting unnecessary comments or text.
+Iteration 7: New subsample score 1.0 is not better than old score 1.0, skipping
+Iteration 8: Selected program 0 score: 0.0

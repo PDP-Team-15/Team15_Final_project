@@ -1,0 +1,25 @@
+main.cu(31): error: declaration is incompatible with previous "sdata" (declared at line 31)
+    extern __attribute__((shared)) T sdata[];
+                                     ^
+          detected during:
+            instantiation of "void maxKernel(T *, int) [with T=unsigned int]" at line 90
+            instantiation of "void testcase<T>(int) [with T=unsigned int]" at line 123
+
+main.cu(31): warning #20042-D: a host variable("sdata") redeclared with __shared__
+    extern __attribute__((shared)) T sdata[];
+                                     ^
+          detected during:
+            instantiation of "void maxKernel(T *, int) [with T=unsigned int]" at line 90
+            instantiation of "void testcase<T>(int) [with T=unsigned int]" at line 123
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+main.cu(54): warning #20042-D: a host variable("sdata") redeclared with __shared__
+    extern __attribute__((shared)) T sdata[];
+                                     ^
+          detected during:
+            instantiation of "void minKernel(T *, int) [with T=unsigned int]" at line 91
+            instantiation of "void testcase<T>(int) [with T=unsigned int]" at line 123
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:52: main.o] Error 1

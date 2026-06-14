@@ -1,0 +1,20 @@
+[
+    0.0,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations.",
+        "compile_fix_system": "You are an expert {to_api} programmer specializing in HPC code. Fix compilation errors. Provide only the complete corrected code inside a proper code block. No explanations, no omissions, no placeholders."
+    },
+    {
+        "kernel": "affine",
+        "from_api": "omp",
+        "to_api": "cuda",
+        "compiled": false,
+        "fix_needed": true,
+        "initial_compile_error": "main.cu(91): error: identifier \"kernel\" is undefined\n    kernel<<<numBlocks, threadsPerBlock>>>(input_image, output_image, iterations, 1024, 1024, lx_rot, ly_rot, lx_expan, ly_expan, lx_move, ly_move, i_affine, i_beta);\n    ^\n\nmain.cu(99): error: identifier \"affine_reference\" is undefined\n    affine_reference(input_image, output_image_ref);\n    ^\n\nmain.cu(122): error: expected a \")\"\n  __attribute__((global)) void kernel(unsigned short *input_image, unsigned short *output_image, int iterations, int 1024, int 1024, float lx_rot, float ly_rot, float lx_expan, float ly_expan, int lx_move, int ly_m",
+        "post_fix_error": "main.cu(11): error: expected a \")\"\n  __attribute__((global)) void kernel(unsigned short *input_image, unsigned short *output_image, int iterations, int 1024, int 1024, float lx_rot, float ly_rot, float lx_expan, float ly_expan, int lx_move, int ly_move, float i_affine[2][2], float i_beta[2]) {\n                                                                                                         ",
+        "source_snippet": "\n\n#include <sys/types.h>\n#include <sys/stat.h>\n#include <fcntl.h>\n#include <unistd.h>\n#include <stdlib.h>\n#include <stdio.h>\n#include <math.h>\n#include <cstring>\n#include <cmath>\n#include <chrono>\n#include <iostream>\n#include \"reference.h\"\n\nint main(int argc, char** argv)\n{\n  if (argc != 4)\n  {\n    printf(\"Usage: %s <input image> <output image> <iterations>\\n\", argv[0]) ;\n    return -1 ;\n  }\n\n  un",
+        "translated_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <string.h>\n#include <cuda_runtime.h>\n\n#define X_SIZE 1024\n#define Y_SIZE 1024\n#define WHITE 65535\n\nint main(int argc, char** argv)\n{\n  if (argc != 4)\n  {\n    printf(\"Usage: %s <input image> <output image> <iterations>\\n\", argv[0]) ;\n    return -1 ;\n  }\n\n  unsigned short    input_image[X_SIZE*Y_SIZE] __attribute__((aligned(1024)));\n ",
+        "log": "[affine] Compile failed, trying model fix...\n[affine] Compile error:\nmain.cu(91): error: identifier \"kernel\" is undefined\n    kernel<<<numBlocks, threadsPerBlock>>>(input_image, output_image, iterations, 1024, 1024, lx_rot, ly_rot, lx_expan, ly_expan, lx_move, ly_move, i_affine, i_beta);\n    ^\n\nmain.cu(99): error: identifier \"affine_reference\" is undefined\n    affine_reference(input_image, output_image_ref);\n    ^\n\nmain.cu(122): error: expected a \")\"\n  __attribute__((global)) void kernel(unsigned short *input_image, unsigned short *output_image, int iterations, int 1024, int 1024, float lx_rot, float ly_rot, float lx_expan, float ly_expan, int lx_move, int ly_m\n[affine] Still failed after model fix \u2717\n[affine] Second error:\nmain.cu(11): error: expected a \")\"\n  __attribute__((global)) void kernel(unsigned short *input_image, unsigned short *output_image, int iterations, int 1024, int 1024, float lx_rot, float ly_rot, float lx_expan, float ly_expan, int lx_move, int ly_move, float i_affine[2][2], float i_beta[2]) {\n                                                                                                         \n"
+    }
+]

@@ -1,0 +1,17 @@
+[
+    1.0,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between CUDA and OpenMP. Your task is to produce syntactically correct OpenMP code that compiles without errors. Importantly, ensure translations of CUDA functions like `__clz` to their OpenMP equivalents. Always include necessary headers like `<omp.h>`. Output complete, correct code only. Do not omit any necessary includes, function definitions, or variable declarations.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "kernel": "rfs",
+        "from_api": "cuda",
+        "to_api": "omp",
+        "compiled": true,
+        "fix_needed": false,
+        "source_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <float.h>\n#include <math.h>\n#include <chrono>\n#include <cuda.h>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n__host__ __device__ inline float\ncreateRoundingFactor(float max, int n) {\n  float delta = (max * (float)n) / (1.f - 2.f * (float)n * FLT_EPSILON);\n\n  \n\n  \n\n  \n\n  \n\n  int exp;\n  frexpf(delta, &exp);\n\n  \n\n  return ldexpf(1.f, exp);\n}\n  \n",
+        "translated_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <float.h>\n#include <math.h>\n#include <omp.h>\n\n// Function to calculate the rounding factor\nfloat createRoundingFactor(float max, int n) {\n  float delta = (max * (float)n) / (1.f - 2.f * (float)n * FLT_EPSILON);\n  int exp;\n  frexpf(delta, &exp);\n  return ldexpf(1.f, exp);\n}\n\n// Function to truncate a number with the given rounding ",
+        "log": "[rfs] Compiled on first attempt \u2713\n"
+    }
+]

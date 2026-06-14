@@ -1,0 +1,7 @@
+nvcc warning : Support for offline compilation for architectures prior to '<compute/sm/lto>_75' will be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+main.cu(118): error: a host function call cannot be configured
+      vanGenuchten <<< grids, blocks >>> (d_Ksat, d_psi, d_C, d_theta, d_K, size);
+      ^
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:50: main.o] Error 2

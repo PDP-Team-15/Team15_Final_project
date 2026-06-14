@@ -1,0 +1,19 @@
+[
+    0.0,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "kernel": "rfs",
+        "from_api": "cuda",
+        "to_api": "omp",
+        "compiled": false,
+        "fix_needed": true,
+        "initial_compile_error": "main.cpp:1:1: error: unknown type name '__host__'\n    1 | __host__ __device__ inline float\n      | ^\nmain.cpp:1:20: error: expected ';' after top level declarator\n    1 | __host__ __device__ inline float\n      |                    ^\n      |                    ;\nmain.cpp:3:60: error: use of undeclared identifier 'FLT_EPSILON'\n    3 |   float delta = (max * (float)n) / (1.f - 2.f * (float)n * FLT_EPSILON);\n      |                                                            ^\nmain.cpp:6:3: error: use of undeclared identifier 'frexpf'\n    6 |   frexpf(delta, &exp);\n      |   ^\nmain.cpp:8:10: error:",
+        "post_fix_error": "/home/pdp/.conda/envs/unipar/bin/x86_64-conda-linux-gnu-ld: /home/pdp/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/lib/../lib64/Scrt1.o: in function `_start':\n(.text+0x20): undefined reference to `main'\nclang++: error: linker command failed with exit code 1 (use -v to see invocation)\nmake: *** [Makefile.aomp:57: main] Error 1\n",
+        "source_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <float.h>\n#include <math.h>\n#include <chrono>\n#include <cuda.h>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n__host__ __device__ inline float\ncreateRoundingFactor(float max, int n) {\n  float delta = (max * (float)n) / (1.f - 2.f * (float)n * FLT_EPSILON);\n\n  \n\n  \n\n  \n\n  \n\n  int exp;\n  frexpf(delta, &exp);\n\n  \n\n  return ldexpf(1.f, exp);\n}\n  \n",
+        "translated_snippet": "__host__ __device__ inline float\ncreateRoundingFactor(float max, int n) {\n  float delta = (max * (float)n) / (1.f - 2.f * (float)n * FLT_EPSILON);\n\n  int exp;\n  frexpf(delta, &exp);\n\n  return ldexpf(1.f, exp);\n}\n\n__host__ __device__ inline float\ntruncateWithRoundingFactor(float roundingFactor, float x) {\n  return (roundingFactor + x) -  \n         roundingFactor;         \n}",
+        "log": "[rfs] Compile failed, trying model fix...\n[rfs] Compile error:\nmain.cpp:1:1: error: unknown type name '__host__'\n    1 | __host__ __device__ inline float\n      | ^\nmain.cpp:1:20: error: expected ';' after top level declarator\n    1 | __host__ __device__ inline float\n      |                    ^\n      |                    ;\nmain.cpp:3:60: error: use of undeclared identifier 'FLT_EPSILON'\n    3 |   float delta = (max * (float)n) / (1.f - 2.f * (float)n * FLT_EPSILON);\n      |                                                            ^\nmain.cpp:6:3: error: use of undeclared identifier 'frexpf'\n    6 |   frexpf(delta, &exp);\n      |   ^\nmain.cpp:8:10: error:\n[rfs] Still failed after model fix \u2717\n[rfs] Second error:\n/home/pdp/.conda/envs/unipar/bin/x86_64-conda-linux-gnu-ld: /home/pdp/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/lib/../lib64/Scrt1.o: in function `_start':\n(.text+0x20): undefined reference to `main'\nclang++: error: linker command failed with exit code 1 (use -v to see invocation)\nmake: *** [Makefile.aomp:57: main] Error 1\n\n"
+    }
+]

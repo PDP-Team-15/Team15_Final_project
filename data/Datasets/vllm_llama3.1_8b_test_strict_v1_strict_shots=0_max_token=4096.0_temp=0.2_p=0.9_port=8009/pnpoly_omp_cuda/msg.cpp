@@ -1,0 +1,166 @@
+You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely, preserving all function qualifiers (e.g., const, inline), template parameters, and macro definitions. Output only the translated code inside a code block. No explanations, no comments, no omissions.
+
+When translating to CUDA:
+1. Always use proper __host__, __device__, or __global__ qualifiers based on function scope
+2. Preserve const qualifiers in function parameters
+3. Ensure all #define directives are correctly translated
+4. Validate CUDA-specific constructs like memory operations, kernel launches, and stream usage
+5. Default to compile-time safety when converting run-time parameters
+For each kernel code provided, translate it from omp to cuda. Ensure the translated code is complete, correct, and compiles without errors. Follow these guidelines:
+
+1. Preserve all original functionality and algorithmic logic
+2. Replace omp with cuda functions and constructs
+3. Correctly declare and initialize all variables
+4. Use proper CUDA syntax for kernel launches and memory management
+5. Ensure all code is properly terminated with semicolons
+6. Include necessary headers
+7. Validate code structure and syntax before providing output
+Translate the following code  from omp to cuda:
+main.cpp:
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <random>
+#include <chrono>
+#include <omp.h>
+
+#define VERTICES 600
+#define BLOCK_SIZE_X 256
+
+typedef struct __attribute__((__aligned__(8)))
+{
+  float x, y;
+} float2;
+
+#include "kernel.h"
+
+int main(int argc, char* argv[]) {
+  if (argc != 2) {
+    printf("Usage: ./%s <repeat>\n", argv[0]);
+    return 1;
+  }
+
+  const int repeat = atoi(argv[1]);
+  const int nPoints = 2e7;
+  const int vertices = VERTICES;
+
+  std::default_random_engine rng (123);
+  std::normal_distribution<float> distribution(0, 1);
+
+  float2 *point = (float2*) malloc (sizeof(float2) * nPoints);
+  for (int i = 0; i < nPoints; i++) {
+    point[i].x = distribution(rng);
+    point[i].y = distribution(rng);
+  }
+
+  float2 *vertex = (float2*) malloc (vertices * sizeof(float2));
+  for (int i = 0; i < vertices; i++) {
+    float t = distribution(rng) * 2.f * M_PI;
+    vertex[i].x = cosf(t);
+    vertex[i].y = sinf(t);
+  }
+
+  
+
+  int *bitmap_ref = (int*) malloc (nPoints * sizeof(int));
+  int *bitmap_opt = (int*) malloc (nPoints * sizeof(int));
+
+  #pragma omp target data map (to: point[0:nPoints], \
+                                  vertex[0:vertices]) \
+                         map (from: bitmap_ref[0:nPoints], \
+                                    bitmap_opt[0:nPoints])
+  {
+    auto start = std::chrono::steady_clock::now();
+
+    for (int i = 0; i < repeat; i++)
+      pnpoly_base(bitmap_ref, point, vertex, nPoints);
+
+    auto end = std::chrono::steady_clock::now();
+    auto time = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    printf("Average kernel execution time (pnpoly_base): %f (s)\n", (time * 1e-9f) / repeat);
+
+    
+
+    start = std::chrono::steady_clock::now();
+
+    for (int i = 0; i < repeat; i++)
+      pnpoly_opt<1>(bitmap_opt, point, vertex, nPoints);
+
+    end = std::chrono::steady_clock::now();
+    time = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    printf("Average kernel execution time (pnpoly_opt<1>): %f (s)\n", (time * 1e-9f) / repeat);
+
+    start = std::chrono::steady_clock::now();
+
+    for (int i = 0; i < repeat; i++)
+      pnpoly_opt<2>(bitmap_opt, point, vertex, nPoints);
+
+    end = std::chrono::steady_clock::now();
+    time = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    printf("Average kernel execution time (pnpoly_opt<2>): %f (s)\n", (time * 1e-9f) / repeat);
+
+    start = std::chrono::steady_clock::now();
+
+    for (int i = 0; i < repeat; i++)
+      pnpoly_opt<4>(bitmap_opt, point, vertex, nPoints);
+
+    end = std::chrono::steady_clock::now();
+    time = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    printf("Average kernel execution time (pnpoly_opt<4>): %f (s)\n", (time * 1e-9f) / repeat);
+
+    start = std::chrono::steady_clock::now();
+
+    for (int i = 0; i < repeat; i++)
+      pnpoly_opt<8>(bitmap_opt, point, vertex, nPoints);
+
+    end = std::chrono::steady_clock::now();
+    time = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    printf("Average kernel execution time (pnpoly_opt<8>): %f (s)\n", (time * 1e-9f) / repeat);
+
+    start = std::chrono::steady_clock::now();
+
+    for (int i = 0; i < repeat; i++)
+      pnpoly_opt<16>(bitmap_opt, point, vertex, nPoints);
+
+    end = std::chrono::steady_clock::now();
+    time = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    printf("Average kernel execution time (pnpoly_opt<16>): %f (s)\n", (time * 1e-9f) / repeat);
+
+    start = std::chrono::steady_clock::now();
+
+    for (int i = 0; i < repeat; i++)
+      pnpoly_opt<32>(bitmap_opt, point, vertex, nPoints);
+
+    end = std::chrono::steady_clock::now();
+    time = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    printf("Average kernel execution time (pnpoly_opt<32>): %f (s)\n", (time * 1e-9f) / repeat);
+
+    start = std::chrono::steady_clock::now();
+
+    for (int i = 0; i < repeat; i++)
+      pnpoly_opt<64>(bitmap_opt, point, vertex, nPoints);
+
+    end = std::chrono::steady_clock::now();
+    time = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+    printf("Average kernel execution time (pnpoly_opt<64>): %f (s)\n", (time * 1e-9f) / repeat);
+  }
+
+  
+
+  int error = memcmp(bitmap_opt, bitmap_ref, nPoints*sizeof(int)); 
+  
+  
+
+  int checksum = 0;
+  for (int i = 0; i < nPoints; i++) checksum += bitmap_opt[i];
+  printf("Checksum: %d\n", checksum);
+
+  printf("%s\n", error ? "FAIL" : "PASS");
+
+  free(vertex);
+  free(point);
+  free(bitmap_ref);
+  free(bitmap_opt);
+  return 0;
+}

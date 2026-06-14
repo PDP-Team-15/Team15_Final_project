@@ -1,0 +1,30 @@
+main.cpp:79:20: error: use of undeclared identifier 'rtclock'; did you mean 'clock'?
+   79 |     double start = rtclock();
+      |                    ^~~~~~~
+      |                    clock
+/home/pdp15/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/include/time.h:189:16: note: 'clock' declared here
+  189 | extern clock_t clock (void) __THROW;
+      |                ^
+main.cpp:127:27: error: use of undeclared identifier 'rtclock'; did you mean 'clock'?
+  127 |         double co_start = rtclock();
+      |                           ^~~~~~~
+      |                           clock
+/home/pdp15/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/include/time.h:189:16: note: 'clock' declared here
+  189 | extern clock_t clock (void) __THROW;
+      |                ^
+main.cpp:133:20: error: use of undeclared identifier 'rtclock'; did you mean 'clock'?
+  133 |         co_time += rtclock() - co_start;
+      |                    ^~~~~~~
+      |                    clock
+/home/pdp15/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/include/time.h:189:16: note: 'clock' declared here
+  189 | extern clock_t clock (void) __THROW;
+      |                ^
+main.cpp:152:18: error: use of undeclared identifier 'rtclock'; did you mean 'clock'?
+  152 |     double end = rtclock();
+      |                  ^~~~~~~
+      |                  clock
+/home/pdp15/.conda/envs/unipar/x86_64-conda-linux-gnu/sysroot/usr/include/time.h:189:16: note: 'clock' declared here
+  189 | extern clock_t clock (void) __THROW;
+      |                ^
+4 errors generated.
+make: *** [Makefile.aomp:61: main.o] Error 1

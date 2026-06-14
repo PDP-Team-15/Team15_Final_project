@@ -1,0 +1,8 @@
+{
+    "cuda-omp": {
+        "jenkins-hash-omp": 0.23424577713012695
+    },
+    "serial-omp": {
+        "jenkins-hash-omp": 0.2393333911895752
+    }
+}

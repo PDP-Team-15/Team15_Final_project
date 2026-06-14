@@ -1,0 +1,7 @@
+{
+    "omp-cuda": {
+        "keogh-cuda": 32.30614161491394,
+        "atomicIntrinsics-cuda": 65.83186054229736
+    },
+    "cuda-omp": {}
+}

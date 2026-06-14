@@ -1,0 +1,19 @@
+[
+    0.0,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "kernel": "lavaMD",
+        "from_api": "omp",
+        "to_api": "cuda",
+        "compiled": false,
+        "fix_needed": true,
+        "initial_compile_error": "main.cu:8:10: fatal error: ./util/timer/timer.h: No such file or directory\n    8 | #include \"./util/timer/timer.h\"\n      |          ^~~~~~~~~~~~~~~~~~~~~~\ncompilation terminated.\nmake: *** [Makefile:56: main.o] Error 1\n",
+        "post_fix_error": "main.cu:12: warning: \"NUMBER_THREADS\" redefined\n   12 | #define NUMBER_THREADS 256\n      | \nIn file included from main.cu:10:\nmain.h:18: note: this is the location of the previous definition\n   18 |         #define NUMBER_THREADS 128\n      | \nmain.cu:13: warning: \"NUMBER_PAR_PER_BOX\" redefined\n   13 | #define NUMBER_PAR_PER_BOX 16\n      | \nmain.h:7: note: this is the location of the previous defin",
+        "source_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <stdbool.h>\n#include <string.h>\n#include <omp.h>\n#include <math.h>\n#include \"./util/timer/timer.h\"\n#include \"./util/num/num.h\"\n#include \"main.h\"\n\nint main(int argc, char *argv [])\n{\n  \n\n  int i, j, k, l, m, n;\n\n  \n\n  par_str par_cpu;\n  dim_str dim_cpu;\n  box_str* box_cpu;\n  FOUR_VECTOR* rv_cpu;\n  fp* qv_cpu;\n  FOUR_VECTOR* fv_cpu;\n  int nh;\n\n  printf",
+        "translated_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <stdbool.h>\n#include <string.h>\n#include <math.h>\n#include <cuda_runtime.h>\n#include <cuda.h>\n#include \"./util/timer/timer.h\"\n#include \"./util/num/num.h\"\n#include \"main.h\"\n\n#define NUMBER_THREADS 256\n#define NUMBER_PAR_PER_BOX 16\n\nint main(int argc, char *argv [])\n{\n  int i, j, k, l, m, n;\n\n  par_str par_cpu;\n  dim_str dim_cpu;\n  box_str* box_cpu;\n  ",
+        "log": "[lavaMD] Compile failed, trying model fix...\n[lavaMD] Compile error:\nmain.cu:8:10: fatal error: ./util/timer/timer.h: No such file or directory\n    8 | #include \"./util/timer/timer.h\"\n      |          ^~~~~~~~~~~~~~~~~~~~~~\ncompilation terminated.\nmake: *** [Makefile:56: main.o] Error 1\n\n[lavaMD] Still failed after model fix \u2717\n[lavaMD] Second error:\nmain.cu:12: warning: \"NUMBER_THREADS\" redefined\n   12 | #define NUMBER_THREADS 256\n      | \nIn file included from main.cu:10:\nmain.h:18: note: this is the location of the previous definition\n   18 |         #define NUMBER_THREADS 128\n      | \nmain.cu:13: warning: \"NUMBER_PAR_PER_BOX\" redefined\n   13 | #define NUMBER_PAR_PER_BOX 16\n      | \nmain.h:7: note: this is the location of the previous defin\n"
+    }
+]

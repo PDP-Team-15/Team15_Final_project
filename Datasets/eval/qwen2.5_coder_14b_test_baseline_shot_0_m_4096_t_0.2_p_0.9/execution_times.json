@@ -1,0 +1,8 @@
+{
+    "omp-cuda": {
+        "keogh-cuda": 35.52236533164978
+    },
+    "cuda-omp": {
+        "mixbench-omp": 1.2353968620300293
+    }
+}

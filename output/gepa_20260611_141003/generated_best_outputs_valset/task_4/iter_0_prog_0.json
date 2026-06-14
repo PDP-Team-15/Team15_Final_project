@@ -1,0 +1,19 @@
+[
+    0.0,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "kernel": "wsm5",
+        "from_api": "omp",
+        "to_api": "cuda",
+        "compiled": false,
+        "fix_needed": true,
+        "initial_compile_error": "make: *** No rule to make target 'kernel.h', needed by 'main.o'.  Stop.\n",
+        "post_fix_error": "make: *** No rule to make target 'kernel.h', needed by 'main.o'.  Stop.\n",
+        "source_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <chrono>\n#include <omp.h>\n#include \"utils.h\"\n#include \"kernel.h\"\n\nint main(int argc, char* argv[])\n{\n  if (argc != 2) {\n    printf(\"Usage: %s <repeat>\\n\", argv[0]);\n    return 1;\n  }\n  const int repeat = atoi(argv[1]);\n  float *th, *pii, *q;\n  float *qc, *qi, *qr, *qs;\n  float *den, *p, *delz;\n  float *rain,*rainncv;\n  float *sr;\n  ",
+        "translated_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <chrono>\n#include <cuda_runtime.h>\n#include \"utils.h\"\n#include \"kernel.h\"\n\nint main(int argc, char* argv[])\n{\n  if (argc != 2) {\n    printf(\"Usage: %s <repeat>\\n\", argv[0]);\n    return 1;\n  }\n  const int repeat = atoi(argv[1]);\n  float *th, *pii, *q;\n  float *qc, *qi, *qr, *qs;\n  float *den, *p, *delz;\n  float *rain,*rainncv;\n  floa",
+        "log": "[wsm5] Compile failed, trying model fix...\n[wsm5] Compile error:\nmake: *** No rule to make target 'kernel.h', needed by 'main.o'.  Stop.\n\n[wsm5] Still failed after model fix \u2717\n[wsm5] Second error:\nmake: *** No rule to make target 'kernel.h', needed by 'main.o'.  Stop.\n\n"
+    }
+]

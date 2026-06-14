@@ -1,0 +1,19 @@
+[
+    0.5,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "kernel": "cbsfil",
+        "from_api": "cuda",
+        "to_api": "omp",
+        "compiled": true,
+        "fix_needed": true,
+        "initial_compile_error": "main.cpp: In function 'int main(int, char**)':\nmain.cpp:39:21: error: 'min' is not a member of 'std'\n   39 |   int blocks = std::min(PowTwoDivider(height), 64);\n      |                     ^~~\nmain.cpp:55:9: error: 'toCoef2DX' was not declared in this scope\n   55 |         toCoef2DX(x, y, w, z, y_val, x_val);\n      |         ^~~~~~~~~\nmain.cpp:67:9: error: 'toCoef2DY' was not declared in this scope\n   67 |         toCoef2DY(x, y, w, z, y_val, x_val);\n      |         ^~~~~~~~~\nmain.cpp:79:11: error: 'uchar' does not name a type; did you mean 'u_char'?\n   79 |     const uchar *t = (const uchar*)",
+        "post_fix_error": "",
+        "source_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <algorithm>\n#include <chrono>\n#include <cuda.h>\n#include \"kernels.h\"\n\nint PowTwoDivider(int n)\n{\n  if (n == 0) return 0;\n  int divider = 1;\n  while ((n & divider) == 0) divider <<= 1;\n  return divider;\n}\n\nint main(int argc, char* argv[]) {\n  if (argc != 4) {\n    printf(\"Usage: %s <width> <height> <repeat>\\n\", argv[0]);\n    return 1;\n  }\n\n  const int ",
+        "translated_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <omp.h>\n#include <time.h>\n\nint PowTwoDivider(int n)\n{\n  if (n == 0) return 0;\n  int divider = 1;\n  while ((n & divider) == 0) divider <<= 1;\n  return divider;\n}\n\nint main(int argc, char* argv[]) {\n  if (argc != 4) {\n    printf(\"Usage: %s <width> <height> <repeat>\\n\", argv[0]);\n    return 1;\n  }\n\n  const int width = atoi(argv[1]);\n  const int height =",
+        "log": "[cbsfil] Compile failed, trying model fix...\n[cbsfil] Compile error:\nmain.cpp: In function 'int main(int, char**)':\nmain.cpp:39:21: error: 'min' is not a member of 'std'\n   39 |   int blocks = std::min(PowTwoDivider(height), 64);\n      |                     ^~~\nmain.cpp:55:9: error: 'toCoef2DX' was not declared in this scope\n   55 |         toCoef2DX(x, y, w, z, y_val, x_val);\n      |         ^~~~~~~~~\nmain.cpp:67:9: error: 'toCoef2DY' was not declared in this scope\n   67 |         toCoef2DY(x, y, w, z, y_val, x_val);\n      |         ^~~~~~~~~\nmain.cpp:79:11: error: 'uchar' does not name a type; did you mean 'u_char'?\n   79 |     const uchar *t = (const uchar*)\n[cbsfil] Compiled after model fix \u2713\n"
+    }
+]

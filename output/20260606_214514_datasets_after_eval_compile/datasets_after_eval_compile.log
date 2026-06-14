@@ -1,0 +1,328 @@
+2026-06-06 21:45:14,168 - root - INFO - Log file created at /home/pdp15/UniPar_AI/output/20260606_214514_datasets_after_eval_compile/datasets_after_eval_compile.log
+2026-06-06 21:45:14,168 - root - INFO - Running eval_compile to create a clean dataset...
+2026-06-06 21:45:14,168 - root - INFO - Original model name extracted: gpt
+2026-06-06 21:45:14,168 - root - INFO - Using clean dataset at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9 for main processing
+2026-06-06 21:45:14,196 - root - INFO - ModelAgent initialized: translator=Qwen/Qwen2.5-Coder-14B-Instruct-AWQ@http://localhost:8004/v1, fixer=Qwen/Qwen2.5-Coder-7B-Instruct@http://localhost:8003/v1
+2026-06-06 21:45:14,196 - root - INFO - Processing source API: omp to cuda
+2026-06-06 21:45:14,196 - root - INFO - Found 18 kernels to process for omp to cuda
+2026-06-06 21:45:14,196 - root - INFO - Processing kernel: ace-cuda
+2026-06-06 21:45:14,196 - root - INFO - Compiling ace-cuda
+2026-06-06 21:45:14,196 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-06 21:45:14,196 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-06 21:45:14,197 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/pred_compile_0.cu
+2026-06-06 21:45:14,197 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/main.cu
+2026-06-06 21:45:14,197 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda
+2026-06-06 21:45:14,197 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda
+2026-06-06 21:45:14,201 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/Makefile
+2026-06-06 21:45:14,576 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-06 21:45:14,576 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-06 21:45:14,910 - httpx - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-06-06 21:45:14,911 - root - ERROR - Error in fix_code: Error code: 400 - {'object': 'error', 'message': "This model's maximum context length is 8192 tokens. However, you requested 15246 tokens (246 in the messages, 15000 in the completion). Please reduce the length of the messages or completion.", 'type': 'BadRequestError', 'param': None, 'code': 400}
+2026-06-06 21:45:14,912 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/result.txt
+2026-06-06 21:45:14,912 - root - INFO - Generated result.txt file with compilation failure in /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda
+2026-06-06 21:45:14,912 - root - ERROR - Compilation failed for ace-cuda: Failed to compile after 30 attempts
+2026-06-06 21:45:14,913 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/result.txt
+2026-06-06 21:45:14,913 - root - INFO - Processing kernel: pnpoly-cuda
+2026-06-06 21:45:14,913 - root - INFO - Compiling pnpoly-cuda
+2026-06-06 21:45:14,913 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-06 21:45:14,913 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-06 21:45:14,914 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/pred_compile_0.cu
+2026-06-06 21:45:14,914 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/main.cu
+2026-06-06 21:45:14,914 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda
+2026-06-06 21:45:14,914 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda
+2026-06-06 21:45:14,918 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/Makefile
+2026-06-06 21:45:15,429 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-06 21:45:15,429 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-06 21:45:15,455 - httpx - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-06-06 21:45:15,456 - root - ERROR - Error in fix_code: Error code: 400 - {'object': 'error', 'message': "This model's maximum context length is 8192 tokens. However, you requested 16478 tokens (1478 in the messages, 15000 in the completion). Please reduce the length of the messages or completion.", 'type': 'BadRequestError', 'param': None, 'code': 400}
+2026-06-06 21:45:15,457 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/result.txt
+2026-06-06 21:45:15,457 - root - INFO - Generated result.txt file with compilation failure in /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda
+2026-06-06 21:45:15,457 - root - ERROR - Compilation failed for pnpoly-cuda: Failed to compile after 30 attempts
+2026-06-06 21:45:15,457 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/pnpoly-cuda/result.txt
+2026-06-06 21:45:15,457 - root - INFO - Processing kernel: keogh-cuda
+2026-06-06 21:45:15,458 - root - INFO - Compiling keogh-cuda
+2026-06-06 21:45:15,458 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-06 21:45:15,458 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-06 21:45:15,459 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda/pred_compile_0.cu
+2026-06-06 21:45:15,459 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda/main.cu
+2026-06-06 21:45:15,459 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda
+2026-06-06 21:45:15,459 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda
+2026-06-06 21:45:15,462 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda/Makefile
+2026-06-06 21:45:16,619 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda/result.txt
+2026-06-06 21:45:16,619 - root - INFO - Generated partial result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda
+2026-06-06 21:45:16,619 - root - INFO - Running keogh-cuda
+2026-06-06 21:45:16,620 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-06 21:45:16,620 - root - INFO - Attempting to run pred_compile_0.cu (Attempt 1)
+2026-06-06 21:45:16,621 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda/pred_compile_0.cu at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda/pred_run_0.cu
+2026-06-06 21:45:49,984 - root - WARNING - Program results do not match expected results: Did not find 'pass' in result.txt
+2026-06-06 21:45:49,984 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda/result.txt
+2026-06-06 21:45:49,984 - root - INFO - Generated/updated result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda
+2026-06-06 21:45:49,985 - root - ERROR - Execution failed for keogh-cuda: local variable 'run_attempt_dir' referenced before assignment
+2026-06-06 21:45:49,993 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/keogh-cuda/result.txt
+2026-06-06 21:45:49,993 - root - INFO - Processing kernel: atomicIntrinsics-cuda
+2026-06-06 21:45:49,993 - root - INFO - Compiling atomicIntrinsics-cuda
+2026-06-06 21:45:49,993 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-06 21:45:49,994 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-06 21:45:49,994 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/pred_compile_0.cu
+2026-06-06 21:45:49,994 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/main.cu
+2026-06-06 21:45:49,994 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda
+2026-06-06 21:45:49,994 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda
+2026-06-06 21:45:49,998 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/Makefile
+2026-06-06 21:45:50,670 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-06 21:45:50,670 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-06 21:45:50,693 - httpx - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-06-06 21:45:50,694 - root - ERROR - Error in fix_code: Error code: 400 - {'object': 'error', 'message': "This model's maximum context length is 8192 tokens. However, you requested 16497 tokens (1497 in the messages, 15000 in the completion). Please reduce the length of the messages or completion.", 'type': 'BadRequestError', 'param': None, 'code': 400}
+2026-06-06 21:45:50,695 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/result.txt
+2026-06-06 21:45:50,695 - root - INFO - Generated result.txt file with compilation failure in /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda
+2026-06-06 21:45:50,695 - root - ERROR - Compilation failed for atomicIntrinsics-cuda: Failed to compile after 30 attempts
+2026-06-06 21:45:50,695 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/atomicIntrinsics-cuda/result.txt
+2026-06-06 21:45:50,695 - root - INFO - Processing kernel: heat-cuda
+2026-06-06 21:45:50,695 - root - INFO - Compiling heat-cuda
+2026-06-06 21:45:50,696 - root - INFO - Extracted source filename from Makefile: heat.cu
+2026-06-06 21:45:50,696 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-06 21:45:50,697 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda/heat.cu at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda/pred_compile_0.cu
+2026-06-06 21:45:50,697 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda/heat.cu
+2026-06-06 21:45:50,697 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda
+2026-06-06 21:45:50,697 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda
+2026-06-06 21:45:50,699 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda/Makefile
+2026-06-06 21:45:50,997 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-06 21:45:50,997 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-06 21:45:51,025 - httpx - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-06-06 21:45:51,026 - root - ERROR - Error in fix_code: Error code: 400 - {'object': 'error', 'message': "This model's maximum context length is 8192 tokens. However, you requested 17184 tokens (2184 in the messages, 15000 in the completion). Please reduce the length of the messages or completion.", 'type': 'BadRequestError', 'param': None, 'code': 400}
+2026-06-06 21:45:51,027 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda/result.txt
+2026-06-06 21:45:51,027 - root - INFO - Generated result.txt file with compilation failure in /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda
+2026-06-06 21:45:51,027 - root - ERROR - Compilation failed for heat-cuda: Failed to compile after 30 attempts
+2026-06-06 21:45:51,028 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/heat-cuda/result.txt
+2026-06-06 21:45:51,028 - root - INFO - Processing kernel: su3-cuda
+2026-06-06 21:45:51,028 - root - INFO - Compiling su3-cuda
+2026-06-06 21:45:51,028 - root - INFO - Extracted source filename from Makefile: su3_nn_bench.cu
+2026-06-06 21:45:51,029 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-06 21:45:51,029 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda/su3_nn_bench.cu at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda/pred_compile_0.cu
+2026-06-06 21:45:51,029 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda/su3_nn_bench.cu
+2026-06-06 21:45:51,030 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda
+2026-06-06 21:45:51,030 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda
+2026-06-06 21:45:51,033 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda/Makefile
+2026-06-06 21:45:51,167 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-06 21:45:51,167 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-06 21:45:51,192 - httpx - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-06-06 21:45:51,193 - root - ERROR - Error in fix_code: Error code: 400 - {'object': 'error', 'message': "This model's maximum context length is 8192 tokens. However, you requested 16795 tokens (1795 in the messages, 15000 in the completion). Please reduce the length of the messages or completion.", 'type': 'BadRequestError', 'param': None, 'code': 400}
+2026-06-06 21:45:51,194 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda/result.txt
+2026-06-06 21:45:51,194 - root - INFO - Generated result.txt file with compilation failure in /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda
+2026-06-06 21:45:51,194 - root - ERROR - Compilation failed for su3-cuda: Failed to compile after 30 attempts
+2026-06-06 21:45:51,194 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/su3-cuda/result.txt
+2026-06-06 21:45:51,194 - root - INFO - Processing kernel: stencil1d-cuda
+2026-06-06 21:45:51,195 - root - INFO - Compiling stencil1d-cuda
+2026-06-06 21:45:51,195 - root - INFO - Extracted source filename from Makefile: stencil_1d.cu
+2026-06-06 21:45:51,195 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-06 21:45:51,196 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda/stencil_1d.cu at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda/pred_compile_0.cu
+2026-06-06 21:45:51,196 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda/stencil_1d.cu
+2026-06-06 21:45:51,196 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda
+2026-06-06 21:45:51,196 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda
+2026-06-06 21:45:51,199 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda/Makefile
+2026-06-06 21:45:52,303 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda/result.txt
+2026-06-06 21:45:52,303 - root - INFO - Generated partial result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda
+2026-06-06 21:45:52,304 - root - INFO - Running stencil1d-cuda
+2026-06-06 21:45:52,304 - root - INFO - Extracted source filename from Makefile: stencil_1d.cu
+2026-06-06 21:45:52,304 - root - INFO - Attempting to run pred_compile_0.cu (Attempt 1)
+2026-06-06 21:45:52,305 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda/pred_compile_0.cu at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda/pred_run_0.cu
+2026-06-06 21:45:53,605 - root - WARNING - Program results do not match expected results: Did not find 'pass' in result.txt
+2026-06-06 21:45:53,605 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda/result.txt
+2026-06-06 21:45:53,605 - root - INFO - Generated/updated result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda
+2026-06-06 21:45:53,606 - root - ERROR - Execution failed for stencil1d-cuda: local variable 'run_attempt_dir' referenced before assignment
+2026-06-06 21:45:53,606 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/stencil1d-cuda/result.txt
+2026-06-06 21:45:53,606 - root - INFO - Processing kernel: vanGenuchten-cuda
+2026-06-06 21:45:53,606 - root - INFO - Compiling vanGenuchten-cuda
+2026-06-06 21:45:53,607 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-06 21:45:53,607 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-06 21:45:53,607 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda/pred_compile_0.cu
+2026-06-06 21:45:53,608 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda/main.cu
+2026-06-06 21:45:53,608 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda
+2026-06-06 21:45:53,608 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda
+2026-06-06 21:45:53,612 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda/Makefile
+2026-06-06 21:45:54,794 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda/result.txt
+2026-06-06 21:45:54,794 - root - INFO - Generated partial result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda
+2026-06-06 21:45:54,794 - root - INFO - Running vanGenuchten-cuda
+2026-06-06 21:45:54,795 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-06 21:45:54,795 - root - INFO - Attempting to run pred_compile_0.cu (Attempt 1)
+2026-06-06 21:45:54,795 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda/pred_compile_0.cu at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda/pred_run_0.cu
+2026-06-06 21:46:37,286 - root - WARNING - Program results do not match expected results: Did not find 'pass' in result.txt
+2026-06-06 21:46:37,286 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda/result.txt
+2026-06-06 21:46:37,286 - root - INFO - Generated/updated result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda
+2026-06-06 21:46:37,287 - root - ERROR - Execution failed for vanGenuchten-cuda: local variable 'run_attempt_dir' referenced before assignment
+2026-06-06 21:46:37,295 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/vanGenuchten-cuda/result.txt
+2026-06-06 21:46:37,295 - root - INFO - Processing kernel: wsm5-cuda
+2026-06-06 21:46:37,295 - root - INFO - Compiling wsm5-cuda
+2026-06-06 21:46:37,295 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-06 21:46:37,296 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-06 21:46:37,296 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda/pred_compile_0.cu
+2026-06-06 21:46:37,296 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda/main.cu
+2026-06-06 21:46:37,296 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda
+2026-06-06 21:46:37,296 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda
+2026-06-06 21:46:37,300 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda/Makefile
+2026-06-06 21:46:37,692 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-06 21:46:37,693 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-06 21:46:37,723 - httpx - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-06-06 21:46:37,724 - root - ERROR - Error in fix_code: Error code: 400 - {'object': 'error', 'message': "This model's maximum context length is 8192 tokens. However, you requested 17595 tokens (2595 in the messages, 15000 in the completion). Please reduce the length of the messages or completion.", 'type': 'BadRequestError', 'param': None, 'code': 400}
+2026-06-06 21:46:37,725 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda/result.txt
+2026-06-06 21:46:37,725 - root - INFO - Generated result.txt file with compilation failure in /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda
+2026-06-06 21:46:37,725 - root - ERROR - Compilation failed for wsm5-cuda: Failed to compile after 30 attempts
+2026-06-06 21:46:37,725 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/wsm5-cuda/result.txt
+2026-06-06 21:46:37,725 - root - INFO - Processing kernel: stddev-cuda
+2026-06-06 21:46:37,726 - root - INFO - Compiling stddev-cuda
+2026-06-06 21:46:37,726 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-06 21:46:37,726 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-06 21:46:37,727 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda/pred_compile_0.cu
+2026-06-06 21:46:37,727 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda/main.cu
+2026-06-06 21:46:37,727 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda
+2026-06-06 21:46:37,727 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda
+2026-06-06 21:46:37,730 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda/Makefile
+2026-06-06 21:46:38,375 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-06 21:46:38,375 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-06 21:46:38,402 - httpx - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-06-06 21:46:38,403 - root - ERROR - Error in fix_code: Error code: 400 - {'object': 'error', 'message': "This model's maximum context length is 8192 tokens. However, you requested 17068 tokens (2068 in the messages, 15000 in the completion). Please reduce the length of the messages or completion.", 'type': 'BadRequestError', 'param': None, 'code': 400}
+2026-06-06 21:46:38,403 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda/result.txt
+2026-06-06 21:46:38,403 - root - INFO - Generated result.txt file with compilation failure in /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda
+2026-06-06 21:46:38,404 - root - ERROR - Compilation failed for stddev-cuda: Failed to compile after 30 attempts
+2026-06-06 21:46:38,404 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/stddev-cuda/result.txt
+2026-06-06 21:46:38,404 - root - INFO - Processing kernel: geodesic-cuda
+2026-06-06 21:46:38,404 - root - INFO - Compiling geodesic-cuda
+2026-06-06 21:46:38,404 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-06 21:46:38,405 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-06 21:46:38,405 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/pred_compile_0.cu
+2026-06-06 21:46:38,406 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/main.cu
+2026-06-06 21:46:38,406 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda
+2026-06-06 21:46:38,406 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda
+2026-06-06 21:46:38,409 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/Makefile
+2026-06-06 21:46:38,885 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-06 21:46:38,885 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-06 21:46:38,909 - httpx - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-06-06 21:46:38,910 - root - ERROR - Error in fix_code: Error code: 400 - {'object': 'error', 'message': "This model's maximum context length is 8192 tokens. However, you requested 18384 tokens (3384 in the messages, 15000 in the completion). Please reduce the length of the messages or completion.", 'type': 'BadRequestError', 'param': None, 'code': 400}
+2026-06-06 21:46:38,911 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/result.txt
+2026-06-06 21:46:38,911 - root - INFO - Generated result.txt file with compilation failure in /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda
+2026-06-06 21:46:38,911 - root - ERROR - Compilation failed for geodesic-cuda: Failed to compile after 30 attempts
+2026-06-06 21:46:38,911 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/geodesic-cuda/result.txt
+2026-06-06 21:46:38,911 - root - INFO - Processing kernel: pool-cuda
+2026-06-06 21:46:38,912 - root - INFO - Compiling pool-cuda
+2026-06-06 21:46:38,912 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-06 21:46:38,912 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-06 21:46:38,913 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/pred_compile_0.cu
+2026-06-06 21:46:38,913 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/main.cu
+2026-06-06 21:46:38,913 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda
+2026-06-06 21:46:38,913 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda
+2026-06-06 21:46:38,916 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/Makefile
+2026-06-06 21:46:39,472 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-06 21:46:39,472 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-06 21:46:39,498 - httpx - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-06-06 21:46:39,499 - root - ERROR - Error in fix_code: Error code: 400 - {'object': 'error', 'message': "This model's maximum context length is 8192 tokens. However, you requested 17211 tokens (2211 in the messages, 15000 in the completion). Please reduce the length of the messages or completion.", 'type': 'BadRequestError', 'param': None, 'code': 400}
+2026-06-06 21:46:39,500 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/result.txt
+2026-06-06 21:46:39,500 - root - INFO - Generated result.txt file with compilation failure in /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda
+2026-06-06 21:46:39,500 - root - ERROR - Compilation failed for pool-cuda: Failed to compile after 30 attempts
+2026-06-06 21:46:39,501 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/pool-cuda/result.txt
+2026-06-06 21:46:39,501 - root - INFO - Processing kernel: particlefilter-cuda
+2026-06-06 21:46:39,501 - root - INFO - Compiling particlefilter-cuda
+2026-06-06 21:46:39,501 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-06 21:46:39,502 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-06 21:46:39,502 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda/pred_compile_0.cu
+2026-06-06 21:46:39,502 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda/main.cu
+2026-06-06 21:46:39,502 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda
+2026-06-06 21:46:39,503 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda
+2026-06-06 21:46:39,507 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda/Makefile
+2026-06-06 21:46:39,945 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-06 21:46:39,945 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-06 21:46:39,978 - httpx - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-06-06 21:46:39,979 - root - ERROR - Error in fix_code: Error code: 400 - {'object': 'error', 'message': "This model's maximum context length is 8192 tokens. However, you requested 19012 tokens (4012 in the messages, 15000 in the completion). Please reduce the length of the messages or completion.", 'type': 'BadRequestError', 'param': None, 'code': 400}
+2026-06-06 21:46:39,980 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda/result.txt
+2026-06-06 21:46:39,980 - root - INFO - Generated result.txt file with compilation failure in /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda
+2026-06-06 21:46:39,980 - root - ERROR - Compilation failed for particlefilter-cuda: Failed to compile after 30 attempts
+2026-06-06 21:46:39,981 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/particlefilter-cuda/result.txt
+2026-06-06 21:46:39,981 - root - INFO - Processing kernel: meanshift-cuda
+2026-06-06 21:46:39,981 - root - INFO - Compiling meanshift-cuda
+2026-06-06 21:46:39,981 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-06 21:46:39,982 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-06 21:46:39,982 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/pred_compile_0.cu
+2026-06-06 21:46:39,982 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/main.cu
+2026-06-06 21:46:39,982 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda
+2026-06-06 21:46:39,983 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda
+2026-06-06 21:46:39,987 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/Makefile
+2026-06-06 21:46:41,567 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-06 21:46:41,568 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-06 21:46:41,594 - httpx - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-06-06 21:46:41,595 - root - ERROR - Error in fix_code: Error code: 400 - {'object': 'error', 'message': "This model's maximum context length is 8192 tokens. However, you requested 17319 tokens (2319 in the messages, 15000 in the completion). Please reduce the length of the messages or completion.", 'type': 'BadRequestError', 'param': None, 'code': 400}
+2026-06-06 21:46:41,596 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/result.txt
+2026-06-06 21:46:41,596 - root - INFO - Generated result.txt file with compilation failure in /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda
+2026-06-06 21:46:41,596 - root - ERROR - Compilation failed for meanshift-cuda: Failed to compile after 30 attempts
+2026-06-06 21:46:41,597 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/meanshift-cuda/result.txt
+2026-06-06 21:46:41,597 - root - INFO - Processing kernel: mixbench-cuda
+2026-06-06 21:46:41,597 - root - INFO - Compiling mixbench-cuda
+2026-06-06 21:46:41,597 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-06 21:46:41,598 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-06 21:46:41,598 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/pred_compile_0.cu
+2026-06-06 21:46:41,598 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/main.cu
+2026-06-06 21:46:41,598 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda
+2026-06-06 21:46:41,598 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda
+2026-06-06 21:46:41,603 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/Makefile
+2026-06-06 21:46:42,741 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/result.txt
+2026-06-06 21:46:42,742 - root - INFO - Generated partial result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda
+2026-06-06 21:46:42,742 - root - INFO - Running mixbench-cuda
+2026-06-06 21:46:42,742 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-06 21:46:42,742 - root - INFO - Attempting to run pred_compile_0.cu (Attempt 1)
+2026-06-06 21:46:42,743 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/pred_compile_0.cu at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/pred_run_0.cu
+2026-06-06 21:46:42,749 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/error_run_0.txt
+2026-06-06 21:46:42,749 - root - ERROR - Failed to run, trying to fix the code
+2026-06-06 21:46:42,749 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-06 21:46:42,770 - httpx - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-06-06 21:46:42,771 - root - ERROR - Error in run_code: Error code: 400 - {'object': 'error', 'message': "This model's maximum context length is 8192 tokens. However, you requested 16058 tokens (1058 in the messages, 15000 in the completion). Please reduce the length of the messages or completion.", 'type': 'BadRequestError', 'param': None, 'code': 400}
+2026-06-06 21:46:42,772 - root - ERROR - Execution failed for mixbench-cuda: Failed to run the code after 3 attempts
+2026-06-06 21:46:42,772 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/mixbench-cuda/result.txt
+2026-06-06 21:46:42,772 - root - INFO - Processing kernel: winograd-cuda
+2026-06-06 21:46:42,773 - root - INFO - Compiling winograd-cuda
+2026-06-06 21:46:42,773 - root - INFO - Extracted source filename from Makefile: main.cu utils.cu
+2026-06-06 21:46:42,773 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-06 21:46:42,774 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda/main.cu utils.cu at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda/pred_compile_0.cu
+2026-06-06 21:46:42,774 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda/main.cu utils.cu
+2026-06-06 21:46:42,774 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda
+2026-06-06 21:46:42,774 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda
+2026-06-06 21:46:42,778 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda/Makefile
+2026-06-06 21:46:43,091 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-06 21:46:43,091 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-06 21:46:43,120 - httpx - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-06-06 21:46:43,120 - root - ERROR - Error in fix_code: Error code: 400 - {'object': 'error', 'message': "This model's maximum context length is 8192 tokens. However, you requested 18331 tokens (3331 in the messages, 15000 in the completion). Please reduce the length of the messages or completion.", 'type': 'BadRequestError', 'param': None, 'code': 400}
+2026-06-06 21:46:43,121 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda/result.txt
+2026-06-06 21:46:43,121 - root - INFO - Generated result.txt file with compilation failure in /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda
+2026-06-06 21:46:43,121 - root - ERROR - Compilation failed for winograd-cuda: Failed to compile after 30 attempts
+2026-06-06 21:46:43,121 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/winograd-cuda/result.txt
+2026-06-06 21:46:43,121 - root - INFO - Processing kernel: michalewicz-cuda
+2026-06-06 21:46:43,121 - root - INFO - Compiling michalewicz-cuda
+2026-06-06 21:46:43,121 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-06 21:46:43,122 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-06 21:46:43,122 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/michalewicz-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/michalewicz-cuda/pred_compile_0.cu
+2026-06-06 21:46:43,122 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/michalewicz-cuda/main.cu
+2026-06-06 21:46:43,122 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/michalewicz-cuda
+2026-06-06 21:46:43,122 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/michalewicz-cuda
+2026-06-06 21:46:43,126 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/michalewicz-cuda/Makefile
+2026-06-06 21:46:43,618 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-06 21:46:43,618 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-06 21:46:43,644 - httpx - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-06-06 21:46:43,645 - root - ERROR - Error in fix_code: Error code: 400 - {'object': 'error', 'message': "This model's maximum context length is 8192 tokens. However, you requested 16557 tokens (1557 in the messages, 15000 in the completion). Please reduce the length of the messages or completion.", 'type': 'BadRequestError', 'param': None, 'code': 400}
+2026-06-06 21:46:43,646 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/michalewicz-cuda/result.txt
+2026-06-06 21:46:43,646 - root - INFO - Generated result.txt file with compilation failure in /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/michalewicz-cuda
+2026-06-06 21:46:43,646 - root - ERROR - Compilation failed for michalewicz-cuda: Failed to compile after 30 attempts
+2026-06-06 21:46:43,646 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/michalewicz-cuda/result.txt
+2026-06-06 21:46:43,646 - root - INFO - Processing kernel: convolution1D-cuda
+2026-06-06 21:46:43,646 - root - INFO - Compiling convolution1D-cuda
+2026-06-06 21:46:43,647 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-06 21:46:43,647 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-06 21:46:43,648 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/convolution1D-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/convolution1D-cuda/pred_compile_0.cu
+2026-06-06 21:46:43,648 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/convolution1D-cuda/main.cu
+2026-06-06 21:46:43,648 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/convolution1D-cuda
+2026-06-06 21:46:43,648 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/convolution1D-cuda
+2026-06-06 21:46:43,652 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/convolution1D-cuda/Makefile
+2026-06-06 21:46:44,325 - root - ERROR - Compilation failed, trying to fix the code
+2026-06-06 21:46:44,325 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-06 21:46:44,357 - httpx - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-06-06 21:46:44,358 - root - ERROR - Error in fix_code: Error code: 400 - {'object': 'error', 'message': "This model's maximum context length is 8192 tokens. However, you requested 17705 tokens (2705 in the messages, 15000 in the completion). Please reduce the length of the messages or completion.", 'type': 'BadRequestError', 'param': None, 'code': 400}
+2026-06-06 21:46:44,358 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/convolution1D-cuda/result.txt
+2026-06-06 21:46:44,358 - root - INFO - Generated result.txt file with compilation failure in /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/convolution1D-cuda
+2026-06-06 21:46:44,359 - root - ERROR - Compilation failed for convolution1D-cuda: Failed to compile after 30 attempts
+2026-06-06 21:46:44,359 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/qwen2.5_coder_14b_test_strict_shot_0_m_4096_t_0.2_p_0.9/HeCBench-omp-cuda/src/convolution1D-cuda/result.txt
+2026-06-06 21:46:44,359 - root - INFO - Processing complete. Output directory: /home/pdp15/UniPar_AI/output/20260606_214514_datasets_after_eval_compile

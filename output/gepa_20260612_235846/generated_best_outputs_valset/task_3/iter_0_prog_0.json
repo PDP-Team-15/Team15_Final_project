@@ -1,0 +1,12 @@
+[
+    0.0,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "Error": "Error code: 404 - {'object': 'error', 'message': 'The model `meta-llama/Meta-Llama-3.1-8B-Instruct` does not exist.', 'type': 'NotFoundError', 'param': None, 'code': 404}",
+        "kernel": "rfs",
+        "log": "[rfs] Translation API error: Error code: 404 - {'object': 'error', 'message': 'The model `meta-llama/Meta-Llama-3.1-8B-Instruct` does not exist.', 'type': 'NotFoundError', 'param': None, 'code': 404}\n"
+    }
+]

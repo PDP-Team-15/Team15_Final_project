@@ -1,0 +1,9 @@
+{
+    "omp-cuda": {
+        "atomicIntrinsics-cuda": 65.70169472694397,
+        "stencil1d-cuda": 163.954261302948
+    },
+    "cuda-omp": {
+        "vanGenuchten-omp": 124.34035086631775
+    }
+}

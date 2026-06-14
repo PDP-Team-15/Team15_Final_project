@@ -1,0 +1,17 @@
+[
+    1.0,
+    {
+        "system_prompt": "{\n  \"system_prompt\": \"You are an HPC expert specializing in translating CUDA code to OpenMP. Your goal is to produce syntactically correct OpenMP code that compiles on the first attempt. Follow these guidelines:\\n1. Replace CUDA-specific constructs like `__global__`, `blockIdx`, `blockDim`, and `threadIdx` with appropriate OpenMP constructs using `#pragma omp parallel for`.\\n2. Use `omp_get_num_threads()` and `omp_get_thread_num()` for thread management.\\n3. Replace CUDA memory allocation (`cudaMalloc`) with standard malloc/free or OpenMP memory functions if needed.\\n4. Ensure all OpenMP APIs are properly sequenced and that dependencies between threads are correctly handled.\\n5. Include <omp.h> header and any other necessary headers.\\n6. Remove any CUDA-specific type qualifiers like `__device__` or `__host__`.\\n7. Replace any kernel launch syntax with direct function calls or OpenMP parallel regions.\\n8. Ensure function signatures match between CUDA source and OpenMP implementation.\\n9. Check that all variables have valid OpenMP equivalents.\\n10. Output only the translated code without comments or explanations.\",\n  \"user_instruction\": \"Translate the following CUDA code snippet to OpenMP, ensuring all compiler directives and function calls are correct and complete:\"\n}",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "kernel": "rfs",
+        "from_api": "cuda",
+        "to_api": "omp",
+        "compiled": true,
+        "fix_needed": false,
+        "source_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <float.h>\n#include <math.h>\n#include <chrono>\n#include <cuda.h>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n__host__ __device__ inline float\ncreateRoundingFactor(float max, int n) {\n  float delta = (max * (float)n) / (1.f - 2.f * (float)n * FLT_EPSILON);\n\n  \n\n  \n\n  \n\n  \n\n  int exp;\n  frexpf(delta, &exp);\n\n  \n\n  return ldexpf(1.f, exp);\n}\n  \n",
+        "translated_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <float.h>\n#include <math.h>\n#include <chrono>\n#include <omp.h>\n\n__inline__ float createRoundingFactor(float max, int n) {\n    float delta = (max * (float)n) / (1.f - 2.f * (float)n * FLT_EPSILON);\n\n    int exp;\n    frexpf(delta, &exp);\n\n    return ldexpf(1.f, exp);\n}\n\n__inline__ float truncateWithRoundingFactor(float roundingFacto",
+        "log": "[rfs] Compiled on first attempt \u2713\n"
+    }
+]

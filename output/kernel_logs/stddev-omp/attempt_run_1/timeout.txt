@@ -1,0 +1,8 @@
+=== TIMEOUT ERROR (Attempt 2) ===
+Kernel: stddev
+From API: cuda
+To API: omp
+Filename: main.cpp
+
+=== ERROR MESSAGE ===
+Execution timed out - probably the code is running on the CPU

@@ -1,0 +1,19 @@
+[
+    0.0,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "kernel": "car",
+        "from_api": "omp",
+        "to_api": "cuda",
+        "compiled": false,
+        "fix_needed": true,
+        "initial_compile_error": "main.cu(59): error: identifier \"img_w\" is undefined\n        float val = (1.f - alpha) * (1.f - beta) * img[(idb)*dim_c*img_w*img_h + (idc)*img_w*img_h + (yT)*img_w + (xL)];\n                                                                   ^\n\nmain.cu(59): error: identifier \"img_h\" is undefined\n        float val = (1.f - alpha) * (1.f - beta) * img[(idb)*dim_c*img_w*img_h + (idc)*img_w*img_h + (yT)*img_w + (xL)];\n                                                                         ^\n\n2 errors detected in the compilation of \"main.cu\".\nmake: *** [Makefile:50: main.o] Error 2\n",
+        "post_fix_error": "main.cu(59): error: identifier \"img_w\" is undefined\n        float val = (1.f - alpha) * (1.f - beta) * img[(idb)*dim_c*img_w*img_h + (idc)*img_w*img_h + (yT)*img_w + (xL)];\n                                                                   ^\n\nmain.cu(59): error: identifier \"img_h\" is undefined\n        float val = (1.f - alpha) * (1.f - beta) * img[(idb)*dim_c*img_w*img_h + (idc)*img_w*img_h + (yT)",
+        "source_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <chrono>\n#include <omp.h>\n#include \"utils.h\"\n#include \"reference.h\"\n\n#define max(a,b) (a) > (b) ? (a) : (b)\n#define min(a,b) (a) < (b) ? (a) : (b)\n\nvoid car (\n    const float *__restrict img,\n    const float *__restrict kernels,\n    const float *__restrict offsets_h,\n    const float *__restrict offsets_v,\n          float *__restrict",
+        "translated_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n#include <chrono>\n#include <cuda_runtime.h>\n#include \"utils.h\"\n#include \"reference.h\"\n\n#define max(a,b) (a) > (b) ? (a) : (b)\n#define min(a,b) (a) < (b) ? (a) : (b)\n\n__global__ void car_kernel(\n    const float* __restrict img,\n    const float* __restrict kernels,\n    const float* __restrict offsets_h,\n    const float* __restrict offsets_v,\n ",
+        "log": "[car] Compile failed, trying model fix...\n[car] Compile error:\nmain.cu(59): error: identifier \"img_w\" is undefined\n        float val = (1.f - alpha) * (1.f - beta) * img[(idb)*dim_c*img_w*img_h + (idc)*img_w*img_h + (yT)*img_w + (xL)];\n                                                                   ^\n\nmain.cu(59): error: identifier \"img_h\" is undefined\n        float val = (1.f - alpha) * (1.f - beta) * img[(idb)*dim_c*img_w*img_h + (idc)*img_w*img_h + (yT)*img_w + (xL)];\n                                                                         ^\n\n2 errors detected in the compilation of \"main.cu\".\nmake: *** [Makefile:50: main.o] Error 2\n\n[car] Still failed after model fix \u2717\n[car] Second error:\nmain.cu(59): error: identifier \"img_w\" is undefined\n        float val = (1.f - alpha) * (1.f - beta) * img[(idb)*dim_c*img_w*img_h + (idc)*img_w*img_h + (yT)*img_w + (xL)];\n                                                                   ^\n\nmain.cu(59): error: identifier \"img_h\" is undefined\n        float val = (1.f - alpha) * (1.f - beta) * img[(idb)*dim_c*img_w*img_h + (idc)*img_w*img_h + (yT)\n"
+    }
+]

@@ -11,6 +11,7 @@ import logging
 from datetime import datetime
 from pathlib import Path
 
+from tqdm import tqdm
 from model_agent import ModelAgent
 from solver import ExecutionAgent
 from executioner import RunnerAgent
@@ -29,8 +30,8 @@ def parse_arguments():
     """Parse command line arguments."""
     parser = argparse.ArgumentParser(description='Run UniPar code rewrite using datasets_after_eval_compile')
 
-    parser.add_argument('--dataset_dir', type=str, default='datasets_after_eval_compile/shot_0_m_15000_t_0.2_p_0.9',
-                        help='Path to the datasets_after_eval_compile directory (default: datasets_after_eval_compile/shot_0_m_15000_t_0.2_p_0.9)')
+    parser.add_argument('--dataset_dir', type=str, required=True,
+                        help='Path to the eval dataset directory (e.g., /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_strict_shot_0_m_8192_t_0.2_p_0.9)')
     parser.add_argument('--from_api', type=str, required=True,
                         help='Source API (e.g., cuda, omp, serial, hip, sycl, all)')
     parser.add_argument('--to_api', type=str, required=True,
@@ -45,6 +46,8 @@ def parse_arguments():
                         help='Specific kernel to process (default: process all kernels)')
     parser.add_argument('--model_name', type=str, default='gpt-4',
                         help='Model to use for code generation (default: gpt-4)')
+    parser.add_argument('--compile_only', action='store_true',
+                        help='Only attempt to compile; skip run stage')
 
     return parser.parse_args()
 
@@ -76,11 +79,11 @@ def main():
         logging.error(f"Existing dataset directory {existing_dataset_path} does not exist")
         return 1
 
-    # Set up HeCBench path
+    # Set up HeCBench path 
     if args.hecbench_path:
         hecbench_path = args.hecbench_path
     else:
-        hecbench_path = '/home/tomerbitan/unipar/HeCBench'#os.path.join(project_path, 'multiagent_pipeline', 'hecbench_omp')
+        hecbench_path = '/home/pdp15/HeCBench'
 
     if not os.path.exists(hecbench_path):
         logging.error(f"HeCBench directory {hecbench_path} does not exist")
@@ -106,6 +109,7 @@ def main():
     logging.info(f"Original model name extracted: {original_model_name}")
 
     # Create a clean dataset directory within the output directory
+    
     # Include both the original model name and the solver model name in the directory name
     clean_dataset_dir = args.dataset_dir #os.path.join(output_dir, f'clean_dataset_{original_model_name}_solver_{args.model_name}')
     # os.makedirs(clean_dataset_dir, exist_ok=True)
@@ -123,15 +127,16 @@ def main():
     dataset_path = clean_dataset_dir
     logging.info(f"Using clean dataset at {dataset_path} for main processing")
 
-    # Initialize the model agent
-    # Use a local model server to avoid authentication issues
     model_agent = ModelAgent(
-        model=args.model_name,
-        api_base='http://localhost:8000/v1',
-        api_key=""#'mult_pipeline'
+        translator_base_url='http://192.168.50.212:8006/v1',
+        translator_model='Valdemardi/DeepSeek-R1-Distill-Qwen-32B-AWQ',
+        fixer_base_url='http://192.168.50.212:8006/v1',
+        fixer_model='Valdemardi/DeepSeek-R1-Distill-Qwen-32B-AWQ',
+        api_key='token123',
     )
 
     # Initialize the execution agent and runner agent
+    ## one for 
     execution_agent = ExecutionAgent(model_agent)
     runner_agent = RunnerAgent(model_agent)
 
@@ -152,6 +157,15 @@ def main():
     else:
         source_apis = [args.from_api]
 
+    # Stats counters
+    stats = {
+        'total': 0,
+        'compile_pass': 0,
+        'compile_fail': 0,
+        'run_pass': 0,
+        'run_fail': 0,
+    }
+
     # Process each source API
     for from_api in source_apis:
         logging.info(f"Processing source API: {from_api} to {args.to_api}")
@@ -169,10 +183,10 @@ def main():
 
         if args.kernel:
             # Process a specific kernel
-            kernels = [k for k in os.listdir(src_dir) if k.startswith(args.kernel)]
+            kernels = [k for k in os.listdir(src_dir) if k.startswith(args.kernel) and k != 'src']
         else:
-            # Process all kernels
-            kernels = os.listdir(src_dir)
+            # Process all kernels, excluding the nested 'src' directory
+            kernels = [k for k in os.listdir(src_dir) if k != 'src']
 
         if not kernels:
             logging.error(f"No kernels found for {from_api} to {args.to_api}")
@@ -181,7 +195,7 @@ def main():
         logging.info(f"Found {len(kernels)} kernels to process for {from_api} to {args.to_api}")
 
         # Process each kernel
-        for kernel in kernels:
+        for kernel in tqdm(kernels, desc=f"{from_api}->{args.to_api}", unit="kernel"):
             logging.info(f"Processing kernel: {kernel}")
 
             kernel_dir = os.path.join(src_dir, kernel)
@@ -190,7 +204,7 @@ def main():
                 continue
             else:
                 files = os.listdir(kernel_dir)
-                if "pred_0.cpp" in files or "pred_run_0.cpp" in files:
+                if any(f in files for f in ("pred_0.cpp", "pred_0.cu", "pred_run_0.cpp", "pred_run_0.cu")):
                     logging.info(f"Skipping kernel {kernel} as it already has prediction files.")
                     continue
             
@@ -216,6 +230,7 @@ def main():
 
             # Compile the code
             logging.info(f"Compiling {kernel}")
+            stats['total'] += 1
             compile_result = execution_agent.compile_and_run(
                 build_dir=compile_dir,
                 exec_name=os.path.basename(initial_code_file),
@@ -228,6 +243,7 @@ def main():
 
             if not compile_result['success']:
                 logging.error(f"Compilation failed for {kernel}: {compile_result['error']}")
+                stats['compile_fail'] += 1
 
                 # Generate result.txt file with compilation error
                 generate_result_file(
@@ -240,7 +256,21 @@ def main():
                 )
                 continue
 
-            # Run the code
+            stats['compile_pass'] += 1
+
+            # Run the code (skipped when --compile_only is set)
+            if args.compile_only:
+                logging.info(f"Compile-only mode: skipping run for {kernel}")
+                generate_result_file(
+                    kernel_dir=kernel_dir,
+                    compile_attempt=compile_result['compile_iteration'],
+                    compile_error=None,
+                    run_attempt=None,
+                    run_output=None,
+                    pass_status=False
+                )
+                continue
+
             logging.info(f"Running {kernel}")
             run_result = runner_agent.run_program(
                 build_dir=compile_dir,
@@ -257,6 +287,7 @@ def main():
 
             if not run_result['success']:
                 logging.error(f"Execution failed for {kernel}: {run_result['error']}")
+                stats['run_fail'] += 1
                 generate_result_file(
                     kernel_dir=kernel_dir,
                     compile_attempt=compile_attempt,
@@ -277,6 +308,11 @@ def main():
                 else:
                     logging.warning(f"Results are not valid for {kernel}: {run_result['validation_message']}")
 
+                if pass_status:
+                    stats['run_pass'] += 1
+                else:
+                    stats['run_fail'] += 1
+
                 generate_result_file(
                     kernel_dir=kernel_dir,
                     compile_attempt=compile_attempt,
@@ -287,6 +323,29 @@ def main():
                 )
 
     logging.info(f"Processing complete. Output directory: {output_dir}")
+
+    total = stats['total']
+    compile_pass = stats['compile_pass']
+    run_pass = stats['run_pass']
+    summary_lines = [
+        "",
+        "=" * 50,
+        f"SUMMARY  ({args.from_api} -> {args.to_api})",
+        "=" * 50,
+        f"  Total kernels   : {total}",
+        f"  Compile pass    : {compile_pass}/{total}"
+            + (f"  ({compile_pass/total*100:.1f}%)" if total else ""),
+        f"  Compile fail    : {stats['compile_fail']}/{total}",
+        f"  Run pass        : {run_pass}/{total}"
+            + (f"  ({run_pass/total*100:.1f}%)" if total else ""),
+        f"  Run fail        : {stats['run_fail']}/{compile_pass}"
+            + (f"  (of compiled)" if compile_pass else ""),
+        "=" * 50,
+    ]
+    summary = "\n".join(summary_lines)
+    logging.info(summary)
+    print(summary)
+
     return 0
 
 if __name__ == "__main__":

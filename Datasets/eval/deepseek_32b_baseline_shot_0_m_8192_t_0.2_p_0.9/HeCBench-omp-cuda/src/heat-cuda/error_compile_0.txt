@@ -1,0 +1,12 @@
+heat.cu(38): error: identifier "r2" is undefined
+          double val = r2 * u[i + j * n];
+                       ^
+
+heat.cu(141): warning #167-D: argument of type "double (*)(int, const double *, int, double, double, double, double)" is incompatible with parameter of type "const void *"
+      cudaMemcpy(norm_dev, &l2norm, sizeof(double), cudaMemcpyHostToDevice);
+                           ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+1 error detected in the compilation of "heat.cu".
+make: *** [Makefile:52: heat.o] Error 2

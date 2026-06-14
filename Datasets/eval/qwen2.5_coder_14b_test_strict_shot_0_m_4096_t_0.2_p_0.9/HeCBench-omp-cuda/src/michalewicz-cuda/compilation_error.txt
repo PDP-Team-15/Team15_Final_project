@@ -1,0 +1,19 @@
+main.cu(49): error: no instance of overloaded function "atomicMin" matches the argument list
+            argument types are: (float *, float)
+      atomicMin(minValue, sharedMin[0]);
+      ^
+/home/pdp15/.conda/envs/unipar/bin/../include/sm_32_atomic_functions.h(110): note #3326-D: function "atomicMin(unsigned long long *, unsigned long long)" does not match because argument #1 does not match parameter
+  static __inline__ __attribute__((device)) unsigned long long atomicMin(unsigned long long *address, unsigned long long val) { }
+                                                               ^
+/home/pdp15/.conda/envs/unipar/bin/../include/sm_32_atomic_functions.h(100): note #3326-D: function "atomicMin(long long *, long long)" does not match because argument #1 does not match parameter
+  static __inline__ __attribute__((device)) long long atomicMin(long long *address, long long val) { }
+                                                      ^
+/home/pdp15/.conda/envs/unipar/bin/../include/device_atomic_functions.h(122): note #3326-D: function "atomicMin(unsigned int *, unsigned int)" does not match because argument #1 does not match parameter
+  static __inline__ __attribute__((device)) unsigned int atomicMin(unsigned int *address, unsigned int val) { }
+                                                         ^
+/home/pdp15/.conda/envs/unipar/bin/../include/device_atomic_functions.h(120): note #3326-D: function "atomicMin(int *, int)" does not match because argument #1 does not match parameter
+  static __inline__ __attribute__((device)) int atomicMin(int *address, int val) { }
+                                                ^
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:50: main.o] Error 2

@@ -1,0 +1,19 @@
+[
+    0.0,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "kernel": "affine",
+        "from_api": "cuda",
+        "to_api": "omp",
+        "compiled": false,
+        "fix_needed": true,
+        "initial_compile_error": "main.cpp:12:10: fatal error: 'reference.h' file not found\n   12 | #include \"reference.h\"\n      |          ^~~~~~~~~~~~~\n1 error generated.\nmake: *** [Makefile.aomp:61: main.o] Error 1\n",
+        "post_fix_error": "main.cpp:12:10: fatal error: 'kernel.h' file not found\n   12 | #include \"kernel.h\"\n      |          ^~~~~~~~~~\n1 error generated.\nmake: *** [Makefile.aomp:61: main.o] Error 1\n",
+        "source_snippet": "\n\n#include <sys/types.h>\n#include <sys/stat.h>\n#include <fcntl.h>\n#include <unistd.h>\n#include <stdlib.h>\n#include <stdio.h>\n#include <cstring>\n#include <cmath>\n#include <iostream>\n#include <chrono>\n#include <cuda.h>\n#include \"reference.h\"\n#include \"kernel.h\"\n\nint main(int argc, char** argv)\n{\n  if (argc != 4)\n  {\n    printf(\"Usage: %s <input image> <output image> <iterations>\\n\", argv[0]) ;\n    r",
+        "translated_snippet": "#include <sys/types.h>\n#include <sys/stat.h>\n#include <fcntl.h>\n#include <unistd.h>\n#include <stdlib.h>\n#include <stdio.h>\n#include <cstring>\n#include <cmath>\n#include <iostream>\n#include <chrono>\n#include <omp.h>\n#include \"reference.h\"\n#include \"kernel.h\"\n\nint main(int argc, char** argv)\n{\n  if (argc != 4)\n  {\n    printf(\"Usage: %s <input image> <output image> <iterations>\\n\", argv[0]) ;\n    retu",
+        "log": "[affine] Compile failed, trying model fix...\n[affine] Compile error:\nmain.cpp:12:10: fatal error: 'reference.h' file not found\n   12 | #include \"reference.h\"\n      |          ^~~~~~~~~~~~~\n1 error generated.\nmake: *** [Makefile.aomp:61: main.o] Error 1\n\n[affine] Still failed after model fix \u2717\n[affine] Second error:\nmain.cpp:12:10: fatal error: 'kernel.h' file not found\n   12 | #include \"kernel.h\"\n      |          ^~~~~~~~~~\n1 error generated.\nmake: *** [Makefile.aomp:61: main.o] Error 1\n\n"
+    }
+]

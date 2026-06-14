@@ -1,0 +1,28 @@
+2026-06-14 20:48:36,366 - root - INFO - Log file created at /home/pdp15/UniPar_AI/output/20260614_204836_datasets_after_eval_compile/datasets_after_eval_compile.log
+2026-06-14 20:48:36,366 - root - INFO - Running eval_compile to create a clean dataset...
+2026-06-14 20:48:36,366 - root - INFO - Original model name extracted: gpt
+2026-06-14 20:48:36,366 - root - INFO - Using clean dataset at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9 for main processing
+2026-06-14 20:48:36,403 - root - INFO - ModelAgent initialized: translator=Valdemardi/DeepSeek-R1-Distill-Qwen-32B-AWQ@http://192.168.50.212:8006/v1, fixer=Valdemardi/DeepSeek-R1-Distill-Qwen-32B-AWQ@http://192.168.50.212:8006/v1
+2026-06-14 20:48:36,403 - root - INFO - Processing source API: omp to cuda
+2026-06-14 20:48:36,403 - root - INFO - Found 17 kernels to process for omp to cuda
+2026-06-14 20:48:36,404 - root - INFO - Processing kernel: ace-cuda
+2026-06-14 20:48:36,404 - root - INFO - Compiling ace-cuda
+2026-06-14 20:48:36,405 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-14 20:48:36,405 - root - INFO - Attempting to compile pred_0.cu (Attempt 1)
+2026-06-14 20:48:36,405 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/pred_compile_0.cu
+2026-06-14 20:48:36,405 - root - INFO - Compiling file: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/main.cu
+2026-06-14 20:48:36,405 - root - INFO - Makefile directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda
+2026-06-14 20:48:36,405 - root - INFO - Output directory: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda
+2026-06-14 20:48:36,410 - root - INFO - Using Makefile: /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/Makefile
+2026-06-14 20:48:37,712 - root - INFO - Generated result file at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/result.txt
+2026-06-14 20:48:37,713 - root - INFO - Generated partial result.txt file in /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda
+2026-06-14 20:48:37,713 - root - INFO - Running ace-cuda
+2026-06-14 20:48:37,714 - root - INFO - Extracted source filename from Makefile: main.cu
+2026-06-14 20:48:37,714 - root - INFO - Attempting to run main.cu (Attempt 1)
+2026-06-14 20:48:39,242 - root - INFO - Created backup of /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/main.cu at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/pred_run_0.cu
+2026-06-14 20:48:39,551 - root - INFO - Created error backup at /home/pdp15/UniPar_AI/Datasets/eval/deepseek_32b_baseline_shot_0_m_8192_t_0.2_p_0.9/HeCBench-omp-cuda/src/ace-cuda/error_run_0.txt
+2026-06-14 20:48:39,551 - root - ERROR - Failed to run, trying to fix the code
+2026-06-14 20:48:39,551 - root - INFO - Calling fixer model with temperature=0.2, top_p=0.9, max_tokens=15000
+2026-06-14 20:48:39,907 - httpx - INFO - HTTP Request: POST http://192.168.50.212:8006/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-06-14 20:48:39,908 - root - ERROR - Error in run_code: Error code: 400 - {'object': 'error', 'message': "This model's maximum context length is 16384 tokens. However, you requested 20886 tokens (5886 in the messages, 15000 in the completion). Please reduce the length of the messages or completion.", 'type': 'BadRequestError', 'param': None, 'code': 400}
+2026-06-14 20:48:39,908 - root - WARNING - Context window exceeded, retrying run_code with max_tokens=10448

@@ -1,0 +1,14 @@
+main.cpp:250:7: error: use of undeclared identifier 'kernel_likelihood'
+  250 |       kernel_likelihood(arrayX, arrayY, xj, yj, ind, objxy, likelihood, I, weights, seed, partial_sums, Nparticles, countOnes, IszY, Nfr, k, max_size, x);
+      |       ^
+main.cpp:253:5: error: use of undeclared identifier 'kernel_sum'
+  253 |     kernel_sum(partial_sums, Nparticles);
+      |     ^
+main.cpp:257:7: error: use of undeclared identifier 'kernel_normalize_weights'
+  257 |       kernel_normalize_weights(weights, partial_sums, CDF, u, seed, Nparticles, x);
+      |       ^
+main.cpp:262:7: error: use of undeclared identifier 'kernel_find_index'
+  262 |       kernel_find_index(arrayX, arrayY, CDF, u, xj, yj, Nparticles, x);
+      |       ^
+4 errors generated.
+make: *** [Makefile.aomp:63: main.o] Error 1

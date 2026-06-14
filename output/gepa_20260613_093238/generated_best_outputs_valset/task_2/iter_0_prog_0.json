@@ -1,0 +1,19 @@
+[
+    0.0,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "kernel": "spm",
+        "from_api": "omp",
+        "to_api": "cuda",
+        "compiled": false,
+        "fix_needed": true,
+        "initial_compile_error": "main.cu(12): error: invalid redeclaration of type name \"int3\" (declared at line 383 of /home/pdp/.conda/envs/unipar/bin/../include/vector_types.h)\n  } int3;\n    ^\n\nmain.cu(103): error: argument of type \"const float *\" is incompatible with parameter of type \"float *\"\n    spm_kernel<<<dimGrid, dimBlock>>>(M, data_size, g_d, f_d, dg, df, ivf_d, ivg_d, data_threshold_d);\n                                      ^\n\nmain.cu(103): error: argument of type \"const unsigned char *\" is incompatible with parameter of type \"unsigned char *\"\n    spm_kernel<<<dimGrid, dimBlock>>>(M, data_size, g_d, f_d, dg, df, ",
+        "post_fix_error": "main.cu(12): error: invalid redeclaration of type name \"int3\" (declared at line 383 of /home/pdp/.conda/envs/unipar/bin/../include/vector_types.h)\n  } int3;\n    ^\n\nmain.cu(103): error: argument of type \"const float *\" is incompatible with parameter of type \"float *\"\n    spm_kernel<<<dimGrid, dimBlock>>>(M, data_size, g_d, f_d, dg, df, ivf_d, ivg_d, data_threshold_d);\n                              ",
+        "source_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <stdbool.h>\n#include <string.h>\n#include <math.h>\n#include <algorithm>\n#include <chrono>\n#include <omp.h>\n\n#define NUM_THREADS 128\n#define NUM_BLOCKS 256\n#define REPEAT 100\n\ntypedef struct {\n  int x, y, z;\n} int3;\n\n#ifdef OMP_TARGET\n#pragma omp declare target\n#endif\n\n\nfloat interp(const int3 d, const unsigned char f[], float x, float y, float z)\n{\n  ",
+        "translated_snippet": "#include <stdio.h>\n#include <stdlib.h>\n#include <cuda_runtime.h>\n#include <math.h>\n\n#define NUM_BLOCKS 256\n#define NUM_THREADS 128\n#define REPEAT 100\n\ntypedef struct {\n  int x, y, z;\n} int3;\n\nfloat interp(const int3 d, const unsigned char *f, float x, float y, float z)\n{\n  int ix, iy, iz;\n  float dx1, dy1, dz1, dx2, dy2, dz2;\n  int k111,k112,k121,k122,k211,k212,k221,k222;\n  float vf;\n  const unsig",
+        "log": "[spm] Compile failed, trying model fix...\n[spm] Compile error:\nmain.cu(12): error: invalid redeclaration of type name \"int3\" (declared at line 383 of /home/pdp/.conda/envs/unipar/bin/../include/vector_types.h)\n  } int3;\n    ^\n\nmain.cu(103): error: argument of type \"const float *\" is incompatible with parameter of type \"float *\"\n    spm_kernel<<<dimGrid, dimBlock>>>(M, data_size, g_d, f_d, dg, df, ivf_d, ivg_d, data_threshold_d);\n                                      ^\n\nmain.cu(103): error: argument of type \"const unsigned char *\" is incompatible with parameter of type \"unsigned char *\"\n    spm_kernel<<<dimGrid, dimBlock>>>(M, data_size, g_d, f_d, dg, df, \n[spm] Still failed after model fix \u2717\n[spm] Second error:\nmain.cu(12): error: invalid redeclaration of type name \"int3\" (declared at line 383 of /home/pdp/.conda/envs/unipar/bin/../include/vector_types.h)\n  } int3;\n    ^\n\nmain.cu(103): error: argument of type \"const float *\" is incompatible with parameter of type \"float *\"\n    spm_kernel<<<dimGrid, dimBlock>>>(M, data_size, g_d, f_d, dg, df, ivf_d, ivg_d, data_threshold_d);\n                              \n"
+    }
+]

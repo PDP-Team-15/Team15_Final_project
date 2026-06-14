@@ -1,0 +1,20 @@
+main.cu:8: warning: "DIM_LOCAL_WORK_GROUP_X" redefined
+    8 | #define DIM_LOCAL_WORK_GROUP_X 16
+      | 
+In file included from main.cu:3:
+utils.h:26: note: this is the location of the previous definition
+   26 | #define DIM_LOCAL_WORK_GROUP_X 32
+      | 
+main.cu:9: warning: "DIM_LOCAL_WORK_GROUP_Y" redefined
+    9 | #define DIM_LOCAL_WORK_GROUP_Y 16
+      | 
+In file included from main.cu:3:
+utils.h:27: note: this is the location of the previous definition
+   27 | #define DIM_LOCAL_WORK_GROUP_Y 8
+      | 
+main.cu(75): error: identifier "rtclock" is undefined
+      double start = rtclock();
+                     ^
+
+1 error detected in the compilation of "main.cu".
+make: *** [Makefile:53: main.o] Error 2

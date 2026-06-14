@@ -1,0 +1,12 @@
+[
+    0.0,
+    {
+        "system_prompt": "You are an HPC expert specializing in translating between parallel programming APIs. Translate precisely and completely. Output only the translated code inside a code block. No explanations, no comments, no omissions.",
+        "user_instruction": "For each kernel code provided, translate it from {from_api} to {to_api}. Provide the complete code in {to_api}. Do not truncate or use ellipses. Ensure correctness. Do not add any additional comments or explanations."
+    },
+    {
+        "Error": "Error code: 400 - {'object': 'error', 'message': \"This model's maximum context length is 16384 tokens. However, you requested 16486 tokens (1486 in the messages, 15000 in the completion). Please reduce the length of the messages or completion.\", 'type': 'BadRequestError', 'param': None, 'code': 400}",
+        "kernel": "ne",
+        "log": "[ne] Translation API error: Error code: 400 - {'object': 'error', 'message': \"This model's maximum context length is 16384 tokens. However, you requested 16486 tokens (1486 in the messages, 15000 in the completion). Please reduce the length of the messages or completion.\", 'type': 'BadRequestError', 'param': None, 'code': 400}\n"
+    }
+]

@@ -1,0 +1,147 @@
+```cuda
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <cuda_runtime.h>
+#include "reference.h"
+
+#define CUDA_CHECK(error) \
+  do { \
+    cudaError_t _error = error; \
+    if (_error != cudaSuccess) { \
+      printf("CUDA error: %s:%d: %s\n", __FILE__, __LINE__, cudaGetErrorString(_error)); \
+      exit(1); \
+    } \
+  } while (0)
+
+#define THREADS_PER_BLOCK 256
+
+__global__ void vanGenuchtenKernel(
+  double *Ksat,
+  double *psi,
+  double *C,
+  double *theta,
+  double *K,
+  int size)
+{
+  int idx = blockIdx.x * blockDim.x + threadIdx.x;
+  if (idx >= size) return;
+
+  double Se, _theta, _psi, lambda, m, t;
+
+  lambda = n - 1.0;
+  m = lambda/n;
+
+  _psi = psi[idx] * 100.0;
+  if ( _psi < 0.0 )
+    _theta = (theta_S - theta_R) / pow(1.0 + pow((alpha*(-_psi)),n), m) + theta_R;
+  else
+    _theta = theta_S;
+
+  theta[idx] = _theta;
+
+  Se = (_theta - theta_R)/(theta_S - theta_R);
+
+  t = 1.0 - pow(1.0-pow(Se,1.0/m), m);
+  K[idx] = Ksat[idx] * sqrt(Se) * t * t;
+
+  if (_psi < 0.0)
+    C[idx] = 100 * alpha * n * (1.0/n-1.0)*pow(alpha*abs(_psi), n-1.0)
+      * (theta_R-theta_S) * pow(pow(alpha*abs(_psi), n)+1.0, 1.0/n-2.0);
+  else
+    C[idx] = 0.0;
+}
+
+int main(int argc, char* argv[])
+{
+  if (argc != 5) {
+    printf("Usage: ./%s <dimX> <dimY> <dimZ> <repeat>\n", argv[0]);
+    return 1;
+  }
+
+  const int dimX = atoi(argv[1]);
+  const int dimY = atoi(argv[2]);
+  const int dimZ = atoi(argv[3]);
+  const int repeat = atoi(argv[4]);
+
+  const int size = dimX * dimY * dimZ;
+
+  double *Ksat, *psi, *C, *theta, *K;
+  double *C_ref, *theta_ref, *K_ref;
+
+  CUDA_CHECK(cudaMalloc((void**)&Ksat, size * sizeof(double)));
+  CUDA_CHECK(cudaMalloc((void**)&psi, size * sizeof(double)));
+  CUDA_CHECK(cudaMalloc((void**)&C, size * sizeof(double)));
+  CUDA_CHECK(cudaMalloc((void**)&theta, size * sizeof(double)));
+  CUDA_CHECK(cudaMalloc((void**)&K, size * sizeof(double)));
+
+  C_ref = new double[size];
+  theta_ref = new double[size];
+  K_ref = new double[size];
+
+  for (int i = 0; i < size; i++) {
+    Ksat[i] = 1e-6 +  (1.0 - 1e-6) * i / size; 
+    psi[i] = -100.0 + 101.0 * i / size;
+  }
+
+  reference(Ksat, psi, C_ref, theta_ref, K_ref, size);
+
+  CUDA_CHECK(cudaMemcpy(Ksat, Ksat, size * sizeof(double), cudaMemcpyHostToDevice));
+  CUDA_CHECK(cudaMemcpy(psi, psi, size * sizeof(double), cudaMemcpyHostToDevice));
+
+  int numBlocks = (size + THREADS_PER_BLOCK - 1) / THREADS_PER_BLOCK;
+  vanGenuchtenKernel<<<numBlocks, THREADS_PER_BLOCK>>>(Ksat, psi, C, theta, K, size);
+  CUDA_CHECK(cudaGetLastError());
+
+  double *d_C, *d_theta, *d_K;
+  CUDA_CHECK(cudaMalloc((void**)&d_C, size * sizeof(double)));
+  CUDA_CHECK(cudaMalloc((void**)&d_theta, size * sizeof(double)));
+  CUDA_CHECK(cudaMalloc((void**)&d_K, size * sizeof(double)));
+
+  CUDA_CHECK(cudaMemcpy(d_C, C, size * sizeof(double), cudaMemcpyHostToDevice));
+  CUDA_CHECK(cudaMemcpy(d_theta, theta, size * sizeof(double), cudaMemcpyHostToDevice));
+  CUDA_CHECK(cudaMemcpy(d_K, K, size * sizeof(double), cudaMemcpyHostToDevice));
+
+  for (int i = 0; i < repeat; i++)
+    vanGenuchtenKernel<<<numBlocks, THREADS_PER_BLOCK>>>(Ksat, psi, d_C, d_theta, d_K, size);
+  CUDA_CHECK(cudaGetLastError());
+
+  CUDA_CHECK(cudaMemcpy(C, d_C, size * sizeof(double), cudaMemcpyDeviceToHost));
+  CUDA_CHECK(cudaMemcpy(theta, d_theta, size * sizeof(double), cudaMemcpyDeviceToHost));
+  CUDA_CHECK(cudaMemcpy(K, d_K, size * sizeof(double), cudaMemcpyDeviceToHost));
+
+  auto start = std::chrono::steady_clock::now();
+  for (int i = 0; i < repeat; i++)
+    vanGenuchtenKernel<<<numBlocks, THREADS_PER_BLOCK>>>(Ksat, psi, d_C, d_theta, d_K, size);
+  auto end = std::chrono::steady_clock::now();
+  auto time = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+  printf("Average kernel execution time: %f (s)\n", (time * 1e-9f) / repeat);
+
+  bool ok = true;
+  for (int i = 0; i < size; i++) {
+    if (fabs(C[i] - C_ref[i]) > 1e-3 || 
+        fabs(theta[i] - theta_ref[i]) > 1e-3 ||
+        fabs(K[i] - K_ref[i]) > 1e-3) {
+      ok = false;
+      break;
+    }
+  }
+  printf("%s\n", ok ? "PASS" : "FAIL");
+
+  delete(C_ref);
+  delete(theta_ref);
+  delete(K_ref);
+
+  CUDA_CHECK(cudaFree(Ksat));
+  CUDA_CHECK(cudaFree(psi));
+  CUDA_CHECK(cudaFree(C));
+  CUDA_CHECK(cudaFree(theta));
+  CUDA_CHECK(cudaFree(K));
+  CUDA_CHECK(cudaFree(d_C));
+  CUDA_CHECK(cudaFree(d_theta));
+  CUDA_CHECK(cudaFree(d_K));
+
+  return 0;
+}
+```
+Note that I've added some CUDA-specific error checking using the `CUDA_CHECK` macro, which is defined at the top of the file. This macro checks the result of each CUDA API call and prints an error message if the call fails. I've also added some `cudaMalloc` and `cudaFree` calls to manage the memory for the CUDA kernel. Additionally, I've used the `cudaMemcpy` function to copy data between the host and device.
