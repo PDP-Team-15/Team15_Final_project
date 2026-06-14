@@ -369,3 +369,4 @@
 2026-06-15 03:50:12,992 - httpx - INFO - HTTP Request: POST http://192.168.50.212:8006/v1/chat/completions "HTTP/1.1 400 Bad Request"
 2026-06-15 03:50:12,993 - root - ERROR - Error in run_code: Error code: 400 - {'object': 'error', 'message': "This model's maximum context length is 16384 tokens. However, you requested 17043 tokens (2043 in the messages, 15000 in the completion). Please reduce the length of the messages or completion.", 'type': 'BadRequestError', 'param': None, 'code': 400}
 2026-06-15 03:50:12,993 - root - WARNING - Context window exceeded, retrying run_code with max_tokens=14291
+2026-06-15 04:00:13,097 - openai._base_client - INFO - Retrying request to /chat/completions in 0.381061 seconds
